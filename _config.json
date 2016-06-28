@@ -1,0 +1,14 @@
+//
+// This config file is to be defined by the owner. 
+//
+// Once filled in, rename to config.json
+//
+{
+    "database": "INSERT DB NAME HERE",
+    "session_secret": "INSERT SECRET HERE",
+    "salt": "INSERT SALT HERE",
+    "api_key": { 
+        "key": "INSERT KEY",
+        "enabled": 1
+        }
+}
