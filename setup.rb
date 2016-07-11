@@ -13,7 +13,7 @@ SQLer.init
 ##### INSTALLING GEMS #####
 ####################################
 
-# GEMS = ['sinatra', 'sinatra-contrib', 'mysql2', 'liquid', 'json','bcrypt']
+# GEMS = ['sinatra', 'sinatra-contrib', 'mysql2', 'liquid', 'json','bcrypt', rufus-scheduler]
 
 
 # GEMS.each do{ |g|

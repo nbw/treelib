@@ -2,7 +2,6 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/base'
-require "sinatra/reloader" if development?
 require 'net/http'
 require 'date'
 require 'json'
@@ -10,6 +9,7 @@ require 'mysql2'
 require 'bcrypt'
 require 'pp'
 require 'open-uri'
+require 'rufus-scheduler'
 
 #local files
 require_relative 'src/family'
@@ -66,6 +66,7 @@ get '/admin/edit_species' do
     if (species_id > 0) && (species = Plantae::get_species(species_id))
         species = species.to_hash
         if species["album_id"]
+            Photos::update
             species["photos"] = Photos::get_photos_urls(species["album_id"],'s')
         end
     else 

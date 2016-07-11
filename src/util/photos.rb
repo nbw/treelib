@@ -1,4 +1,11 @@
 module Photos
+    @scheduler = nil
+    def self.init
+        @scheduler = Rufus::Scheduler.new
+        @scheduler.every '1h' do
+            self.update
+        end
+    end
 
     def self.update
         #.............................
@@ -105,7 +112,7 @@ module Photos
         end
         #...............................
         # deleted photos from modified albums
-        delete_photo_ids = modified_albums_deleted_photos.collect{|da| da["id"]}
+        delete_photo_ids = modified_albums_deleted_photos.collect{|da| da["flickr_id"]}
         q_delete_photos_where << "flickr_id IN ( #{delete_photo_ids.join(", ")} )" if !delete_photo_ids.empty?
         #...............................
         # deleted photos query
