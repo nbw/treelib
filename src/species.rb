@@ -4,9 +4,10 @@ class Species
         @name = s[:name]
         @descrip = s[:descrip]
         @genus_id = s[:g_id]
+        @album_id = s[:album_id] || nil 
     end
 
-    attr_accessor :id, :name, :genus, :descrip, :genus_id
+    attr_accessor :id, :name, :genus, :descrip, :genus_id, :album_id
 
     def to_hash
         h = {}

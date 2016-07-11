@@ -1,4 +1,4 @@
-webpackJsonp([3],[
+webpackJsonp([4],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -41,7 +41,8 @@ webpackJsonp([3],[
 	        _this.state = {
 	            title: pg.species.name || "",
 	            description: pg.species.descrip || "",
-	            genus_id: pg.species.genus_id || pg.genera[0].id || 0
+	            genus_id: pg.species.genus_id || pg.genera[0].id || 0,
+	            album_id: pg.species.album_id || 0
 	        };
 	        return _this;
 	    }
@@ -72,6 +73,7 @@ webpackJsonp([3],[
 	                    name: this.state.title,
 	                    descrip: this.state.description,
 	                    g_id: this.state.genus_id,
+	                    album_id: this.state.album_id || null,
 	                    key: pg.key
 	                })
 	            }).then(function (response) {
@@ -117,6 +119,15 @@ webpackJsonp([3],[
 	                    placeholder: 'enter description here',
 	                    text: this.state.description,
 	                    handler: this.handleInputChange.bind(this, 'description') }),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(Dropper, {
+	                    id: 'photoAlbum',
+	                    title: 'Photo Album',
+	                    'default': this.state.album_id,
+	                    list: pg.photo_albums,
+	                    handler: this.handleInputChange.bind(this, 'album_id') }),
+	                _react2.default.createElement(PhotoArray, {
+	                    photos: pg.species.photos }),
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(
 	                    'p',
@@ -277,6 +288,35 @@ webpackJsonp([3],[
 	    }]);
 
 	    return Saver;
+	}(_react2.default.Component);
+
+	var PhotoArray = function (_React$Component6) {
+	    _inherits(PhotoArray, _React$Component6);
+
+	    function PhotoArray() {
+	        _classCallCheck(this, PhotoArray);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(PhotoArray).apply(this, arguments));
+	    }
+
+	    _createClass(PhotoArray, [{
+	        key: 'render',
+	        value: function render() {
+	            var images = [];
+	            if (this.props.photos) {
+	                this.props.photos.forEach(function (item) {
+	                    images.push(_react2.default.createElement('img', { src: item }));
+	                });
+	            }
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'photoArray' },
+	                images
+	            );
+	        }
+	    }]);
+
+	    return PhotoArray;
 	}(_react2.default.Component);
 
 	if (self.fetch) {} else {

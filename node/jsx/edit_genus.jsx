@@ -141,7 +141,6 @@ class Saver extends React.Component {
     }
 }
 
-
 if (self.fetch) {
 
 } else {

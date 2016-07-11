@@ -4,10 +4,12 @@ require 'sinatra'
 require 'sinatra/base'
 require "sinatra/reloader" if development?
 require 'net/http'
+require 'date'
 require 'json'
 require 'mysql2'
 require 'bcrypt'
 require 'pp'
+require 'open-uri'
 
 #local files
 require_relative 'src/family'
@@ -15,9 +17,11 @@ require_relative 'src/genus'
 require_relative 'src/species'
 require_relative 'src/plantae'
 require_relative 'src/users'
-require_relative 'src/util/basic'
-require_relative 'src/util/sqler'
 require_relative 'src/util/apitools'
+require_relative 'src/util/basic'
+require_relative 'src/util/flickr'
+require_relative 'src/util/photos'
+require_relative 'src/util/sqler'
 require_relative 'src/startup'
 
 last_request = Time.now
@@ -61,6 +65,9 @@ get '/admin/edit_species' do
 
     if (species_id > 0) && (species = Plantae::get_species(species_id))
         species = species.to_hash
+        if species["album_id"]
+            species["photos"] = Photos::get_photos_urls(species["album_id"],'s')
+        end
     else 
         species = []
     end
@@ -72,10 +79,15 @@ get '/admin/edit_species' do
         } 
     end.sort{|a,b| a['name']<=>b['name']}
 
+    if genera.empty?
+        redirect '/admin/edit_genus'
+    end
+
     @page_data = {
         :genera => genera,
         :species => species,
-        :key => APITools::generate_key
+        :key => APITools::generate_key,
+        :photo_albums => [{:name=>"select one", :id=>0}] + Photos::get_photo_albums
     }
 
     erb :"admin/edit_species"
@@ -98,6 +110,10 @@ get '/admin/edit_genus' do
             :id => f.id       
         } 
     end.sort{|a,b| a['name']<=>b['name']}
+
+    if families.empty?
+        redirect '/admin/edit_family'
+    end
 
     @page_data = {
         :families => families,
@@ -129,7 +145,7 @@ end
 
 # API REQUEST
 post '/api/edit_species' do
-    p = JSON.parse(request.body.read).symbolize_keys!
+    p = JSON.parse(request.body.read).symbolize_keys
 
     #validate api_key
     error 401 unless APITools::auth_key!(p[:key])
@@ -138,7 +154,7 @@ post '/api/edit_species' do
 end
 
 post '/api/edit_genus' do
-    p = JSON.parse(request.body.read).symbolize_keys!
+    p = JSON.parse(request.body.read).symbolize_keys
 
     #validate api_key
     error 401 unless APITools::auth_key!(p[:key])
@@ -147,7 +163,7 @@ post '/api/edit_genus' do
 end
 
 post '/api/edit_family' do
-    p = JSON.parse(request.body.read).symbolize_keys!
+    p = JSON.parse(request.body.read).symbolize_keys
 
     #validate api_key
     error 401 unless APITools::auth_key!(p[:key])

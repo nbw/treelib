@@ -78,7 +78,8 @@ begin
         id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name TEXT NOT NULL,
         description TEXT NOT NULL,
-        genus_id INTEGER UNSIGNED NOT NULL
+        genus_id INTEGER UNSIGNED NOT NULL,
+        album_id INTEGER UNSIGNED DEFAULT NULL
     );')
     puts 'Created table species'
 rescue Mysql2::Error => e
@@ -114,13 +115,48 @@ begin
         create_date = NOW(),
         admin_level = 1;") 
 
+    puts "\nPerfect.\n\n"
+
 rescue Mysql2::Error => e
     error = e
     puts e.message
 end
 
+## Photo_albums
+begin
+    client.query('CREATE TABLE photo_albums (
+        id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        photoset_id BIGINT UNSIGNED NOT NULL,
+        name TEXT NOT NULL,
+        last_updated DATETIME NOT NULL
+    );')
+    puts 'Created table photo_albums'
 
+rescue Mysql2::Error => e
+    error = e
+    puts e.message
+end
 
+## Photos
+begin
+    client.query('CREATE TABLE photos (
+        id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        flickr_id BIGINT UNSIGNED NOT NULL,
+        photoset_id BIGINT UNSIGNED NOT NULL,
+        farm INTEGER UNSIGNED NOT NULL,
+        secret varchar(64) NOT NULL,
+        server INTEGER UNSIGNED NOT NULL,
+        name TEXT NOT NULL,
+        description TEXT NOT NULL,
+        credit TEXT NOT NULL,
+        disable_date DATETIME DEFAULT NULL
+    );')
+    puts 'Created table photos'
+
+rescue Mysql2::Error => e
+    error = e
+    puts e.message
+end
 
 # TEST DATA
 if DEV 

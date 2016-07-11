@@ -6,6 +6,9 @@ body {
     color: $font-primary-color;
     padding:0;
     margin: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 hr {
     border: 0;
@@ -63,6 +66,12 @@ a {
 .item {
     display: inline-block;
 }
+.photoArray {
+    padding: 10px 0 10px 0;
+    img {
+        padding: 5px;
+    }
+}
 .question {
     display: inline-block;
     * { // children too
@@ -74,6 +83,7 @@ a {
         padding: 0 10px 0 0;
     }
 }
+
 #saveButton {
     //text & color stuff
     color: white;
