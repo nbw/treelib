@@ -17,3 +17,36 @@
 #name, #genera{
     display: inline-block;
 }
+.photoEditer {
+    display: inline-block;
+    margin: 10px;
+    &.active { 
+        border: 1px solid #cfcfcf;
+        width:150px;
+        display: inline-block;
+        padding: 10px;
+        margin: 10px;  
+    }
+    .name{ 
+        padding-top: 15px;
+    }
+    .name, .credit {
+        input {
+            padding: 5px;
+            border: none;
+            width: 100%;
+            &:focus {outline: 1pt solid #dfdfdf;}
+        }
+    }
+    .description textarea {
+        border: none;
+        width: 100%;
+        resize: none;
+        outline: none;
+        padding: 5px;
+        height: 100px;
+        &:focus {outline: 1pt solid #dfdfdf;}
+    }
+    
+}
+

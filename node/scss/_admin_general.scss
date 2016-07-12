@@ -66,12 +66,6 @@ a {
 .item {
     display: inline-block;
 }
-.photoArray {
-    padding: 10px 0 10px 0;
-    img {
-        padding: 5px;
-    }
-}
 .question {
     display: inline-block;
     * { // children too
@@ -81,6 +75,22 @@ a {
         width:100px;
         text-align: right;
         padding: 0 10px 0 0;
+    }
+}
+.btn-std {
+    color: white;
+    text-align: center;
+    background-color: #67F;
+    border-radius: 3px;
+    padding: 5px;
+    &:after{
+        content:'?';
+    }
+    &:hover{
+        background-color: #6D6;
+        &:after{
+            content:'.';
+        }
     }
 }
 

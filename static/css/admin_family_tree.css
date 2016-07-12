@@ -57,11 +57,6 @@ a {
 .item {
   display: inline-block; }
 
-.photoArray {
-  padding: 10px 0 10px 0; }
-  .photoArray img {
-    padding: 5px; }
-
 .question {
   display: inline-block; }
   .question * {
@@ -70,6 +65,19 @@ a {
     width: 100px;
     text-align: right;
     padding: 0 10px 0 0; }
+
+.btn-std {
+  color: white;
+  text-align: center;
+  background-color: #67F;
+  border-radius: 3px;
+  padding: 5px; }
+  .btn-std:after {
+    content: '?'; }
+  .btn-std:hover {
+    background-color: #6D6; }
+    .btn-std:hover:after {
+      content: '.'; }
 
 #saveButton {
   color: white;

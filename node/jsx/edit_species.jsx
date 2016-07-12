@@ -85,11 +85,6 @@ class App extends React.Component {
                 <PhotoArray
                     photos = {pg.species.photos} />
                 <hr />
-
-                <p>Description: {this.state.description}</p>
-                <p>Fam id: {this.state.family_id}</p>
-                <p>Gen id: {this.state.genus_id}</p>
-                <hr />
                 <Saver
                     id = "saveButton"
                     callback = {this.updateTheMotherShip.bind(this)} />
@@ -159,15 +154,34 @@ class Saver extends React.Component {
 
 class PhotoArray extends React.Component {
     render() {
-        var images = [];
+        var photoEditers = [];
         if (this.props.photos) {
             this.props.photos.forEach(function(item) {
-                images.push(<img src={item} />);
+                photoEditers.push(<PhotoEditer img={item} />);
             });
         }
         return (
             <div className='photoArray'>
-                {images}
+                {photoEditers}
+            </div>
+        );
+    }
+}
+
+class PhotoEditer extends React.Component {
+    render() {
+        return (
+            <div className="photoEditer" >
+                <img src={this.props.img} />
+                {/*
+                <div className="name"><input placeholder="name"/></div>
+                <hr />
+                <div className="description"><textarea placeholder="description"/></div>
+                <hr />
+                <div className="credit"><input placeholder="photo credit"/></div>
+                <hr />
+                <div className="btn-std">Save</div>
+                */}
             </div>
         );
     }

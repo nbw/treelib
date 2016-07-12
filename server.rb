@@ -67,7 +67,7 @@ get '/admin/edit_species' do
         species = species.to_hash
         if species["album_id"]
             Photos::update
-            species["photos"] = Photos::get_photos_urls(species["album_id"],'s')
+            species["photos"] = Photos::get_photos_urls(species["album_id"],'q')
         end
     else 
         species = []

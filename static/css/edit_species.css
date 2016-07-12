@@ -57,11 +57,6 @@ a {
 .item {
   display: inline-block; }
 
-.photoArray {
-  padding: 10px 0 10px 0; }
-  .photoArray img {
-    padding: 5px; }
-
 .question {
   display: inline-block; }
   .question * {
@@ -70,6 +65,19 @@ a {
     width: 100px;
     text-align: right;
     padding: 0 10px 0 0; }
+
+.btn-std {
+  color: white;
+  text-align: center;
+  background-color: #67F;
+  border-radius: 3px;
+  padding: 5px; }
+  .btn-std:after {
+    content: '?'; }
+  .btn-std:hover {
+    background-color: #6D6; }
+    .btn-std:hover:after {
+      content: '.'; }
 
 #saveButton {
   color: white;
@@ -102,3 +110,30 @@ a {
 
 #name, #genera {
   display: inline-block; }
+
+.photoEditer {
+  display: inline-block;
+  margin: 10px; }
+  .photoEditer.active {
+    border: 1px solid #cfcfcf;
+    width: 150px;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px; }
+  .photoEditer .name {
+    padding-top: 15px; }
+  .photoEditer .name input, .photoEditer .credit input {
+    padding: 5px;
+    border: none;
+    width: 100%; }
+    .photoEditer .name input:focus, .photoEditer .credit input:focus {
+      outline: 1pt solid #dfdfdf; }
+  .photoEditer .description textarea {
+    border: none;
+    width: 100%;
+    resize: none;
+    outline: none;
+    padding: 5px;
+    height: 100px; }
+    .photoEditer .description textarea:focus {
+      outline: 1pt solid #dfdfdf; }

@@ -129,25 +129,6 @@ webpackJsonp([4],[
 	                _react2.default.createElement(PhotoArray, {
 	                    photos: pg.species.photos }),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Description: ',
-	                    this.state.description
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Fam id: ',
-	                    this.state.family_id
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Gen id: ',
-	                    this.state.genus_id
-	                ),
-	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(Saver, {
 	                    id: 'saveButton',
 	                    callback: this.updateTheMotherShip.bind(this) })
@@ -302,21 +283,44 @@ webpackJsonp([4],[
 	    _createClass(PhotoArray, [{
 	        key: 'render',
 	        value: function render() {
-	            var images = [];
+	            var photoEditers = [];
 	            if (this.props.photos) {
 	                this.props.photos.forEach(function (item) {
-	                    images.push(_react2.default.createElement('img', { src: item }));
+	                    photoEditers.push(_react2.default.createElement(PhotoEditer, { img: item }));
 	                });
 	            }
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'photoArray' },
-	                images
+	                photoEditers
 	            );
 	        }
 	    }]);
 
 	    return PhotoArray;
+	}(_react2.default.Component);
+
+	var PhotoEditer = function (_React$Component7) {
+	    _inherits(PhotoEditer, _React$Component7);
+
+	    function PhotoEditer() {
+	        _classCallCheck(this, PhotoEditer);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(PhotoEditer).apply(this, arguments));
+	    }
+
+	    _createClass(PhotoEditer, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'photoEditer' },
+	                _react2.default.createElement('img', { src: this.props.img })
+	            );
+	        }
+	    }]);
+
+	    return PhotoEditer;
 	}(_react2.default.Component);
 
 	if (self.fetch) {} else {
