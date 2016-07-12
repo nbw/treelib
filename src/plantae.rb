@@ -1,14 +1,15 @@
 module Plantae
     @@species, @@genera, @@families, @@initialized = [], [], []
     def self.init
-            q_species = 'SELECT id, name, description, genus_id FROM species'
+            q_species = 'SELECT id, name, description, genus_id, album_id FROM species'
             SQLer.query(q_species).each do |row|
                 # build species
                 @@species <<  Species.new({
                     :id => row["id"],
                     :g_id => row["genus_id"],
                     :name => row["name"], 
-                    :descrip => row["description"]
+                    :descrip => row["description"],
+                    :album_id => row["album_id"]
                 })  
             end
 
@@ -45,31 +46,34 @@ module Plantae
     end
 
     def self.edit_species p
-        if p[:id] && g = self.get_species(p[:id])
-            return self.update_species(g,p) 
+        if p[:id]
+            return self.update_species(p) 
         else
             return self.add_species(p)
         end
     end
 
-    def self.update_species genus, p
+    def self.update_species p
         SQLer::query("UPDATE species
         SET name = '#{SQLer.escape(p[:name])}',
             description = '#{SQLer.escape(p[:descrip])}',
-            genus_id = #{SQLer.escape(p[:g_id])}
+            genus_id = #{SQLer.escape(p[:g_id])},
+            album_id = #{SQLer.escape(p[:album_id])}
             WHERE id = #{SQLer.escape(p[:id])};")
-        species = Species.new(p)
+        s_i = @@species.find_index{ |s| s.id == p[:id] }
+        @@species[s_i] = Species.new(p)
     end
 
     def self.add_species p
         SQLer::query("INSERT INTO species
             SET name = '#{SQLer.escape(p[:name])}',
                 description = '#{SQLer.escape(p[:descrip])}',
-                genus_id = #{SQLer.escape(p[:g_id])};")
+                genus_id = #{SQLer.escape(p[:g_id])},
+                album_id = #{SQLer.escape(p[:album_id])};")
         p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
         s = Species.new(p)
         @@species << s
-        @@genera.find{ |g| g.id == p[:g_id] }.species << s
+        @@genera.find{ |g| g.id == p[:g_id].to_i }.species << s
         return s
     end
 
@@ -82,20 +86,21 @@ module Plantae
     end
 
     def self.edit_genus p
-        if p[:id] && g = self.get_genus(p[:id])
-            return self.update_genus(g,p) 
+        if p[:id] 
+            return self.update_genus(p) 
         else
             return self.add_genus(p)
         end
     end
 
-    def self.update_genus genus, p
+    def self.update_genus p
         SQLer::query("UPDATE genera
         SET name = '#{SQLer.escape(p[:name])}',
             description = '#{SQLer.escape(p[:descrip])}',
             fam_id = #{SQLer.escape(p[:f_id])}
             WHERE id = #{SQLer.escape(p[:id])};")
-        genus = Genus.new(p)
+        g_i = @@genera.find_index{ |g| g.id == p[:id] }
+        @@genera[g_i] = Genus.new(p)
     end
 
     def self.add_genus p
@@ -106,7 +111,7 @@ module Plantae
         p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
         g = Genus.new(p)
         @@genera << g
-        @@families.find{ |f| f.id == p[:f_id] }.genera << g
+        @@families.find{ |f| f.id == p[:f_id].to_i }.genera << g
         return g
     end
 
@@ -119,19 +124,20 @@ module Plantae
     end
 
     def self.edit_family p
-        if p[:id] && f = self.get_family(p[:id])
-            return self.update_family(f,p)
+        if p[:id]
+            return self.update_family(p)
         else
             return self.add_family(p)
         end
     end
 
-    def self.update_family family, p
+    def self.update_family p
         SQLer::query("UPDATE families
         SET name = '#{SQLer.escape(p[:name])}',
             description = '#{SQLer.escape(p[:descrip])}'
             WHERE id = #{SQLer.escape(p[:id])};")
-        family = Family.new(p)
+        f_i = @@families.find_index{ |f| f.id == p[:id] }
+        @@families[f_i] = Family.new(p)
     end
 
     def self.add_family p

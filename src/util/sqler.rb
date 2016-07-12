@@ -1,5 +1,5 @@
 module SQLer
-    @db, @client  = nil,nil
+    @db = @client = nil
 
     class << self
         # class attr accessor
@@ -17,15 +17,30 @@ module SQLer
     end
 
     def self.query(query)
-        puts "::SQLer:: Running:<\n #{query} \n"
+        puts "::SQLer:: Running:<\n\n #{query} \n\n"
         @client.query(query)
     end
 
-    def self.escape(s) 
-        # handle numbers
-        s = s.to_s if s.is_a? Numeric 
-        
-        @client.escape(s)
+    def self.transaction(&block)
+        begin
+            SQLer.query("BEGIN")
+            block.call
+            SQLer.query("COMMIT")
+        rescue Mysql2::Error => e
+            puts e
+            SQLer.query("ROLLBACK")
+        end 
+    end
+
+    def self.escape(*args)
+        args = *args
+
+        args.collect do |val|
+            val = val.to_s if val.is_a? Numeric
+            @client.escape(val)
+        end
+
+        return args.size > 1 ? args : args.first
     end
 
 end

@@ -9,7 +9,8 @@ class App extends React.Component {
         this.state = {
             title: pg.species.name || "",
             description: pg.species.descrip || "",
-            genus_id: pg.species.genus_id || pg.genera[0].id || 0
+            genus_id: pg.species.genus_id || pg.genera[0].id || 0,
+            album_id: pg.species.album_id || 0
         };
     }
     update(name, value) {
@@ -34,6 +35,7 @@ class App extends React.Component {
                 name: this.state.title,
                 descrip: this.state.description,
                 g_id: this.state.genus_id,
+                album_id: this.state.album_id || null,
                 key: pg.key
             })
         }).then(function(response) {
@@ -74,10 +76,14 @@ class App extends React.Component {
                     text = {this.state.description}
                     handler = {this.handleInputChange.bind(this, 'description')} />
                 <hr />
-
-                <p>Description: {this.state.description}</p>
-                <p>Fam id: {this.state.family_id}</p>
-                <p>Gen id: {this.state.genus_id}</p>
+                <Dropper
+                    id = "photoAlbum"
+                    title = "Photo Album"
+                    default = {this.state.album_id}
+                    list = {pg.photo_albums}
+                    handler = {this.handleInputChange.bind(this, 'album_id')} />
+                <PhotoArray
+                    photos = {pg.species.photos} />
                 <hr />
                 <Saver
                     id = "saveButton"
@@ -145,13 +151,47 @@ class Saver extends React.Component {
     }
 }
 
+
+class PhotoArray extends React.Component {
+    render() {
+        var photoEditers = [];
+        if (this.props.photos) {
+            this.props.photos.forEach(function(item) {
+                photoEditers.push(<PhotoEditer img={item} />);
+            });
+        }
+        return (
+            <div className='photoArray'>
+                {photoEditers}
+            </div>
+        );
+    }
+}
+
+class PhotoEditer extends React.Component {
+    render() {
+        return (
+            <div className="photoEditer" >
+                <img src={this.props.img} />
+                {/*
+                <div className="name"><input placeholder="name"/></div>
+                <hr />
+                <div className="description"><textarea placeholder="description"/></div>
+                <hr />
+                <div className="credit"><input placeholder="photo credit"/></div>
+                <hr />
+                <div className="btn-std">Save</div>
+                */}
+            </div>
+        );
+    }
+}
+
 if (self.fetch) {
 
 } else {
     console.log('Unsupported browser. Please use Firefox or Google Chrome')
 }
-
-
 
 export default App
 ReactDOM.render(<App />, document.getElementById('app'));

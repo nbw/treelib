@@ -41,7 +41,8 @@ webpackJsonp([4],[
 	        _this.state = {
 	            title: pg.species.name || "",
 	            description: pg.species.descrip || "",
-	            genus_id: pg.species.genus_id || pg.genera[0].id || 0
+	            genus_id: pg.species.genus_id || pg.genera[0].id || 0,
+	            album_id: pg.species.album_id || 0
 	        };
 	        return _this;
 	    }
@@ -72,6 +73,7 @@ webpackJsonp([4],[
 	                    name: this.state.title,
 	                    descrip: this.state.description,
 	                    g_id: this.state.genus_id,
+	                    album_id: this.state.album_id || null,
 	                    key: pg.key
 	                })
 	            }).then(function (response) {
@@ -118,24 +120,14 @@ webpackJsonp([4],[
 	                    text: this.state.description,
 	                    handler: this.handleInputChange.bind(this, 'description') }),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Description: ',
-	                    this.state.description
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Fam id: ',
-	                    this.state.family_id
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Gen id: ',
-	                    this.state.genus_id
-	                ),
+	                _react2.default.createElement(Dropper, {
+	                    id: 'photoAlbum',
+	                    title: 'Photo Album',
+	                    'default': this.state.album_id,
+	                    list: pg.photo_albums,
+	                    handler: this.handleInputChange.bind(this, 'album_id') }),
+	                _react2.default.createElement(PhotoArray, {
+	                    photos: pg.species.photos }),
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(Saver, {
 	                    id: 'saveButton',
@@ -277,6 +269,58 @@ webpackJsonp([4],[
 	    }]);
 
 	    return Saver;
+	}(_react2.default.Component);
+
+	var PhotoArray = function (_React$Component6) {
+	    _inherits(PhotoArray, _React$Component6);
+
+	    function PhotoArray() {
+	        _classCallCheck(this, PhotoArray);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(PhotoArray).apply(this, arguments));
+	    }
+
+	    _createClass(PhotoArray, [{
+	        key: 'render',
+	        value: function render() {
+	            var photoEditers = [];
+	            if (this.props.photos) {
+	                this.props.photos.forEach(function (item) {
+	                    photoEditers.push(_react2.default.createElement(PhotoEditer, { img: item }));
+	                });
+	            }
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'photoArray' },
+	                photoEditers
+	            );
+	        }
+	    }]);
+
+	    return PhotoArray;
+	}(_react2.default.Component);
+
+	var PhotoEditer = function (_React$Component7) {
+	    _inherits(PhotoEditer, _React$Component7);
+
+	    function PhotoEditer() {
+	        _classCallCheck(this, PhotoEditer);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(PhotoEditer).apply(this, arguments));
+	    }
+
+	    _createClass(PhotoEditer, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'photoEditer' },
+	                _react2.default.createElement('img', { src: this.props.img })
+	            );
+	        }
+	    }]);
+
+	    return PhotoEditer;
 	}(_react2.default.Component);
 
 	if (self.fetch) {} else {
