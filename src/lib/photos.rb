@@ -72,8 +72,8 @@ module Photos
 
         #.......................
         # update modified photo_albums
-        q_modified_albums = modified_albums.collect{|ma| "\nWHEN #{ma["id"]} THEN '#{Time.at(ma["date_update"]).to_s}'"}.join(',\n')
-        if !q_modified_albums.empty?
+        if !modified_albums.empty?
+            q_modified_albums = modified_albums.collect{|ma| "\nWHEN #{ma["id"]} THEN '#{Time.at(ma["date_update"]).to_s}'"}.join(',\n')
             q_update_photo_albums = "UPDATE photo_albums\nSET last_updated = CASE photoset_id " + 
                 q_modified_albums + 
                 "\nEND" + 
@@ -98,15 +98,19 @@ module Photos
             end
         end
         
-        q_insert_photo_albums = "INSERT INTO photo_albums (photoset_id, name, last_updated) VALUES \n" + q_new_photo_albums.join(",\n") + ";" if !q_new_photo_albums.empty?
+        if !q_new_photo_albums.empty?
+            q_insert_photo_albums = "INSERT INTO photo_albums (photoset_id, name, last_updated) VALUES \n" + q_new_photo_albums.join(",\n") + ";" 
+        end
 
-        q_insert_photos = "INSERT INTO photos (flickr_id, photoset_id, farm, secret, server) VALUES \n" + q_new_photos.join(",\n") + ";" if !q_new_photos.empty?
+        if !q_new_photos.empty?
+            q_insert_photos = "INSERT INTO photos (flickr_id, photoset_id, farm, secret, server) VALUES \n" + q_new_photos.join(",\n") + ";" 
+        end
 
         #.......................
         # Deleted photo albums
         q_delete_photos_where = []
-        delete_album_ids = deleted_albums.collect{|da| da["photoset_id"]}
-        if !delete_album_ids.empty?
+        if !deleted_albums.empty?
+            delete_album_ids = deleted_albums.collect{|da| da["photoset_id"]}
             q_delete_photo_albums = "DELETE FROM photo_albums WHERE photoset_id IN ( #{delete_album_ids.join(", ")} )"    
             q_delete_photos_where <<  "photoset_id IN ( #{delete_album_ids.join(", ")} )"
         end
@@ -116,17 +120,20 @@ module Photos
         q_delete_photos_where << "flickr_id IN ( #{delete_photo_ids.join(", ")} )" if !delete_photo_ids.empty?
         #...............................
         # deleted photos query
-        q_delete_photos = "DELETE FROM photos WHERE " + q_delete_photos_where.join(" OR ") if !q_delete_photos_where.empty?
-
-        SQLer.transaction do 
-            SQLer.query(q_update_photos) if q_update_photos
-            SQLer.query(q_update_photo_albums) if q_update_photo_albums
-            SQLer.query(q_insert_photo_albums) if q_insert_photo_albums
-            SQLer.query(q_insert_photos) if q_insert_photos
-            SQLer.query(q_delete_photo_albums) if q_delete_photo_albums
-            SQLer.query(q_delete_photos) if q_delete_photos
+        if !q_delete_photos_where.empty?
+            q_delete_photos = "DELETE FROM photos WHERE " + q_delete_photos_where.join(" OR ") 
         end
 
+        if(q_update_photo_albums||q_delete_photo_albums||q_insert_photo_albums)        
+            SQLer.transaction do 
+                SQLer.query(q_update_photos) if q_update_photos
+                SQLer.query(q_update_photo_albums) if q_update_photo_albums
+                SQLer.query(q_insert_photo_albums) if q_insert_photo_albums
+                SQLer.query(q_insert_photos) if q_insert_photos
+                SQLer.query(q_delete_photo_albums) if q_delete_photo_albums
+                SQLer.query(q_delete_photos) if q_delete_photos
+            end
+        end
     end
 
     def self.get_photo_albums _id=nil, _photoset_id=nil
