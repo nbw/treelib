@@ -1,6 +1,7 @@
 module Photos
     @scheduler = nil
     def self.init
+        self.update
         @scheduler = Rufus::Scheduler.new
         @scheduler.every '1h' do
             self.update

@@ -8,8 +8,9 @@ module SQLer
 
     def self.init
         @db = CONFIG['database']
+        @pw = CONFIG['password'] || ""
         begin
-            @client = Mysql2::Client.new(:host => "localhost", :username => "root", :database => SQLer.db)
+            @client = Mysql2::Client.new(:host => "localhost", :username => "root", :password=>@pw, :database => @db)
         rescue Mysql2::Error => e
             error = e
             puts e.message
