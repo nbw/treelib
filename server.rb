@@ -28,7 +28,7 @@ last_request = Time.now
 p = []
 set :public_folder, File.dirname(__FILE__) + '/static'
 set :views, File.dirname(__FILE__) + '/templates'
-set :port, 8888
+set :port, CONFIG["port"]
 set :environment, :development
 set :session_secret, CONFIG["session_secret"]
 enable :sessions
