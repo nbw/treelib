@@ -3,7 +3,7 @@ require 'mysql2'
 require 'json'
 require 'bcrypt'
 require_relative 'src/users'
-require_relative 'src/util/sqler'
+require_relative 'src/lib/sqler'
 
 DEV  = ARGV.include? 'dev'
 
@@ -13,7 +13,7 @@ SQLer.init
 ##### INSTALLING GEMS #####
 ####################################
 
-# GEMS = ['sinatra', 'sinatra-contrib', 'mysql2', 'liquid', 'json','bcrypt', rufus-scheduler]
+# GEMS = ['sinatra', 'sinatra-contrib', 'mysql2', 'json','bcrypt', tree]
 
 
 # GEMS.each do{ |g|
