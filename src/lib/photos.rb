@@ -74,10 +74,10 @@ module Photos
         #.......................
         # update modified photo_albums
         if !modified_albums.empty?
-            q_modified_albums = modified_albums.collect{|ma| "\nWHEN #{ma["id"]} THEN '#{Time.at(ma["date_update"]).to_s}'"}.join(", ")
-            q_update_photo_albums = "UPDATE photo_albums\nSET last_updated = CASE photoset_id " + 
-                q_modified_albums + 
-                "\nEND" + 
+            q_modified_albums_names = "name = CASE photoset_id\n" + modified_albums.collect{|ma| "WHEN #{ma["id"]} THEN '#{ma["title"]["_content"]}'"}.join("\n") + "\nEND,\n"
+            q_modified_albums_dates = "last_updated = CASE photoset_id\n" + modified_albums.collect{|ma| "WHEN #{ma["id"]} THEN '#{Time.at(ma["date_update"]).to_s}'"}.join("\n") + "\nEND"
+            q_update_photo_albums = "UPDATE photo_albums\nSET " + 
+                q_modified_albums_names + q_modified_albums_dates +
                 "\nWHERE photoset_id IN (#{modified_albums.collect{|ma| ma['id']}.join(', ')})"
         end
 
