@@ -74,7 +74,7 @@ module Photos
         #.......................
         # update modified photo_albums
         if !modified_albums.empty?
-            q_modified_albums = modified_albums.collect{|ma| "\nWHEN #{ma["id"]} THEN '#{Time.at(ma["date_update"]).to_s}'"}.join(',\n')
+            q_modified_albums = modified_albums.collect{|ma| "\nWHEN #{ma["id"]} THEN '#{Time.at(ma["date_update"]).to_s}'"}.join(",\n")
             q_update_photo_albums = "UPDATE photo_albums\nSET last_updated = CASE photoset_id " + 
                 q_modified_albums + 
                 "\nEND" + 
