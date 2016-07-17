@@ -1,5 +1,5 @@
-<h1>treelib</h1>
-<p>Website for cataloging and document tree species. </p>
+<h1>TREELIB</h1>
+<p>Website for cataloging and documenting tree species.</p>
 
 <p>Uses Flickr API for photo hosting.</p>
 
@@ -9,6 +9,7 @@
 <li>Create/Edit Species (includes photos from Flickr)</li>
 <li>Create/Edit Genera</li>
 <li>Create/Edit Families</li>
+<li>TBD</li>
 </ul>
 
 <h3>Front Facing Page (to-do)</h3>
