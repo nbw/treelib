@@ -6,7 +6,7 @@
 <h2>Features:</h2>
 <h3>Admin pages:</h3>
 <ul>
-<li>Create/Edit Species (includes photos)</li>
+<li>Create/Edit Species (includes photos from Flickr)</li>
 <li>Create/Edit Genera</li>
 <li>Create/Edit Families</li>
 </ul>
