@@ -144,6 +144,16 @@ get '/admin/edit_family' do
     erb :"admin/edit_family"
 end
 
+get '/admin/signup' do
+    protected!
+
+    @page_data = {
+        :key => APITools::generate_key
+    }
+
+    erb :"admin/signup"
+end
+
 # API REQUEST
 post '/api/edit_species' do
     p = JSON.parse(request.body.read).symbolize_keys
@@ -170,6 +180,15 @@ post '/api/edit_family' do
     error 401 unless APITools::auth_key!(p[:key])
 
     Plantae::edit_family(p).to_json
+end
+
+post '/api/add_admin_user' do
+    p = JSON.parse(request.body.read).symbolize_keys
+
+    #validate api_key
+    error 401 unless APITools::auth_key!(p[:key])
+
+    Users::new_user(p[:username], p[:email], p[:password], 1)
 end
 
 

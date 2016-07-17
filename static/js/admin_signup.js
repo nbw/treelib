@@ -1,4 +1,4 @@
-webpackJsonp([3],[
+webpackJsonp([1],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -39,8 +39,9 @@ webpackJsonp([3],[
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
 
 	        _this.state = {
-	            title: pg.family.name || "",
-	            description: pg.family.description || ""
+	            username: "",
+	            email: "",
+	            password: ""
 	        };
 	        return _this;
 	    }
@@ -60,24 +61,28 @@ webpackJsonp([3],[
 	        key: 'updateTheMotherShip',
 	        // ES6 computed property
 	        value: function updateTheMotherShip() {
-	            fetch('/api/edit_family', {
+	            if (this.state.username.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
+	                alert('try again. something is missing.');
+	                return;
+	            }
+
+	            fetch('/api/add_admin_user', {
 	                method: 'POST',
 	                headers: {
 	                    'Accept': 'application/json',
 	                    'Content-Type': 'application/json'
 	                },
 	                body: JSON.stringify({
-	                    id: pg.family.id || null,
-	                    name: this.state.title,
-	                    descrip: this.state.description,
+	                    username: this.state.username,
+	                    email: this.state.email,
+	                    password: this.state.password,
 	                    key: pg.key
 	                })
 	            }).then(function (response) {
 	                if (response.ok) {
-	                    response.json().then(function (obj) {
-	                        window.location.href = window.location.origin + window.location.pathname + '?id=' + obj.id;
-	                    });
+	                    alert('success! user created.');
 	                } else {
+	                    alert("uh oh.");
 	                    console.log('Network response was not ok.');
 	                }
 	            }).catch(function (error) {
@@ -93,22 +98,54 @@ webpackJsonp([3],[
 	                _react2.default.createElement(
 	                    'h1',
 	                    null,
-	                    this.state.title || "New Family"
+	                    'Admin Signup'
+	                ),
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'This page is for creating other ',
+	                    _react2.default.createElement(
+	                        'b',
+	                        null,
+	                        'admin'
+	                    ),
+	                    ' accounts.'
 	                ),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Inputer, {
-	                    id: 'name',
-	                    title: 'Name',
-	                    placeholder: 'family',
-	                    text: this.state.title,
-	                    handler: this.handleInputChange.bind(this, 'title') }),
-	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Texter, {
-	                    id: 'description',
-	                    title: 'Description',
-	                    placeholder: 'enter description here',
-	                    text: this.state.description,
-	                    handler: this.handleInputChange.bind(this, 'description') }),
+	                _react2.default.createElement(
+	                    'ul',
+	                    { id: 'signupList', className: 'resetList' },
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(Inputer, {
+	                            id: 'name',
+	                            title: 'Username',
+	                            placeholder: 'name',
+	                            text: this.state.username,
+	                            handler: this.handleInputChange.bind(this, 'username') })
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(Inputer, {
+	                            id: 'email',
+	                            title: 'Email',
+	                            placeholder: 'email',
+	                            text: this.state.email,
+	                            handler: this.handleInputChange.bind(this, 'email') })
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(Inputer, {
+	                            id: 'password',
+	                            title: 'Password',
+	                            placeholder: 'password',
+	                            text: this.state.password,
+	                            handler: this.handleInputChange.bind(this, 'password') })
+	                    )
+	                ),
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(Saver, {
 	                    id: 'saveButton',
@@ -153,41 +190,8 @@ webpackJsonp([3],[
 	    return Inputer;
 	}(_react2.default.Component);
 
-	var Texter = function (_React$Component3) {
-	    _inherits(Texter, _React$Component3);
-
-	    function Texter() {
-	        _classCallCheck(this, Texter);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Texter).apply(this, arguments));
-	    }
-
-	    _createClass(Texter, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { id: this.props.id, className: 'question' },
-	                _react2.default.createElement(
-	                    'span',
-	                    { className: 'title' },
-	                    this.props.title,
-	                    ': '
-	                ),
-	                _react2.default.createElement('textarea', {
-	                    value: this.props.text,
-	                    placeholder: this.props.placeholder,
-	                    onChange: this.props.handler
-	                })
-	            );
-	        }
-	    }]);
-
-	    return Texter;
-	}(_react2.default.Component);
-
-	var Saver = function (_React$Component4) {
-	    _inherits(Saver, _React$Component4);
+	var Saver = function (_React$Component3) {
+	    _inherits(Saver, _React$Component3);
 
 	    function Saver() {
 	        _classCallCheck(this, Saver);

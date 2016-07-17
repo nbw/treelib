@@ -100,17 +100,10 @@ a {
   padding: 0;
   list-style: none; }
 
-#description .title {
-  vertical-align: top;
-  padding-top: 5px; }
-
-#description textarea {
-  padding: 5px;
-  width: 500px;
-  height: 100px;
-  resize: none;
-  outline: none;
-  border-color: #CCC; }
-
-#name, #genera {
-  display: inline-block; }
+#signupList {
+  display: block;
+  text-align: center; }
+  #signupList li {
+    padding: 10px 0 10px 0; }
+  #signupList input {
+    width: 175px; }

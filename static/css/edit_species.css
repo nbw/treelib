@@ -48,6 +48,23 @@ a {
     color: #339933;
     font-weight: bold; }
 
+#saveButton {
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #67F;
+  border-radius: 3px;
+  padding: 10px 0 10px 0;
+  width: 250px;
+  display: block;
+  margin: auto; }
+  #saveButton:after {
+    content: '?'; }
+  #saveButton:hover {
+    background-color: #6D6; }
+    #saveButton:hover:after {
+      content: '.'; }
+
 .mainContainer {
   min-height: 100%;
   margin: 0 50px 0 50px;
@@ -79,22 +96,9 @@ a {
     .btn-std:hover:after {
       content: '.'; }
 
-#saveButton {
-  color: white;
-  text-align: center;
-  vertical-align: middle;
-  background-color: #67F;
-  border-radius: 3px;
-  padding: 10px 0 10px 0;
-  width: 250px;
-  display: block;
-  margin: auto; }
-  #saveButton:after {
-    content: '?'; }
-  #saveButton:hover {
-    background-color: #6D6; }
-    #saveButton:hover:after {
-      content: '.'; }
+.resetList {
+  padding: 0;
+  list-style: none; }
 
 #description .title {
   vertical-align: top;
