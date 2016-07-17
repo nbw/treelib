@@ -47,6 +47,14 @@ helpers do
   end
 end
 
+error Sinatra::NotFound do
+  erb :"notfound"
+end
+
+get '/' do
+    erb :"homepage"
+end
+
 
 get '/admin/family_tree' do
 
