@@ -12,7 +12,7 @@
 <li>TBD</li>
 </ul>
 
-<h3>Front Facing Page (to-do)</h3>
+<h3>Front Facing Pages (to-do)</h3>
 <ul>
 <li>Species search</li>
 <li>Homepage</li>
