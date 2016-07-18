@@ -42,7 +42,8 @@ webpackJsonp([5],[
 	            title: pg.species.name || "",
 	            description: pg.species.descrip || "",
 	            genus_id: pg.species.genus_id || pg.genera[0].id || 0,
-	            album_id: pg.species.album_id || 0
+	            album_id: pg.species.album_id || 0,
+	            links: pg.species.links || []
 	        };
 	        return _this;
 	    }
@@ -54,14 +55,17 @@ webpackJsonp([5],[
 	        }
 	    }, {
 	        key: 'handleInputChange',
-	        // ES6 computed property
 	        value: function handleInputChange(name, e) {
 	            this.setState(_defineProperty({}, name, e.target.value));
 	        }
 	    }, {
 	        key: 'updateTheMotherShip',
-	        // ES6 computed property
 	        value: function updateTheMotherShip() {
+	            if (!this.state.album_id) {
+	                alert('Please choose a photo album, then try again.');
+	                return;
+	            }
+
 	            fetch('/api/edit_species', {
 	                method: 'POST',
 	                headers: {
@@ -74,6 +78,7 @@ webpackJsonp([5],[
 	                    descrip: this.state.description,
 	                    g_id: this.state.genus_id,
 	                    album_id: this.state.album_id || null,
+	                    links: this.state.links,
 	                    key: pg.key
 	                })
 	            }).then(function (response) {
@@ -108,7 +113,7 @@ webpackJsonp([5],[
 	                    handler: this.handleInputChange.bind(this, 'title') }),
 	                _react2.default.createElement(Dropper, {
 	                    id: 'genera',
-	                    title: 'Genera',
+	                    title: 'Genus',
 	                    'default': this.state.genus_id,
 	                    list: pg.genera,
 	                    handler: this.handleInputChange.bind(this, 'genus_id') }),
@@ -128,6 +133,10 @@ webpackJsonp([5],[
 	                    handler: this.handleInputChange.bind(this, 'album_id') }),
 	                _react2.default.createElement(PhotoArray, {
 	                    photos: pg.species.photos }),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(Linker, {
+	                    links: this.state.links,
+	                    handler: this.update.bind(this, 'links') }),
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(Saver, {
 	                    id: 'saveButton',
@@ -205,8 +214,194 @@ webpackJsonp([5],[
 	    return Texter;
 	}(_react2.default.Component);
 
-	var Dropper = function (_React$Component4) {
-	    _inherits(Dropper, _React$Component4);
+	var Linker = function (_React$Component4) {
+	    _inherits(Linker, _React$Component4);
+
+	    function Linker() {
+	        _classCallCheck(this, Linker);
+
+	        var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(Linker).call(this));
+
+	        _this4.state = {
+	            newLinkName: "",
+	            newLinkURL: "",
+	            showAddLinkInput: false
+	        };
+	        return _this4;
+	    }
+
+	    _createClass(Linker, [{
+	        key: 'showInput',
+	        value: function showInput() {
+	            this.setState({
+	                showAddLinkInput: true
+	            });
+	        }
+	    }, {
+	        key: 'saveLink',
+	        value: function saveLink() {
+	            if (this.state.newLinkName.length === 0 || this.state.newLinkURL.length === 0) {
+	                alert('try again. something is missing.');
+	            } else {
+	                this.props.links.push({ name: this.state.newLinkName, url: this.state.newLinkURL });
+	                this.props.handler(this.props.links);
+	            }
+	            this.setState({
+	                newLinkName: "",
+	                newLinkURL: "",
+	                showAddLinkInput: false
+	            });
+	        }
+	    }, {
+	        key: 'removeLink',
+	        value: function removeLink(e) {
+	            var index = this.props.links.indexOf(e);
+	            this.props.links.splice(index, 1);
+	            this.props.handler(this.props.links);
+	        }
+	    }, {
+	        key: 'updateLinkInput',
+	        value: function updateLinkInput(name, e) {
+	            this.setState(_defineProperty({}, name, e.target.value));
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var rows = [];
+	            var _iteratorNormalCompletion = true;
+	            var _didIteratorError = false;
+	            var _iteratorError = undefined;
+
+	            try {
+	                for (var _iterator = this.props.links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                    var item = _step.value;
+
+	                    rows.push(_react2.default.createElement(Link, { key: item.name,
+	                        name: item.name,
+	                        url: item.url,
+	                        handler: this.removeLink.bind(this) }));
+	                }
+	            } catch (err) {
+	                _didIteratorError = true;
+	                _iteratorError = err;
+	            } finally {
+	                try {
+	                    if (!_iteratorNormalCompletion && _iterator.return) {
+	                        _iterator.return();
+	                    }
+	                } finally {
+	                    if (_didIteratorError) {
+	                        throw _iteratorError;
+	                    }
+	                }
+	            }
+
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'linker' },
+	                'Links:',
+	                _react2.default.createElement(
+	                    'table',
+	                    { className: 'linksTable' },
+	                    _react2.default.createElement(
+	                        'thead',
+	                        null,
+	                        _react2.default.createElement(
+	                            'tr',
+	                            null,
+	                            _react2.default.createElement(
+	                                'th',
+	                                null,
+	                                'Name'
+	                            ),
+	                            _react2.default.createElement(
+	                                'th',
+	                                null,
+	                                'URL'
+	                            ),
+	                            _react2.default.createElement('th', null)
+	                        )
+	                    ),
+	                    rows
+	                ),
+	                !this.state.showAddLinkInput ? _react2.default.createElement(
+	                    'div',
+	                    { className: 'addLinkBtn', onClick: this.showInput.bind(this) },
+	                    '+ add URL'
+	                ) : null,
+	                this.state.showAddLinkInput ? _react2.default.createElement(
+	                    'div',
+	                    { className: 'addLinkInput' },
+	                    _react2.default.createElement('input', {
+	                        placeholder: 'display name',
+	                        value: this.state.newLinkName,
+	                        onChange: this.updateLinkInput.bind(this, 'newLinkName') }),
+	                    'and ',
+	                    _react2.default.createElement('input', {
+	                        placeholder: 'URL',
+	                        value: this.state.newLinkURL,
+	                        onChange: this.updateLinkInput.bind(this, 'newLinkURL') }),
+	                    _react2.default.createElement(
+	                        'span',
+	                        { className: 'btn-std', onClick: this.saveLink.bind(this) },
+	                        'add'
+	                    )
+	                ) : null
+	            );
+	        }
+	    }]);
+
+	    return Linker;
+	}(_react2.default.Component);
+
+	var Link = function (_React$Component5) {
+	    _inherits(Link, _React$Component5);
+
+	    function Link() {
+	        _classCallCheck(this, Link);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Link).apply(this, arguments));
+	    }
+
+	    _createClass(Link, [{
+	        key: 'delete',
+	        value: function _delete() {
+	            this.props.handler(this.props);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'tr',
+	                { className: 'link' },
+	                _react2.default.createElement(
+	                    'td',
+	                    { className: 'title' },
+	                    this.props.name
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    _react2.default.createElement(
+	                        'a',
+	                        { className: 'url', href: this.props.url },
+	                        this.props.url
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    _react2.default.createElement('span', { className: 'delete', onClick: this.delete.bind(this) })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Link;
+	}(_react2.default.Component);
+
+	var Dropper = function (_React$Component6) {
+	    _inherits(Dropper, _React$Component6);
 
 	    function Dropper() {
 	        _classCallCheck(this, Dropper);
@@ -246,8 +441,8 @@ webpackJsonp([5],[
 	    return Dropper;
 	}(_react2.default.Component);
 
-	var Saver = function (_React$Component5) {
-	    _inherits(Saver, _React$Component5);
+	var Saver = function (_React$Component7) {
+	    _inherits(Saver, _React$Component7);
 
 	    function Saver() {
 	        _classCallCheck(this, Saver);
@@ -271,8 +466,8 @@ webpackJsonp([5],[
 	    return Saver;
 	}(_react2.default.Component);
 
-	var PhotoArray = function (_React$Component6) {
-	    _inherits(PhotoArray, _React$Component6);
+	var PhotoArray = function (_React$Component8) {
+	    _inherits(PhotoArray, _React$Component8);
 
 	    function PhotoArray() {
 	        _classCallCheck(this, PhotoArray);
@@ -300,8 +495,8 @@ webpackJsonp([5],[
 	    return PhotoArray;
 	}(_react2.default.Component);
 
-	var PhotoEditer = function (_React$Component7) {
-	    _inherits(PhotoEditer, _React$Component7);
+	var PhotoEditer = function (_React$Component9) {
+	    _inherits(PhotoEditer, _React$Component9);
 
 	    function PhotoEditer() {
 	        _classCallCheck(this, PhotoEditer);

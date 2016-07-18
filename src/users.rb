@@ -18,16 +18,15 @@ module Users
         password = BCrypt::Password.create(CONFIG["salt"] + pwd)
 
         SQLer.query("INSERT INTO users
-        SET name = '#{SQLer.escape(username)}',
-            email = '#{SQLer.escape(email)}',
-            pw_hash = '#{SQLer.escape(password)}',
-            create_date = NOW(),
-            admin_level = #{SQLer.escape(admin_level)};")       
+            SET name = '#{SQLer.escape(username)}',
+                email = '#{SQLer.escape(email)}',
+                pw_hash = '#{SQLer.escape(password)}',
+                create_date = NOW(),
+                admin_level = #{SQLer.escape(admin_level)};")
     end
 
     def self.user name
         SQLer.query("SELECT * FROM users WHERE name='#{SQLer.escape(name)}'").to_a
     end
-
-
+    
 end

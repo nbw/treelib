@@ -158,6 +158,20 @@ rescue Mysql2::Error => e
     puts e.message
 end
 
+## species_links
+begin
+    client.query('CREATE TABLE species_links (
+        id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        species_id INTEGER UNSIGNED NOT NULL,
+        name TEXT NOT NULL,
+        url TEXT NOT NULL
+    );')
+    puts 'Created table species_links'
+rescue Mysql2::Error => e
+    error = e
+    puts e.message
+end
+
 # TEST DATA
 if DEV 
     ["   INSERT INTO families SET name = 'betulaceae';

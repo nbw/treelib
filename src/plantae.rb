@@ -2,6 +2,7 @@ module Plantae
     @@species, @@genera, @@families, @@initialized = [], [], []
     def self.init
             q_species = 'SELECT id, name, description, genus_id, album_id FROM species'
+            links = SQLer.query("SELECT species_id, name, url FROM species_links").to_a.group_by{|l| l["species_id"]}
             SQLer.query(q_species).each do |row|
                 # build species
                 @@species <<  Species.new({
@@ -9,9 +10,11 @@ module Plantae
                     :g_id => row["genus_id"],
                     :name => row["name"], 
                     :descrip => row["description"],
-                    :album_id => row["album_id"]
+                    :album_id => row["album_id"],
+                    :links => links[row["id"]]
                 })  
             end
+
 
             q_genera = 'SELECT id, name, description, fam_id FROM genera'
             SQLer.query(q_genera).each do |row|
@@ -47,34 +50,46 @@ module Plantae
 
     def self.edit_species p
         if p[:id]
-            return self.update_species(p) 
+            return self.update_species(p)
         else
             return self.add_species(p)
         end
     end
 
     def self.update_species p
-        SQLer::query("UPDATE species
-        SET name = '#{SQLer.escape(p[:name])}',
-            description = '#{SQLer.escape(p[:descrip])}',
-            genus_id = #{SQLer.escape(p[:g_id])},
-            album_id = #{SQLer.escape(p[:album_id])}
-            WHERE id = #{SQLer.escape(p[:id])};")
+        SQLer.transaction do
+            q_id, q_name, q_descrip, q_g_id, q_album_id = SQLer.escape(p[:id], p[:name], p[:descrip], p[:g_id], p[:album_id])
+            SQLer::query("UPDATE species
+            SET name = '#{q_name}',
+                description = '#{q_descrip}',
+                genus_id = #{q_g_id},
+                album_id = #{q_album_id}
+                WHERE id = #{q_id};")
+            SQLer::query("DELETE FROM species_links WHERE species_id=#{q_id}")
+            SQLer::query(Plantae::add_links_query(p[:id], p[:links]))
+        end
         s_i = @@species.find_index{ |s| s.id == p[:id] }
         @@species[s_i] = Species.new(p)
     end
 
     def self.add_species p
-        SQLer::query("INSERT INTO species
-            SET name = '#{SQLer.escape(p[:name])}',
-                description = '#{SQLer.escape(p[:descrip])}',
-                genus_id = #{SQLer.escape(p[:g_id])},
-                album_id = #{SQLer.escape(p[:album_id])};")
-        p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
+
+        SQLer::transaction do 
+            SQLer::query("INSERT INTO species
+                SET name = '#{SQLer.escape(p[:name])}',
+                    description = '#{SQLer.escape(p[:descrip])}',
+                    genus_id = #{SQLer.escape(p[:g_id])},
+                    album_id = #{SQLer.escape(p[:album_id])}")
+            species_id = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
+            SQLer::query(Plantae::add_links_query(species_id, p[:links]))
+        end
+
+        p[:id] = SQLer::query("SELECT MAX(id) AS id FROM species;").first["id"]
         s = Species.new(p)
         @@species << s
         @@genera.find{ |g| g.id == p[:g_id].to_i }.species << s
         return s
+        return []
     end
 
     def self.genera
@@ -87,7 +102,7 @@ module Plantae
 
     def self.edit_genus p
         if p[:id] 
-            return self.update_genus(p) 
+            return self.update_genus(p)
         else
             return self.add_genus(p)
         end
@@ -150,8 +165,20 @@ module Plantae
         return f
     end
 
+    def self.add_links_query species_id, links
+        if links.empty?
+            return ""
+        end
+        q_links = links.collect do |link|
+            q_name, q_url = SQLer.escape(link["name"], link["url"])
+            "(#{species_id}, '#{q_name}', '#{q_url}')"
+        end
+        "INSERT INTO species_links (species_id, name, url) VALUES " + q_links.join(", ")
+    end
+
+
     def self.to_hash
-        @@families.collect{ |f| f.to_hash }
+        @@families.collect{ |f| f.to_hash }.sort_by!{ |f| f[:name].downcase}
     end
 
     def self.to_json

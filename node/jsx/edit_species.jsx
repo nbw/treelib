@@ -10,20 +10,26 @@ class App extends React.Component {
             title: pg.species.name || "",
             description: pg.species.descrip || "",
             genus_id: pg.species.genus_id || pg.genera[0].id || 0,
-            album_id: pg.species.album_id || 0
+            album_id: pg.species.album_id || 0,
+            links: pg.species.links || []
         };
     }
     update(name, value) {
         this.setState({
-            [name]: value // ES6 computed property
+            [name]: value
         });
     }
     handleInputChange(name, e) {
         this.setState({
-            [name]: e.target.value // ES6 computed property
+            [name]: e.target.value
         });
     }
-    updateTheMotherShip(){
+    updateTheMotherShip() {
+        if( !this.state.album_id ) {
+            alert('Please choose a photo album, then try again.')
+            return;
+        }
+
         fetch('/api/edit_species', {
             method: 'POST',
             headers: {
@@ -36,6 +42,7 @@ class App extends React.Component {
                 descrip: this.state.description,
                 g_id: this.state.genus_id,
                 album_id: this.state.album_id || null,
+                links: this.state.links,
                 key: pg.key
             })
         }).then(function(response) {
@@ -64,7 +71,7 @@ class App extends React.Component {
                     handler = {this.handleInputChange.bind(this, 'title')} />
                 <Dropper
                     id = "genera"
-                    title = "Genera"
+                    title = "Genus"
                     default = {this.state.genus_id}
                     list = {pg.genera}
                     handler = {this.handleInputChange.bind(this, 'genus_id')} />
@@ -84,6 +91,10 @@ class App extends React.Component {
                     handler = {this.handleInputChange.bind(this, 'album_id')} />
                 <PhotoArray
                     photos = {pg.species.photos} />
+                <hr />
+                <Linker
+                    links = {this.state.links}
+                    handler = {this.update.bind(this, 'links')} />
                 <hr />
                 <Saver
                     id = "saveButton"
@@ -122,6 +133,91 @@ class Texter extends React.Component {
     }
 }
 
+class Linker extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            newLinkName: "",
+            newLinkURL: "",
+            showAddLinkInput: false
+        };
+    }
+    showInput() {
+        this.setState({
+            showAddLinkInput: true
+        });
+    }
+    saveLink() {
+        if(this.state.newLinkName.length === 0 || this.state.newLinkURL.length === 0) {
+            alert('try again. something is missing.');
+        } else {
+            this.props.links.push({ name: this.state.newLinkName, url: this.state.newLinkURL});
+            this.props.handler(this.props.links);
+        }
+        this.setState({
+            newLinkName: "",
+            newLinkURL: "",
+            showAddLinkInput: false,
+        });
+    }
+    removeLink(e) {
+        var index = this.props.links.indexOf(e);
+        this.props.links.splice(index, 1);
+        this.props.handler(this.props.links);
+    }
+    updateLinkInput(name,e) {
+        this.setState({
+            [name]: e.target.value
+        });
+    }
+    render() {
+        var rows = [];
+        for ( let item of this.props.links ) {
+            rows.push(
+                <Link   key={item.name}
+                        name={item.name}
+                        url={item.url}
+                        handler={this.removeLink.bind(this)} />);
+        }
+        return (
+        <div id="linker">
+            Links:
+            <table className="linksTable">
+            <thead>
+                <tr><th>Name</th><th>URL</th><th></th></tr>
+            </thead>
+            {rows}
+            </table>
+            { !this.state.showAddLinkInput ? <div className="addLinkBtn" onClick={this.showInput.bind(this)}>+ add URL</div> : null }
+            { this.state.showAddLinkInput ?
+                <div className="addLinkInput">
+                    <input 
+                        placeholder="display name"
+                        value={this.state.newLinkName}
+                        onChange={this.updateLinkInput.bind(this, 'newLinkName')} />
+                    and <input 
+                        placeholder="URL" 
+                        value={this.state.newLinkURL} 
+                        onChange={this.updateLinkInput.bind(this, 'newLinkURL')} />
+                    <span className="btn-std" onClick={this.saveLink.bind(this)}>add</span>
+                </div> : null }
+        </div>
+        );
+    }
+}
+class Link extends React.Component {
+    delete() {
+        this.props.handler(this.props);
+    }
+    render() {
+        return (
+            <tr className="link">
+                <td className="title">{this.props.name}</td><td><a className="url" href={this.props.url}>{this.props.url}</a></td><td><span className="delete" onClick={this.delete.bind(this)}></span></td>
+            </tr>
+        );
+    }
+}
+
 class Dropper extends React.Component {
     render() {
         var rows = [];
@@ -142,7 +238,7 @@ class Dropper extends React.Component {
 class Saver extends React.Component {
     render() {
         return (
-            <div id={this.props.id} 
+            <div id={this.props.id}
                 className='button'
                 onClick={this.props.callback}>
                 save

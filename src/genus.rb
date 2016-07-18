@@ -13,7 +13,7 @@ class Genus
             :name => @name,
             :description => @descrip,
             :family_id => @family_id,
-            :species => @species.collect{|s| s.to_hash}
+            :species => @species.collect{|s| s.to_hash}.sort_by!{|s| s[:name].downcase}
         }
     end
     def to_json

@@ -68,7 +68,7 @@ a {
 .mainContainer {
   min-height: 100%;
   margin: 0 50px 0 50px;
-  padding: 0px 50px 0 50px;
+  padding: 0px 50px 50px 50px;
   background-color: white; }
 
 .item {
@@ -141,3 +141,55 @@ a {
     height: 100px; }
     .photoEditer .description textarea:focus {
       outline: 1pt solid #dfdfdf; }
+
+#linker .linksTable {
+  border-collapse: collapse;
+  margin-top: 10px;
+  min-width: 150px; }
+  #linker .linksTable th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 10pt;
+    font-weight: normal;
+    color: #6f6f6f;
+    text-align: center; }
+  #linker .linksTable td {
+    padding-top: 10px;
+    padding-bottom: 10px; }
+  #linker .linksTable .link {
+    padding: 10px 0 10px 0; }
+    #linker .linksTable .link:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+    #linker .linksTable .link .title {
+      font-weight: bold;
+      padding-right: 10px; }
+    #linker .linksTable .link .url {
+      color: #3366ff;
+      padding: 0 10px 0 10px; }
+      #linker .linksTable .link .url:hover {
+        color: #3333ff;
+        text-decoration: underline; }
+    #linker .linksTable .link .delete {
+      font-size: 10pt;
+      color: #ff6666; }
+      #linker .linksTable .link .delete:after {
+        content: "delete"; }
+      #linker .linksTable .link .delete:hover {
+        text-decoration: underline;
+        color: #ff3333; }
+
+#linker .addLinkBtn {
+  margin-top: 5px;
+  text-transform: uppercase;
+  font-size: 10pt;
+  color: #7f7f7f; }
+  #linker .addLinkBtn:hover {
+    color: #3f3f3f; }
+
+#linker .addLinkInput {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px;
+  margin-top: 5px; }
+  #linker .addLinkInput input {
+    margin-right: 5px; }

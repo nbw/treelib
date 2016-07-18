@@ -73,9 +73,9 @@ get '/admin/edit_species' do
 
     if (species_id > 0) && (species = Plantae::get_species(species_id))
         species = species.to_hash
-        if species["album_id"]
+        if species[:album_id]
             Photos::update
-            species["photos"] = Photos::get_photos_urls(species["album_id"],'q')
+            species[:photos] = Photos::get_photos_urls(species[:album_id],'q')
         end
     else 
         species = []
@@ -165,7 +165,6 @@ end
 # API REQUEST
 post '/api/edit_species' do
     p = JSON.parse(request.body.read).symbolize_keys
-
     #validate api_key
     error 401 unless APITools::auth_key!(p[:key])
 
