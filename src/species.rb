@@ -8,7 +8,7 @@ class Species
         @links = s[:links] || []
     end
 
-    attr_accessor :id, :name, :genus, :descrip, :genus_id, :album_id, :link
+    attr_accessor :id, :name, :descrip, :genus_id, :album_id, :link
 
 
     def to_hash

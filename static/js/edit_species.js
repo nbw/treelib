@@ -61,9 +61,11 @@ webpackJsonp([5],[
 	    }, {
 	        key: 'updateTheMotherShip',
 	        value: function updateTheMotherShip() {
+	            if (this.state.title === "") {
+	                alert('Please enter a species name, then try again.');return;
+	            }
 	            if (!this.state.album_id) {
-	                alert('Please choose a photo album, then try again.');
-	                return;
+	                alert('Please choose a photo album, then try again.');return;
 	            }
 
 	            fetch('/api/edit_species', {
@@ -94,6 +96,34 @@ webpackJsonp([5],[
 	            });
 	        }
 	    }, {
+	        key: 'deleteMe',
+	        value: function deleteMe() {
+	            var r = confirm("Are you sure you want to delete me?");
+	            if (r == true) {
+	                fetch('/api/delete_species', {
+	                    method: 'POST',
+	                    headers: {
+	                        'Accept': 'application/json',
+	                        'Content-Type': 'application/json'
+	                    },
+	                    body: JSON.stringify({
+	                        id: pg.species.id,
+	                        key: pg.key
+	                    })
+	                }).then(function (response) {
+	                    if (response.ok) {
+	                        response.json().then(function (obj) {
+	                            window.location.href = window.location.origin + window.location.pathname;
+	                        });
+	                    } else {
+	                        console.log('Network response was not ok.');
+	                    }
+	                }).catch(function (error) {
+	                    console.log('There has been a problem with your fetch operation: ' + error.message);
+	                });
+	            }
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -101,9 +131,12 @@ webpackJsonp([5],[
 	                null,
 	                _react2.default.createElement(
 	                    'h1',
-	                    null,
+	                    { className: 'mainTitle' },
 	                    this.state.title || "New Species"
 	                ),
+	                pg.species.id ? _react2.default.createElement(Buttoner, { id: 'deleteButton',
+	                    callback: this.deleteMe.bind(this),
+	                    text: 'delete' }) : null,
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(Inputer, {
 	                    id: 'name',
@@ -138,9 +171,10 @@ webpackJsonp([5],[
 	                    links: this.state.links,
 	                    handler: this.update.bind(this, 'links') }),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Saver, {
+	                _react2.default.createElement(Buttoner, {
 	                    id: 'saveButton',
-	                    callback: this.updateTheMotherShip.bind(this) })
+	                    callback: this.updateTheMotherShip.bind(this),
+	                    text: 'save' })
 	            );
 	        }
 	    }]);
@@ -441,16 +475,16 @@ webpackJsonp([5],[
 	    return Dropper;
 	}(_react2.default.Component);
 
-	var Saver = function (_React$Component7) {
-	    _inherits(Saver, _React$Component7);
+	var Buttoner = function (_React$Component7) {
+	    _inherits(Buttoner, _React$Component7);
 
-	    function Saver() {
-	        _classCallCheck(this, Saver);
+	    function Buttoner() {
+	        _classCallCheck(this, Buttoner);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Saver).apply(this, arguments));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Buttoner).apply(this, arguments));
 	    }
 
-	    _createClass(Saver, [{
+	    _createClass(Buttoner, [{
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -458,12 +492,12 @@ webpackJsonp([5],[
 	                { id: this.props.id,
 	                    className: 'button',
 	                    onClick: this.props.callback },
-	                'save'
+	                this.props.text
 	            );
 	        }
 	    }]);
 
-	    return Saver;
+	    return Buttoner;
 	}(_react2.default.Component);
 
 	var PhotoArray = function (_React$Component8) {

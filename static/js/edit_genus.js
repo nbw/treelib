@@ -87,6 +87,39 @@ webpackJsonp([4],[
 	            });
 	        }
 	    }, {
+	        key: 'deleteMe',
+	        value: function deleteMe() {
+	            var r = confirm("Are you sure you want to delete me?");
+	            if (r == true) {
+	                fetch('/api/delete_genus', {
+	                    method: 'POST',
+	                    headers: {
+	                        'Accept': 'application/json',
+	                        'Content-Type': 'application/json'
+	                    },
+	                    body: JSON.stringify({
+	                        id: pg.genus.id,
+	                        key: pg.key
+	                    })
+	                }).then(function (response) {
+	                    if (response.ok) {
+	                        response.json().then(function (obj) {
+	                            if (obj.err) {
+	                                console.log(obj.msg);
+	                                alert(obj.msg);
+	                            } else {
+	                                window.location.href = window.location.origin + window.location.pathname;
+	                            }
+	                        });
+	                    } else {
+	                        console.log('Network response was not ok.');
+	                    }
+	                }).catch(function (error) {
+	                    console.log('There has been a problem with your fetch operation: ' + error.message);
+	                });
+	            }
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -94,9 +127,12 @@ webpackJsonp([4],[
 	                null,
 	                _react2.default.createElement(
 	                    'h1',
-	                    null,
+	                    { className: 'mainTitle' },
 	                    this.state.title || "New Genus"
 	                ),
+	                pg.genus.id ? _react2.default.createElement(Buttoner, { id: 'deleteButton',
+	                    callback: this.deleteMe.bind(this),
+	                    text: 'delete' }) : null,
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(Inputer, {
 	                    id: 'name',
@@ -118,9 +154,10 @@ webpackJsonp([4],[
 	                    text: this.state.description,
 	                    handler: this.handleInputChange.bind(this, 'description') }),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Saver, {
+	                _react2.default.createElement(Buttoner, {
 	                    id: 'saveButton',
-	                    callback: this.updateTheMotherShip.bind(this) })
+	                    callback: this.updateTheMotherShip.bind(this),
+	                    text: 'save' })
 	            );
 	        }
 	    }]);
@@ -235,16 +272,16 @@ webpackJsonp([4],[
 	    return Dropper;
 	}(_react2.default.Component);
 
-	var Saver = function (_React$Component5) {
-	    _inherits(Saver, _React$Component5);
+	var Buttoner = function (_React$Component5) {
+	    _inherits(Buttoner, _React$Component5);
 
-	    function Saver() {
-	        _classCallCheck(this, Saver);
+	    function Buttoner() {
+	        _classCallCheck(this, Buttoner);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Saver).apply(this, arguments));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Buttoner).apply(this, arguments));
 	    }
 
-	    _createClass(Saver, [{
+	    _createClass(Buttoner, [{
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -252,12 +289,12 @@ webpackJsonp([4],[
 	                { id: this.props.id,
 	                    className: 'button',
 	                    onClick: this.props.callback },
-	                'save'
+	                this.props.text
 	            );
 	        }
 	    }]);
 
-	    return Saver;
+	    return Buttoner;
 	}(_react2.default.Component);
 
 	if (self.fetch) {} else {

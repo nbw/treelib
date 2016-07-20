@@ -49,10 +49,46 @@ class App extends React.Component {
             console.log('There has been a problem with your fetch operation: ' + error.message);
         });
     }
+    deleteMe() {
+        var r = confirm("Are you sure you want to delete me?");
+        if (r == true) {
+            fetch('/api/delete_genus', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: pg.genus.id,
+                    key: pg.key
+                })
+            }).then(function(response) {
+                if(response.ok) {
+                    response.json().then(function(obj) {
+                        if(obj.err) {
+                            console.log(obj.msg);
+                            alert(obj.msg);
+                        } else {
+                            window.location.href = window.location.origin + window.location.pathname;
+                        }  
+                    });
+                } else {
+                    console.log('Network response was not ok.');
+                }
+            })
+            .catch(function(error) {
+                console.log('There has been a problem with your fetch operation: ' + error.message);
+            });
+        } 
+    }
     render() {
         return (
             <div>
-                <h1>{this.state.title || "New Genus"}</h1>
+                <h1 className="mainTitle">{this.state.title || "New Genus"}</h1>
+                { pg.genus.id ? 
+                    <Buttoner id="deleteButton" 
+                        callback={this.deleteMe.bind(this)}
+                        text="delete" />: null}
                 <hr />
                 <Inputer
                     id = "name"
@@ -75,9 +111,10 @@ class App extends React.Component {
                     handler = {this.handleInputChange.bind(this, 'description')} />
 
                 <hr />
-                <Saver
+                <Buttoner
                     id = "saveButton"
-                    callback = {this.updateTheMotherShip.bind(this)} />
+                    callback = {this.updateTheMotherShip.bind(this)}
+                    text="save" />
             </div>
         );
     }
@@ -129,13 +166,13 @@ class Dropper extends React.Component {
     }
 }
 
-class Saver extends React.Component {
+class Buttoner extends React.Component {
     render() {
         return (
-            <div id={this.props.id} 
+            <div id={this.props.id}
                 className='button'
                 onClick={this.props.callback}>
-                save
+                {this.props.text}
             </div>
         );
     }

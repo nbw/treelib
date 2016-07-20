@@ -68,13 +68,12 @@ end
 
 get '/admin/edit_species' do
     protected!
-
+    Photos::update
     species, species_id = nil, params[:id].to_i
 
     if (species_id > 0) && (species = Plantae::get_species(species_id))
         species = species.to_hash
         if species[:album_id]
-            Photos::update
             species[:photos] = Photos::get_photos_urls(species[:album_id],'q')
         end
     else 
@@ -86,7 +85,7 @@ get '/admin/edit_species' do
             :name => g.name, 
             :id => g.id       
         } 
-    end.sort{|a,b| a['name']<=>b['name']}
+    end.sort_by!{|i| i[:name].downcase}
 
     if genera.empty?
         redirect '/admin/edit_genus'
@@ -118,7 +117,7 @@ get '/admin/edit_genus' do
             :name => f.name, 
             :id => f.id       
         } 
-    end.sort{|a,b| a['name']<=>b['name']}
+    end.sort_by!{|i| i[:name].downcase}
 
     if families.empty?
         redirect '/admin/edit_family'
@@ -198,5 +197,40 @@ post '/api/add_admin_user' do
     Users::new_user(p[:username], p[:email], p[:password], 1)
 end
 
+post '/api/delete_species' do
+    p = JSON.parse(request.body.read).symbolize_keys
 
-# TO DO: add redirect to homepage for any non supported endpoints
+    #validate api_key
+    error 401 unless APITools::auth_key!(p[:key])
+
+    Plantae::delete_species(p[:id])
+    return 200.to_json
+end
+
+post '/api/delete_genus' do
+    p = JSON.parse(request.body.read).symbolize_keys
+
+    #validate api_key
+    error 401 unless APITools::auth_key!(p[:key])
+    s = Plantae::get_genus(p[:id]).species
+    if s.empty?
+        Plantae::delete_genus(p[:id])
+        return 200.to_json
+    else
+        return {:err=>true, :msg=>"Species [#{s.collect{|sp|sp.name}.join(', ')}] are still linked to the genus."}.to_json
+    end
+end
+
+post '/api/delete_family' do
+    p = JSON.parse(request.body.read).symbolize_keys
+
+    #validate api_key
+    error 401 unless APITools::auth_key!(p[:key])
+    g = Plantae::get_family(p[:id]).genera
+    if g.empty?
+        Plantae::delete_family(p[:id])
+        return 200.to_json
+    else
+        return {:err=>true, :msg=>"Genera [#{g.collect{|gs|gs.name}.join(', ')}] are still linked to the family."}.to_json
+    end
+end

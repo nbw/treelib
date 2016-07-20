@@ -50,7 +50,8 @@ begin
     client.query('CREATE TABLE families (
         id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name TEXT NOT NULL,
-        description TEXT NOT NULL
+        description TEXT NOT NULL,
+        enabled tinyint(1) DEFAULT 1
     );')
     puts 'Created table families'
 rescue Mysql2::Error => e
@@ -64,7 +65,8 @@ begin
         id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name TEXT NOT NULL,
         description TEXT NOT NULL,
-        fam_id INTEGER UNSIGNED NOT NULL
+        fam_id INTEGER UNSIGNED NOT NULL,
+        enabled tinyint(1) DEFAULT 1
     );')
     puts 'Created table genera'
 rescue Mysql2::Error => e
@@ -79,7 +81,8 @@ begin
         name TEXT NOT NULL,
         description TEXT NOT NULL,
         genus_id INTEGER UNSIGNED NOT NULL,
-        album_id INTEGER UNSIGNED DEFAULT NULL
+        album_id INTEGER UNSIGNED DEFAULT NULL,
+        enabled tinyint(1) DEFAULT 1
     );')
     puts 'Created table species'
 rescue Mysql2::Error => e

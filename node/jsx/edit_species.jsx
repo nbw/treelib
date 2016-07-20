@@ -25,10 +25,8 @@ class App extends React.Component {
         });
     }
     updateTheMotherShip() {
-        if( !this.state.album_id ) {
-            alert('Please choose a photo album, then try again.')
-            return;
-        }
+        if ( this.state.title === "") {alert('Please enter a species name, then try again.');return;}
+        if( !this.state.album_id ) {alert('Please choose a photo album, then try again.');return;}
 
         fetch('/api/edit_species', {
             method: 'POST',
@@ -58,10 +56,43 @@ class App extends React.Component {
             console.log('There has been a problem with your fetch operation: ' + error.message);
         });
     }
+
+    deleteMe() {
+        var r = confirm("Are you sure you want to delete me?");
+        if (r == true) {
+            fetch('/api/delete_species', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: pg.species.id,
+                    key: pg.key
+                })
+            }).then(function(response) {
+                if(response.ok) {
+                    response.json().then(function(obj) {
+                        window.location.href = window.location.origin + window.location.pathname;
+                });
+                } else {
+                    console.log('Network response was not ok.');
+                }
+            })
+            .catch(function(error) {
+                console.log('There has been a problem with your fetch operation: ' + error.message);
+            });
+        } 
+    }
+
     render() {
         return (
             <div>
-                <h1>{this.state.title || "New Species"}</h1>
+                <h1 className="mainTitle" >{this.state.title || "New Species"}</h1>
+                { pg.species.id ? 
+                    <Buttoner id="deleteButton" 
+                        callback={this.deleteMe.bind(this)}
+                        text="delete" />: null}
                 <hr />
                 <Inputer
                     id = "name"
@@ -96,9 +127,10 @@ class App extends React.Component {
                     links = {this.state.links}
                     handler = {this.update.bind(this, 'links')} />
                 <hr />
-                <Saver
+                <Buttoner
                     id = "saveButton"
-                    callback = {this.updateTheMotherShip.bind(this)} />
+                    callback = {this.updateTheMotherShip.bind(this)}
+                    text="save" />
             </div>
         );
     }
@@ -200,7 +232,8 @@ class Linker extends React.Component {
                         value={this.state.newLinkURL} 
                         onChange={this.updateLinkInput.bind(this, 'newLinkURL')} />
                     <span className="btn-std" onClick={this.saveLink.bind(this)}>add</span>
-                </div> : null }
+                </div> : null 
+            }
         </div>
         );
     }
@@ -235,18 +268,17 @@ class Dropper extends React.Component {
     }
 }
 
-class Saver extends React.Component {
+class Buttoner extends React.Component {
     render() {
         return (
             <div id={this.props.id}
                 className='button'
                 onClick={this.props.callback}>
-                save
+                {this.props.text}
             </div>
         );
     }
 }
-
 
 class PhotoArray extends React.Component {
     render() {

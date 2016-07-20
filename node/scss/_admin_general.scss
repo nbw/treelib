@@ -82,12 +82,30 @@ a {
     }
 
 }
+#deleteButton {
+    display: inline-block;
+    cursor: default;
+    color: #9f9f9f;
+    margin-left: 10px;
+    padding: 5px;
+    vertical-align: middle;
+    border: 1px solid rgba(0, 0, 0, 0.0);
+    border-radius: 3px;
+    &:hover{
+        color: $font-primary-color;
+        border: 1px solid rgba(0, 0, 0, 0.7);
+    }
+}
 
 .mainContainer {
     min-height:100%;
     margin: 0 50px 0 50px;
     padding: 0px 50px 50px 50px;
     background-color: white;
+}
+.mainTitle {
+    display: inline-block;
+    vertical-align: middle;
 }
 .item {
     display: inline-block;
@@ -123,3 +141,4 @@ a {
     padding: 0;
     list-style:none;
 }
+

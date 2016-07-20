@@ -144,7 +144,7 @@ module Photos
         q_where << "id = #{SQLer.escape(_id)}" if _id
         q_where << "photoset_id = #{SQLer.escape(_photoset_id)}" if _photoset_id
         q += "WHERE " + q_where.join(" AND ") if !q_where.empty?
-        return SQLer.query(q).to_a;
+        return SQLer.query(q).to_a.sort_by!{|i| i["name"].downcase}
     end
 
     def self.get_photos _album_ids=nil, _id=nil,
