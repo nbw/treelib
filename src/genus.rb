@@ -1,10 +1,10 @@
 class Genus
     def initialize(g)
-        @id = g[:id]
+        @id = g[:id].to_i
         @name = g[:name]
         @descrip = g[:descrip]
         @species = g[:species] || []
-        @family_id = g[:f_id]
+        @family_id = g[:f_id].to_i
     end
     attr_reader :id, :name, :descrip, :species, :family_id
     def to_hash

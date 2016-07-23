@@ -1,9 +1,9 @@
 class Species
     def initialize(s)
-        @id = s[:id] 
+        @id = s[:id].to_i
         @name = s[:name]
         @descrip = s[:descrip]
-        @genus_id = s[:g_id]
+        @genus_id = s[:g_id].to_i
         @album_id = s[:album_id] || nil
         @links = s[:links] || []
     end

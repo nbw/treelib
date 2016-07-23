@@ -77,22 +77,19 @@ module Plantae
     end
 
     def self.add_species p
-        species_id = nil
         SQLer::transaction do 
             SQLer::query("INSERT INTO species
                 SET name = '#{SQLer.escape(p[:name])}',
                     description = '#{SQLer.escape(p[:descrip])}',
                     genus_id = #{SQLer.escape(p[:g_id])},
                     album_id = #{SQLer.escape(p[:album_id])}")
-            species_id = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
-            SQLer::query(Plantae::add_links_query(species_id, p[:links])) if !p[:links].empty?
+            p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
+            SQLer::query(Plantae::add_links_query(p[:id], p[:links])) if !p[:links].empty?
         end
-        p[:id] = species_id
         s = Species.new(p)
         @@species << s
         @@genera.find{ |g| g.id == p[:g_id].to_i }.species << s
         return s
-        return []
     end
 
     def self.delete_species id
@@ -131,11 +128,13 @@ module Plantae
     end
 
     def self.add_genus p
-        SQLer::query("INSERT INTO genera
-            SET name = '#{SQLer.escape(p[:name])}',
-                description = '#{SQLer.escape(p[:descrip])}',
-                fam_id = #{SQLer.escape(p[:f_id])};")
-        p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
+        SQLer::transaction do 
+            SQLer::query("INSERT INTO genera
+                SET name = '#{SQLer.escape(p[:name])}',
+                    description = '#{SQLer.escape(p[:descrip])}',
+                    fam_id = #{SQLer.escape(p[:f_id])};")
+            p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
+        end
         g = Genus.new(p)
         @@genera << g
         @@families.find{ |f| f.id == p[:f_id].to_i }.genera << g
@@ -143,11 +142,11 @@ module Plantae
     end
 
     def self.delete_genus id
+        # SQLer::query("UPDATE genera SET enabled = 0 WHERE id=#{id}")
         g = self.get_genus(id)
         f = self.get_family(g.family_id)
         @@genera.delete(g)
         f.genera.delete(g)
-        SQLer::query("UPDATE genera SET enabled = 0 WHERE id=#{id}")
     end
 
     def self.families
@@ -176,19 +175,21 @@ module Plantae
     end
 
     def self.add_family p
-        SQLer::query("INSERT INTO families
-        SET name = '#{SQLer.escape(p[:name])}',
-            description = '#{SQLer.escape(p[:descrip])}';")
-        p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
+        SQLer::transaction do
+            SQLer::query("INSERT INTO families
+            SET name = '#{SQLer.escape(p[:name])}',
+                description = '#{SQLer.escape(p[:descrip])}';")
+            p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
+        end
         f = Family.new(p)
         @@families << f
         return f
     end
 
     def self.delete_family id
+        SQLer::query("UPDATE families SET enabled = 0 WHERE id=#{id}")
         f = self.get_family(id)
         @@families.delete(f)
-        SQLer::query("UPDATE families SET enabled = 0 WHERE id=#{id}")
     end
 
     def self.add_links_query species_id, links

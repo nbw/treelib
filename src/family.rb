@@ -1,6 +1,6 @@
 class Family
     def initialize(f)
-        @id = f[:id]
+        @id = f[:id].to_i
         @name = f[:name]
         @descrip = f[:descrip]
         @genera = f[:genera] || []

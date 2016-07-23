@@ -172,7 +172,7 @@ end
 
 post '/api/edit_genus' do
     p = JSON.parse(request.body.read).symbolize_keys
-
+    pp p
     #validate api_key
     error 401 unless APITools::auth_key!(p[:key])
     
