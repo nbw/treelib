@@ -34,11 +34,25 @@ module SQLer
     end
 
     def self.escape(*args)
-        args = *args
 
-        args.collect do |val|
-            val = val.to_s if val.is_a? Numeric
-            @client.escape(val)
+        args = *args.collect do |val|
+            case val
+            when Fixnum
+                @client.escape(val.to_s).to_i
+            when Numeric
+                @client.escape(val.to_s).to_i
+            when Array
+                val.collect do |v|
+                    if (v.is_a? Numeric)|| (v.is_a? Fixnum)
+                        @client.escape(val.to_s).to_i
+                    else
+                        @client.escape(v)
+                    end
+                end
+                val.join(", ")
+            else
+                @client.escape(val)
+            end
         end
 
         return args.size > 1 ? args : args.first
