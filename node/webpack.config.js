@@ -9,6 +9,7 @@ module.exports = {
         edit_family: "./jsx/edit_family.jsx",
         admin_family_tree: "./jsx/admin_family_tree.jsx",
         admin_signup: "./jsx/admin_signup.jsx",
+        login: "./jsx/login.jsx",
         autres: ['react', 'react-dom'],
     },
     output: {

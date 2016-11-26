@@ -1,7 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Inputer from './components/inputer.jsx';
+import Buttoner from './components/buttoner.jsx';
+import Dropper from './components/dropper.jsx';
+import Texter from './components/texter.jsx'
+
 var pg = pageData;
+
+
 
 class App extends React.Component {
     constructor() {
@@ -33,8 +40,7 @@ class App extends React.Component {
                 id: pg.genus.id || null,
                 name: this.state.title,
                 descrip: this.state.description,
-                f_id: this.state.family_id,
-                key: pg.key
+                f_id: this.state.family_id
             })
         }).then(function(response) {
             if(response.ok) {
@@ -115,64 +121,6 @@ class App extends React.Component {
                     id = "saveButton"
                     callback = {this.updateTheMotherShip.bind(this)}
                     text="save" />
-            </div>
-        );
-    }
-}
-
-class Inputer extends React.Component {
-    render() {
-        return (
-            <div id={this.props.id} className='question'>
-                <span className="title">{this.props.title}: </span>
-                <input type="text"
-                    value={this.props.text}
-                    placeholder={this.props.placeholder}
-                    onChange={this.props.handler}
-                     />
-            </div>
-        );
-    }
-}
-class Texter extends React.Component {
-    render() {
-        return (
-            <div id={this.props.id} className='question'>
-                <span className="title">{this.props.title}: </span>
-                <textarea
-                    value={this.props.text}
-                    placeholder={this.props.placeholder}
-                    onChange={this.props.handler}
-                     />
-            </div>
-        );
-    }
-}
-
-class Dropper extends React.Component {
-    render() {
-        var rows = [];
-        this.props.list.forEach(function(item) {
-            rows.push(<option value={item.id} key={item.id}>{item.name}</option>);
-        });
-        return (
-            <div className='question'>
-                <span className="title">{this.props.title}: </span>
-                <select onChange={this.props.handler} defaultValue={this.props.default}>
-                    {rows}
-                </select>
-            </div>
-        );
-    }
-}
-
-class Buttoner extends React.Component {
-    render() {
-        return (
-            <div id={this.props.id}
-                className='button'
-                onClick={this.props.callback}>
-                {this.props.text}
             </div>
         );
     }

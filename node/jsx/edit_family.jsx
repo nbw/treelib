@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Inputer from './components/inputer.jsx';
+import Buttoner from './components/buttoner.jsx';
+import Texter from './components/texter.jsx'
+
 var pg = pageData;
 
 class App extends React.Component {
@@ -24,15 +28,15 @@ class App extends React.Component {
     updateTheMotherShip(){
         fetch('/api/edit_family', {
             method: 'POST',
+            credentials: 'same-origin',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 id: pg.family.id || null,
                 name: this.state.title,
-                descrip: this.state.description,
-                key: pg.key
+                descrip: this.state.description
             })
         }).then(function(response) {
             if(response.ok) {
@@ -107,46 +111,6 @@ class App extends React.Component {
                     id = "saveButton"
                     callback = {this.updateTheMotherShip.bind(this)}
                     text="save" />
-            </div>
-        );
-    }
-}
-
-class Inputer extends React.Component {
-    render() {
-        return (
-            <div id={this.props.id} className='question'>
-                <span className="title">{this.props.title}: </span>
-                <input type="text"
-                    value={this.props.text}
-                    placeholder={this.props.placeholder}
-                    onChange={this.props.handler}
-                     />
-            </div>
-        );
-    }
-}
-class Texter extends React.Component {
-    render() {
-        return (
-            <div id={this.props.id} className='question'>
-                <span className="title">{this.props.title}: </span>
-                <textarea
-                    value={this.props.text}
-                    placeholder={this.props.placeholder}
-                    onChange={this.props.handler}
-                     />
-            </div>
-        );
-    }
-}
-class Buttoner extends React.Component {
-    render() {
-        return (
-            <div id={this.props.id}
-                className='button'
-                onClick={this.props.callback}>
-                {this.props.text}
             </div>
         );
     }

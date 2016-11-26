@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var pg = pageData;
+import Inputer from './components/inputer.jsx';
+import Buttoner from './components/buttoner.jsx';
 
 class App extends React.Component {
     constructor() {
@@ -37,8 +38,7 @@ class App extends React.Component {
             body: JSON.stringify({
                 username: this.state.username,
                 email: this.state.email,
-                password: this.state.password,
-                key: pg.key
+                password: this.state.password
             })
         }).then(function(response) {
             if(response.ok) {
@@ -86,35 +86,10 @@ class App extends React.Component {
                     </li>
                 </ul>
                 <hr />
-                <Saver
+                <Buttoner
                     id = "saveButton"
-                    callback = {this.updateTheMotherShip.bind(this)} />
-            </div>
-        );
-    }
-}
-
-class Inputer extends React.Component {
-    render() {
-        return (
-            <div id={this.props.id} className='question'>
-                <span className="title">{this.props.title}: </span>
-                <input type="text"
-                    value={this.props.text}
-                    placeholder={this.props.placeholder}
-                    onChange={this.props.handler}
-                     />
-            </div>
-        );
-    }
-}
-class Saver extends React.Component {
-    render() {
-        return (
-            <div id={this.props.id} 
-                className='button'
-                onClick={this.props.callback}>
-                save
+                    callback = {this.updateTheMotherShip.bind(this)}
+                    text = "signup" />
             </div>
         );
     }
