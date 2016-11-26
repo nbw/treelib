@@ -1,5 +1,6 @@
-webpackJsonp([5],[
-/* 0 */
+webpackJsonp([5],{
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14,9 +15,25 @@ webpackJsonp([5],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(33);
+	var _reactDom = __webpack_require__(34);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _inputer = __webpack_require__(172);
+
+	var _inputer2 = _interopRequireDefault(_inputer);
+
+	var _buttoner = __webpack_require__(173);
+
+	var _buttoner2 = _interopRequireDefault(_buttoner);
+
+	var _dropper = __webpack_require__(175);
+
+	var _dropper2 = _interopRequireDefault(_dropper);
+
+	var _texter = __webpack_require__(176);
+
+	var _texter2 = _interopRequireDefault(_texter);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36,7 +53,7 @@ webpackJsonp([5],[
 	    function App() {
 	        _classCallCheck(this, App);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
+	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 	        _this.state = {
 	            title: pg.species.name || "",
@@ -134,31 +151,31 @@ webpackJsonp([5],[
 	                    { className: 'mainTitle' },
 	                    this.state.title || "New Species"
 	                ),
-	                pg.species.id ? _react2.default.createElement(Buttoner, { id: 'deleteButton',
+	                pg.species.id ? _react2.default.createElement(_buttoner2.default, { id: 'deleteButton',
 	                    callback: this.deleteMe.bind(this),
 	                    text: 'delete' }) : null,
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Inputer, {
+	                _react2.default.createElement(_inputer2.default, {
 	                    id: 'name',
 	                    title: 'Name',
 	                    placeholder: 'species',
 	                    text: this.state.title,
 	                    handler: this.handleInputChange.bind(this, 'title') }),
-	                _react2.default.createElement(Dropper, {
+	                _react2.default.createElement(_dropper2.default, {
 	                    id: 'genera',
 	                    title: 'Genus',
 	                    'default': this.state.genus_id,
 	                    list: pg.genera,
 	                    handler: this.handleInputChange.bind(this, 'genus_id') }),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Texter, {
+	                _react2.default.createElement(_texter2.default, {
 	                    id: 'description',
 	                    title: 'Description',
 	                    placeholder: 'enter description here',
 	                    text: this.state.description,
 	                    handler: this.handleInputChange.bind(this, 'description') }),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Dropper, {
+	                _react2.default.createElement(_dropper2.default, {
 	                    id: 'photoAlbum',
 	                    title: 'Photo Album',
 	                    'default': this.state.album_id,
@@ -171,7 +188,7 @@ webpackJsonp([5],[
 	                    links: this.state.links,
 	                    handler: this.update.bind(this, 'links') }),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Buttoner, {
+	                _react2.default.createElement(_buttoner2.default, {
 	                    id: 'saveButton',
 	                    callback: this.updateTheMotherShip.bind(this),
 	                    text: 'save' })
@@ -182,86 +199,20 @@ webpackJsonp([5],[
 	    return App;
 	}(_react2.default.Component);
 
-	var Inputer = function (_React$Component2) {
-	    _inherits(Inputer, _React$Component2);
-
-	    function Inputer() {
-	        _classCallCheck(this, Inputer);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Inputer).apply(this, arguments));
-	    }
-
-	    _createClass(Inputer, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { id: this.props.id, className: 'question' },
-	                _react2.default.createElement(
-	                    'span',
-	                    { className: 'title' },
-	                    this.props.title,
-	                    ': '
-	                ),
-	                _react2.default.createElement('input', { type: 'text',
-	                    value: this.props.text,
-	                    placeholder: this.props.placeholder,
-	                    onChange: this.props.handler
-	                })
-	            );
-	        }
-	    }]);
-
-	    return Inputer;
-	}(_react2.default.Component);
-
-	var Texter = function (_React$Component3) {
-	    _inherits(Texter, _React$Component3);
-
-	    function Texter() {
-	        _classCallCheck(this, Texter);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Texter).apply(this, arguments));
-	    }
-
-	    _createClass(Texter, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { id: this.props.id, className: 'question' },
-	                _react2.default.createElement(
-	                    'span',
-	                    { className: 'title' },
-	                    this.props.title,
-	                    ': '
-	                ),
-	                _react2.default.createElement('textarea', {
-	                    value: this.props.text,
-	                    placeholder: this.props.placeholder,
-	                    onChange: this.props.handler
-	                })
-	            );
-	        }
-	    }]);
-
-	    return Texter;
-	}(_react2.default.Component);
-
-	var Linker = function (_React$Component4) {
-	    _inherits(Linker, _React$Component4);
+	var Linker = function (_React$Component2) {
+	    _inherits(Linker, _React$Component2);
 
 	    function Linker() {
 	        _classCallCheck(this, Linker);
 
-	        var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(Linker).call(this));
+	        var _this2 = _possibleConstructorReturn(this, (Linker.__proto__ || Object.getPrototypeOf(Linker)).call(this));
 
-	        _this4.state = {
+	        _this2.state = {
 	            newLinkName: "",
 	            newLinkURL: "",
 	            showAddLinkInput: false
 	        };
-	        return _this4;
+	        return _this2;
 	    }
 
 	    _createClass(Linker, [{
@@ -388,13 +339,13 @@ webpackJsonp([5],[
 	    return Linker;
 	}(_react2.default.Component);
 
-	var Link = function (_React$Component5) {
-	    _inherits(Link, _React$Component5);
+	var Link = function (_React$Component3) {
+	    _inherits(Link, _React$Component3);
 
 	    function Link() {
 	        _classCallCheck(this, Link);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Link).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Link.__proto__ || Object.getPrototypeOf(Link)).apply(this, arguments));
 	    }
 
 	    _createClass(Link, [{
@@ -434,79 +385,13 @@ webpackJsonp([5],[
 	    return Link;
 	}(_react2.default.Component);
 
-	var Dropper = function (_React$Component6) {
-	    _inherits(Dropper, _React$Component6);
-
-	    function Dropper() {
-	        _classCallCheck(this, Dropper);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Dropper).apply(this, arguments));
-	    }
-
-	    _createClass(Dropper, [{
-	        key: 'render',
-	        value: function render() {
-	            var rows = [];
-	            this.props.list.forEach(function (item) {
-	                rows.push(_react2.default.createElement(
-	                    'option',
-	                    { value: item.id, key: item.id },
-	                    item.name
-	                ));
-	            });
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'question' },
-	                _react2.default.createElement(
-	                    'span',
-	                    { className: 'title' },
-	                    this.props.title,
-	                    ': '
-	                ),
-	                _react2.default.createElement(
-	                    'select',
-	                    { onChange: this.props.handler, defaultValue: this.props.default },
-	                    rows
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Dropper;
-	}(_react2.default.Component);
-
-	var Buttoner = function (_React$Component7) {
-	    _inherits(Buttoner, _React$Component7);
-
-	    function Buttoner() {
-	        _classCallCheck(this, Buttoner);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Buttoner).apply(this, arguments));
-	    }
-
-	    _createClass(Buttoner, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { id: this.props.id,
-	                    className: 'button',
-	                    onClick: this.props.callback },
-	                this.props.text
-	            );
-	        }
-	    }]);
-
-	    return Buttoner;
-	}(_react2.default.Component);
-
-	var PhotoArray = function (_React$Component8) {
-	    _inherits(PhotoArray, _React$Component8);
+	var PhotoArray = function (_React$Component4) {
+	    _inherits(PhotoArray, _React$Component4);
 
 	    function PhotoArray() {
 	        _classCallCheck(this, PhotoArray);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(PhotoArray).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (PhotoArray.__proto__ || Object.getPrototypeOf(PhotoArray)).apply(this, arguments));
 	    }
 
 	    _createClass(PhotoArray, [{
@@ -529,13 +414,13 @@ webpackJsonp([5],[
 	    return PhotoArray;
 	}(_react2.default.Component);
 
-	var PhotoEditer = function (_React$Component9) {
-	    _inherits(PhotoEditer, _React$Component9);
+	var PhotoEditer = function (_React$Component5) {
+	    _inherits(PhotoEditer, _React$Component5);
 
 	    function PhotoEditer() {
 	        _classCallCheck(this, PhotoEditer);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(PhotoEditer).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (PhotoEditer.__proto__ || Object.getPrototypeOf(PhotoEditer)).apply(this, arguments));
 	    }
 
 	    _createClass(PhotoEditer, [{
@@ -560,5 +445,246 @@ webpackJsonp([5],[
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
+/***/ },
+
+/***/ 172:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//
+	// Input field with title next to it. 
+	//
+	// props: id, handler, placeholder, title, text
+	//
+	//
+
+	var Inputer = function (_React$Component) {
+	    _inherits(Inputer, _React$Component);
+
+	    function Inputer() {
+	        _classCallCheck(this, Inputer);
+
+	        return _possibleConstructorReturn(this, (Inputer.__proto__ || Object.getPrototypeOf(Inputer)).apply(this, arguments));
+	    }
+
+	    _createClass(Inputer, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { id: this.props.id, className: 'question' },
+	                _react2.default.createElement(
+	                    'span',
+	                    { className: 'title' },
+	                    this.props.title,
+	                    ': '
+	                ),
+	                _react2.default.createElement('input', { type: 'text',
+	                    value: this.props.text,
+	                    placeholder: this.props.placeholder,
+	                    onChange: this.props.handler
+	                })
+	            );
+	        }
+	    }]);
+
+	    return Inputer;
+	}(_react2.default.Component);
+
+	Inputer.propTypes = {
+	    text: _react.PropTypes.string.isRequired,
+	    title: _react.PropTypes.string.isRequired,
+	    placeholder: _react.PropTypes.string.isRequired,
+	    handler: _react.PropTypes.func.isRequired
+	};
+
+	exports.default = Inputer;
+
+/***/ },
+
+/***/ 173:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//
+	// Button with callback
+	// 
+	// props: callback, id, text
+	//
+
+	var Buttoner = function (_React$Component) {
+	    _inherits(Buttoner, _React$Component);
+
+	    function Buttoner() {
+	        _classCallCheck(this, Buttoner);
+
+	        return _possibleConstructorReturn(this, (Buttoner.__proto__ || Object.getPrototypeOf(Buttoner)).apply(this, arguments));
+	    }
+
+	    _createClass(Buttoner, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { id: this.props.id,
+	                    className: 'button',
+	                    onClick: this.props.callback },
+	                this.props.text
+	            );
+	        }
+	    }]);
+
+	    return Buttoner;
+	}(_react2.default.Component);
+
+	Buttoner.propTypes = {
+	    callback: _react.PropTypes.func.isRequired
+	};
+
+	exports.default = Buttoner;
+
+/***/ },
+
+/***/ 175:
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Dropper = function (_React$Component) {
+	    _inherits(Dropper, _React$Component);
+
+	    function Dropper() {
+	        _classCallCheck(this, Dropper);
+
+	        return _possibleConstructorReturn(this, (Dropper.__proto__ || Object.getPrototypeOf(Dropper)).apply(this, arguments));
+	    }
+
+	    _createClass(Dropper, [{
+	        key: "render",
+	        value: function render() {
+	            var rows = [];
+	            this.props.list.forEach(function (item) {
+	                rows.push(React.createElement(
+	                    "option",
+	                    { value: item.id, key: item.id },
+	                    item.name
+	                ));
+	            });
+	            return React.createElement(
+	                "div",
+	                { className: "question" },
+	                React.createElement(
+	                    "span",
+	                    { className: "title" },
+	                    this.props.title,
+	                    ": "
+	                ),
+	                React.createElement(
+	                    "select",
+	                    { onChange: this.props.handler, defaultValue: this.props.default },
+	                    rows
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Dropper;
+	}(React.Component);
+
+/***/ },
+
+/***/ 176:
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Texter = function (_React$Component) {
+	    _inherits(Texter, _React$Component);
+
+	    function Texter() {
+	        _classCallCheck(this, Texter);
+
+	        return _possibleConstructorReturn(this, (Texter.__proto__ || Object.getPrototypeOf(Texter)).apply(this, arguments));
+	    }
+
+	    _createClass(Texter, [{
+	        key: "render",
+	        value: function render() {
+	            return React.createElement(
+	                "div",
+	                { id: this.props.id, className: "question" },
+	                React.createElement(
+	                    "span",
+	                    { className: "title" },
+	                    this.props.title,
+	                    ": "
+	                ),
+	                React.createElement("textarea", {
+	                    value: this.props.text,
+	                    placeholder: this.props.placeholder,
+	                    onChange: this.props.handler
+	                })
+	            );
+	        }
+	    }]);
+
+	    return Texter;
+	}(React.Component);
+
 /***/ }
-]);
+
+});

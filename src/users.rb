@@ -1,17 +1,20 @@
 module Users
 
-    def self.auth creds, is_admin = false
-        name, pwd = creds
+    def self.auth creds, require_admin = false
+        name = creds[:username]
+        pwd = creds[:password]
         user = SQLer.query("SELECT * FROM users WHERE name='#{SQLer.escape(name)}'").first
 
-        if BCrypt::Password.new(user["pw_hash"]) == (CONFIG["salt"] + pwd)
-            if is_admin
-                return user["admin_level"] > 0 ? true : false
-            end
-            return true
+        if user && BCrypt::Password.new(user["pw_hash"]) == (CONFIG["salt"] + pwd)
+            return user
         else 
             return false
         end
+    end
+
+    def self.is_admin id
+        user = SQLer.query("SELECT admin_level FROM users WHERE id='#{SQLer.escape(id)}'").first
+        user["admin_level"] && (user["admin_level"] > 0) ? true : false
     end
 
     def self.new_user username, email, pwd, admin_level = 0

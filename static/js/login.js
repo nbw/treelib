@@ -1,4 +1,4 @@
-webpackJsonp([1],{
+webpackJsonp([6],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
@@ -47,8 +47,8 @@ webpackJsonp([1],{
 
 	        _this.state = {
 	            username: "",
-	            email: "",
-	            password: ""
+	            password: "",
+	            message: ""
 	        };
 	        return _this;
 	    }
@@ -66,25 +66,27 @@ webpackJsonp([1],{
 	    }, {
 	        key: 'updateTheMotherShip',
 	        value: function updateTheMotherShip() {
-	            if (this.state.username.length === 0 || this.state.email.length === 0 || this.state.password.length === 0) {
+	            self = this;
+	            if (self.state.username.length === 0 || self.state.password.length === 0) {
 	                alert('try again. something is missing.');
 	                return;
 	            }
-
-	            fetch('/api/add_admin_user', {
+	            fetch('/api/login', {
 	                method: 'POST',
-	                headers: {
-	                    'Accept': 'application/json',
-	                    'Content-Type': 'application/json'
-	                },
+	                credentials: 'same-origin',
 	                body: JSON.stringify({
-	                    username: this.state.username,
-	                    email: this.state.email,
-	                    password: this.state.password
+	                    username: self.state.username,
+	                    password: self.state.password
 	                })
 	            }).then(function (response) {
 	                if (response.ok) {
-	                    alert('success! user created.');
+	                    response.json().then(function (obj) {
+	                        if (obj.error) {
+	                            self.setState(_defineProperty({}, 'message', obj.msg));
+	                            return;
+	                        }
+	                        window.location.replace(obj.redirect);
+	                    });
 	                } else {
 	                    alert("uh oh.");
 	                    console.log('Network response was not ok.');
@@ -102,23 +104,12 @@ webpackJsonp([1],{
 	                _react2.default.createElement(
 	                    'h1',
 	                    null,
-	                    'Admin Signup'
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'This page is for creating other ',
-	                    _react2.default.createElement(
-	                        'b',
-	                        null,
-	                        'admin'
-	                    ),
-	                    ' accounts.'
+	                    'Account Login'
 	                ),
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(
 	                    'ul',
-	                    { id: 'signupList', className: 'resetList' },
+	                    { id: 'login', className: 'resetList' },
 	                    _react2.default.createElement(
 	                        'li',
 	                        null,
@@ -133,16 +124,6 @@ webpackJsonp([1],{
 	                        'li',
 	                        null,
 	                        _react2.default.createElement(_inputer2.default, {
-	                            id: 'email',
-	                            title: 'Email',
-	                            placeholder: 'email',
-	                            text: this.state.email,
-	                            handler: this.handleInputChange.bind(this, 'email') })
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        null,
-	                        _react2.default.createElement(_inputer2.default, {
 	                            id: 'password',
 	                            title: 'Password',
 	                            placeholder: 'password',
@@ -151,10 +132,15 @@ webpackJsonp([1],{
 	                    )
 	                ),
 	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                    'p',
+	                    { className: 'message' },
+	                    this.state.message
+	                ),
 	                _react2.default.createElement(_buttoner2.default, {
 	                    id: 'saveButton',
 	                    callback: this.updateTheMotherShip.bind(this),
-	                    text: 'signup' })
+	                    text: 'login' })
 	            );
 	        }
 	    }]);
@@ -162,8 +148,10 @@ webpackJsonp([1],{
 	    return App;
 	}(_react2.default.Component);
 
-	if (self.fetch) {} else {
+	if (!self.fetch) {
 	    console.log('Unsupported browser. Please use Firefox or Google Chrome');
+	} else {
+	    // to do
 	}
 
 	exports.default = App;

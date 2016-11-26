@@ -1,5 +1,6 @@
-webpackJsonp([3],[
-/* 0 */
+webpackJsonp([3],{
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14,9 +15,21 @@ webpackJsonp([3],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(33);
+	var _reactDom = __webpack_require__(34);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _inputer = __webpack_require__(172);
+
+	var _inputer2 = _interopRequireDefault(_inputer);
+
+	var _buttoner = __webpack_require__(173);
+
+	var _buttoner2 = _interopRequireDefault(_buttoner);
+
+	var _texter = __webpack_require__(176);
+
+	var _texter2 = _interopRequireDefault(_texter);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36,7 +49,7 @@ webpackJsonp([3],[
 	    function App() {
 	        _classCallCheck(this, App);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
+	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 	        _this.state = {
 	            title: pg.family.name || "",
@@ -52,16 +65,15 @@ webpackJsonp([3],[
 	        }
 	    }, {
 	        key: 'handleInputChange',
-	        // ES6 computed property
 	        value: function handleInputChange(name, e) {
 	            this.setState(_defineProperty({}, name, e.target.value));
 	        }
 	    }, {
 	        key: 'updateTheMotherShip',
-	        // ES6 computed property
 	        value: function updateTheMotherShip() {
 	            fetch('/api/edit_family', {
 	                method: 'POST',
+	                credentials: 'same-origin',
 	                headers: {
 	                    'Accept': 'application/json',
 	                    'Content-Type': 'application/json'
@@ -69,8 +81,7 @@ webpackJsonp([3],[
 	                body: JSON.stringify({
 	                    id: pg.family.id || null,
 	                    name: this.state.title,
-	                    descrip: this.state.description,
-	                    key: pg.key
+	                    descrip: this.state.description
 	                })
 	            }).then(function (response) {
 	                if (response.ok) {
@@ -128,25 +139,25 @@ webpackJsonp([3],[
 	                    { className: 'mainTitle' },
 	                    this.state.title || "New Family"
 	                ),
-	                pg.family.id ? _react2.default.createElement(Buttoner, { id: 'deleteButton',
+	                pg.family.id ? _react2.default.createElement(_buttoner2.default, { id: 'deleteButton',
 	                    callback: this.deleteMe.bind(this),
 	                    text: 'delete' }) : null,
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Inputer, {
+	                _react2.default.createElement(_inputer2.default, {
 	                    id: 'name',
 	                    title: 'Name',
 	                    placeholder: 'family',
 	                    text: this.state.title,
 	                    handler: this.handleInputChange.bind(this, 'title') }),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Texter, {
+	                _react2.default.createElement(_texter2.default, {
 	                    id: 'description',
 	                    title: 'Description',
 	                    placeholder: 'enter description here',
 	                    text: this.state.description,
 	                    handler: this.handleInputChange.bind(this, 'description') }),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(Buttoner, {
+	                _react2.default.createElement(_buttoner2.default, {
 	                    id: 'saveButton',
 	                    callback: this.updateTheMotherShip.bind(this),
 	                    text: 'save' })
@@ -157,13 +168,53 @@ webpackJsonp([3],[
 	    return App;
 	}(_react2.default.Component);
 
-	var Inputer = function (_React$Component2) {
-	    _inherits(Inputer, _React$Component2);
+	if (self.fetch) {} else {
+	    console.log('Unsupported browser. Please use Firefox or Google Chrome');
+	}
+
+	exports.default = App;
+
+	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+
+/***/ },
+
+/***/ 172:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//
+	// Input field with title next to it. 
+	//
+	// props: id, handler, placeholder, title, text
+	//
+	//
+
+	var Inputer = function (_React$Component) {
+	    _inherits(Inputer, _React$Component);
 
 	    function Inputer() {
 	        _classCallCheck(this, Inputer);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Inputer).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Inputer.__proto__ || Object.getPrototypeOf(Inputer)).apply(this, arguments));
 	    }
 
 	    _createClass(Inputer, [{
@@ -190,46 +241,53 @@ webpackJsonp([3],[
 	    return Inputer;
 	}(_react2.default.Component);
 
-	var Texter = function (_React$Component3) {
-	    _inherits(Texter, _React$Component3);
+	Inputer.propTypes = {
+	    text: _react.PropTypes.string.isRequired,
+	    title: _react.PropTypes.string.isRequired,
+	    placeholder: _react.PropTypes.string.isRequired,
+	    handler: _react.PropTypes.func.isRequired
+	};
 
-	    function Texter() {
-	        _classCallCheck(this, Texter);
+	exports.default = Inputer;
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Texter).apply(this, arguments));
-	    }
+/***/ },
 
-	    _createClass(Texter, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { id: this.props.id, className: 'question' },
-	                _react2.default.createElement(
-	                    'span',
-	                    { className: 'title' },
-	                    this.props.title,
-	                    ': '
-	                ),
-	                _react2.default.createElement('textarea', {
-	                    value: this.props.text,
-	                    placeholder: this.props.placeholder,
-	                    onChange: this.props.handler
-	                })
-	            );
-	        }
-	    }]);
+/***/ 173:
+/***/ function(module, exports, __webpack_require__) {
 
-	    return Texter;
-	}(_react2.default.Component);
+	'use strict';
 
-	var Buttoner = function (_React$Component4) {
-	    _inherits(Buttoner, _React$Component4);
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//
+	// Button with callback
+	// 
+	// props: callback, id, text
+	//
+
+	var Buttoner = function (_React$Component) {
+	    _inherits(Buttoner, _React$Component);
 
 	    function Buttoner() {
 	        _classCallCheck(this, Buttoner);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Buttoner).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Buttoner.__proto__ || Object.getPrototypeOf(Buttoner)).apply(this, arguments));
 	    }
 
 	    _createClass(Buttoner, [{
@@ -248,13 +306,60 @@ webpackJsonp([3],[
 	    return Buttoner;
 	}(_react2.default.Component);
 
-	if (self.fetch) {} else {
-	    console.log('Unsupported browser. Please use Firefox or Google Chrome');
-	}
+	Buttoner.propTypes = {
+	    callback: _react.PropTypes.func.isRequired
+	};
 
-	exports.default = App;
+	exports.default = Buttoner;
 
-	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+/***/ },
+
+/***/ 176:
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Texter = function (_React$Component) {
+	    _inherits(Texter, _React$Component);
+
+	    function Texter() {
+	        _classCallCheck(this, Texter);
+
+	        return _possibleConstructorReturn(this, (Texter.__proto__ || Object.getPrototypeOf(Texter)).apply(this, arguments));
+	    }
+
+	    _createClass(Texter, [{
+	        key: "render",
+	        value: function render() {
+	            return React.createElement(
+	                "div",
+	                { id: this.props.id, className: "question" },
+	                React.createElement(
+	                    "span",
+	                    { className: "title" },
+	                    this.props.title,
+	                    ": "
+	                ),
+	                React.createElement("textarea", {
+	                    value: this.props.text,
+	                    placeholder: this.props.placeholder,
+	                    onChange: this.props.handler
+	                })
+	            );
+	        }
+	    }]);
+
+	    return Texter;
+	}(React.Component);
 
 /***/ }
-]);
+
+});

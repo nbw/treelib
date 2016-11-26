@@ -28,13 +28,15 @@ SQLer.init
 
 begin 
     puts 'Connecting to client: #{DB}..'
-    client = Mysql2::Client.new(:host => "localhost", :username => "root", :database => CONFIG["database"])
+    username = CONFIG['username'] || "root"
+    pw = CONFIG['password'] || ""
+    client = Mysql2::Client.new(:host => "localhost", :username => username, :password => pw, :database => CONFIG["database"])
     puts 'Connected to client: #{DB}!'
 rescue Mysql2::Error => e
     error = e
     puts e.message
     if e.errno == 1049
-        Mysql2::Client.new(:host => "localhost", :username => "root").query("CREATE database #{CONFIG["database"]}")
+        Mysql2::Client.new(:host => "localhost", :username => "root", :password => pw).query("CREATE database #{CONFIG["database"]}")
         puts 'Created database: #{DB}'
         retry
     end  
@@ -94,7 +96,8 @@ end
 # 
 begin
     client.query('CREATE TABLE users (
-        name varchar(64) NOT NULL PRIMARY KEY,
+        id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name varchar(64) NOT NULL,
         pw_hash TEXT NOT NULL,
         email TEXT NOT NULL,
         create_date DATETIME NOT NULL, 
@@ -149,9 +152,9 @@ begin
         farm INTEGER UNSIGNED NOT NULL,
         secret varchar(64) NOT NULL,
         server INTEGER UNSIGNED NOT NULL,
-        name TEXT NOT NULL,
-        description TEXT NOT NULL,
-        credit TEXT NOT NULL,
+        name TEXT DEFAULT NULL,
+        description TEXT DEFAULT NULL,
+        credit TEXT DEFAULT NULL,
         disable_date DATETIME DEFAULT NULL
     );')
     puts 'Created table photos'

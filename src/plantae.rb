@@ -93,11 +93,11 @@ module Plantae
     end
 
     def self.delete_species id
+        SQLer::query("UPDATE species SET enabled = 0 WHERE id=#{id}")
         s = self.get_species(id)
         g = self.get_genus(s.genus_id)
         @@species.delete(s)
         g.species.delete(s)
-        SQLer::query("UPDATE species SET enabled = 0 WHERE id=#{id}")
     end
 
 
@@ -142,7 +142,7 @@ module Plantae
     end
 
     def self.delete_genus id
-        # SQLer::query("UPDATE genera SET enabled = 0 WHERE id=#{id}")
+        SQLer::query("UPDATE genera SET enabled = 0 WHERE id=#{id}")
         g = self.get_genus(id)
         f = self.get_family(g.family_id)
         @@genera.delete(g)

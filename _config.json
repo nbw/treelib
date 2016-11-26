@@ -5,13 +5,9 @@
 //
 {
     "database": "INSERT DB NAME HERE",
+    "domain": "localhost",
     "session_secret": "INSERT SECRET HERE",
     "salt": "INSERT SALT HERE",
-    "api_key": { 
-        "key": "INSERT KEY",
-        "enabled": 1
-        },
     "flickr_api_key": "FLICKR KEY",
     "flickr_user_id": "FLICKR USER ID"
-}
 }

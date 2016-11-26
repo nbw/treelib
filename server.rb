@@ -30,15 +30,23 @@ set :public_folder, File.dirname(__FILE__) + '/static'
 set :views, File.dirname(__FILE__) + '/templates'
 set :port, CONFIG["port"]
 set :environment, :development
-set :session_secret, CONFIG["session_secret"]
-enable :sessions
+use Rack::Session::Cookie, { 
+   :key => 'rack.session',
+   :domain => CONFIG["domain"],
+   :path => '/',
+   :expire_after => 3600, # In seconds
+   :secret => CONFIG["session_secret"]
+}
+
 
 
 helpers do
-  def protected!
-    return if authorized?
-    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area - sorry!"'
-    halt 401, "Not authorized\n"
+  def admin_protected!
+    return if !!session[:user_id] && Users.is_admin(session[:user_id])
+    session[:redirect] = request.url
+    redirect '/login'
+    # headers['WWW-Authenticate'] = 'Basic realm="Restricted Area - sorry!"'
+    # halt 401, "Not authorized\n"
   end
 
   def authorized?
@@ -55,6 +63,9 @@ get '/' do
     erb :"homepage"
 end
 
+get '/search' do
+    erb :"search"
+end
 
 get '/admin/family_tree' do
 
@@ -67,7 +78,7 @@ get '/admin/family_tree' do
 end
 
 get '/admin/edit_species' do
-    protected!
+    admin_protected!
     Photos::update
     species, species_id = nil, params[:id].to_i
 
@@ -94,7 +105,6 @@ get '/admin/edit_species' do
     @page_data = {
         :genera => genera,
         :species => species,
-        :key => APITools::generate_key,
         :photo_albums => [{:name=>"select one", :id=>0}] + Photos::get_photo_albums
     }
 
@@ -102,7 +112,7 @@ get '/admin/edit_species' do
 end
 
 get '/admin/edit_genus' do
-    protected!
+    admin_protected! 
 
     genus, genus_id = nil, params[:id].to_i
 
@@ -125,15 +135,14 @@ get '/admin/edit_genus' do
 
     @page_data = {
         :families => families,
-        :genus => genus,
-        :key => APITools::generate_key
+        :genus => genus
     }
 
     erb :"admin/edit_genus"
 end
 
 get '/admin/edit_family' do
-    protected!
+    admin_protected!
 
     family, family_id = nil, params[:id].to_i
 
@@ -144,55 +153,67 @@ get '/admin/edit_family' do
     end
 
     @page_data = {
-        :family => family,
-        :key => APITools::generate_key
+        :family => family
     }
 
     erb :"admin/edit_family"
 end
 
 get '/admin/signup' do
-    protected!
-
-    @page_data = {
-        :key => APITools::generate_key
-    }
-
+    admin_protected!
     erb :"admin/signup"
 end
 
-# API REQUEST
-post '/api/edit_species' do
-    p = JSON.parse(request.body.read).symbolize_keys
-    #validate api_key
-    error 401 unless APITools::auth_key!(p[:key])
+get '/login' do
+    erb :"login"
+end
 
+
+######################################
+# API REQUEST
+######################################
+post '/api/edit_species' do
+    error 401 unless admin_protected!
+    p = JSON.parse(request.body.read).symbolize_keys
     Plantae::edit_species(p).to_json
 end
 
 post '/api/edit_genus' do
     p = JSON.parse(request.body.read).symbolize_keys
-    pp p
+
     #validate api_key
-    error 401 unless APITools::auth_key!(p[:key])
+    # error 401 unless APITools::auth_key!(p[:key])
     
     Plantae::edit_genus(p).to_json
 end
 
 post '/api/edit_family' do
+    # admin_protected!
+    pp "session: "
+    pp session
     p = JSON.parse(request.body.read).symbolize_keys
-
-    #validate api_key
-    error 401 unless APITools::auth_key!(p[:key])
-
     Plantae::edit_family(p).to_json
+end
+
+post '/api/login' do
+    content_type :json
+    creds = JSON.parse(request.body.read).symbolize_keys
+    if user = Users::auth(creds)
+        if user["admin_level"] 
+            session[:user_id] = user["id"]
+            return {"redirect" => session[:redirect] || '/' }.to_json
+        end
+        return {"redirect" => '/' }.to_json
+    else
+        return {"error" => true, "msg"=>"Username or password incorrect. Please try again."}.to_json
+    end
 end
 
 post '/api/add_admin_user' do
     p = JSON.parse(request.body.read).symbolize_keys
 
     #validate api_key
-    error 401 unless APITools::auth_key!(p[:key])
+    # error 401 unless APITools::auth_key!(p[:key])
 
     Users::new_user(p[:username], p[:email], p[:password], 1)
 end
@@ -201,7 +222,7 @@ post '/api/delete_species' do
     p = JSON.parse(request.body.read).symbolize_keys
 
     #validate api_key
-    error 401 unless APITools::auth_key!(p[:key])
+    # error 401 unless APITools::auth_key!(p[:key])
 
     Plantae::delete_species(p[:id])
     return 200.to_json
@@ -211,7 +232,8 @@ post '/api/delete_genus' do
     p = JSON.parse(request.body.read).symbolize_keys
 
     #validate api_key
-    error 401 unless APITools::auth_key!(p[:key])
+    # error 401 unless APITools::auth_key!(p[:key])
+
     s = Plantae::get_genus(p[:id]).species
     if s.empty?
         Plantae::delete_genus(p[:id])
@@ -225,7 +247,8 @@ post '/api/delete_family' do
     p = JSON.parse(request.body.read).symbolize_keys
 
     #validate api_key
-    error 401 unless APITools::auth_key!(p[:key])
+    # error 401 unless APITools::auth_key!(p[:key])
+
     g = Plantae::get_family(p[:id]).genera
     if g.empty?
         Plantae::delete_family(p[:id])

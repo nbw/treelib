@@ -116,7 +116,6 @@ class App extends React.Component {
     }
 }
 
-
 if (self.fetch) {
 
 } else {

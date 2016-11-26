@@ -19,7 +19,7 @@ module Photos
             db_album_index = db_albums.find_index{|r| r["photoset_id"] == fa["id"]}
             if db_album_index && a = db_albums.delete_at(db_album_index)
                 # if not new, check if photoset has been modified
-                if a["last_updated"] != Time.at(fa["date_update"])
+                if a["last_updated"] != Time.at(fa["date_update"]).utc.strftime("%Y-%m-%d %H:%M:%S")
                     fa["album_id"] = a["id"]
                     modified_albums << fa
                 end 
@@ -75,7 +75,7 @@ module Photos
         # update modified photo_albums
         if !modified_albums.empty?
             q_modified_albums_names = "name = CASE photoset_id\n" + modified_albums.collect{|ma| "WHEN #{ma["id"]} THEN '#{ma["title"]["_content"]}'"}.join("\n") + "\nEND,\n"
-            q_modified_albums_dates = "last_updated = CASE photoset_id\n" + modified_albums.collect{|ma| "WHEN #{ma["id"]} THEN '#{Time.at(ma["date_update"]).to_s}'"}.join("\n") + "\nEND"
+            q_modified_albums_dates = "last_updated = CASE photoset_id\n" + modified_albums.collect{|ma| "WHEN #{ma["id"]} THEN '#{Time.at(ma["date_update"]).utc.strftime("%Y-%m-%d %H:%M:%S")}'"}.join("\n") + "\nEND"
             q_update_photo_albums = "UPDATE photo_albums\nSET " + 
                 q_modified_albums_names + q_modified_albums_dates +
                 "\nWHERE photoset_id IN (#{modified_albums.collect{|ma| ma['id']}.join(', ')})"
@@ -90,7 +90,7 @@ module Photos
         #...........................
         # new albums with new photos
         new_albums.each do |na|
-            q_ps_id, q_pa_name, q_pa_lu = SQLer.escape(na["id"], na["title"]["_content"], Time.at(na["date_update"]).to_s)
+            q_ps_id, q_pa_name, q_pa_lu = SQLer.escape(na["id"], na["title"]["_content"], Time.at(na["date_update"]).utc.strftime("%Y-%m-%d %H:%M:%S"))
             q_new_photo_albums << "(#{q_ps_id}, '#{q_pa_name}', '#{q_pa_lu}')"
             
             Flickr::get_photos_from_photoset(na["id"]).each do |p|

@@ -14,7 +14,7 @@ webpackJsonp([0],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(33);
+	var _reactDom = __webpack_require__(34);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -34,7 +34,7 @@ webpackJsonp([0],[
 	    function App() {
 	        _classCallCheck(this, App);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
 	    }
 
 	    _createClass(App, [{
@@ -67,7 +67,7 @@ webpackJsonp([0],[
 	    function Family() {
 	        _classCallCheck(this, Family);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Family).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Family.__proto__ || Object.getPrototypeOf(Family)).apply(this, arguments));
 	    }
 
 	    _createClass(Family, [{
@@ -109,7 +109,7 @@ webpackJsonp([0],[
 	    function Genus() {
 	        _classCallCheck(this, Genus);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Genus).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Genus.__proto__ || Object.getPrototypeOf(Genus)).apply(this, arguments));
 	    }
 
 	    _createClass(Genus, [{
@@ -151,7 +151,7 @@ webpackJsonp([0],[
 	    function Species() {
 	        _classCallCheck(this, Species);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Species).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Species.__proto__ || Object.getPrototypeOf(Species)).apply(this, arguments));
 	    }
 
 	    _createClass(Species, [{
