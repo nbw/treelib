@@ -20,11 +20,6 @@ class PhotoViewer extends React.Component {
                     </div>
                     <div className="next" onClick={this.props.nextCallback}><i className="fa fa-angle-double-right fa-2x"></i></div>
                 </div>
-                <div className="content">
-                    <div className="title">Title</div>
-                    <div className="description">Temporary description of photo</div>
-                    <a className="fullimage" href={this.props.original}>Link to full image</a>
-                </div>
                 <div className="closeButton" onClick={this.props.closeCallback}><i className="fa fa-times fa-lg"></i> Close </div>
             </div>
         );

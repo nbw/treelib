@@ -159,25 +159,6 @@ webpackJsonp([11],{
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'content' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'title' },
-	                        'Title'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'description' },
-	                        'Temporary description of photo'
-	                    ),
-	                    _react2.default.createElement(
-	                        'a',
-	                        { className: 'fullimage', href: this.props.original },
-	                        'Link to full image'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
 	                    { className: 'closeButton', onClick: this.props.closeCallback },
 	                    _react2.default.createElement('i', { className: 'fa fa-times fa-lg' }),
 	                    ' Close '
