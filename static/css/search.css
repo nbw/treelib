@@ -2592,18 +2592,22 @@ body {
   width: 70%;
   height: 100%;
   overflow-y: scroll;
-  -webkit-transition: width 0.7s ease-out, left 0.7s ease-out, padding-top 0.7s ease-out;
+  -webkit-transition: width 0.7s ease-out, left 0.7s ease-out;
   /* Safari */
-  transition: width 0.7s ease-out, left 0.7s ease-out, padding-top 0.7s ease-out; }
-  .content > *:not(.default):not(.photoViewer) {
+  transition: width 0.7s ease-out, left 0.7s ease-out; }
+  .content > *:not(.default) > *:not(.photoViewer) {
     margin-left: 10px;
     margin-right: 10px; }
+  .content > * {
+    -webkit-transition: padding-top 0.7s ease-out;
+    transition: padding-top 0.7s ease-out; }
 
 .default {
-  padding: 10% 0 0 10px;
   height: 100%;
   font-size: 2rem;
   background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 10px, rgba(0, 0, 0, 0.1) 10px, rgba(0, 0, 0, 0.1) 20px); }
+  .default .message {
+    padding: 10% 0 0 10px; }
 
 .family .title {
   border-color: #FF846B; }
@@ -2701,5 +2705,5 @@ body {
 .hidden.content {
   left: 0%;
   width: 100%; }
-  .hidden.content:not( > .default) {
+  .hidden.content > *:not(.default) {
     padding-top: 2.2rem; }

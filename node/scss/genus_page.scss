@@ -1,6 +1,9 @@
 @import "_basic";
 @import "_genus";
+@import "_basicNavbar";
 
 .mainContainer {
-	padding: 10px;
+	.genus {
+		padding: 10px;
+	}
 }

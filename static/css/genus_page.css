@@ -2422,5 +2422,40 @@ a {
     -webkit-box-sizing: border-box;
     border: 2px blue solid; }
 
-.mainContainer {
+.basicNavbar {
+  color: #4c5b67;
+  background-color: #EDEDED;
+  text-transform: uppercase; }
+  .basicNavbar ul {
+    padding: 0;
+    margin: 0;
+    background-color: #EDEDED; }
+    .basicNavbar ul li {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      list-style: none;
+      height: 3rem;
+      padding: 3px 10px 3px 10px;
+      background-color: #EDEDED; }
+      .basicNavbar ul li:hover:not(.treelib) {
+        background-color: #DDDDDD; }
+      .basicNavbar ul li.treelib a {
+        padding-right: 10px;
+        font-size: 3rem;
+        color: #1a8cff; }
+        .basicNavbar ul li.treelib a:hover {
+          color: #0073e6; }
+  .basicNavbar .navBorder {
+    display: inline-block;
+    width: 33.33%;
+    height: 3px; }
+    .basicNavbar .navBorder.first {
+      background-color: #FF846B; }
+    .basicNavbar .navBorder.second {
+      background-color: #57D084; }
+    .basicNavbar .navBorder.third {
+      background-color: #54A1BF; }
+
+.mainContainer .genus {
   padding: 10px; }

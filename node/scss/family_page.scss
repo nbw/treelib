@@ -1,6 +1,9 @@
 @import "_basic";
 @import "_family";
+@import "_basicNavbar";
 
 .mainContainer {
-	padding: 10px;
+	.family{
+		padding: 10px;
+	}
 }

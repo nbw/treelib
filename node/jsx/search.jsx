@@ -112,7 +112,9 @@ class App extends React.Component {
                 <div className={hidden ? "content hidden": "content"}>
                     { type === null ?
                         <div className="default">
-                            <i className="fa fa-caret-left"></i> Click on a <b>family</b>, <b>genus</b>, or <b>species</b> to get started!
+                            <div className="message">
+                                <i className="fa fa-caret-left"></i> Click on a <b>family</b>, <b>genus</b>, or <b>species</b> to get started!
+                            </div>
                         </div>
                     : null}
                     { type === "family" ? <Family family={item}/> : null }

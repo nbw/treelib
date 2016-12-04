@@ -269,6 +269,14 @@ webpackJsonp([8],{
 	                            'Treelib'
 	                        ),
 	                        ' is yours all in one spot.'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'photoBanner' },
+	                        _react2.default.createElement('img', { src: 'img/homepage-banner/5.jpg' }),
+	                        _react2.default.createElement('img', { src: 'img/homepage-banner/6.jpg' }),
+	                        _react2.default.createElement('img', { src: 'img/homepage-banner/7.jpg' }),
+	                        _react2.default.createElement('img', { src: 'img/homepage-banner/8.jpg' })
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -291,13 +299,30 @@ webpackJsonp([8],{
 	                    _react2.default.createElement(
 	                        'p',
 	                        null,
-	                        'This site is for students, professors, laymen, artists, naturalists – anyone studying trees or who just appreciates their beauty.  Need more pictures for a dendrology class, or to make your own collection, or to add background to a new website? ',
+	                        'Help yourself to the site, downloading  to enhance your learning and understanding of the trees around you.   Professors and students are encouraged to use pictures to add to their own presentations or collections and the comprehensive list of family/genus/species to copy and paste to one’s own list as one goes.  It is not the final resource for every aspect of identification, but rather a tool to be used to visually complement many other good sources of information.  Click links to connect to other excellent sources of technical information such as the Northern Ontario Plant Database, Wikipedia and so on.'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'photoBanner' },
+	                        _react2.default.createElement('img', { src: 'img/homepage-banner/1.jpg' }),
+	                        _react2.default.createElement('img', { src: 'img/homepage-banner/4.jpg' }),
+	                        _react2.default.createElement('img', { src: 'img/homepage-banner/3.jpg' }),
+	                        _react2.default.createElement('img', { src: 'img/homepage-banner/2.jpg' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
 	                        _react2.default.createElement(
-	                            'b',
+	                            'u',
 	                            null,
-	                            'Treelib'
+	                            _react2.default.createElement(
+	                                'b',
+	                                null,
+	                                'Treelib'
+	                            ),
+	                            ' is for educational purposes'
 	                        ),
-	                        ' is yours all in one spot.'
+	                        ' to complement many excellent sources of technical information on trees, providing over 7,000 high quality pictures of many aspects of species.  Photos available through the site are to be used for study and educational purposes only.  Copying them and using them for commercial purposes is not permitted without specific written permission from the author.'
 	                    )
 	                )
 	            );
@@ -352,91 +377,127 @@ webpackJsonp([8],{
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'section' },
-	                    'Photos in the pacific north west.'
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'section' },
-	                    'These pictures are to be used for study and educational purposes only.  Copying them and using them for commercial purposes is not permitted without specific written permission from the author.'
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'section' },
-	                    'This site was a collaboration between Blake and his son Nathan.'
-	                ),
-	                _react2.default.createElement(
-	                    'h2',
-	                    null,
-	                    'Who we are'
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'bio section' },
 	                    _react2.default.createElement(
-	                        'table',
+	                        'label',
+	                        { className: 'title' },
+	                        'About the photos'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
 	                        null,
-	                        _react2.default.createElement(
-	                            'tr',
-	                            null,
-	                            _react2.default.createElement(
-	                                'td',
-	                                null,
-	                                _react2.default.createElement('img', { className: 'photo', src: 'img/blake.jpg' })
-	                            ),
-	                            _react2.default.createElement(
-	                                'td',
-	                                null,
-	                                _react2.default.createElement(
-	                                    'ul',
-	                                    { className: 'description' },
-	                                    _react2.default.createElement(
-	                                        'li',
-	                                        { className: 'title' },
-	                                        'Biologist and Photographer'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'li',
-	                                        { className: 'content' },
-	                                        'Blake is a biologist and photographer who has over 25 years in the forestry industry, specifically with the import/export of lumber between Canada and Japan.'
-	                                    )
-	                                )
-	                            )
-	                        )
+	                        'All but a handful of the photos have been taken by the author in botanical gardens, larger private collections, university arboretums, private  gardens, natural forests across Western North America and in Japan.'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'Photos were taken with a Canon 70D camera, using 40mm, 17mm x 85mm and 18mm x 55mm lenses. The 70D is equipped with Canon’s new high resolution CMOS 70D sensor which allows raising film speed to up to 2000 or more without noticeable graininess.'
 	                    )
 	                ),
+	                _react2.default.createElement('div', { className: 'banner' }),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'bio section' },
+	                    { className: 'section' },
+	                    _react2.default.createElement(
+	                        'label',
+	                        { className: 'title' },
+	                        'Species confirmation'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'The purpose of this site is more to give a flavour of the varieties of each species than to provide an authoritative catalogue of them.  For detailed lists of most of the varieties of each species, I have found that searching species names on Wikipedia provides the best information.'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'Preference has been, in most cases, to support confirmation of many species and varieties at major sites like Vandusen Garden, Washington University Arboretum and other botanical gardens all over the Western North America, as far back as Manitoba and North Dakota, supplementing with pictures from many other locations.'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'Cross-referencing of Latin names and usages has also been done from many of these sites, from web sites and from numerous good tree apps and books on tree identification; there are some differences in nomenclature between the U.S., Canada, Japan and Europe.  Regarding common English names, they are often quite varied and are best outlined on sites such as Wikipedia and other plant sites.'
+	                    )
+	                ),
+	                _react2.default.createElement('div', { className: 'banner' }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'bio' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'title' },
+	                        'Who we are'
+	                    ),
 	                    _react2.default.createElement(
 	                        'table',
 	                        null,
 	                        _react2.default.createElement(
-	                            'tr',
+	                            'tbody',
 	                            null,
 	                            _react2.default.createElement(
-	                                'td',
-	                                null,
-	                                _react2.default.createElement('img', { className: 'photo', src: 'img/nathan.jpg' })
-	                            ),
-	                            _react2.default.createElement(
-	                                'td',
+	                                'tr',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'ul',
-	                                    { className: 'description' },
+	                                    'td',
+	                                    null,
+	                                    _react2.default.createElement('img', { className: 'photo', src: 'img/blake.jpg' })
+	                                ),
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
 	                                    _react2.default.createElement(
-	                                        'li',
-	                                        { className: 'title' },
-	                                        'Web Programmer'
-	                                    ),
+	                                        'ul',
+	                                        { className: 'description' },
+	                                        _react2.default.createElement(
+	                                            'li',
+	                                            { className: 'title' },
+	                                            'Blake - Biologist and Photographer'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'li',
+	                                            { className: 'content' },
+	                                            'Blake is a biologist and photographer who has over 25 years in the forestry industry, specifically with the import/export of lumber between Canada and Japan.'
+	                                        )
+	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'tr',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
+	                                    _react2.default.createElement('img', { className: 'photo', src: 'img/nathan.jpg' })
+	                                ),
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
 	                                    _react2.default.createElement(
-	                                        'li',
-	                                        { className: 'content' },
-	                                        'The guy that meant this site. The guy that meant this site. The guy that meant this site.'
+	                                        'ul',
+	                                        { className: 'description' },
+	                                        _react2.default.createElement(
+	                                            'li',
+	                                            { className: 'title' },
+	                                            'Nathan - Developement'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'li',
+	                                            { className: 'content' },
+	                                            _react2.default.createElement(
+	                                                'a',
+	                                                { href: 'http://nathanwillson.com/' },
+	                                                'Nathan'
+	                                            ),
+	                                            ' is a web developer based out of Victoria, Canada.'
+	                                        )
 	                                    )
 	                                )
 	                            )
 	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'footer' },
+	                        'This site was a collaboration between Blake and his son Nathan.'
 	                    )
 	                )
 	            );
@@ -494,7 +555,7 @@ webpackJsonp([8],{
 	                    _react2.default.createElement(
 	                        'p',
 	                        null,
-	                        'Have a question or suggestion? Send us an email at:'
+	                        'Life is about connecting to other people and finding ways to serve them.  If you have some knowledge of and enjoy photographing trees, connect with us and contribute photographs of new species, improve our shots with your own, introduce great parks you have hiked around.  Become a part of a network of friends who love trees and the outdoors, building the site together.  It is as simple as sending us an email.'
 	                    ),
 	                    _react2.default.createElement('img', { src: 'img/email.jpg' })
 	                ),

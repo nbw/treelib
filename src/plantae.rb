@@ -128,7 +128,7 @@ module Plantae
     end
 
     def self.get_genus_photos genus
-        num_photos = 15 # genus image cap
+        num_photos = 25 # genus image cap
         genus = genus.to_hash        
         species_photos, genus_photos = [], []
         genus[:species].each do |s|
@@ -208,7 +208,7 @@ module Plantae
     end
 
     def self.get_family_photos family
-        num_photos = 20 # genus image cap
+        num_photos = 25 # genus image cap
         family = family.to_hash        
         species_photos, family_photos = [], []
         family[:genera].each do |g|

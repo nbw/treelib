@@ -164,26 +164,30 @@ webpackJsonp([10],{
 	                    type === null ? _react2.default.createElement(
 	                        'div',
 	                        { className: 'default' },
-	                        _react2.default.createElement('i', { className: 'fa fa-caret-left' }),
-	                        ' Click on a ',
 	                        _react2.default.createElement(
-	                            'b',
-	                            null,
-	                            'family'
-	                        ),
-	                        ', ',
-	                        _react2.default.createElement(
-	                            'b',
-	                            null,
-	                            'genus'
-	                        ),
-	                        ', or ',
-	                        _react2.default.createElement(
-	                            'b',
-	                            null,
-	                            'species'
-	                        ),
-	                        ' to get started!'
+	                            'div',
+	                            { className: 'message' },
+	                            _react2.default.createElement('i', { className: 'fa fa-caret-left' }),
+	                            ' Click on a ',
+	                            _react2.default.createElement(
+	                                'b',
+	                                null,
+	                                'family'
+	                            ),
+	                            ', ',
+	                            _react2.default.createElement(
+	                                'b',
+	                                null,
+	                                'genus'
+	                            ),
+	                            ', or ',
+	                            _react2.default.createElement(
+	                                'b',
+	                                null,
+	                                'species'
+	                            ),
+	                            ' to get started!'
+	                        )
 	                    ) : null,
 	                    type === "family" ? _react2.default.createElement(_family2.default, { family: item }) : null,
 	                    type === "genus" ? _react2.default.createElement(_genus2.default, { genus: item }) : null,

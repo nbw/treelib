@@ -19,6 +19,10 @@ webpackJsonp([7],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _BasicNavbar = __webpack_require__(180);
+
+	var _BasicNavbar2 = _interopRequireDefault(_BasicNavbar);
+
 	var _genus = __webpack_require__(179);
 
 	var _genus2 = _interopRequireDefault(_genus);
@@ -48,6 +52,7 @@ webpackJsonp([7],{
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'mainContainer' },
+	                _react2.default.createElement(_BasicNavbar2.default, null),
 	                _react2.default.createElement(_genus2.default, { genus: pg.genus })
 	            );
 	        }
@@ -331,6 +336,104 @@ webpackJsonp([7],{
 	}(_react2.default.Component);
 
 	exports.default = Genus;
+
+/***/ },
+
+/***/ 180:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var BasicNavbar = function (_React$Component) {
+	    _inherits(BasicNavbar, _React$Component);
+
+	    function BasicNavbar() {
+	        _classCallCheck(this, BasicNavbar);
+
+	        return _possibleConstructorReturn(this, (BasicNavbar.__proto__ || Object.getPrototypeOf(BasicNavbar)).apply(this, arguments));
+	    }
+
+	    _createClass(BasicNavbar, [{
+	        key: 'func',
+	        value: function func() {
+	            this.props.handler('search');
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            self = this;
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'basicNavbar' },
+	                _react2.default.createElement(
+	                    'ul',
+	                    null,
+	                    _react2.default.createElement(
+	                        'li',
+	                        { className: 'treelib' },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '/' },
+	                            'Treelib'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
+	                        { className: 'search' },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '/search' },
+	                            'Search'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
+	                        { className: 'about' },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '/about' },
+	                            'About'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
+	                        { className: 'contact' },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '/contact' },
+	                            'Contact'
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement('div', { className: 'navBorder first' }),
+	                _react2.default.createElement('div', { className: 'navBorder second' }),
+	                _react2.default.createElement('div', { className: 'navBorder third' })
+	            );
+	        }
+	    }]);
+
+	    return BasicNavbar;
+	}(_react2.default.Component);
+
+	exports.default = BasicNavbar;
 
 /***/ }
 

@@ -25,9 +25,11 @@ $banner-height: 250px;
 		.innerBanner {
 			background-color: rgba(20,20,20,0.6);
 			height: 100%;
-			width: 100%;
+			width: 94%;
+			padding: 0 3% 0 3%;
 			position: absolute;
 			text-align: center;
+
 			> * {
 				display: inline-block;
 				vertical-align: middle;
@@ -57,24 +59,61 @@ $banner-height: 250px;
 	}
 	.searchButton {
 		text-align:center;
-		margin-top: 1em;
+		margin-top: 1.2em;
 		a {
 			border-radius: 3px;
 			border: 2px solid white;
 			padding: 5px;
 
 			&:hover {
-
+				text-decoration: underline;
 			}
 		}
 	}
+	.photoBanner {
+		text-align: center;
+		img { 
+			display: inline-block;
+			margin: 10px;
+			border: 1px solid #BBB;
+		}
+	}
 }
+
 .aboutPage {
+	background-image: url("/img/pseudotsuga.jpg");
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 100%;
+	.section {
+		.title {
+			font-size: 4rem;
+		}
+		background-color: white;
+		padding: 20px 5% 20px 5%;
+	}
 	.bio {
+		background-color: white;
+		padding: 20px 5% 40px 5%;
+		.title {
+			font-size: 4rem;
+		}
+		.footer {
+			font-size: 2.8rem;
+			padding: 10px;
+			text-align: center;
+		}
 		table {
+			border-collapse:collapse;
+
+			tr:first-child td {
+				border-bottom: 1px solid #AAA;
+			}
 			td {
 				vertical-align:top;
-				padding: 10px;
+				padding: 20px 0 20px 0;
 			}
 		}
 		img.photo {
@@ -84,7 +123,7 @@ $banner-height: 250px;
 			overflow: hidden;
 		}
 		ul.description {
-			padding: 0;
+			padding: 0 0 0 20px;
 			margin: 0;
 			li {
 				list-style: none;
@@ -92,22 +131,38 @@ $banner-height: 250px;
 			.title {
 				font-size: 2rem;
 				text-transform: uppercase;
-				border-bottom: 1px solid $border-color;
 				margin-bottom: 10px;
 				padding-bottom: 5px;
 			}
 		}
 	}
-}
-.contactPage {
-	background-image: url("/img/thuja.jpg");
+	.banner {
 		background-repeat: no-repeat;
 		background-position: left bottom;
 		background-attachment: fixed;
 		background-size: cover;
-		height: 100%;
+		min-height: 250px;
+		background-image: url("/img/catalpa-2.jpg");
+		&:first-child {
+			height: 1000px;
+			background-image: url("/img/cogyria-1.jpg");
+		}
+		&:nth-child(2){
+			background-image: url("/img/cogyria-2.jpg");
+		}
+	}
+}
+
+.contactPage {
+	background-image: url("/img/thuja.jpg");
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 100%;
 	.section {
 		background-color: white;
+		padding: 20px 5% 20px 5%;
 	}
 	img {
 		display:block;
