@@ -1,0 +1,68 @@
+.photoViewer {
+	margin: 10px 0 20px 0;
+	padding: 30px 0 30px 0;
+	position: relative;
+	background-color: #161616;
+	border: 1px solid #444;
+	color: #EEE;
+	a { 
+		color: #EEE;
+	}
+	.image {
+		text-align: center;
+		 > div { // [prev] -- [photo] -- [next]
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.imageWrapper {
+			margin: 0 10px 0 10px;
+			position: relative;
+			height: 640px;
+			width: 640px;
+			white-space: nowrap;
+			text-align: center;
+
+			img {
+				border: 1px solid #444;
+			}
+		 	.helper {
+		    	display: inline-block;
+		    	height: 100%;
+		    	vertical-align: middle;
+		    }
+		    .imageInnerWrapper {
+				vertical-align: middle;
+				display:inline-block;
+			}
+			.photoButtons {
+				ul {
+					padding: 0;
+					margin: 0;
+					float: right;
+					li {
+						list-style: none;
+						display: inline-block;
+						padding: 3px 5px 0 5px;
+					}
+				} 
+			}
+	    }
+		.next, .prev {
+			cursor: pointer;
+			-moz-user-select: -moz-none;
+		   -khtml-user-select: none;
+		   -webkit-user-select: none;
+		   /*
+		     Introduced in IE 10.
+		     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+		   */
+		   -ms-user-select: none;
+		   user-select: none;
+		}
+	}
+	.closeButton {
+		position:absolute;
+		top: 1em;
+		right: 1em;
+	}
+}

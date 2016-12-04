@@ -1,0 +1,119 @@
+@import "_basic";
+@import "_basicNavbar";
+
+$bio-image-width: 125px;
+$border-color: #AAA;
+$banner-height: 250px;
+
+
+.section {
+	border: 1px solid #AAA;
+	padding: 10px;
+	font-size: 2.0rem;
+}
+.homePage {
+	.section {
+		padding: 20px 8% 20px 8%;
+	}
+	.banner {
+		min-height: $banner-height;
+		font-size: 2.8rem;
+		cursor: pointer;
+		position: relative;
+		
+		
+		.innerBanner {
+			background-color: rgba(20,20,20,0.6);
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			text-align: center;
+			> * {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.helper {
+				height: 100%;
+			}
+		}
+
+		&:first-child {
+			background-image: url("/img/cogyria-1.jpg");
+		}
+		&:nth-child(2n){
+			background-image: url("/img/cogyria-2.jpg");
+		}
+		&:nth-child(3n){
+			background-image: url("/img/cogyria-3.jpg");
+		}
+		background-repeat: no-repeat;
+		background-position: left top;
+		background-attachment: fixed;
+		background-size: cover;
+
+		* {
+			color: white;
+		}
+	}
+	.searchButton {
+		text-align:center;
+		margin-top: 1em;
+		a {
+			border-radius: 3px;
+			border: 2px solid white;
+			padding: 5px;
+
+			&:hover {
+
+			}
+		}
+	}
+}
+.aboutPage {
+	.bio {
+		table {
+			td {
+				vertical-align:top;
+				padding: 10px;
+			}
+		}
+		img.photo {
+			border: 1px solid $border-color;
+			width: $bio-image-width;
+			border-radius: $bio-image-width;
+			overflow: hidden;
+		}
+		ul.description {
+			padding: 0;
+			margin: 0;
+			li {
+				list-style: none;
+			}
+			.title {
+				font-size: 2rem;
+				text-transform: uppercase;
+				border-bottom: 1px solid $border-color;
+				margin-bottom: 10px;
+				padding-bottom: 5px;
+			}
+		}
+	}
+}
+.contactPage {
+	background-image: url("/img/thuja.jpg");
+		background-repeat: no-repeat;
+		background-position: left bottom;
+		background-attachment: fixed;
+		background-size: cover;
+		height: 100%;
+	.section {
+		background-color: white;
+	}
+	img {
+		display:block;
+    	margin:auto;
+		max-width: 750px;
+		width: 100%;
+		text-align: center;
+	}
+}

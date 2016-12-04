@@ -38,8 +38,6 @@ use Rack::Session::Cookie, {
    :secret => CONFIG["session_secret"]
 }
 
-
-
 helpers do
   def admin_protected!
     return if !!session[:user_id] && Users.is_admin(session[:user_id])
@@ -60,19 +58,116 @@ error Sinatra::NotFound do
 end
 
 get '/' do
+    @page_data = {
+        :page => "home"
+    }
+    erb :"homepage"
+end
+
+get '/about' do
+    @page_data = {
+        :page => "about"
+    }
+    erb :"homepage"
+end
+
+get '/contact' do
+    @page_data = {
+        :page => "contact"
+    }
     erb :"homepage"
 end
 
 get '/search' do
+
+    @page_data = {
+        :tree => Plantae.to_hash
+    }
     erb :"search"
 end
 
+get '/species/:name' do
+    name = params['name'].gsub('_',' ')
+    
+    if species = Plantae::get_species_by_name(name).to_hash
+        species[:photos] = Plantae::get_species_photos(species)
+    else 
+        species = []
+    end
+
+    @page_data = {
+        :species => species
+    }
+
+    erb :"species"
+end
+
+get '/genus/:name' do
+    
+    name = params['name'].gsub('_',' ')
+    
+    if genus = Plantae::get_genus_by_name(name).to_hash
+        genus[:photos] = Plantae::get_genus_photos(genus)
+    else 
+        genus = []
+    end
+
+    @page_data = {
+        :genus => genus
+    }
+
+    erb :"genus"
+end
+
+get '/family/:name' do
+    
+    name = params['name'].gsub('_',' ')
+    
+    if family = Plantae::get_family_by_name(name).to_hash
+        family[:photos] = Plantae::get_family_photos(family)
+    else 
+        family = []
+    end
+
+    @page_data = {
+        :family => family
+    }
+
+    erb :"family"
+end
+
+get '/api/get_species_photos' do
+    p, photos = params.symbolize_keys, []
+    if  !p[:species_id].blank? && species = Plantae::get_species(p[:species_id].to_i)
+        photos = Plantae::get_species_photos(species)
+    end
+    return photos.to_json
+end
+
+get '/api/get_genus_photos' do
+    p, photos = params.symbolize_keys, []
+    if  !p[:genus_id].blank? && genus = Plantae::get_genus(p[:genus_id].to_i)
+        photos = Plantae::get_genus_photos(genus)
+    end
+    return photos.to_json
+end
+
+get '/api/get_family_photos' do
+    p, photos = params.symbolize_keys, []
+    if  !p[:family_id].blank? && family = Plantae::get_family(p[:family_id].to_i)
+        photos = Plantae::get_family_photos(family)
+    end
+    return photos.to_json
+end
+
+######################################
+# ADMIN PAGES
+######################################
 get '/admin/family_tree' do
 
     @page_data = {
         :tree => Plantae.to_hash
     }
-
     erb :"admin/admin_family_tree"
 
 end
@@ -170,10 +265,10 @@ end
 
 
 ######################################
-# API REQUEST
+# API REQUESTS
 ######################################
 post '/api/edit_species' do
-    error 401 unless admin_protected!
+    # error 401 unless admin_protected!
     p = JSON.parse(request.body.read).symbolize_keys
     Plantae::edit_species(p).to_json
 end
@@ -189,8 +284,6 @@ end
 
 post '/api/edit_family' do
     # admin_protected!
-    pp "session: "
-    pp session
     p = JSON.parse(request.body.read).symbolize_keys
     Plantae::edit_family(p).to_json
 end
@@ -256,4 +349,9 @@ post '/api/delete_family' do
     else
         return {:err=>true, :msg=>"Genera [#{g.collect{|gs|gs.name}.join(', ')}] are still linked to the family."}.to_json
     end
+end
+
+post '/api/refresh' do
+    Plantae::init
+    return 200.to_json
 end

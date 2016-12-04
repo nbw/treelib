@@ -1,45 +1,45 @@
 module Plantae
-    @@species, @@genera, @@families, @@initialized = [], [], []
+    @@species, @@genera, @@families = [], [], []
     def self.init
-            
-            links = SQLer.query("SELECT sl.species_id, sl.name, sl.url 
-                        FROM species_links AS sl 
-                        JOIN species AS s ON s.id = sl.species_id
-                        WHERE s.enabled").to_a.group_by{|l| l["species_id"]}
-            SQLer.query('SELECT id, name, description, genus_id, album_id FROM species WHERE enabled').each do |row|
-                # build species
-                @@species <<  Species.new({
-                    :id => row["id"],
-                    :g_id => row["genus_id"],
-                    :name => row["name"], 
-                    :descrip => row["description"],
-                    :album_id => row["album_id"],
-                    :links => links[row["id"]]
-                })  
-            end
+        @@species, @@genera, @@families = [], [], []
+        links = SQLer.query("SELECT sl.species_id, sl.name, sl.url 
+                    FROM species_links AS sl 
+                    JOIN species AS s ON s.id = sl.species_id
+                    WHERE s.enabled").to_a.group_by{|l| l["species_id"]}
+        SQLer.query('SELECT id, name, description, genus_id, album_id FROM species WHERE enabled').each do |row|
+            # build species
+            @@species <<  Species.new({
+                :id => row["id"],
+                :g_id => row["genus_id"],
+                :name => row["name"], 
+                :descrip => row["description"],
+                :album_id => row["album_id"],
+                :links => links[row["id"]]
+            })  
+        end
 
-            q_genera = 'SELECT id, name, description, fam_id FROM genera WHERE enabled'
-            SQLer.query(q_genera).each do |row|
-                # build genera
-                @@genera <<  Genus.new({
-                    :id => row["id"],
-                    :name => row["name"],
-                    :descrip => row["description"],
-                    :f_id => row["fam_id"],
-                    :species => @@species.select{ |s| s.genus_id == row["id"] }
-                })
-            end
+        q_genera = 'SELECT id, name, description, fam_id FROM genera WHERE enabled'
+        SQLer.query(q_genera).each do |row|
+            # build genera
+            @@genera <<  Genus.new({
+                :id => row["id"],
+                :name => row["name"],
+                :descrip => row["description"],
+                :f_id => row["fam_id"],
+                :species => @@species.select{ |s| s.genus_id == row["id"] }
+            })
+        end
 
-            q_families = 'SELECT id, name, description FROM families WHERE enabled'
-            SQLer.query(q_families).each do |row|
-                # build families
-                @@families <<  Family.new({
-                    :id => row["id"],
-                    :name => row["name"],
-                    :descrip => row["description"],
-                    :genera => @@genera.select{ |g| g.family_id == row["id"] }
-                })
-            end
+        q_families = 'SELECT id, name, description FROM families WHERE enabled'
+        SQLer.query(q_families).each do |row|
+            # build families
+            @@families <<  Family.new({
+                :id => row["id"],
+                :name => row["name"],
+                :descrip => row["description"],
+                :genera => @@genera.select{ |g| g.family_id == row["id"] }
+            })
+        end
     end
 
     def self.species
@@ -48,6 +48,21 @@ module Plantae
 
     def self.get_species id
         @@species.find{ |s| s.id == id }
+    end
+
+    def self.get_species_by_name name
+        @@species.find{ |s| s.name.downcase == name.downcase }
+    end
+
+    def self.get_species_photos species
+        pp species
+        species = species.to_hash
+        if album_id = species[:album_id]
+            thumbs = Photos::get_photos_urls(album_id,'q')
+            medium_size = Photos::get_photos_urls(album_id,'z')
+            original_size = Photos::get_photos_urls(album_id,'o')
+            return thumbs.map.with_index{|v,i| {:thumb=>v,:medium=>medium_size[i], :original=>original_size[i]}}
+        end
     end
 
     def self.edit_species p
@@ -100,13 +115,40 @@ module Plantae
         g.species.delete(s)
     end
 
-
     def self.genera
         return @@genera
     end
 
     def self.get_genus id
         @@genera.find{ |g| g.id == id }
+    end
+
+    def self.get_genus_by_name name
+        @@genera.find{ |g| g.name.downcase == name.downcase }
+    end
+
+    def self.get_genus_photos genus
+        num_photos = 15 # genus image cap
+        genus = genus.to_hash        
+        species_photos, genus_photos = [], []
+        genus[:species].each do |s|
+            s = s.to_hash
+            if album_id = s[:album_id]
+                thumbs = Photos::get_photos_urls(album_id,'q')
+                medium_size = Photos::get_photos_urls(album_id,'z')
+                original_size = Photos::get_photos_urls(album_id,'o')
+                species_photos += thumbs.map.with_index{|v,i| {:thumb=>v,:medium=>medium_size[i], :original=>original_size[i]}}
+            end
+        end
+
+        if species_photos.length > num_photos
+            num_photos.times do
+                rand_index = rand(species_photos.length)
+                genus_photos << species_photos.delete_at(rand_index)
+            end
+        end
+
+        return genus_photos
     end
 
     def self.edit_genus p
@@ -124,7 +166,11 @@ module Plantae
             fam_id = #{SQLer.escape(p[:f_id])}
             WHERE id = #{SQLer.escape(p[:id])};")
         g_i = @@genera.find_index{ |g| g.id == p[:id] }
-        @@genera[g_i] = Genus.new(p)
+        # save species reference for new updated copy
+        g_new = Genus.new(p)
+        g_new.species = @@genera[g_i].species
+
+        @@genera[g_i] = g_new
     end
 
     def self.add_genus p
@@ -155,6 +201,36 @@ module Plantae
 
     def self.get_family id
         @@families.find{ |f| f.id == id }
+    end
+
+    def self.get_family_by_name name
+        @@families.find{ |f| f.name.downcase == name.downcase }
+    end
+
+    def self.get_family_photos family
+        num_photos = 20 # genus image cap
+        family = family.to_hash        
+        species_photos, family_photos = [], []
+        family[:genera].each do |g|
+            g[:species].each do |s|
+                s = s.to_hash
+                if album_id = s[:album_id]
+                    thumbs = Photos::get_photos_urls(album_id,'q')
+                    medium_size = Photos::get_photos_urls(album_id,'z')
+                    original_size = Photos::get_photos_urls(album_id,'o')
+                    species_photos += thumbs.map.with_index{|v,i| {:thumb=>v,:medium=>medium_size[i], :original=>original_size[i]}}
+                end
+            end
+        end
+
+        if species_photos.length > num_photos
+            num_photos.times do
+                rand_index = rand(species_photos.length)
+                family_photos << species_photos.delete_at(rand_index)
+            end
+        end
+
+        return family_photos
     end
 
     def self.edit_family p

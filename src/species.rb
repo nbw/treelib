@@ -6,10 +6,10 @@ class Species
         @genus_id = s[:g_id].to_i
         @album_id = s[:album_id] || nil
         @links = s[:links] || []
+        @photos = []
     end
 
-    attr_accessor :id, :name, :descrip, :genus_id, :album_id, :link
-
+    attr_accessor :id, :name, :descrip, :genus_id, :album_id, :links, :photos
 
     def to_hash
         h = {}

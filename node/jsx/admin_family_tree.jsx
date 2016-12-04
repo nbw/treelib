@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AdminNavbar from './components/adminNavbar.jsx';
 
 var pg = pageData;
 
@@ -12,7 +13,8 @@ class App extends React.Component {
         });
         return (
             <div>
-                <h1>Family Tree</h1>
+                <AdminNavbar />
+                <h1 className="title">Master Tree</h1>
                 <hr />
                 {families}
             </div>
@@ -28,12 +30,17 @@ class Family extends React.Component {
             genera.push(<Genus genus={item} />);
         });
         return (
-            <div id={'family-' + f.id} className='family'>
-                family <span className='name'><a href={"/admin/edit_family?id=" + f.id}>{f.name}</a></span>
-                <div className='generaWrapper'>
-                    {genera}
-                </div>
-            </div>
+            <table className="familyTable">
+                <tr>
+                    <td id={'family-' + f.id} key={f.id}>
+                        <a href={"/admin/edit_family?id=" + f.id}>{f.name}</a><br/>
+                        <span className="subtitle">family</span>
+                    </td>
+                    <td>
+                        {genera}
+                    </td>
+                </tr>
+            </table>
         );
     }
 }
@@ -46,12 +53,19 @@ class Genus extends React.Component {
             species.push(<Species species={item} />);
         });
         return (
-            <div id={'genus-' + g.id} className='genus'>
-                genus <span className='name'><a href={"/admin/edit_genus?id=" + g.id}>{g.name}</a></span>
-                <div className="speciesWrapper">
-                {species}
-                </div>
-            </div>
+            <table className="genusTable">
+                <tr>
+                    <td id={'genus-' + g.id} key={g.id}>
+                        <a href={"/admin/edit_genus?id=" + g.id}>{g.name}</a><br/>
+                        <span className="subtitle">genus</span>
+                    </td>
+                    <td>
+                        <table className="speciesTable">
+                            {species}
+                        </table>
+                    </td>
+                </tr>
+            </table>
         );
     }
 }
@@ -60,9 +74,12 @@ class Species extends React.Component {
     render() {
         var s = this.props.species;
         return (
-            <div id={'species-' + s.id} className='species'>
-                <div className='name'><a href={'/admin/edit_species?id=' + s.id}>{s.name}</a></div>
-            </div>
+            <tr className="species" id={'species-' + s.id} key={s.id}>
+                <td>
+                    <a href={"/admin/edit_species?id=" + s.id}>{s.name}</a><br/>
+                        <span className="subtitle">species</span>
+                </td>
+            </tr>
         );
     }
 }

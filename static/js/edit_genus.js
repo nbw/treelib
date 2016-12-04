@@ -19,19 +19,23 @@ webpackJsonp([4],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _inputer = __webpack_require__(172);
+	var _adminNavbar = __webpack_require__(172);
+
+	var _adminNavbar2 = _interopRequireDefault(_adminNavbar);
+
+	var _inputer = __webpack_require__(173);
 
 	var _inputer2 = _interopRequireDefault(_inputer);
 
-	var _buttoner = __webpack_require__(173);
+	var _buttoner = __webpack_require__(174);
 
 	var _buttoner2 = _interopRequireDefault(_buttoner);
 
-	var _dropper = __webpack_require__(175);
+	var _dropper = __webpack_require__(176);
 
 	var _dropper2 = _interopRequireDefault(_dropper);
 
-	var _texter = __webpack_require__(176);
+	var _texter = __webpack_require__(175);
 
 	var _texter2 = _interopRequireDefault(_texter);
 
@@ -57,7 +61,7 @@ webpackJsonp([4],{
 
 	        _this.state = {
 	            title: pg.genus.name || "",
-	            description: pg.genus.description || "",
+	            description: pg.genus.descrip || "",
 	            family_id: pg.genus.family_id || pg.families[0].id || 0
 	        };
 	        return _this;
@@ -84,7 +88,7 @@ webpackJsonp([4],{
 	                },
 	                body: JSON.stringify({
 	                    id: pg.genus.id || null,
-	                    name: this.state.title,
+	                    name: this.state.title.trim(),
 	                    descrip: this.state.description,
 	                    f_id: this.state.family_id
 	                })
@@ -139,6 +143,7 @@ webpackJsonp([4],{
 	            return _react2.default.createElement(
 	                'div',
 	                null,
+	                _react2.default.createElement(_adminNavbar2.default, null),
 	                _react2.default.createElement(
 	                    'h1',
 	                    { className: 'mainTitle' },
@@ -212,6 +217,128 @@ webpackJsonp([4],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var AdminNavbar = function (_React$Component) {
+	    _inherits(AdminNavbar, _React$Component);
+
+	    function AdminNavbar() {
+	        _classCallCheck(this, AdminNavbar);
+
+	        return _possibleConstructorReturn(this, (AdminNavbar.__proto__ || Object.getPrototypeOf(AdminNavbar)).apply(this, arguments));
+	    }
+
+	    _createClass(AdminNavbar, [{
+	        key: 'refreshClick',
+	        value: function refreshClick() {
+	            self = this;
+	            fetch('/api/refresh', {
+	                method: 'POST',
+	                headers: {
+	                    'Accept': 'application/json',
+	                    'Content-Type': 'application/json'
+	                }
+	            }).then(function (response) {
+	                if (response.ok) {
+	                    alert('Refresh successful.');
+	                } else {
+	                    console.log('Network response was not ok.');
+	                }
+	            }).catch(function (error) {
+	                console.log('There has been a problem with your fetch operation: ' + error.message);
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            self = this;
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'adminNavbar' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'title' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/' },
+	                        'Treelib'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/admin/edit_family' },
+	                        'Add Family'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/admin/edit_genus' },
+	                        'Add Genus'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/admin/edit_species' },
+	                        'Add Species'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/admin/family_tree' },
+	                        'Family Tree'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'refresh', onClick: function onClick(event) {
+	                            return self.refreshClick();
+	                        } },
+	                    'Refresh'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return AdminNavbar;
+	}(_react2.default.Component);
+
+	exports.default = AdminNavbar;
+
+/***/ },
+
+/***/ 173:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	//
 	// Input field with title next to it. 
 	//
@@ -235,7 +362,7 @@ webpackJsonp([4],{
 	                'div',
 	                { id: this.props.id, className: 'question' },
 	                _react2.default.createElement(
-	                    'span',
+	                    'label',
 	                    { className: 'title' },
 	                    this.props.title,
 	                    ': '
@@ -263,7 +390,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 173:
+/***/ 174:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -326,67 +453,21 @@ webpackJsonp([4],{
 /***/ },
 
 /***/ 175:
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Dropper = function (_React$Component) {
-	    _inherits(Dropper, _React$Component);
-
-	    function Dropper() {
-	        _classCallCheck(this, Dropper);
-
-	        return _possibleConstructorReturn(this, (Dropper.__proto__ || Object.getPrototypeOf(Dropper)).apply(this, arguments));
-	    }
-
-	    _createClass(Dropper, [{
-	        key: "render",
-	        value: function render() {
-	            var rows = [];
-	            this.props.list.forEach(function (item) {
-	                rows.push(React.createElement(
-	                    "option",
-	                    { value: item.id, key: item.id },
-	                    item.name
-	                ));
-	            });
-	            return React.createElement(
-	                "div",
-	                { className: "question" },
-	                React.createElement(
-	                    "span",
-	                    { className: "title" },
-	                    this.props.title,
-	                    ": "
-	                ),
-	                React.createElement(
-	                    "select",
-	                    { onChange: this.props.handler, defaultValue: this.props.default },
-	                    rows
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Dropper;
-	}(React.Component);
-
-/***/ },
-
-/***/ 176:
-/***/ function(module, exports) {
-
-	"use strict";
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -404,18 +485,18 @@ webpackJsonp([4],{
 	    }
 
 	    _createClass(Texter, [{
-	        key: "render",
+	        key: 'render',
 	        value: function render() {
-	            return React.createElement(
-	                "div",
-	                { id: this.props.id, className: "question" },
-	                React.createElement(
-	                    "span",
-	                    { className: "title" },
+	            return _react2.default.createElement(
+	                'div',
+	                { id: this.props.id, className: 'question' },
+	                _react2.default.createElement(
+	                    'label',
+	                    { className: 'title' },
 	                    this.props.title,
-	                    ": "
+	                    ': '
 	                ),
-	                React.createElement("textarea", {
+	                _react2.default.createElement('textarea', {
 	                    value: this.props.text,
 	                    placeholder: this.props.placeholder,
 	                    onChange: this.props.handler
@@ -425,7 +506,77 @@ webpackJsonp([4],{
 	    }]);
 
 	    return Texter;
-	}(React.Component);
+	}(_react2.default.Component);
+
+	exports.default = Texter;
+
+/***/ },
+
+/***/ 176:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Dropper = function (_React$Component) {
+	    _inherits(Dropper, _React$Component);
+
+	    function Dropper() {
+	        _classCallCheck(this, Dropper);
+
+	        return _possibleConstructorReturn(this, (Dropper.__proto__ || Object.getPrototypeOf(Dropper)).apply(this, arguments));
+	    }
+
+	    _createClass(Dropper, [{
+	        key: 'render',
+	        value: function render() {
+	            var rows = [];
+	            this.props.list.forEach(function (item) {
+	                rows.push(_react2.default.createElement(
+	                    'option',
+	                    { value: item.id, key: item.id },
+	                    item.name
+	                ));
+	            });
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'question' },
+	                _react2.default.createElement(
+	                    'label',
+	                    { className: 'title' },
+	                    this.props.title,
+	                    ': '
+	                ),
+	                _react2.default.createElement(
+	                    'select',
+	                    { onChange: this.props.handler, defaultValue: this.props.default },
+	                    rows
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Dropper;
+	}(_react2.default.Component);
+
+	exports.default = Dropper;
 
 /***/ }
 

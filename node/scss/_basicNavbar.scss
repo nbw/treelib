@@ -1,0 +1,47 @@
+$border-color: #AAA;
+
+.basicNavbar {
+	color: $base-font-color-lighter;
+	background-color: #EDEDED;
+	text-transform: uppercase;
+	ul {
+		padding: 0;
+		margin: 0;
+		background-color: #EDEDED;
+		li {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+			list-style: none;
+			height: 3rem;
+			padding: 3px 10px 3px 10px;
+			background-color: #EDEDED;
+			&:hover:not(.treelib) {
+				background-color: #DDDDDD;
+			}
+			&.treelib a {
+				padding-right: 10px;
+				font-size: 3rem;
+				color: #1a8cff;
+				&:hover{
+					color: #0073e6;
+				}
+			}
+
+		}
+	}
+	.navBorder {
+		display:inline-block;
+		width: 33.33%;
+		height: 3px;
+		&.first {
+			background-color: $family-color;
+		}
+		&.second {
+			background-color: $genus-color;
+		}
+		&.third {
+			background-color: $species-color;
+		}
+	}
+}

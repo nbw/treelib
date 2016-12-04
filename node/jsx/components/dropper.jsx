@@ -1,3 +1,5 @@
+import React, { PropTypes } from 'react'
+
 class Dropper extends React.Component {
     render() {
         var rows = [];
@@ -6,7 +8,7 @@ class Dropper extends React.Component {
         });
         return (
             <div className='question'>
-                <span className="title">{this.props.title}: </span>
+                <label className="title">{this.props.title}: </label>
                 <select onChange={this.props.handler} defaultValue={this.props.default}>
                     {rows}
                 </select>
@@ -14,3 +16,5 @@ class Dropper extends React.Component {
         );
     }
 }
+
+export default Dropper

@@ -1,21 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import AdminNavbar from './components/adminNavbar.jsx';
 import Inputer from './components/inputer.jsx';
 import Buttoner from './components/buttoner.jsx';
 import Dropper from './components/dropper.jsx';
-import Texter from './components/texter.jsx'
+import Texter from './components/texter.jsx';
 
 var pg = pageData;
-
-
-
 class App extends React.Component {
     constructor() {
         super();
         this.state = {
             title: pg.genus.name || "",
-            description: pg.genus.description || "",
+            description: pg.genus.descrip || "",
             family_id: pg.genus.family_id || pg.families[0].id || 0
         };
     }
@@ -29,7 +27,7 @@ class App extends React.Component {
             [name]: e.target.value // ES6 computed property
         });
     }
-    updateTheMotherShip(){
+    updateTheMotherShip() {
         fetch('/api/edit_genus', {
             method: 'POST',
             headers: {
@@ -38,7 +36,7 @@ class App extends React.Component {
             },
             body: JSON.stringify({
                 id: pg.genus.id || null,
-                name: this.state.title,
+                name: this.state.title.trim(),
                 descrip: this.state.description,
                 f_id: this.state.family_id
             })
@@ -90,6 +88,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <AdminNavbar />
                 <h1 className="mainTitle">{this.state.title || "New Genus"}</h1>
                 { pg.genus.id ? 
                     <Buttoner id="deleteButton" 

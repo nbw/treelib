@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>Family: <%= @page_data[:family][:name] %></title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/family_page.css">
+</head>
+<body>
+	<div class="mainContainer">
+        <div id="app"></div>
+    </div>
+    <script type="text/javascript">
+        window.pageData = <%= @page_data.to_json %>;
+    </script>
+	<script src="/js/autres.bundle.js"></script> 
+    <script src="/js/family_page.js"></script>
+</body>
+</html>

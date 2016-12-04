@@ -1,0 +1,29 @@
+@import "_photoViewer";
+
+.family {
+	> .title {
+		.main{ 
+			font-size:40pt;
+			font-weight: bold;
+			padding-right: 5px;
+		}
+		padding: 10px 0 10px 0;
+		margin-bottom: 10px;
+		border-bottom: 3px black solid;
+	}
+	.description { 
+		padding: 20px;
+	}
+	.photos {
+		img {
+			display:inline-block;
+			margin:5px;
+			&.selected {
+				box-sizing: border-box;
+			    -moz-box-sizing: border-box;
+			    -webkit-box-sizing: border-box;
+				border: 2px blue solid;
+			}
+		}
+	}
+}

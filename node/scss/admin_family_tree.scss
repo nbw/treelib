@@ -1,59 +1,80 @@
 @import "_admin_general";
 
-.family { 
-    // display:inline-block;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid #999;
-    .name { 
-        font-weight: bold;
-    }
-    -webkit-box-shadow: 0px 1px 15px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 1px 15px -2px rgba(0,0,0,0.75);
-    box-shadow: 0px 1px 15px -2px rgba(0,0,0,0.75);
+$border-color: #888;
+
+.subtitle {
+    font-weight: normal;
+    font-size: 10pt;
 }
 
-.generaWrapper {
-    width: 80%;
-}
-
-.genus { 
-    display:block;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid #999;
-    .name { 
-        font-weight: bold;
-    }
-    &:nth-child(3n+1) {
-        background-color: #ffffcc;
-    }
-    &:nth-child(3n+2) {
-        background-color: #ffe6ff;
-    }
-    &:nth-child(3n+3) {
-        background-color: #cce6ff;
-    }
-}
-
-.species {
-    display:inline-block;
-    width: 120px;
+.familyTable {
     text-align: center;
-    margin: 10px;
-    border: 1px solid #999;
+    font-size: 15pt;
+    font-weight: bold;
+    width: 100%;
+    border: 1px solid $border-color;
+    margin: 12px 0 12px 0;
+    tr td:first-child{
+        width: 200px;
+    }
+    background-color: #ffe6e6;
+}
+
+.genusTable, .speciesTable {
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    border-color: $border-color;
+    border-style: solid;
+    border-width: 1 0 1 1px;
+    margin: 7px 0 7px 0;
+    &:last-child {
+        border-width: 1px 0 1px 1px;
+    }
+}
+
+.genusTable {
+    &:nth-child(3n) {
+        background-color: #ccf2ff;
+    }
     &:nth-child(3n+1) {
-        background-color: #ffb3b3;
+        background-color: #b3ecff;
     }
     &:nth-child(3n+2) {
-        background-color: #99ff99;
-    }
-    &:nth-child(3n+3) {
-        background-color: #6699ff;
-    }
+        background-color: #99e6ff;
+    } 
+}
 
-    .name{
-        padding:10px;
+
+.speciesTable {
+    tr {
+        height: 50px;
+        td {
+            border-color: $border-color;
+            border-style: solid;
+            border-width: 0 0 1px 0;
+        }
     }
-    
+    tr:last-child td{
+        border-width: 0;
+    }
+    tr:nth-child(3n) {
+        background-color: #b3ffb3;
+    }
+    tr:nth-child(3n+1) {
+        background-color: #e6ffe6;
+    }
+    tr:nth-child(3n+2) {
+        background-color: #ccffcc;
+    }
+}
+
+.title {
+    text-align: center;
+}
+
+// Override
+#app > div {
+    height: auto;
+    padding-bottom: 25px;  
 }

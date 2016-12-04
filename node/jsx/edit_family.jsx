@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import AdminNavbar from './components/adminNavbar.jsx';
 import Inputer from './components/inputer.jsx';
 import Buttoner from './components/buttoner.jsx';
 import Texter from './components/texter.jsx'
@@ -35,7 +36,7 @@ class App extends React.Component {
             },
             body: JSON.stringify({
                 id: pg.family.id || null,
-                name: this.state.title,
+                name: this.state.title.trim(),
                 descrip: this.state.description
             })
         }).then(function(response) {
@@ -87,6 +88,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <AdminNavbar />
                 <h1 className="mainTitle">{this.state.title || "New Family"}</h1>
                 { pg.family.id ? 
                     <Buttoner id="deleteButton" 

@@ -10,6 +10,11 @@ module.exports = {
         admin_family_tree: "./jsx/admin_family_tree.jsx",
         admin_signup: "./jsx/admin_signup.jsx",
         login: "./jsx/login.jsx",
+        search: "./jsx/search.jsx",
+        species_page: "./jsx/species_page.jsx",
+        genus_page: "./jsx/genus_page.jsx",
+        family_page: "./jsx/family_page.jsx",
+        homepage: "./jsx/homepage.jsx",
         autres: ['react', 'react-dom'],
     },
     output: {

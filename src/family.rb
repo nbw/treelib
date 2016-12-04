@@ -10,7 +10,7 @@ class Family
         { 
             :id => @id,
             :name => @name,
-            :description => @descrip,
+            :descrip => @descrip,
             :genera => @genera.collect{|g| g.to_hash}.sort_by!{|g| g[:name].downcase}
         }
     end

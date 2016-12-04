@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import AdminNavbar from './components/adminNavbar.jsx';
 import Inputer from './components/inputer.jsx';
 import Buttoner from './components/buttoner.jsx';
 import Dropper from './components/dropper.jsx';
@@ -41,7 +42,7 @@ class App extends React.Component {
             },
             body: JSON.stringify({
                 id: pg.species.id || null,
-                name: this.state.title,
+                name: this.state.title.trim(),
                 descrip: this.state.description,
                 g_id: this.state.genus_id,
                 album_id: this.state.album_id || null,
@@ -93,44 +94,45 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <AdminNavbar />
                 <h1 className="mainTitle" >{this.state.title || "New Species"}</h1>
                 { pg.species.id ? 
                     <Buttoner id="deleteButton" 
                         callback={this.deleteMe.bind(this)}
-                        text="delete" />: null}
+                        text="delete" /> : null }
                 <hr />
                 <Inputer
                     id = "name"
                     title = "Name"
                     placeholder = "species"
                     text = {this.state.title}
-                    handler = {this.handleInputChange.bind(this, 'title')} />
+                    handler = {this.handleInputChange.bind(this, "title")} />
                 <Dropper
                     id = "genera"
                     title = "Genus"
                     default = {this.state.genus_id}
                     list = {pg.genera}
-                    handler = {this.handleInputChange.bind(this, 'genus_id')} />
+                    handler = {this.handleInputChange.bind(this, "genus_id")} />
                 <hr />
                 <Texter
                     id = "description" 
                     title = "Description"
                     placeholder = "enter description here"
                     text = {this.state.description}
-                    handler = {this.handleInputChange.bind(this, 'description')} />
+                    handler = {this.handleInputChange.bind(this, "description")} />
                 <hr />
                 <Dropper
                     id = "photoAlbum"
                     title = "Photo Album"
                     default = {this.state.album_id}
                     list = {pg.photo_albums}
-                    handler = {this.handleInputChange.bind(this, 'album_id')} />
+                    handler = {this.handleInputChange.bind(this, "album_id")} />
                 <PhotoArray
                     photos = {pg.species.photos} />
                 <hr />
                 <Linker
                     links = {this.state.links}
-                    handler = {this.update.bind(this, 'links')} />
+                    handler = {this.update.bind(this, "links")} />
                 <hr />
                 <Buttoner
                     id = "saveButton"

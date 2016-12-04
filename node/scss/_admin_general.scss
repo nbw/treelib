@@ -24,14 +24,17 @@ a {
         color:black;
     }
 }
-#app {
-    padding-top: 40px;
+#app{
+    > div {
+        height: 100%;
+        background-color: white;
+        margin: 0 50px 0 50px;
+        padding: 0px 50px 0 50px;
+    }
 }
 #adminNavbar {
     background-color: white;
     padding: 0 75px 0 75px;
-    width: 100%;
-    position: fixed;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     * {
         vertical-align: middle;
@@ -53,8 +56,18 @@ a {
     .title {
         padding: 0 20px 0 20px;
         font-size: 17pt;
-        color: #339933;
         font-weight: bold;
+        a {
+            color: #339933;
+        }
+    }
+    .refresh {
+        position:absolute;
+        top: 0.5em;
+        right: 6.5em;
+        &:hover{
+            font-weight: bold;
+        }
     }
 }
 #saveButton {
@@ -98,10 +111,8 @@ a {
 }
 
 .mainContainer {
+    background-color: #AAA;
     min-height:100%;
-    margin: 0 50px 0 50px;
-    padding: 0px 50px 50px 50px;
-    background-color: white;
 }
 .mainTitle {
     display: inline-block;

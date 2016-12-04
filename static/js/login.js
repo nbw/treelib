@@ -1,4 +1,4 @@
-webpackJsonp([6],{
+webpackJsonp([9],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
@@ -19,11 +19,11 @@ webpackJsonp([6],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _inputer = __webpack_require__(172);
+	var _inputer = __webpack_require__(173);
 
 	var _inputer2 = _interopRequireDefault(_inputer);
 
-	var _buttoner = __webpack_require__(173);
+	var _buttoner = __webpack_require__(174);
 
 	var _buttoner2 = _interopRequireDefault(_buttoner);
 
@@ -160,7 +160,7 @@ webpackJsonp([6],{
 
 /***/ },
 
-/***/ 172:
+/***/ 173:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -206,7 +206,7 @@ webpackJsonp([6],{
 	                'div',
 	                { id: this.props.id, className: 'question' },
 	                _react2.default.createElement(
-	                    'span',
+	                    'label',
 	                    { className: 'title' },
 	                    this.props.title,
 	                    ': '
@@ -234,7 +234,7 @@ webpackJsonp([6],{
 
 /***/ },
 
-/***/ 173:
+/***/ 174:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

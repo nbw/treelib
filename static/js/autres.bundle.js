@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"admin_family_tree","1":"admin_signup","3":"edit_family","4":"edit_genus","5":"edit_species","6":"login"}[chunkId]||chunkId) + ".js";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"admin_family_tree","1":"admin_signup","3":"edit_family","4":"edit_genus","5":"edit_species","6":"family_page","7":"genus_page","8":"homepage","9":"login","10":"search","11":"species_page"}[chunkId]||chunkId) + ".js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};

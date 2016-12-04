@@ -19,7 +19,7 @@ module Photos
             db_album_index = db_albums.find_index{|r| r["photoset_id"] == fa["id"]}
             if db_album_index && a = db_albums.delete_at(db_album_index)
                 # if not new, check if photoset has been modified
-                if a["last_updated"] != Time.at(fa["date_update"]).utc.strftime("%Y-%m-%d %H:%M:%S")
+                if a["last_updated"].strftime("%Y-%m-%d %H:%M:%S") != Time.at(fa["date_update"]).utc.strftime("%Y-%m-%d %H:%M:%S")
                     fa["album_id"] = a["id"]
                     modified_albums << fa
                 end 
@@ -40,6 +40,7 @@ module Photos
                 if db_photo_index && p = db_photos.delete_at(db_photo_index)
                     if p["secret"] != fp["secret"]
                         fp["photo_id"] = p["id"]
+                        fp["photoset_id"] = ma["id"]
                         modified_photos << fp
                     end
                 else
@@ -61,20 +62,20 @@ module Photos
         # update modified photos
         if !modified_photos.empty?
             q_modified_photos = modified_photos.collect do|p| 
-                q_p_id, q_p_farm, q_p_secret, q_p_server = SQLer.escape(p["photo_id"], p['farm'], p['secret'], p['server'])
-                "(#{q_p_id}, #{q_p_farm}, '#{q_p_secret}', #{q_p_server})"
+                q_p_id, q_flickr_id, q_photoset_id, q_p_farm, q_p_secret, q_p_server = SQLer.escape(p["photo_id"], p["id"], p["photoset_id"], p['farm'], p['secret'], p['server'])
+                "(#{q_p_id}, #{q_flickr_id}, #{q_photoset_id}, #{q_p_farm}, '#{q_p_secret}', #{q_p_server})"
             end.join(",\n")
             
-            q_update_photos = "INSERT INTO photos (id, farm, secret, server) VALUES\n" + 
+            q_update_photos = "INSERT INTO photos (id, flickr_id, photoset_id, farm, secret, server) VALUES\n" + 
                 q_modified_photos +
-                "\nON DUPLICATE KEY UPDATE id=VALUES(id),\nfarm=VALUES(farm),\nsecret=VALUES(secret),\nserver=VALUES(server)"
+                "\nON DUPLICATE KEY UPDATE id=VALUES(id),\nflickr_id=VALUES(flickr_id),\nphotoset_id=VALUES(photoset_id),\nfarm=VALUES(farm),\nsecret=VALUES(secret),\nserver=VALUES(server)"
 
         end
 
         #.......................
         # update modified photo_albums
         if !modified_albums.empty?
-            q_modified_albums_names = "name = CASE photoset_id\n" + modified_albums.collect{|ma| "WHEN #{ma["id"]} THEN '#{ma["title"]["_content"]}'"}.join("\n") + "\nEND,\n"
+            q_modified_albums_names = "name = CASE photoset_id\n" + modified_albums.collect{|ma| "WHEN #{ma["id"]} THEN '#{ma["title"]["_content"].gsub("'","''")}'"}.join("\n") + "\nEND,\n"
             q_modified_albums_dates = "last_updated = CASE photoset_id\n" + modified_albums.collect{|ma| "WHEN #{ma["id"]} THEN '#{Time.at(ma["date_update"]).utc.strftime("%Y-%m-%d %H:%M:%S")}'"}.join("\n") + "\nEND"
             q_update_photo_albums = "UPDATE photo_albums\nSET " + 
                 q_modified_albums_names + q_modified_albums_dates +

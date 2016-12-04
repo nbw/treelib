@@ -1,8 +1,10 @@
+import React, { PropTypes } from 'react'
+
 class Texter extends React.Component {
     render() {
         return (
             <div id={this.props.id} className='question'>
-                <span className="title">{this.props.title}: </span>
+                <label className="title">{this.props.title}: </label>
                 <textarea
                     value={this.props.text}
                     placeholder={this.props.placeholder}
@@ -12,3 +14,5 @@ class Texter extends React.Component {
         );
     }
 }
+
+export default Texter

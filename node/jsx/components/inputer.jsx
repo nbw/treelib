@@ -11,7 +11,7 @@ class Inputer extends React.Component {
     render() {
         return (
             <div id={this.props.id} className='question'>
-                <span className="title">{this.props.title}: </span>
+                <label className="title">{this.props.title}: </label>
                 <input type="text"
                     value={this.props.text}
                     placeholder={this.props.placeholder}
@@ -28,6 +28,5 @@ Inputer.propTypes = {
     placeholder: PropTypes.string.isRequired,
     handler: PropTypes.func.isRequired
 } 
-
 
 export default Inputer

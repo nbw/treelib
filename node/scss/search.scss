@@ -1,0 +1,194 @@
+@import "_basic";
+@import "_species";
+@import "_genus";
+@import "_family";
+
+body{
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+#app{
+	width:100%;
+	.mainContainer {
+		width:100%;
+		> * {
+			display:inline-block;
+			vertical-align: text-top;
+		}
+	}
+}
+
+.content {
+	position:fixed;
+	z-index: 0;
+	left: 30%;
+	width:70%;
+	height: 100%;
+	overflow-y: scroll;
+	> *:not(.default) {
+		&:not(.photoViewer) {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+	}
+	-webkit-transition: width 0.7s ease-out, left 0.7s ease-out, padding-top 0.7s ease-out; /* Safari */
+    transition:  width 0.7s ease-out, left 0.7s ease-out, padding-top 0.7s ease-out;
+}
+
+.default {
+	padding: 10% 0 0 10px;
+	height: 100%;
+	font-size: 2rem;
+	background: repeating-linear-gradient(
+	  45deg,
+	  rgba(0, 0, 0, 0.05),
+	  rgba(0, 0, 0, 0.05) 10px,
+	  rgba(0, 0, 0, 0.1) 10px,
+	  rgba(0, 0, 0, 0.1) 20px
+	)
+}
+
+.family {
+	.title{
+		border-color: $family-color;
+	}
+}
+.species {
+	.title{
+		border-color: $species-color;
+	}
+}
+.genus {
+	.title{
+		border-color: $genus-color;
+	}
+}
+
+
+$searchBar-background: fafafa;
+$searchBar-list-font-color: #555;
+$searchBar-list-font-color-selected: #111;
+.searchBar {
+	border-color: #666;
+	border-style: solid;
+	border-width: 0px 1px 1px 0;
+	z-index: 1;
+
+	position:fixed;
+	cursor: pointer;
+	overflow-y: hidden;
+
+	height: 100%;
+	width: 30%;
+	text-align:center;
+
+	background-color: $searchBar-background;
+
+	.title { 
+		border-bottom: 1px solid #777;
+		font-size: 2.2rem;
+		text-align: center;
+		height: 3rem;
+	}
+	.familyList, .generaList, .speciesList {
+		display: inline-block;
+		vertical-align: text-top;
+		width: 33%;
+		&:not(:last-child){
+			border-color: #AAA;
+			border-style: solid;
+			border-width: 0 1px 0 0;
+		}
+		.subtitle {
+			text-align: center;
+			background-color: white;
+			width: 100%;
+		}
+	}
+	ul {
+		padding: 0;
+		margin: 0;
+		height: 100%;
+		overflow-y: scroll;
+		li {
+			word-wrap: break-word;
+			-webkit-hyphens: auto;
+		   -moz-hyphens: auto;
+		    -ms-hyphens: auto;
+		        hyphens: auto;
+			list-style-type: none;
+			color: $searchBar-list-font-color;
+			padding: 5px 5px 5px 5px;
+
+			&:hover {
+				color: $searchBar-list-font-color-selected;
+			}
+			&.selected {
+				color: $searchBar-list-font-color-selected;
+				background-color: white;
+				font-weight: bold;
+				border-color: #AAA;
+				border-style: solid;
+				border-width: 1px 0px 1px 0px;
+				&:first-child{
+					border-width: 0px 0px 1px 0px;
+				}
+			}
+		}
+	}
+	.familyList {
+		.subtitle{
+			border-bottom: 3px solid $family-color;
+		}
+	}
+	.generaList {
+		.subtitle{
+			border-bottom: 3px solid $genus-color;
+		}
+	}
+	.speciesList {
+		.subtitle{
+			border-bottom: 3px solid $species-color;
+		}
+	}
+	.fake {
+		color: #CCC;
+	}
+	.closeButton {
+		font-size: 1.5rem;
+		position:absolute;
+		top: 0.5em;
+		right: 0.5em;
+		color: #8a9ca8;
+		&:hover{
+			color: $base-font-color-lighter;
+		}
+		&:after{
+			content: " HIDE";
+		}
+	}
+	-webkit-transition: width 0.7s ease-out, height 0.5s ease-out; /* Safari */
+    transition:  width 0.7s ease-out, height 0.5s ease-out;
+}
+
+.hidden {
+		&.searchBar {
+			width: 20%;
+			height: 3rem;
+			
+			.closeButton {
+				&:after{
+					content: "";
+				}
+				&:before{
+					content: "SHOW ";
+				}
+			}
+		}		
+		&.content {
+			left: 0%;
+			width: 100%;
+			&:not(> .default) { padding-top: 2.2rem;}
+		}
+	}
