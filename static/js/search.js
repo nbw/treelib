@@ -19,19 +19,19 @@ webpackJsonp([10],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _family = __webpack_require__(177);
+	var _family = __webpack_require__(179);
 
 	var _family2 = _interopRequireDefault(_family);
 
-	var _genus = __webpack_require__(179);
+	var _genus = __webpack_require__(181);
 
 	var _genus2 = _interopRequireDefault(_genus);
 
-	var _species = __webpack_require__(184);
+	var _species = __webpack_require__(185);
 
 	var _species2 = _interopRequireDefault(_species);
 
-	var _searchSidebar = __webpack_require__(185);
+	var _searchSidebar = __webpack_require__(186);
 
 	var _searchSidebar2 = _interopRequireDefault(_searchSidebar);
 
@@ -210,7 +210,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 177:
+/***/ 179:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -229,7 +229,7 @@ webpackJsonp([10],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _photoViewer = __webpack_require__(178);
+	var _photoViewer = __webpack_require__(180);
 
 	var _photoViewer2 = _interopRequireDefault(_photoViewer);
 
@@ -356,7 +356,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 178:
+/***/ 180:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -395,6 +395,7 @@ webpackJsonp([10],{
 	    _createClass(PhotoViewer, [{
 	        key: 'render',
 	        value: function render() {
+	            var hidden = true;
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'photoViewer' },
@@ -442,6 +443,25 @@ webpackJsonp([10],{
 	                        _react2.default.createElement('i', { className: 'fa fa-angle-double-right fa-2x' })
 	                    )
 	                ),
+	                hidden ? null : _react2.default.createElement(
+	                    'div',
+	                    { className: 'content' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'title' },
+	                        'Title'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'description' },
+	                        'Temporary description of photo'
+	                    ),
+	                    _react2.default.createElement(
+	                        'a',
+	                        { className: 'fullimage', href: this.props.original },
+	                        'Link to full image'
+	                    )
+	                ),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'closeButton', onClick: this.props.closeCallback },
@@ -459,7 +479,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 179:
+/***/ 181:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -478,7 +498,7 @@ webpackJsonp([10],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _photoViewer = __webpack_require__(178);
+	var _photoViewer = __webpack_require__(180);
 
 	var _photoViewer2 = _interopRequireDefault(_photoViewer);
 
@@ -605,7 +625,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 184:
+/***/ 185:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -624,7 +644,7 @@ webpackJsonp([10],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _photoViewer = __webpack_require__(178);
+	var _photoViewer = __webpack_require__(180);
 
 	var _photoViewer2 = _interopRequireDefault(_photoViewer);
 
@@ -771,7 +791,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 185:
+/***/ 186:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

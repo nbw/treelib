@@ -13,7 +13,7 @@ class App extends React.Component {
         super();
         this.state = {
             title: pg.family.name || "",
-            description: pg.family.description || "",
+            description: pg.family.descrip || "",
         };
     }
     update(name, value) {

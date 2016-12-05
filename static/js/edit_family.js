@@ -31,7 +31,7 @@ webpackJsonp([3],{
 
 	var _buttoner2 = _interopRequireDefault(_buttoner);
 
-	var _texter = __webpack_require__(175);
+	var _texter = __webpack_require__(176);
 
 	var _texter2 = _interopRequireDefault(_texter);
 
@@ -57,7 +57,7 @@ webpackJsonp([3],{
 
 	        _this.state = {
 	            title: pg.family.name || "",
-	            description: pg.family.description || ""
+	            description: pg.family.descrip || ""
 	        };
 	        return _this;
 	    }
@@ -441,7 +441,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 175:
+/***/ 176:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

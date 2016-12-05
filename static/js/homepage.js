@@ -19,19 +19,19 @@ webpackJsonp([8],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _BasicNavbar = __webpack_require__(180);
+	var _BasicNavbar = __webpack_require__(178);
 
 	var _BasicNavbar2 = _interopRequireDefault(_BasicNavbar);
 
-	var _home = __webpack_require__(181);
+	var _home = __webpack_require__(182);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _about = __webpack_require__(182);
+	var _about = __webpack_require__(183);
 
 	var _about2 = _interopRequireDefault(_about);
 
-	var _contact = __webpack_require__(183);
+	var _contact = __webpack_require__(184);
 
 	var _contact2 = _interopRequireDefault(_contact);
 
@@ -97,7 +97,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 180:
+/***/ 178:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -195,7 +195,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 181:
+/***/ 182:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -336,7 +336,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 182:
+/***/ 183:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -511,7 +511,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 183:
+/***/ 184:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

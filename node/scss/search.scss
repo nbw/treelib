@@ -32,11 +32,11 @@ body{
 			margin-right: 10px;
 		}
 	}
-	-webkit-transition: width 0.7s ease-out, left 0.7s ease-out; /* Safari */
-    transition:  width 0.7s ease-out, left 0.7s ease-out;
+	-webkit-transition: width 0.25s ease-out, left 0.25s ease-out; /* Safari */
+    transition:  width 0.25 ease-out, left 0.25s ease-out;
     > * {
-    	-webkit-transition: padding-top 0.7s ease-out;
-    	transition: padding-top 0.7s ease-out;
+    	-webkit-transition: padding-top 0.33s ease-out;
+    	transition: padding-top 0.33s ease-out;
     }
 }
 
@@ -174,8 +174,8 @@ $searchBar-list-font-color-selected: #111;
 			content: " HIDE";
 		}
 	}
-	-webkit-transition: width 0.7s ease-out, height 0.5s ease-out; /* Safari */
-    transition:  width 0.7s ease-out, height 0.5s ease-out;
+	-webkit-transition: width 0.33s ease-out, height 0.2s ease-out; /* Safari */
+    transition:  width 0.33s ease-out, height 0.2s ease-out;
 }
 
 .hidden {
