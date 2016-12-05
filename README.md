@@ -1,6 +1,8 @@
 <h1>Treelib</h1>
 <p>A collection of high-quality tree photographs for educators, students and lay persons.</p>
-
+<p style="text-align=center;">
+<a href="http://treelib.nathanwillson.com">Live demo!</a>
+</p>
 <p>Uses Flickr API for photo hosting.</p>
 
 <h2>Tech Stack</h2>
@@ -11,7 +13,9 @@
 <li>SASS</li>
 <li>HTML</li>
 </ul>
+
 </hr>
+
 <h3>Front Facing Pages</h3>
 <ul>
 <li>Species search</li>
@@ -20,7 +24,9 @@
 </ul>
 ![front_1](/screenshots/ss2.png?raw=true)
 ![front_2](/screenshots/ss3.png?raw=true)
+
 </hr>
+
 <h3>Admin pages:</h3>
 <ul>
 <li>Create/Edit Species (includes photos from Flickr)</li>
