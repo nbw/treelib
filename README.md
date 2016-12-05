@@ -1,7 +1,7 @@
 <h1>Treelib</h1>
 <p>A collection of high-quality tree photographs for educators, students and lay persons.</p>
 <p style="text-align=center;">
-<a href="http://treelib.nathanwillson.com">Live demo!</a>
+<a href="http://treelib.nathanwillson.com">Click here for a live demo!</a>
 </p>
 <p>Uses Flickr API for photo hosting.</p>
 
