@@ -1,4 +1,4 @@
-
+<h1>Treelib</h1>
 <p>A collection of high-quality tree photographs for educators, students and lay persons.</p>
 
 <p>Uses Flickr API for photo hosting.</p>
