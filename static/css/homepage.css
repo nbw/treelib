@@ -2381,6 +2381,15 @@ a {
       background-color: #57D084; }
     .basicNavbar .navBorder.third {
       background-color: #54A1BF; }
+  @media screen and (max-width: 640px) {
+    .basicNavbar ul li {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      display: inline-block;
+      width: 100%;
+      font-size: 2rem; }
+      .basicNavbar ul li:not(:last-child) {
+        border-bottom: 1px solid #AAA; } }
 
 .section {
   border: 1px solid #AAA;
@@ -2509,3 +2518,17 @@ a {
     max-width: 750px;
     width: 100%;
     text-align: center; }
+
+@media screen and (max-width: 640px) {
+  .homePage .banner, .contactPage, .aboutPage {
+    background-size: auto;
+    background-position: center top; }
+  .aboutPage .banner {
+    background-image: url("/img/thuja.jpg");
+    background-size: auto;
+    background-position: center; }
+    .aboutPage .banner:first-child {
+      height: 1000px;
+      background-image: url("/img/cogyria-1.jpg"); }
+    .aboutPage .banner:nth-child(2) {
+      background-image: url("/img/cogyria-2.jpg"); } }

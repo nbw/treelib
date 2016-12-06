@@ -65,4 +65,35 @@
 		top: 1em;
 		right: 1em;
 	}
+	@media screen and (max-width: $break-medium) {
+		padding: 0;
+		.image {
+			.imageWrapper {
+				width: auto;
+				height: auto;
+				margin: 0;
+				.imageInnerWrapper .photoButtons {
+					display: none;
+				}
+				img {
+					width: 100%;
+				}
+			}
+			.next, .prev {
+				position:absolute;
+				bottom: 1em;	
+				font-size: 3rem;			
+			}
+			.next {
+				left: 75%;
+			}
+			.prev {
+				left: 25%;
+			}
+		}
+		.closeButton {
+			font-size: 2.5rem;
+		}
+	}
+
 }

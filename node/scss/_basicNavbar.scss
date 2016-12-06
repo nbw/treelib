@@ -44,4 +44,19 @@ $border-color: #AAA;
 			background-color: $species-color;
 		}
 	}
+	@media screen and (max-width: $break-medium) {
+	 	ul {
+	 		li {
+	 			padding-top: 5px;
+	 			padding-bottom: 5px;
+	 			display:inline-block;
+	 			width: 100%;
+	 			font-size: 2rem;
+	 			&:not(:last-child){
+	 				border-bottom: 1px solid #AAA;
+	 			}
+	 		}
+	 	}
+	 
+	 }
 }

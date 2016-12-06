@@ -2400,6 +2400,27 @@ a {
     position: absolute;
     top: 1em;
     right: 1em; }
+  @media screen and (max-width: 640px) {
+    .photoViewer {
+      padding: 0; }
+      .photoViewer .image .imageWrapper {
+        width: auto;
+        height: auto;
+        margin: 0; }
+        .photoViewer .image .imageWrapper .imageInnerWrapper .photoButtons {
+          display: none; }
+        .photoViewer .image .imageWrapper img {
+          width: 100%; }
+      .photoViewer .image .next, .photoViewer .image .prev {
+        position: absolute;
+        bottom: 1em;
+        font-size: 3rem; }
+      .photoViewer .image .next {
+        left: 75%; }
+      .photoViewer .image .prev {
+        left: 25%; }
+      .photoViewer .closeButton {
+        font-size: 2.5rem; } }
 
 .species > .title {
   padding: 10px 0 10px 0;
@@ -2456,6 +2477,15 @@ a {
       background-color: #57D084; }
     .basicNavbar .navBorder.third {
       background-color: #54A1BF; }
+  @media screen and (max-width: 640px) {
+    .basicNavbar ul li {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      display: inline-block;
+      width: 100%;
+      font-size: 2rem; }
+      .basicNavbar ul li:not(:last-child) {
+        border-bottom: 1px solid #AAA; } }
 
 .mainContainer .species {
   padding: 10px; }

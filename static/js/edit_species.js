@@ -91,6 +91,7 @@ webpackJsonp([5],{
 
 	            fetch('/api/edit_species', {
 	                method: 'POST',
+	                credentials: 'same-origin',
 	                headers: {
 	                    'Accept': 'application/json',
 	                    'Content-Type': 'application/json'
@@ -123,6 +124,7 @@ webpackJsonp([5],{
 	            if (r == true) {
 	                fetch('/api/delete_species', {
 	                    method: 'POST',
+	                    credentials: 'same-origin',
 	                    headers: {
 	                        'Accept': 'application/json',
 	                        'Content-Type': 'application/json'

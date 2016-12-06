@@ -36,6 +36,7 @@ class App extends React.Component {
 
         fetch('/api/edit_species', {
             method: 'POST',
+            credentials: 'same-origin',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -68,6 +69,7 @@ class App extends React.Component {
         if (r == true) {
             fetch('/api/delete_species', {
                 method: 'POST',
+                credentials: 'same-origin',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
