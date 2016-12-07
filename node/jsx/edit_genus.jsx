@@ -6,6 +6,7 @@ import Inputer from './components/inputer.jsx';
 import Buttoner from './components/buttoner.jsx';
 import Dropper from './components/dropper.jsx';
 import Texter from './components/texter.jsx';
+import Markup from './components/markup.jsx';
 
 var pg = pageData;
 class App extends React.Component {
@@ -114,7 +115,7 @@ class App extends React.Component {
                     placeholder = "enter description here"
                     text = {this.state.description}
                     handler = {this.handleInputChange.bind(this, 'description')} />
-
+                <Markup />
                 <hr />
                 <Buttoner
                     id = "saveButton"

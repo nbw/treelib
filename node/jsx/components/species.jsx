@@ -31,6 +31,9 @@ class Species extends React.Component {
     closePhotoviewer(){
             this.update("selectedPhotoIndex", null);
     }
+    createMarkup(s) {
+        return {__html: s};
+    }
 
     render() {
         var self = this,
@@ -54,7 +57,7 @@ class Species extends React.Component {
                     <label className="secondary">species</label>
                 </div>
                 <div className="description">
-                    {s.descrip}
+                    <div dangerouslySetInnerHTML={this.createMarkup(s.descrip)}></div>
                 </div>
                 <div className="links">
                     <ul>

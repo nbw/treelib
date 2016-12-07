@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import PhotoViewer from './photoViewer.jsx';
 
 class Family extends React.Component {
-constructor() {
+    constructor() {
         super();
         this.state = {
             selectedPhotoIndex: null
@@ -31,7 +31,9 @@ constructor() {
     closePhotoviewer(){
             this.update("selectedPhotoIndex", null);
     }
-
+    createMarkup(s) {
+        return {__html: s};
+    }
     render() {
         var self = this,
             f = this.props.family,
@@ -51,7 +53,7 @@ constructor() {
                     <label className="secondary">family</label>
                 </div>
                 <div className="description">
-                    {f.descrip}
+                    <div dangerouslySetInnerHTML={this.createMarkup(f.descrip)}></div>
                 </div>
                 { (selectedPhoto != null) ? 
                     <PhotoViewer 

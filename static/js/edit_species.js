@@ -39,6 +39,10 @@ webpackJsonp([5],{
 
 	var _texter2 = _interopRequireDefault(_texter);
 
+	var _markup = __webpack_require__(187);
+
+	var _markup2 = _interopRequireDefault(_markup);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -181,6 +185,7 @@ webpackJsonp([5],{
 	                    placeholder: 'enter description here',
 	                    text: this.state.description,
 	                    handler: this.handleInputChange.bind(this, "description") }),
+	                _react2.default.createElement(_markup2.default, null),
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(_dropper2.default, {
 	                    id: 'photoAlbum',
@@ -837,6 +842,201 @@ webpackJsonp([5],{
 	}(_react2.default.Component);
 
 	exports.default = Dropper;
+
+/***/ },
+
+/***/ 187:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Markup = function (_React$Component) {
+	    _inherits(Markup, _React$Component);
+
+	    function Markup() {
+	        _classCallCheck(this, Markup);
+
+	        return _possibleConstructorReturn(this, (Markup.__proto__ || Object.getPrototypeOf(Markup)).apply(this, arguments));
+	    }
+
+	    _createClass(Markup, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                { className: "markup" },
+	                _react2.default.createElement(
+	                    "table",
+	                    null,
+	                    _react2.default.createElement(
+	                        "thead",
+	                        null,
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "HTML"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Function"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Example"
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        "tbody",
+	                        null,
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "<p>...</p>"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "Paragraph"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                _react2.default.createElement(
+	                                    "p",
+	                                    null,
+	                                    "This is what a paragraph looks like. "
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "<b>...</b>"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "Bold"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                _react2.default.createElement(
+	                                    "b",
+	                                    null,
+	                                    "This is bold."
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "<i>...</i>"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "Italic"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                _react2.default.createElement(
+	                                    "p",
+	                                    null,
+	                                    "Italicized text"
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "<u>...</u>"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "Underlined"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                _react2.default.createElement(
+	                                    "u",
+	                                    null,
+	                                    "This text is underlined."
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "<a href='[link]'>...</a>"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "Link"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                _react2.default.createElement(
+	                                    "a",
+	                                    { href: "http://google.ca" },
+	                                    "This is a link for google."
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Markup;
+	}(_react2.default.Component);
+
+	exports.default = Markup;
 
 /***/ }
 

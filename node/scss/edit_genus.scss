@@ -1,19 +1,5 @@
 @import "_admin_general";
 
-#description {
-    .title {
-        vertical-align: top;
-        padding-top: 5px;
-    }
-    textarea {
-        padding: 5px;
-        width: 500px;
-        height: 100px;
-        resize: none;
-        outline: none;
-        border-color: #CCC;
-    }   
-}
 #name, #genera{
     display: inline-block;
 }

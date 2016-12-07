@@ -124,7 +124,7 @@ webpackJsonp([6],{
 	                        _react2.default.createElement(
 	                            'a',
 	                            { href: '/' },
-	                            _react2.default.createElement('img', { src: 'img/logo.png' }),
+	                            _react2.default.createElement('img', { src: '/img/logo.png' }),
 	                            _react2.default.createElement(
 	                                'label',
 	                                null,
@@ -249,6 +249,11 @@ webpackJsonp([6],{
 	            this.update("selectedPhotoIndex", null);
 	        }
 	    }, {
+	        key: 'createMarkup',
+	        value: function createMarkup(s) {
+	            return { __html: s };
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
@@ -290,7 +295,7 @@ webpackJsonp([6],{
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'description' },
-	                    f.descrip
+	                    _react2.default.createElement('div', { dangerouslySetInnerHTML: this.createMarkup(f.descrip) })
 	                ),
 	                selectedPhoto != null ? _react2.default.createElement(_photoViewer2.default, {
 	                    nextCallback: function nextCallback() {

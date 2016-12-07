@@ -106,7 +106,7 @@ class SearchSidebar extends React.Component {
 
         return (
             <div id={this.props.id}　className={ hidden ? "searchbar hidden" : "searchbar"} >
-            	<div className="title"><a href="/"><img src="img/logo.png"></img><label>TreeLib</label></a></div>
+            	<div className="title"><a href="/"><img src="/img/logo.png"></img><label>TreeLib</label></a></div>
                 <div className="closeButton"onClick={(event) => self.hideSidebar(event)}>
                     { hidden ? 
                         <i className="fa fa-angle-right"></i> : 

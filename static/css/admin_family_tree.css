@@ -86,6 +86,22 @@ a {
     color: #4d4e53;
     border: 1px solid rgba(0, 0, 0, 0.7); }
 
+#description {
+  vertical-align: middle;
+  display: inline-block;
+  width: 70%; }
+  #description .title {
+    vertical-align: top;
+    padding-top: 5px; }
+  #description textarea {
+    padding: 5px;
+    width: 96%;
+    margin: 2% 2% 0 2%;
+    height: 20em;
+    resize: none;
+    outline: none;
+    border-color: #CCC; }
+
 .mainContainer {
   background-color: #AAA;
   min-height: 100%; }
@@ -122,6 +138,19 @@ a {
 .resetList {
   padding: 0;
   list-style: none; }
+
+.markup {
+  vertical-align: middle;
+  display: inline-block;
+  width: 30%; }
+  .markup table {
+    font-size: .7em;
+    border-collapse: collapse; }
+    .markup table td {
+      border: 1px solid #CCC;
+      padding: 0.5rem; }
+    .markup table th:not(:last-child) {
+      border-right: 1px dotted #CCC; }
 
 .subtitle {
   font-weight: normal;

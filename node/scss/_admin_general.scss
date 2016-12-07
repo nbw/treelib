@@ -1,4 +1,5 @@
 $font-primary-color: rgb(77, 78, 83);
+$textbox-width: 70%;
 
 body {
     background-color: #AAA;
@@ -110,6 +111,25 @@ a {
     }
 }
 
+#description {
+    vertical-align: middle;
+    display: inline-block;
+    width: $textbox-width;
+    .title {
+        vertical-align: top;
+        padding-top: 5px;
+    }
+    textarea {
+        padding: 5px;
+        width: 96%;
+        margin: 2% 2% 0 2%;
+        height: 20em;
+        resize: none;
+        outline: none;
+        border-color: #CCC;
+    }   
+}
+
 .mainContainer {
     background-color: #AAA;
     min-height:100%;
@@ -151,5 +171,21 @@ a {
 .resetList{
     padding: 0;
     list-style:none;
+}
+.markup {
+    vertical-align: middle;
+    display: inline-block;
+    width: 100% - $textbox-width;
+    table {
+        font-size: .7em;
+        border-collapse: collapse;
+        td {
+            border: 1px solid #CCC;
+            padding: 0.5rem;
+        }
+        th:not(:last-child) {
+            border-right: 1px dotted #CCC;
+        }
+    }
 }
 
