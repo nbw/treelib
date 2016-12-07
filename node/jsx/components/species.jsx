@@ -50,7 +50,7 @@ class Species extends React.Component {
         return (
             <div className="species">
                 <div className="title">
-                    <a href={'/species/' + s.name.replace(/ /g,'_')}><label className="main">{s.name}</label></a>
+                    <a href={'/species/' + s.name.replace(/ /g,'_')}><label className="main">{s.genus_name} <span className="speciesTitle">{s.name}</span></label></a>
                     <label className="secondary">species</label>
                 </div>
                 <div className="description">

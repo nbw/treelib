@@ -150,7 +150,12 @@ webpackJsonp([8],{
 	                        _react2.default.createElement(
 	                            'a',
 	                            { href: '/' },
-	                            'Treelib'
+	                            _react2.default.createElement('img', { src: 'img/logo.png' }),
+	                            _react2.default.createElement(
+	                                'label',
+	                                null,
+	                                'TreeLib'
+	                            )
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -266,17 +271,25 @@ webpackJsonp([8],{
 	                        _react2.default.createElement(
 	                            'b',
 	                            null,
-	                            'Treelib'
+	                            'TreeLib'
 	                        ),
 	                        ' is yours all in one spot.'
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'photoBanner' },
-	                        _react2.default.createElement('img', { src: 'img/homepage-banner/5.jpg' }),
-	                        _react2.default.createElement('img', { src: 'img/homepage-banner/6.jpg' }),
-	                        _react2.default.createElement('img', { src: 'img/homepage-banner/7.jpg' }),
-	                        _react2.default.createElement('img', { src: 'img/homepage-banner/8.jpg' })
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement('img', { src: 'img/homepage-banner/5.jpg' }),
+	                            _react2.default.createElement('img', { src: 'img/homepage-banner/6.jpg' })
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement('img', { src: 'img/homepage-banner/7.jpg' }),
+	                            _react2.default.createElement('img', { src: 'img/homepage-banner/8.jpg' })
+	                        )
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -318,7 +331,7 @@ webpackJsonp([8],{
 	                            _react2.default.createElement(
 	                                'b',
 	                                null,
-	                                'Treelib'
+	                                'TreeLib'
 	                            ),
 	                            ' is for educational purposes'
 	                        ),

@@ -2356,6 +2356,7 @@ a {
     margin: 0;
     background-color: #EDEDED; }
     .basicNavbar ul li {
+      cursor: pointer;
       display: table-cell;
       vertical-align: middle;
       text-align: center;
@@ -2365,12 +2366,20 @@ a {
       background-color: #EDEDED; }
       .basicNavbar ul li:hover:not(.treelib) {
         background-color: #DDDDDD; }
-      .basicNavbar ul li.treelib a {
-        padding-right: 10px;
-        font-size: 3rem;
-        color: #1a8cff; }
-        .basicNavbar ul li.treelib a:hover {
-          color: #0073e6; }
+      .basicNavbar ul li.treelib {
+        cursor: pointer; }
+        .basicNavbar ul li.treelib a {
+          padding-right: 10px;
+          font-size: 3rem;
+          color: #00a651; }
+          .basicNavbar ul li.treelib a:hover {
+            color: #00803e; }
+          .basicNavbar ul li.treelib a * {
+            vertical-align: middle;
+            cursor: pointer; }
+          .basicNavbar ul li.treelib a img {
+            height: 2.8rem;
+            padding-right: 0.5rem; }
   .basicNavbar .navBorder {
     display: inline-block;
     width: 33.33%;
@@ -2402,7 +2411,6 @@ a {
 .homePage .banner {
   min-height: 250px;
   font-size: 2.8rem;
-  cursor: pointer;
   position: relative;
   background-repeat: no-repeat;
   background-position: left top;
@@ -2430,6 +2438,7 @@ a {
     color: white; }
 
 .homePage .searchButton {
+  cursor: pointer;
   text-align: center;
   margin-top: 1.2em; }
   .homePage .searchButton a {
@@ -2441,6 +2450,8 @@ a {
 
 .homePage .photoBanner {
   text-align: center; }
+  .homePage .photoBanner > div {
+    display: inline-block; }
   .homePage .photoBanner img {
     display: inline-block;
     margin: 10px;
@@ -2520,7 +2531,13 @@ a {
     text-align: center; }
 
 @media screen and (max-width: 640px) {
-  .homePage .banner, .contactPage, .aboutPage {
+  .homePage .banner {
+    background-size: auto;
+    background-position: center top; }
+    .homePage .banner .innerBanner {
+      height: 90%;
+      padding: 3% 3% 3% 3%; }
+  .contactPage, .aboutPage {
     background-size: auto;
     background-position: center top; }
   .aboutPage .banner {

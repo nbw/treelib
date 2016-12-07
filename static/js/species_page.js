@@ -124,7 +124,12 @@ webpackJsonp([11],{
 	                        _react2.default.createElement(
 	                            'a',
 	                            { href: '/' },
-	                            'Treelib'
+	                            _react2.default.createElement('img', { src: 'img/logo.png' }),
+	                            _react2.default.createElement(
+	                                'label',
+	                                null,
+	                                'TreeLib'
+	                            )
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -407,7 +412,13 @@ webpackJsonp([11],{
 	                        _react2.default.createElement(
 	                            'label',
 	                            { className: 'main' },
-	                            s.name
+	                            s.genus_name,
+	                            ' ',
+	                            _react2.default.createElement(
+	                                'span',
+	                                { className: 'speciesTitle' },
+	                                s.name
+	                            )
 	                        )
 	                    ),
 	                    _react2.default.createElement(

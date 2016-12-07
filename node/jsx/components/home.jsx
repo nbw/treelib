@@ -17,13 +17,16 @@ class Home extends React.Component {
                 </div>
                 <div className="section">
                 	<p>
-                		This site is for students, professors, laymen, artists, naturalists – anyone studying trees or who just appreciates their beauty.  Need more pictures for a dendrology class, or to make your own collection, or to add background to a new website? <b>Treelib</b> is yours all in one spot.
+                		This site is for students, professors, laymen, artists, naturalists – anyone studying trees or who just appreciates their beauty.  Need more pictures for a dendrology class, or to make your own collection, or to add background to a new website? <b>TreeLib</b> is yours all in one spot.
                 	</p>
                     <div className="photoBanner">
-                        <img src="img/homepage-banner/5.jpg" />
-                        <img src="img/homepage-banner/6.jpg" />
-                        <img src="img/homepage-banner/7.jpg" />
-                        <img src="img/homepage-banner/8.jpg" />
+                        <div>
+                            <img src="img/homepage-banner/5.jpg" />
+                            <img src="img/homepage-banner/6.jpg" />
+                        </div><div>
+                            <img src="img/homepage-banner/7.jpg" />
+                            <img src="img/homepage-banner/8.jpg" />
+                        </div>
                     </div>
                 </div>
                 <div className="banner">
@@ -45,7 +48,7 @@ class Home extends React.Component {
                         <img src="img/homepage-banner/2.jpg" />
                     </div>
                    <p>
-                        <u><b>Treelib</b> is for educational purposes</u> to complement many excellent sources of technical information on trees, providing over 7,000 high quality pictures of many aspects of species.  Photos available through the site are to be used for study and educational purposes only.  Copying them and using them for commercial purposes is not permitted without specific written permission from the author.
+                        <u><b>TreeLib</b> is for educational purposes</u> to complement many excellent sources of technical information on trees, providing over 7,000 high quality pictures of many aspects of species.  Photos available through the site are to be used for study and educational purposes only.  Copying them and using them for commercial purposes is not permitted without specific written permission from the author.
                     </p>
                 </div>
             </div>

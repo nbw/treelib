@@ -4,8 +4,10 @@
 	> .title {
 		.main{ 
 			font-size:40pt;
-			font-weight: bold;
 			padding-right: 5px;
+			.speciesTitle {
+				font-weight: bold;
+			}
 		}
 		padding: 10px 0 10px 0;
 		margin-bottom: 10px;

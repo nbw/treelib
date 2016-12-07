@@ -562,6 +562,19 @@ webpackJsonp([10],{
 	                g = this.props.genus,
 	                selectedPhoto = this.state.selectedPhotoIndex,
 	                thumbs = [];
+
+	            var species = g.species.map(function (s) {
+	                return _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: "/species/" + s.name },
+	                        s.name
+	                    )
+	                );
+	            });
+
 	            g.photos.forEach(function (link, index) {
 	                if (index == selectedPhoto) {
 	                    thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, className: 'selected' }));
@@ -594,8 +607,26 @@ webpackJsonp([10],{
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'description' },
-	                    g.descrip
+	                    { className: 'textContent' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'description' },
+	                        g.descrip
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'species' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { className: 'speciesTitle' },
+	                            'Species'
+	                        ),
+	                        _react2.default.createElement(
+	                            'ul',
+	                            null,
+	                            species
+	                        )
+	                    )
 	                ),
 	                selectedPhoto != null ? _react2.default.createElement(_photoViewer2.default, {
 	                    nextCallback: function nextCallback() {
@@ -740,7 +771,13 @@ webpackJsonp([10],{
 	                        _react2.default.createElement(
 	                            'label',
 	                            { className: 'main' },
-	                            s.name
+	                            s.genus_name,
+	                            ' ',
+	                            _react2.default.createElement(
+	                                'span',
+	                                { className: 'speciesTitle' },
+	                                s.name
+	                            )
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -974,7 +1011,12 @@ webpackJsonp([10],{
 	                    _react2.default.createElement(
 	                        'a',
 	                        { href: '/' },
-	                        'Treelib'
+	                        _react2.default.createElement('img', { src: 'img/logo.png' }),
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'TreeLib'
+	                        )
 	                    )
 	                ),
 	                _react2.default.createElement(

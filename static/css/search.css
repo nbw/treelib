@@ -2428,8 +2428,9 @@ a {
   border-bottom: 3px black solid; }
   .species > .title .main {
     font-size: 40pt;
-    font-weight: bold;
     padding-right: 5px; }
+    .species > .title .main .speciesTitle {
+      font-weight: bold; }
 
 .species .description {
   padding: 20px; }
@@ -2527,8 +2528,25 @@ a {
     font-weight: bold;
     padding-right: 5px; }
 
-.genus .description {
+.genus .textContent {
   padding: 20px; }
+  .genus .textContent > * {
+    display: inline-block;
+    vertical-align: text-top; }
+  .genus .textContent .description {
+    display: inline-block;
+    width: 68%;
+    padding-right: 2%; }
+  .genus .textContent .species {
+    border-left: 1px solid #AAA;
+    width: 27%;
+    padding-left: 2%; }
+    .genus .textContent .species .speciesTitle {
+      font-weight: bold; }
+    .genus .textContent .species ul {
+      padding-left: 20px; }
+      .genus .textContent .species ul li {
+        list-style-type: circle; }
 
 .genus .photos img {
   display: inline-block;
@@ -2651,8 +2669,8 @@ body {
 .content {
   position: fixed;
   z-index: 0;
-  left: 30%;
-  width: 70%;
+  left: 35%;
+  width: 65%;
   height: 100%;
   overflow-y: scroll;
   -webkit-transition: width 0.25s ease-out, left 0.25s ease-out;
@@ -2690,17 +2708,28 @@ body {
   cursor: pointer;
   overflow-y: hidden;
   height: 100%;
-  width: 30%;
+  width: 35%;
+  min-width: 300px;
   text-align: center;
   background-color: fafafa;
   -webkit-transition: width 0.33s ease-out, height 0.2s ease-out;
   /* Safari */
   transition: width 0.33s ease-out, height 0.2s ease-out; }
   .searchBar .title {
+    cursor: pointer;
     border-bottom: 1px solid #777;
-    font-size: 2.2rem;
+    font-size: 3rem;
+    text-transform: uppercase;
     text-align: center;
-    height: 3rem; }
+    padding: 0.5rem 0 0.5rem 0; }
+    .searchBar .title a {
+      color: #00a651; }
+      .searchBar .title a:hover {
+        color: #00803e; }
+      .searchBar .title a * {
+        vertical-align: middle; }
+      .searchBar .title a img {
+        height: 3rem; }
   .searchBar .familyList, .searchBar .generaList, .searchBar .speciesList {
     display: inline-block;
     vertical-align: text-top;
@@ -2749,7 +2778,7 @@ body {
   .searchBar .closeButton {
     font-size: 1.5rem;
     position: absolute;
-    top: 0.5em;
+    top: 1.4rem;
     right: 0.5em;
     color: #8a9ca8; }
     .searchBar .closeButton:hover {
@@ -2758,8 +2787,7 @@ body {
       content: " HIDE"; }
 
 .hidden.searchBar {
-  width: 20%;
-  height: 3rem; }
+  height: 4.5rem; }
   .hidden.searchBar .closeButton:after {
     content: ""; }
   .hidden.searchBar .closeButton:before {
@@ -2790,5 +2818,5 @@ body {
     width: 100%; }
   .hidden.content {
     top: 3rem; }
-  .hidden > *:not(.default) {
-    padding-top: 0; } }
+    .hidden.content > *:not(.default) {
+      padding-top: 0; } }

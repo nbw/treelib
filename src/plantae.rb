@@ -47,11 +47,17 @@ module Plantae
     end
 
     def self.get_species id
-        @@species.find{ |s| s.id == id }
+        species = @@species.find{ |s| s.id == id }
+        g_name =  @@genera.find{ |g| g.id == species.genus_id }.name
+        species.genus_name = g_name
+        return species
     end
 
     def self.get_species_by_name name
-        @@species.find{ |s| s.name.downcase == name.downcase }
+        species = @@species.find{ |s| s.name.downcase == name.downcase }
+        g_name =  @@genera.find{ |g| g.id == species.genus_id }.name
+        species.genus_name = g_name
+        return species
     end
 
     def self.get_species_photos species

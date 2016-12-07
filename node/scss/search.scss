@@ -3,6 +3,9 @@
 @import "_genus";
 @import "_family";
 
+$sidebar-width: 35%;
+$sidebar-title-height: 3rem;
+
 body{
 	box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -22,8 +25,8 @@ body{
 .content {
 	position:fixed;
 	z-index: 0;
-	left: 30%;
-	width:70%;
+	left: $sidebar-width;
+	width: 100% - $sidebar-width;
 	height: 100%;
 	overflow-y: scroll;
 	> *:not(.default) {
@@ -61,12 +64,12 @@ body{
 	}
 }
 .species {
-	.title{
+	.title {
 		border-color: $species-color;
 	}
 }
 .genus {
-	.title{
+	.title {
 		border-color: $genus-color;
 	}
 }
@@ -86,16 +89,32 @@ $searchBar-list-font-color-selected: #111;
 	overflow-y: hidden;
 
 	height: 100%;
-	width: 30%;
+	width: $sidebar-width;
+	min-width: 300px;
 	text-align:center;
 
 	background-color: $searchBar-background;
 
-	.title { 
+	.title {
+		cursor: pointer; 
 		border-bottom: 1px solid #777;
-		font-size: 2.2rem;
+		font-size: $sidebar-title-height;
+		text-transform: uppercase;
 		text-align: center;
-		height: 3rem;
+		padding: 0.5rem 0 0.5rem 0;
+		a { 
+			color: $logo-color;
+			&:hover {
+				color: $logo-color-hover;
+			}
+			* { vertical-align: middle; }
+			img {
+				height: $sidebar-title-height;
+			}
+			
+		}
+  		
+
 	}
 	.familyList, .generaList, .speciesList {
 		display: inline-block;
@@ -164,7 +183,7 @@ $searchBar-list-font-color-selected: #111;
 	.closeButton {
 		font-size: 1.5rem;
 		position:absolute;
-		top: 0.5em;
+		top: 1.4rem;
 		right: 0.5em;
 		color: #8a9ca8;
 		&:hover{
@@ -180,8 +199,7 @@ $searchBar-list-font-color-selected: #111;
 
 .hidden {
 	&.searchBar {
-		width: 20%;
-		height: 3rem;
+		height: $sidebar-title-height + 1.5rem;
 		
 		.closeButton {
 			&:after{
@@ -227,7 +245,8 @@ $searchBar-list-font-color-selected: #111;
 		}
 		&.content {
 			top: 3rem;
+			> *:not( .default) { padding-top: 0;}
 		}
-		> *:not( .default) { padding-top: 0;}
+		
 	}
 }

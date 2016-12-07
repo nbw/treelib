@@ -124,7 +124,12 @@ webpackJsonp([6],{
 	                        _react2.default.createElement(
 	                            'a',
 	                            { href: '/' },
-	                            'Treelib'
+	                            _react2.default.createElement('img', { src: 'img/logo.png' }),
+	                            _react2.default.createElement(
+	                                'label',
+	                                null,
+	                                'TreeLib'
+	                            )
 	                        )
 	                    ),
 	                    _react2.default.createElement(

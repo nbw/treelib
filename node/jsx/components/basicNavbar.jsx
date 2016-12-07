@@ -9,7 +9,7 @@ class BasicNavbar extends React.Component {
         return (
             <div className="basicNavbar">
                 <ul>
-                    <li className="treelib"><a href="/">Treelib</a></li>
+                    <li className="treelib"><a href="/"><img src="img/logo.png"></img><label>TreeLib</label></a></li>
                     <li className="search"><a href="/search">Search</a></li>
                     <li className="about"><a href="/about">About</a></li>
                     <li className="contact"><a href="/contact">Contact</a></li>

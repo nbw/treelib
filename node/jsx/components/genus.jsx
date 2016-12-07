@@ -37,6 +37,11 @@ class Genus extends React.Component {
             g = this.props.genus,
             selectedPhoto = this.state.selectedPhotoIndex,
             thumbs = [];
+
+        var species = g.species.map(function(s){
+            return <li><a href={"/species/" + s.name}>{s.name}</a></li>
+        });
+
         g.photos.forEach(function(link,index) {
             if(index == selectedPhoto) { 
                 thumbs.push(<img key={index} src={link.thumb} className="selected" />);
@@ -50,8 +55,16 @@ class Genus extends React.Component {
                     <a href={'/genus/' + g.name.replace(/ /g,'_')} ><label className="main">{g.name}</label></a>
                     <label className="secondary">genus</label>
                 </div>
-                <div className="description">
-                    {g.descrip}
+                <div className="textContent">
+                    <div className="description">
+                        {g.descrip}
+                    </div>
+                    <div className="species">
+                        <label className="speciesTitle">Species</label>
+                        <ul>
+                            {species}
+                        </ul>
+                    </div>
                 </div>
                 { (selectedPhoto != null) ? 
                     <PhotoViewer 
