@@ -19,6 +19,10 @@ webpackJsonp([1],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _adminNavbar = __webpack_require__(172);
+
+	var _adminNavbar2 = _interopRequireDefault(_adminNavbar);
+
 	var _inputer = __webpack_require__(173);
 
 	var _inputer2 = _interopRequireDefault(_inputer);
@@ -99,6 +103,7 @@ webpackJsonp([1],{
 	            return _react2.default.createElement(
 	                'div',
 	                null,
+	                _react2.default.createElement(_adminNavbar2.default, null),
 	                _react2.default.createElement(
 	                    'h1',
 	                    null,
@@ -169,6 +174,130 @@ webpackJsonp([1],{
 	exports.default = App;
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+
+/***/ },
+
+/***/ 172:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AdminNavbar = function (_React$Component) {
+	    _inherits(AdminNavbar, _React$Component);
+
+	    function AdminNavbar() {
+	        _classCallCheck(this, AdminNavbar);
+
+	        return _possibleConstructorReturn(this, (AdminNavbar.__proto__ || Object.getPrototypeOf(AdminNavbar)).apply(this, arguments));
+	    }
+
+	    _createClass(AdminNavbar, [{
+	        key: 'refreshClick',
+	        value: function refreshClick() {
+	            self = this;
+	            fetch('/api/refresh', {
+	                method: 'POST',
+	                credentials: 'same-origin',
+	                headers: {
+	                    'Accept': 'application/json',
+	                    'Content-Type': 'application/json'
+	                }
+	            }).then(function (response) {
+	                if (response.ok) {
+	                    alert('Refresh successful.');
+	                } else {
+	                    console.log('Network response was not ok.');
+	                }
+	            }).catch(function (error) {
+	                console.log('There has been a problem with your fetch operation: ' + error.message);
+	                alert('Response was not ok.');
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            self = this;
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'adminNavbar' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'title' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/' },
+	                        'Treelib'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/admin/edit_family' },
+	                        'Add Family'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/admin/edit_genus' },
+	                        'Add Genus'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/admin/edit_species' },
+	                        'Add Species'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'item' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: '/admin/family_tree' },
+	                        'Master Tree'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'refresh', onClick: function onClick(event) {
+	                            return self.refreshClick();
+	                        } },
+	                    'Refresh'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return AdminNavbar;
+	}(_react2.default.Component);
+
+	exports.default = AdminNavbar;
 
 /***/ },
 

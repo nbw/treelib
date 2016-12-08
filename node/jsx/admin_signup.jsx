@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import AdminNavbar from './components/adminNavbar.jsx';
 import Inputer from './components/inputer.jsx';
 import Buttoner from './components/buttoner.jsx';
 
@@ -56,6 +57,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <AdminNavbar />
                 <h1>Admin Signup</h1>
                 <p>This page is for creating other <b>admin</b> accounts.</p> 
                 <hr />
