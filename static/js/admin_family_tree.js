@@ -255,6 +255,7 @@ webpackJsonp([0],{
 	            self = this;
 	            fetch('/api/refresh', {
 	                method: 'POST',
+	                credentials: 'same-origin',
 	                headers: {
 	                    'Accept': 'application/json',
 	                    'Content-Type': 'application/json'
@@ -267,6 +268,7 @@ webpackJsonp([0],{
 	                }
 	            }).catch(function (error) {
 	                console.log('There has been a problem with your fetch operation: ' + error.message);
+	                alert('Response was not ok.');
 	            });
 	        }
 	    }, {
@@ -318,7 +320,7 @@ webpackJsonp([0],{
 	                    _react2.default.createElement(
 	                        'a',
 	                        { href: '/admin/family_tree' },
-	                        'Family Tree'
+	                        'Master Tree'
 	                    )
 	                ),
 	                _react2.default.createElement(

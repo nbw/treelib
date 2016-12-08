@@ -5,6 +5,7 @@ class AdminNavbar extends React.Component {
         self = this;
         fetch('/api/refresh', {
             method: 'POST',
+            credentials: 'same-origin',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -18,6 +19,7 @@ class AdminNavbar extends React.Component {
         })
         .catch(function(error) {
             console.log('There has been a problem with your fetch operation: ' + error.message);
+            alert('Response was not ok.');
         });    
     }
     render() {
@@ -28,7 +30,7 @@ class AdminNavbar extends React.Component {
                 <div className="item"><a href="/admin/edit_family" >Add Family</a></div>
                 <div className="item"><a href="/admin/edit_genus" >Add Genus</a></div>
                 <div className="item"><a href="/admin/edit_species" >Add Species</a></div>
-                <div className="item"><a href="/admin/family_tree" >Family Tree</a></div>
+                <div className="item"><a href="/admin/family_tree" >Master Tree</a></div>
                 <div className="refresh" onClick={(event) => self.refreshClick()}>Refresh</div>
             </div>
         );

@@ -43,8 +43,12 @@ helpers do
     return if !!session[:user_id] && Users.is_admin(session[:user_id])
     session[:redirect] = request.url
     redirect '/login'
-    # headers['WWW-Authenticate'] = 'Basic realm="Restricted Area - sorry!"'
-    # halt 401, "Not authorized\n"
+  end
+
+   def admin_api_protected!
+    return if !!session[:user_id] && Users.is_admin(session[:user_id])
+    session[:redirect] = request.url
+    halt 401, "Not authorized\n"
   end
 
   def authorized?
@@ -268,22 +272,23 @@ end
 # API REQUESTS
 ######################################
 post '/api/edit_species' do
-    # error 401 unless admin_protected!
+    admin_api_protected!
     p = JSON.parse(request.body.read).symbolize_keys
     Plantae::edit_species(p).to_json
+    pp "SPECIES: SESSION"
+    pp session[:user_id]
 end
 
 post '/api/edit_genus' do
+    admin_api_protected!
     p = JSON.parse(request.body.read).symbolize_keys
-
-    #validate api_key
-    # error 401 unless APITools::auth_key!(p[:key])
-    
     Plantae::edit_genus(p).to_json
+    pp "GENUS: SESSION"
+    pp session[:user_id]
 end
 
 post '/api/edit_family' do
-    # admin_protected!
+    admin_api_protected!
     p = JSON.parse(request.body.read).symbolize_keys
     Plantae::edit_family(p).to_json
 end
@@ -303,30 +308,21 @@ post '/api/login' do
 end
 
 post '/api/add_admin_user' do
+    admin_api_protected!
     p = JSON.parse(request.body.read).symbolize_keys
-
-    #validate api_key
-    # error 401 unless APITools::auth_key!(p[:key])
-
     Users::new_user(p[:username], p[:email], p[:password], 1)
 end
 
 post '/api/delete_species' do
+    admin_api_protected!
     p = JSON.parse(request.body.read).symbolize_keys
-
-    #validate api_key
-    # error 401 unless APITools::auth_key!(p[:key])
-
     Plantae::delete_species(p[:id])
     return 200.to_json
 end
 
 post '/api/delete_genus' do
+    admin_api_protected!
     p = JSON.parse(request.body.read).symbolize_keys
-
-    #validate api_key
-    # error 401 unless APITools::auth_key!(p[:key])
-
     s = Plantae::get_genus(p[:id]).species
     if s.empty?
         Plantae::delete_genus(p[:id])
@@ -337,11 +333,8 @@ post '/api/delete_genus' do
 end
 
 post '/api/delete_family' do
+    admin_api_protected!
     p = JSON.parse(request.body.read).symbolize_keys
-
-    #validate api_key
-    # error 401 unless APITools::auth_key!(p[:key])
-
     g = Plantae::get_family(p[:id]).genera
     if g.empty?
         Plantae::delete_family(p[:id])
@@ -352,6 +345,7 @@ post '/api/delete_family' do
 end
 
 post '/api/refresh' do
+    admin_api_protected!
     Plantae::init
     return 200.to_json
 end

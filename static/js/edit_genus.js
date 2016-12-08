@@ -86,6 +86,7 @@ webpackJsonp([4],{
 	        value: function updateTheMotherShip() {
 	            fetch('/api/edit_genus', {
 	                method: 'POST',
+	                credentials: 'same-origin',
 	                headers: {
 	                    'Accept': 'application/json',
 	                    'Content-Type': 'application/json'
@@ -102,7 +103,8 @@ webpackJsonp([4],{
 	                        window.location.href = window.location.origin + window.location.pathname + '?id=' + obj.id;
 	                    });
 	                } else {
-	                    console.log('Network response was not ok.');
+	                    console.log('Response was not ok.');
+	                    alert('Response was not ok.');
 	                }
 	            }).catch(function (error) {
 	                console.log('There has been a problem with your fetch operation: ' + error.message);
@@ -115,6 +117,7 @@ webpackJsonp([4],{
 	            if (r == true) {
 	                fetch('/api/delete_genus', {
 	                    method: 'POST',
+	                    credentials: 'same-origin',
 	                    headers: {
 	                        'Accept': 'application/json',
 	                        'Content-Type': 'application/json'
@@ -134,7 +137,8 @@ webpackJsonp([4],{
 	                            }
 	                        });
 	                    } else {
-	                        console.log('Network response was not ok.');
+	                        console.log('Response was not ok.');
+	                        alert('Response was not ok.');
 	                    }
 	                }).catch(function (error) {
 	                    console.log('There has been a problem with your fetch operation: ' + error.message);
@@ -237,6 +241,7 @@ webpackJsonp([4],{
 	            self = this;
 	            fetch('/api/refresh', {
 	                method: 'POST',
+	                credentials: 'same-origin',
 	                headers: {
 	                    'Accept': 'application/json',
 	                    'Content-Type': 'application/json'
@@ -249,6 +254,7 @@ webpackJsonp([4],{
 	                }
 	            }).catch(function (error) {
 	                console.log('There has been a problem with your fetch operation: ' + error.message);
+	                alert('Response was not ok.');
 	            });
 	        }
 	    }, {
@@ -300,7 +306,7 @@ webpackJsonp([4],{
 	                    _react2.default.createElement(
 	                        'a',
 	                        { href: '/admin/family_tree' },
-	                        'Family Tree'
+	                        'Master Tree'
 	                    )
 	                ),
 	                _react2.default.createElement(

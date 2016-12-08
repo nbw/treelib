@@ -46,7 +46,8 @@ class App extends React.Component {
                     window.location.href = window.location.origin + window.location.pathname + '?id=' + obj.id;
             });
             } else {
-                console.log('Network response was not ok.');
+                console.log('Response was not ok.');
+                alert('Response was not ok.');
             }
         })
         .catch(function(error) {
@@ -59,6 +60,7 @@ class App extends React.Component {
         if (r == true) {
             fetch('/api/delete_family', {
                 method: 'POST',
+                credentials: 'same-origin',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -78,7 +80,8 @@ class App extends React.Component {
                         }  
                     });
                 } else {
-                    console.log('Network response was not ok.');
+                    console.log('Response was not ok.');
+                    alert('Response was not ok.');
                 }
             })
             .catch(function(error) {
