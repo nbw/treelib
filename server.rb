@@ -145,7 +145,7 @@ get '/api/get_species_photos' do
     if  !p[:species_id].blank? && species = Plantae::get_species(p[:species_id].to_i)
         photos = Plantae::get_species_photos(species)
     end
-    return photos.to_json
+    photos.to_json
 end
 
 get '/api/get_genus_photos' do
@@ -184,7 +184,7 @@ get '/admin/edit_species' do
     if (species_id > 0) && (species = Plantae::get_species(species_id))
         species = species.to_hash
         if species[:album_id]
-            species[:photos] = Photos::get_photos_urls(species[:album_id],'q')
+            species[:photos] = Photos::get_photos_urls(species[:album_id],['q'])
         end
     else 
         species = []
@@ -275,16 +275,12 @@ post '/api/edit_species' do
     admin_api_protected!
     p = JSON.parse(request.body.read).symbolize_keys
     Plantae::edit_species(p).to_json
-    pp "SPECIES: SESSION"
-    pp session[:user_id]
 end
 
 post '/api/edit_genus' do
     admin_api_protected!
     p = JSON.parse(request.body.read).symbolize_keys
     Plantae::edit_genus(p).to_json
-    pp "GENUS: SESSION"
-    pp session[:user_id]
 end
 
 post '/api/edit_family' do
@@ -347,5 +343,6 @@ end
 post '/api/refresh' do
     admin_api_protected!
     Plantae::init
+    Photos::update
     return 200.to_json
 end

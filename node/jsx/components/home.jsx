@@ -39,7 +39,7 @@ class Home extends React.Component {
                 </div>
                 <div className="section">
                     <p>
-                        Help yourself to the site, downloading  to enhance your learning and understanding of the trees around you.   Professors and students are encouraged to use pictures to add to their own presentations or collections and the comprehensive list of family/genus/species to copy and paste to one’s own list as one goes.  It is not the final resource for every aspect of identification, but rather a tool to be used to visually complement many other good sources of information.  Click links to connect to other excellent sources of technical information such as the Northern Ontario Plant Database, Wikipedia and so on.
+                        Help yourself to the site, downloading  to enhance your learning and understanding of the trees around you.  It is not the final resource for every aspect of identification, but rather a tool to be used to visually complement many other good sources of information.  Visitors are encouraged to connect to other excellent sources of technical information such as the Northern Ontario Plant Database, Wikipedia and so on.
                     </p>
                     <div className="photoBanner">
                         <img src="img/homepage-banner/1.jpg" />

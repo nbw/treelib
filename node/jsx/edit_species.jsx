@@ -239,8 +239,8 @@ class PhotoArray extends React.Component {
     render() {
         var photoEditers = [];
         if (this.props.photos) {
-            this.props.photos.forEach(function(item) {
-                photoEditers.push(<PhotoEditer img={item} />);
+            this.props.photos.forEach(function(item, index) {
+                photoEditers.push(<PhotoEditer img={item.q} />);
             });
         }
         return (
@@ -256,15 +256,6 @@ class PhotoEditer extends React.Component {
         return (
             <div className="photoEditer" >
                 <img src={this.props.img} />
-                {/*
-                <div className="name"><input placeholder="name"/></div>
-                <hr />
-                <div className="description"><textarea placeholder="description"/></div>
-                <hr />
-                <div className="credit"><input placeholder="photo credit"/></div>
-                <hr />
-                <div className="btn-std">Save</div>
-                */}
             </div>
         );
     }

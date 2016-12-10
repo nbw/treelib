@@ -61,13 +61,19 @@ module Plantae
     end
 
     def self.get_species_photos species
-        pp species
         species = species.to_hash
         if album_id = species[:album_id]
-            thumbs = Photos::get_photos_urls(album_id,'q')
-            medium_size = Photos::get_photos_urls(album_id,'z')
-            original_size = Photos::get_photos_urls(album_id,'o')
-            return thumbs.map.with_index{|v,i| {:thumb=>v,:medium=>medium_size[i], :original=>original_size[i]}}
+            sizes = ['q','z','o']
+            photos = Photos::get_photos_urls(album_id, sizes)
+            photos.map do |p|
+                {   
+                    :thumb=>p[sizes[0]], 
+                    :medium=>p[sizes[1]], 
+                    :original=>p[sizes[2]], 
+                    :name => p['name'],
+                    :description => p['description']
+                }
+            end
         end
     end
 
@@ -134,18 +140,27 @@ module Plantae
     end
 
     def self.get_genus_photos genus
-        num_photos = 25 # genus image cap
+        num_photos = 10 # genus image cap
         genus = genus.to_hash        
         species_photos, genus_photos = [], []
         genus[:species].each do |s|
             s = s.to_hash
             if album_id = s[:album_id]
-                thumbs = Photos::get_photos_urls(album_id,'q')
-                medium_size = Photos::get_photos_urls(album_id,'z')
-                original_size = Photos::get_photos_urls(album_id,'o')
-                species_photos += thumbs.map.with_index{|v,i| {:thumb=>v,:medium=>medium_size[i], :original=>original_size[i]}}
+                sizes = ['q','z','o']
+                photos = Photos::get_photos_urls(album_id, sizes)
+                species_photos += photos.map do |p|
+                    {   
+                        :thumb=>p[sizes[0]], 
+                        :medium=>p[sizes[1]], 
+                        :original=>p[sizes[2]], 
+                        :name => p['name'],
+                        :description => p['description']
+                    }
+                end
             end
         end
+
+        pp species_photos
 
         if species_photos.length > num_photos
             num_photos.times do
@@ -221,10 +236,17 @@ module Plantae
             g[:species].each do |s|
                 s = s.to_hash
                 if album_id = s[:album_id]
-                    thumbs = Photos::get_photos_urls(album_id,'q')
-                    medium_size = Photos::get_photos_urls(album_id,'z')
-                    original_size = Photos::get_photos_urls(album_id,'o')
-                    species_photos += thumbs.map.with_index{|v,i| {:thumb=>v,:medium=>medium_size[i], :original=>original_size[i]}}
+                    sizes = ['q','z','o']
+                    photos = Photos::get_photos_urls(album_id, sizes)
+                    species_photos += photos.map do |p|
+                        {   
+                            :thumb=>p[sizes[0]], 
+                            :medium=>p[sizes[1]], 
+                            :original=>p[sizes[2]], 
+                            :name => p['name'],
+                            :description => p['description']
+                        }
+                    end
                 end
             end
         end

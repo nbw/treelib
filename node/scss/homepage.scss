@@ -111,7 +111,7 @@ $banner-height: 250px;
 				border-bottom: 1px solid #AAA;
 			}
 			td {
-				vertical-align:top;
+				vertical-align:middle;
 				padding: 20px 0 20px 0;
 			}
 		}
@@ -128,10 +128,14 @@ $banner-height: 250px;
 				list-style: none;
 			}
 			.title {
-				font-size: 2rem;
+				font-size: 1.6rem;
 				text-transform: uppercase;
 				margin-bottom: 10px;
 				padding-bottom: 5px;
+				.name { 
+					font-size: 2rem;
+					font-weight: bold; 
+				}
 			}
 		}
 	}

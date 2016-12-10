@@ -19,19 +19,19 @@ webpackJsonp([10],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _family = __webpack_require__(179);
+	var _family = __webpack_require__(180);
 
 	var _family2 = _interopRequireDefault(_family);
 
-	var _genus = __webpack_require__(181);
+	var _genus = __webpack_require__(182);
 
 	var _genus2 = _interopRequireDefault(_genus);
 
-	var _species = __webpack_require__(185);
+	var _species = __webpack_require__(186);
 
 	var _species2 = _interopRequireDefault(_species);
 
-	var _searchSidebar = __webpack_require__(186);
+	var _searchSidebar = __webpack_require__(187);
 
 	var _searchSidebar2 = _interopRequireDefault(_searchSidebar);
 
@@ -210,7 +210,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 179:
+/***/ 180:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -229,7 +229,7 @@ webpackJsonp([10],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _photoViewer = __webpack_require__(180);
+	var _photoViewer = __webpack_require__(181);
 
 	var _photoViewer2 = _interopRequireDefault(_photoViewer);
 
@@ -298,15 +298,17 @@ webpackJsonp([10],{
 	                f = this.props.family,
 	                selectedPhoto = this.state.selectedPhotoIndex,
 	                thumbs = [];
-	            f.photos.forEach(function (link, index) {
-	                if (index == selectedPhoto) {
-	                    thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, className: 'selected' }));
-	                } else {
-	                    thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, onClick: function onClick() {
-	                            return self.update('selectedPhotoIndex', index);
-	                        } }));
-	                }
-	            });
+	            if (f.photos && f.photos.length > 0) {
+	                f.photos.forEach(function (link, index) {
+	                    if (index == selectedPhoto) {
+	                        thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, className: 'selected' }));
+	                    } else {
+	                        thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, onClick: function onClick() {
+	                                return self.update('selectedPhotoIndex', index);
+	                            } }));
+	                    }
+	                });
+	            }
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'family' },
@@ -344,6 +346,8 @@ webpackJsonp([10],{
 	                        return _this2.closePhotoviewer();
 	                    },
 	                    image: f.photos[selectedPhoto].medium,
+	                    imageName: f.photos[selectedPhoto].name,
+	                    imageDescription: f.photos[selectedPhoto].description,
 	                    original: f.photos[selectedPhoto].original }) : null,
 	                _react2.default.createElement(
 	                    'div',
@@ -361,7 +365,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 180:
+/***/ 181:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -400,7 +404,6 @@ webpackJsonp([10],{
 	    _createClass(PhotoViewer, [{
 	        key: 'render',
 	        value: function render() {
-	            var hidden = true;
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'photoViewer' },
@@ -435,9 +438,27 @@ webpackJsonp([10],{
 	                                    _react2.default.createElement(
 	                                        'li',
 	                                        null,
-	                                        _react2.default.createElement('i', { className: 'fa fa-download fa-lg' }),
-	                                        ' download'
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { className: 'fullimage', href: this.props.original },
+	                                            _react2.default.createElement('i', { className: 'fa fa-download fa-lg' }),
+	                                            ' download'
+	                                        )
 	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'info' },
+	                                _react2.default.createElement(
+	                                    'label',
+	                                    { className: 'title' },
+	                                    this.props.imageName
+	                                ),
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    { className: 'description' },
+	                                    this.props.imageDescription
 	                                )
 	                            )
 	                        )
@@ -446,25 +467,6 @@ webpackJsonp([10],{
 	                        'div',
 	                        { className: 'next', onClick: this.props.nextCallback },
 	                        _react2.default.createElement('i', { className: 'fa fa-angle-double-right fa-2x' })
-	                    )
-	                ),
-	                hidden ? null : _react2.default.createElement(
-	                    'div',
-	                    { className: 'content' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'title' },
-	                        'Title'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'description' },
-	                        'Temporary description of photo'
-	                    ),
-	                    _react2.default.createElement(
-	                        'a',
-	                        { className: 'fullimage', href: this.props.original },
-	                        'Link to full image'
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -484,7 +486,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 181:
+/***/ 182:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -503,7 +505,7 @@ webpackJsonp([10],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _photoViewer = __webpack_require__(180);
+	var _photoViewer = __webpack_require__(181);
 
 	var _photoViewer2 = _interopRequireDefault(_photoViewer);
 
@@ -573,10 +575,10 @@ webpackJsonp([10],{
 	                selectedPhoto = this.state.selectedPhotoIndex,
 	                thumbs = [];
 
-	            var species = g.species.map(function (s) {
+	            var species = g.species.map(function (s, i) {
 	                return _react2.default.createElement(
 	                    'li',
-	                    null,
+	                    { key: i },
 	                    _react2.default.createElement(
 	                        'a',
 	                        { href: "/species/" + s.name },
@@ -584,16 +586,17 @@ webpackJsonp([10],{
 	                    )
 	                );
 	            });
-
-	            g.photos.forEach(function (link, index) {
-	                if (index == selectedPhoto) {
-	                    thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, className: 'selected' }));
-	                } else {
-	                    thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, onClick: function onClick() {
-	                            return self.update('selectedPhotoIndex', index);
-	                        } }));
-	                }
-	            });
+	            if (g.photos && g.photos.length > 0) {
+	                g.photos.forEach(function (link, index) {
+	                    if (index == selectedPhoto) {
+	                        thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, className: 'selected' }));
+	                    } else {
+	                        thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, onClick: function onClick() {
+	                                return self.update('selectedPhotoIndex', index);
+	                            } }));
+	                    }
+	                });
+	            }
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'genus' },
@@ -649,6 +652,8 @@ webpackJsonp([10],{
 	                        return _this2.closePhotoviewer();
 	                    },
 	                    image: g.photos[selectedPhoto].medium,
+	                    imageName: g.photos[selectedPhoto].name,
+	                    imageDescription: g.photos[selectedPhoto].description,
 	                    original: g.photos[selectedPhoto].original }) : null,
 	                _react2.default.createElement(
 	                    'div',
@@ -666,7 +671,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 185:
+/***/ 186:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -685,7 +690,7 @@ webpackJsonp([10],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _photoViewer = __webpack_require__(180);
+	var _photoViewer = __webpack_require__(181);
 
 	var _photoViewer2 = _interopRequireDefault(_photoViewer);
 
@@ -754,15 +759,17 @@ webpackJsonp([10],{
 	                s = this.props.species,
 	                selectedPhoto = this.state.selectedPhotoIndex,
 	                thumbs = [];
-	            s.photos.forEach(function (link, index) {
-	                if (index == selectedPhoto) {
-	                    thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, className: 'selected' }));
-	                } else {
-	                    thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, onClick: function onClick() {
-	                            return self.update('selectedPhotoIndex', index);
-	                        } }));
-	                }
-	            });
+	            if (s.photos && s.photos.length > 0) {
+	                s.photos.forEach(function (link, index) {
+	                    if (index == selectedPhoto) {
+	                        thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, className: 'selected' }));
+	                    } else {
+	                        thumbs.push(_react2.default.createElement('img', { key: index, src: link.thumb, onClick: function onClick() {
+	                                return self.update('selectedPhotoIndex', index);
+	                            } }));
+	                    }
+	                });
+	            }
 	            var links = s.links.map(function (link, index) {
 	                return _react2.default.createElement(
 	                    'li',
@@ -826,6 +833,8 @@ webpackJsonp([10],{
 	                        return _this2.closePhotoviewer();
 	                    },
 	                    image: s.photos[selectedPhoto].medium,
+	                    imageName: s.photos[selectedPhoto].name,
+	                    imageDescription: s.photos[selectedPhoto].description,
 	                    original: s.photos[selectedPhoto].original }) : null,
 	                _react2.default.createElement(
 	                    'div',
@@ -843,7 +852,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 186:
+/***/ 187:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

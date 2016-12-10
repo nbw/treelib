@@ -2366,8 +2366,7 @@ a {
       position: relative;
       height: 640px;
       width: 640px;
-      white-space: nowrap;
-      text-align: center; }
+      white-space: nowrap; }
       .photoViewer .image .imageWrapper img {
         border: 1px solid #444; }
       .photoViewer .image .imageWrapper .helper {
@@ -2377,14 +2376,24 @@ a {
       .photoViewer .image .imageWrapper .imageInnerWrapper {
         vertical-align: middle;
         display: inline-block; }
-      .photoViewer .image .imageWrapper .photoButtons ul {
-        padding: 0;
-        margin: 0;
-        float: right; }
-        .photoViewer .image .imageWrapper .photoButtons ul li {
-          list-style: none;
-          display: inline-block;
-          padding: 3px 5px 0 5px; }
+      .photoViewer .image .imageWrapper .photoButtons {
+        position: absolute;
+        right: 0; }
+        .photoViewer .image .imageWrapper .photoButtons ul {
+          padding: 0.3em;
+          margin: 0;
+          float: right; }
+          .photoViewer .image .imageWrapper .photoButtons ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 3px 5px 0 5px; }
+      .photoViewer .image .imageWrapper .info {
+        padding-top: 0.5em;
+        display: block;
+        margin: auto;
+        max-width: 640px; }
+        .photoViewer .image .imageWrapper .info .title {
+          font-weight: bold; }
     .photoViewer .image .next, .photoViewer .image .prev {
       cursor: pointer;
       -moz-user-select: -moz-none;
@@ -2422,8 +2431,12 @@ a {
       .photoViewer .closeButton {
         font-size: 2.5rem; } }
 
+.species > * {
+  padding: 10px; }
+
 .species > .title {
   padding: 10px 0 10px 0;
+  margin: 0 10px 0 10px;
   margin-bottom: 10px;
   border-bottom: 3px black solid; }
   .species > .title .main {
@@ -2432,8 +2445,10 @@ a {
     .species > .title .main .speciesTitle {
       font-weight: bold; }
 
-.species .description {
+.species > .description {
   padding: 20px; }
+  .species > .description p:first-child {
+    padding-top: 0; }
 
 .species .photos img {
   display: inline-block;
@@ -2496,6 +2511,3 @@ a {
       font-size: 2rem; }
       .basicNavbar ul li:not(:last-child) {
         border-bottom: 1px solid #AAA; } }
-
-.mainContainer .species {
-  padding: 10px; }

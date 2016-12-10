@@ -32,7 +32,7 @@ module Flickr
         #
         # Structure:
         # https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={api_key}photoset_id={photoset_id}&user_id={user_id}&format=json&nojsoncallback=1
-        url =  "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=#{@api_key}&photoset_id=#{ps_id}&user_id=#{@user_id}&format=json&nojsoncallback=1"
+        url =  "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=#{@api_key}&photoset_id=#{ps_id}&user_id=#{@user_id}&extras=description&format=json&nojsoncallback=1"
         request = open(url)
         body = request.read
         res = JSON.parse(body)["photoset"]["photo"]
@@ -47,7 +47,7 @@ module Flickr
         return res
     end
 
-    def self.imageURLBuilder photo, size = ""
+    def self.imageURLBuilder photo, size = [""]
         # Reference: https://www.flickr.com/services/api/misc.urls.html
         #
         # https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
@@ -72,10 +72,12 @@ module Flickr
             'o'   #  original image, either a jpg, gif or png, depending on source format
         ]
 
-        if formats.include?(size)
-            return "https://farm#{photo["farm"]}.staticflickr.com/#{photo["server"]}/#{photo["flickr_id"]}_#{photo["secret"]}#{size.empty? ? "":"_" + size}.jpg"
-        else
-            raise  "Not a correct flickr size format."
-        end
+        size.map{ |s|
+            if !formats.include?(s)
+                raise  "Not a correct flickr size format."
+            end
+            "https://farm#{photo["farm"]}.staticflickr.com/#{photo["server"]}/#{photo["flickr_id"]}_#{photo["secret"]}#{s.empty? ? "":"_" + s}.jpg"
+        }
+        
     end
 end

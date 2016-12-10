@@ -35,7 +35,7 @@ webpackJsonp([3],{
 
 	var _texter2 = _interopRequireDefault(_texter);
 
-	var _markup = __webpack_require__(187);
+	var _markup = __webpack_require__(177);
 
 	var _markup2 = _interopRequireDefault(_markup);
 
@@ -511,7 +511,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 187:
+/***/ 177:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

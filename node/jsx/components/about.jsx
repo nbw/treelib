@@ -38,9 +38,14 @@ class About extends React.Component {
 			            	</td>
 			            	<td>
 			            		<ul className="description">
-		            				<li className="title">Blake - Biologist and Photographer</li>
+		            				<li className="title"><label className="name">Blake</label><i> - R.P.F. - Botanist and Photographer</i></li>
 		            				<li className="content">
-		            					Blake is a biologist and photographer who has over 25 years in the forestry industry, specifically with the import/export of lumber between Canada and Japan.
+		            					<p>
+                                        Blake is an industry manager, botonist and photographer with over 25 years in the forestry industry, specifically with government and industry between Canada and Japan.  
+                                        </p>
+                                        <p>
+                                        He is a member of the International Dendrology Society (a UK-based global group of professors and scientists dedicated to the study and teaching about woody plants) and the American Conifer Society.
+                                        </p>
 		        					</li>
 		        				</ul>
 			            	</td>
@@ -51,7 +56,7 @@ class About extends React.Component {
 			            	</td>
 			            	<td>
 			            		<ul className="description">
-		            				<li className="title">Nathan - Developement</li>
+		            				<li className="title"><label className="name">Nathan</label><i> - WEB Development</i></li>
 		            				<li className="content">
 		            					<a href="http://nathanwillson.com/">Nathan</a> is a web developer based out of Victoria, Canada.
 		        					</li>

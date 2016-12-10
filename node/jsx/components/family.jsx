@@ -39,13 +39,15 @@ class Family extends React.Component {
             f = this.props.family,
             selectedPhoto = this.state.selectedPhotoIndex,
             thumbs = [];
-        f.photos.forEach(function(link,index) {
-            if(index == selectedPhoto) { 
-                thumbs.push(<img key={index} src={link.thumb} className="selected" />);
-            } else {
-                thumbs.push(<img key={index} src={link.thumb} onClick={() => self.update('selectedPhotoIndex',index)} />);
-            }
-        });
+        if( f.photos && f.photos.length > 0 ) {
+            f.photos.forEach(function(link,index) {
+                if(index == selectedPhoto) { 
+                    thumbs.push(<img key={index} src={link.thumb} className="selected" />);
+                } else {
+                    thumbs.push(<img key={index} src={link.thumb} onClick={() => self.update('selectedPhotoIndex',index)} />);
+                }
+            });
+        }
         return (
             <div className="family">
                 <div className="title">
@@ -60,7 +62,9 @@ class Family extends React.Component {
                         nextCallback={() => this.nextPhoto()} 
                         prevCallback={() => this.prevPhoto()} 
                         closeCallback={() => this.closePhotoviewer()}
-                        image={f.photos[selectedPhoto].medium} 
+                        image={f.photos[selectedPhoto].medium}
+                        imageName={f.photos[selectedPhoto].name}
+                        imageDescription={f.photos[selectedPhoto].description} 
                         original = {f.photos[selectedPhoto].original} /> : null }
                 <div className="photos">
                     {thumbs}

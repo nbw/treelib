@@ -19,19 +19,19 @@ webpackJsonp([8],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _BasicNavbar = __webpack_require__(178);
+	var _BasicNavbar = __webpack_require__(179);
 
 	var _BasicNavbar2 = _interopRequireDefault(_BasicNavbar);
 
-	var _home = __webpack_require__(182);
+	var _home = __webpack_require__(183);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _about = __webpack_require__(183);
+	var _about = __webpack_require__(184);
 
 	var _about2 = _interopRequireDefault(_about);
 
-	var _contact = __webpack_require__(184);
+	var _contact = __webpack_require__(185);
 
 	var _contact2 = _interopRequireDefault(_contact);
 
@@ -97,7 +97,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 178:
+/***/ 179:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -200,7 +200,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 182:
+/***/ 183:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -312,7 +312,7 @@ webpackJsonp([8],{
 	                    _react2.default.createElement(
 	                        'p',
 	                        null,
-	                        'Help yourself to the site, downloading  to enhance your learning and understanding of the trees around you.   Professors and students are encouraged to use pictures to add to their own presentations or collections and the comprehensive list of family/genus/species to copy and paste to one’s own list as one goes.  It is not the final resource for every aspect of identification, but rather a tool to be used to visually complement many other good sources of information.  Click links to connect to other excellent sources of technical information such as the Northern Ontario Plant Database, Wikipedia and so on.'
+	                        'Help yourself to the site, downloading  to enhance your learning and understanding of the trees around you.  It is not the final resource for every aspect of identification, but rather a tool to be used to visually complement many other good sources of information.  Visitors are encouraged to connect to other excellent sources of technical information such as the Northern Ontario Plant Database, Wikipedia and so on.'
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
@@ -349,7 +349,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 183:
+/***/ 184:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -463,12 +463,30 @@ webpackJsonp([8],{
 	                                        _react2.default.createElement(
 	                                            'li',
 	                                            { className: 'title' },
-	                                            'Blake - Biologist and Photographer'
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                { className: 'name' },
+	                                                'Blake'
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'i',
+	                                                null,
+	                                                ' - R.P.F. - Botanist and Photographer'
+	                                            )
 	                                        ),
 	                                        _react2.default.createElement(
 	                                            'li',
 	                                            { className: 'content' },
-	                                            'Blake is a biologist and photographer who has over 25 years in the forestry industry, specifically with the import/export of lumber between Canada and Japan.'
+	                                            _react2.default.createElement(
+	                                                'p',
+	                                                null,
+	                                                'Blake is an industry manager, botonist and photographer with over 25 years in the forestry industry, specifically with government and industry between Canada and Japan.'
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'p',
+	                                                null,
+	                                                'He is a member of the International Dendrology Society (a UK-based global group of professors and scientists dedicated to the study and teaching about woody plants) and the American Conifer Society.'
+	                                            )
 	                                        )
 	                                    )
 	                                )
@@ -490,7 +508,16 @@ webpackJsonp([8],{
 	                                        _react2.default.createElement(
 	                                            'li',
 	                                            { className: 'title' },
-	                                            'Nathan - Developement'
+	                                            _react2.default.createElement(
+	                                                'label',
+	                                                { className: 'name' },
+	                                                'Nathan'
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'i',
+	                                                null,
+	                                                ' - WEB Development'
+	                                            )
 	                                        ),
 	                                        _react2.default.createElement(
 	                                            'li',
@@ -524,7 +551,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 184:
+/***/ 185:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

@@ -41,17 +41,18 @@ class Genus extends React.Component {
             selectedPhoto = this.state.selectedPhotoIndex,
             thumbs = [];
 
-        var species = g.species.map(function(s){
-            return <li><a href={"/species/" + s.name}>{s.name}</a></li>
+        var species = g.species.map(function(s,i){
+            return <li key={i} ><a href={"/species/" + s.name}>{s.name}</a></li>
         });
-
-        g.photos.forEach(function(link,index) {
-            if(index == selectedPhoto) { 
-                thumbs.push(<img key={index} src={link.thumb} className="selected" />);
-            } else {
-                thumbs.push(<img key={index} src={link.thumb} onClick={() => self.update('selectedPhotoIndex',index)} />);
-            }
-        });
+        if( g.photos && g.photos.length > 0 ) {
+            g.photos.forEach(function(link,index) {
+                if(index == selectedPhoto) { 
+                    thumbs.push(<img key={index} src={link.thumb} className="selected" />);
+                } else {
+                    thumbs.push(<img key={index} src={link.thumb} onClick={() => self.update('selectedPhotoIndex',index)} />);
+                }
+            });
+        }
         return (
             <div className="genus">
                 <div className="title">
@@ -71,10 +72,12 @@ class Genus extends React.Component {
                 </div>
                 { (selectedPhoto != null) ? 
                     <PhotoViewer 
-                        nextCallback={() => this.nextPhoto()} 
-                        prevCallback={() => this.prevPhoto()} 
+                        nextCallback={() => this.nextPhoto()}
+                        prevCallback={() => this.prevPhoto()}
                         closeCallback={() => this.closePhotoviewer()}
-                        image={g.photos[selectedPhoto].medium} 
+                        image={g.photos[selectedPhoto].medium}
+                        imageName={g.photos[selectedPhoto].name}
+                        imageDescription={g.photos[selectedPhoto].description}
                         original = {g.photos[selectedPhoto].original} /> : null }
                 <div className="photos">
                     {thumbs}

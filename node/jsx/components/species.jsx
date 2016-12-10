@@ -40,13 +40,15 @@ class Species extends React.Component {
             s = this.props.species,
             selectedPhoto = this.state.selectedPhotoIndex,
             thumbs = [];
-            s.photos.forEach(function(link,index) {
-                if(index == selectedPhoto) { 
-                    thumbs.push(<img key={index} src={link.thumb} className="selected" />);
-                } else {
-                    thumbs.push(<img key={index} src={link.thumb} onClick={() => self.update('selectedPhotoIndex',index)} />);
-                }
-            });
+            if (s.photos && s.photos.length > 0) {
+                s.photos.forEach(function(link,index) {
+                    if(index == selectedPhoto) { 
+                        thumbs.push(<img key={index} src={link.thumb} className="selected" />);
+                    } else {
+                        thumbs.push(<img key={index} src={link.thumb} onClick={() => self.update('selectedPhotoIndex',index)} />);
+                    }
+                });
+            }
         var links = s.links.map(function(link, index){
                 return <li key={index} ><a target="_blank" href={link.url}>{link.name}</a></li>
         });
@@ -70,6 +72,8 @@ class Species extends React.Component {
                         prevCallback={() => this.prevPhoto()} 
                         closeCallback={() => this.closePhotoviewer()}
                         image={s.photos[selectedPhoto].medium} 
+                        imageName={s.photos[selectedPhoto].name} 
+                        imageDescription={s.photos[selectedPhoto].description} 
                         original = {s.photos[selectedPhoto].original} /> : null }
                 <div className="photos">
                     {thumbs}

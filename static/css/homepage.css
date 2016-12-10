@@ -2483,7 +2483,7 @@ a {
       .aboutPage .bio table tr:first-child td {
         border-bottom: 1px solid #AAA; }
       .aboutPage .bio table td {
-        vertical-align: top;
+        vertical-align: middle;
         padding: 20px 0 20px 0; }
     .aboutPage .bio img.photo {
       border: 1px solid #AAA;
@@ -2496,10 +2496,13 @@ a {
       .aboutPage .bio ul.description li {
         list-style: none; }
       .aboutPage .bio ul.description .title {
-        font-size: 2rem;
+        font-size: 1.6rem;
         text-transform: uppercase;
         margin-bottom: 10px;
         padding-bottom: 5px; }
+        .aboutPage .bio ul.description .title .name {
+          font-size: 2rem;
+          font-weight: bold; }
   .aboutPage .banner {
     background-repeat: no-repeat;
     background-position: left bottom;

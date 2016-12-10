@@ -13,6 +13,9 @@
 	}
 	.description { 
 		padding: 20px;
+		p:first-child {
+			padding-top: 0;
+		}
 	}
 	.photos {
 		img {

@@ -62,13 +62,13 @@ module Photos
         # update modified photos
         if !modified_photos.empty?
             q_modified_photos = modified_photos.collect do|p| 
-                q_p_id, q_flickr_id, q_photoset_id, q_p_farm, q_p_secret, q_p_server = SQLer.escape(p["photo_id"], p["id"], p["photoset_id"], p['farm'], p['secret'], p['server'])
-                "(#{q_p_id}, #{q_flickr_id}, #{q_photoset_id}, #{q_p_farm}, '#{q_p_secret}', #{q_p_server})"
+                q_p_id, q_flickr_id, q_photoset_id, q_p_farm, q_p_secret, q_p_server, q_p_name, q_p_description = SQLer.escape(p["photo_id"], p["id"], p["photoset_id"], p['farm'], p['secret'], p['server'], p['title'], p['description']["_content"].gsub("'","''"))
+                "(#{q_p_id}, #{q_flickr_id}, #{q_photoset_id}, #{q_p_farm}, '#{q_p_secret}', #{q_p_server}, '#{q_p_name}', '#{q_p_description}')"
             end.join(",\n")
             
-            q_update_photos = "INSERT INTO photos (id, flickr_id, photoset_id, farm, secret, server) VALUES\n" + 
+            q_update_photos = "INSERT INTO photos (id, flickr_id, photoset_id, farm, secret, server, name, description) VALUES\n" + 
                 q_modified_photos +
-                "\nON DUPLICATE KEY UPDATE id=VALUES(id),\nflickr_id=VALUES(flickr_id),\nphotoset_id=VALUES(photoset_id),\nfarm=VALUES(farm),\nsecret=VALUES(secret),\nserver=VALUES(server)"
+                "\nON DUPLICATE KEY UPDATE id=VALUES(id),\nflickr_id=VALUES(flickr_id),\nphotoset_id=VALUES(photoset_id),\nfarm=VALUES(farm),\nsecret=VALUES(secret),\nserver=VALUES(server),\nname=VALUES(name),\ndescription=VALUES(description)"
 
         end
 
@@ -91,21 +91,20 @@ module Photos
         #...........................
         # new albums with new photos
         new_albums.each do |na|
-            q_ps_id, q_pa_name, q_pa_lu = SQLer.escape(na["id"], na["title"]["_content"], Time.at(na["date_update"]).utc.strftime("%Y-%m-%d %H:%M:%S"))
+            q_ps_id, q_pa_name, q_pa_lu = SQLer.escape(na["id"], na["title"]["_content"].gsub("'","''"), Time.at(na["date_update"]).utc.strftime("%Y-%m-%d %H:%M:%S"))
             q_new_photo_albums << "(#{q_ps_id}, '#{q_pa_name}', '#{q_pa_lu}')"
             
             Flickr::get_photos_from_photoset(na["id"]).each do |p|
-                q_p_id, q_p_farm, q_p_secret, q_p_server = SQLer.escape(p["id"], p['farm'], p['secret'], p['server'])
-                q_new_photos << "(#{q_p_id}, #{q_ps_id},  #{q_p_farm}, '#{q_p_secret}', #{q_p_server})"
+                q_p_id, q_p_farm, q_p_secret, q_p_server, q_p_name, q_p_description = SQLer.escape(p["id"], p['farm'], p['secret'], p['server'], p['title'], p['description']["_content"].gsub("'","''"))
+                q_new_photos << "(#{q_p_id}, #{q_ps_id},  #{q_p_farm}, '#{q_p_secret}', #{q_p_server}, '#{q_p_name}', '#{q_p_description}')"
             end
         end
-        
         if !q_new_photo_albums.empty?
             q_insert_photo_albums = "INSERT INTO photo_albums (photoset_id, name, last_updated) VALUES \n" + q_new_photo_albums.join(",\n") + ";" 
         end
 
         if !q_new_photos.empty?
-            q_insert_photos = "INSERT INTO photos (flickr_id, photoset_id, farm, secret, server) VALUES \n" + q_new_photos.join(",\n") + ";" 
+            q_insert_photos = "INSERT INTO photos (flickr_id, photoset_id, farm, secret, server, name, description) VALUES \n" + q_new_photos.join(",\n") + ";" 
         end
 
         #.......................
@@ -164,10 +163,11 @@ module Photos
         return SQLer.query(q).to_a;
     end
 
-    def self.get_photos_urls photoset_id, _size = ""
+    def self.get_photos_urls photoset_id, _size = [""]
+        
         photos = self.get_photos(photoset_id)
         photos.collect do |p|
-            Flickr.imageURLBuilder(p,_size)
+            Hash[ _size.zip(Flickr.imageURLBuilder(p,_size)) + [["name",p["name"]]] + [["description", p["description"]]]]
         end
     end
 

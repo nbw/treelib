@@ -21,6 +21,9 @@
 			display:inline-block;
 			width:68%;
 			padding-right: 2%;
+			p:first-child {
+				padding-top: 0;
+			}	
 		}
 		.species {
 			.speciesTitle {
