@@ -2349,7 +2349,7 @@ a {
 
 .photoViewer {
   margin: 10px 0 20px 0;
-  padding: 30px 0 30px 0;
+  padding: 110px 0 110px 0;
   position: relative;
   background-color: #161616;
   border: 1px solid #444;
@@ -2407,8 +2407,8 @@ a {
       user-select: none; }
   .photoViewer .closeButton {
     position: absolute;
-    top: 1em;
-    right: 1em; }
+    top: 0.6em;
+    right: 0.6em; }
   @media screen and (max-width: 640px) {
     .photoViewer {
       padding: 0; }

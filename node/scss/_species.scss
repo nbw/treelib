@@ -1,9 +1,6 @@
 @import "_photoViewer";
 
 .species {
-	> * { 
-		padding: 10px;
-	}
 	> .title {
 		.main { 
 			font-size:40pt;
@@ -24,6 +21,7 @@
 		}
 	}
 	.photos {
+		padding: 10px;
 		img {
 			display:inline-block;
 			margin:5px;

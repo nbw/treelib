@@ -117,9 +117,18 @@ $searchBar-list-font-color-selected: #111;
 
 	}
 	.familyList, .generaList, .speciesList {
-		::-webkit-scrollbar { 
-		  display: none; 
-		}  
+		// ::-webkit-scrollbar { 
+		//    width: 10px;
+		//  } 
+		//  ::-webkit-scrollbar-button {
+		//     // background: #aaa;
+		// }
+		// ::-webkit-scrollbar-track-piece {
+		//     background: $searchBar-background;
+		// }
+		// ::-webkit-scrollbar-thumb {
+  //   		background: #dadada;
+		// }
 		display: inline-block;
 		vertical-align: text-top;
 		width: 33%;
