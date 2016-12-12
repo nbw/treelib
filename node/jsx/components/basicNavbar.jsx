@@ -10,9 +10,9 @@ class BasicNavbar extends React.Component {
             <div className="basicNavbar">
                 <ul>
                     <li className="treelib"><a href="/"><img src="/img/logo.png"></img><label>TreeLib</label></a></li>
-                    <li className="search"><a href="/search">Search</a></li>
-                    <li className="about"><a href="/about">About</a></li>
-                    <li className="contact"><a href="/contact">Contact</a></li>
+                    <li className="search"><a href="/search">SEARCH</a></li>
+                    <li className="about"><a href="/about">ABOUT</a></li>
+                    <li className="contact"><a href="/contact">CONTACT</a></li>
                 </ul>
                 <div className="navBorder first"></div><div className="navBorder second"></div><div className="navBorder third"></div>
             </div>

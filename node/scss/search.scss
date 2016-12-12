@@ -3,7 +3,7 @@
 @import "_genus";
 @import "_family";
 
-$sidebar-width: 35%;
+$sidebar-width: 38%;
 $sidebar-title-height: 3rem;
 
 body{
@@ -99,7 +99,7 @@ $searchBar-list-font-color-selected: #111;
 		cursor: pointer; 
 		border-bottom: 1px solid #777;
 		font-size: $sidebar-title-height;
-		text-transform: uppercase;
+		// text-transform: uppercase;
 		text-align: center;
 		padding: 0.5rem 0 0.5rem 0;
 		a { 
@@ -117,6 +117,9 @@ $searchBar-list-font-color-selected: #111;
 
 	}
 	.familyList, .generaList, .speciesList {
+		::-webkit-scrollbar { 
+		  display: none; 
+		}  
 		display: inline-block;
 		vertical-align: text-top;
 		width: 33%;

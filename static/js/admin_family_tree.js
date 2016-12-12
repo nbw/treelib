@@ -95,7 +95,7 @@ webpackJsonp([0],{
 	                        { id: 'family-' + f.id, key: f.id },
 	                        _react2.default.createElement(
 	                            'a',
-	                            { href: "/admin/edit_family?id=" + f.id },
+	                            { target: '_blank', href: "/admin/edit_family?id=" + f.id },
 	                            f.name
 	                        ),
 	                        _react2.default.createElement('br', null),
@@ -146,7 +146,7 @@ webpackJsonp([0],{
 	                        { id: 'genus-' + g.id, key: g.id },
 	                        _react2.default.createElement(
 	                            'a',
-	                            { href: "/admin/edit_genus?id=" + g.id },
+	                            { target: '_blank', href: "/admin/edit_genus?id=" + g.id },
 	                            g.name
 	                        ),
 	                        _react2.default.createElement('br', null),
@@ -194,7 +194,7 @@ webpackJsonp([0],{
 	                    null,
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: "/admin/edit_species?id=" + s.id },
+	                        { target: '_blank', href: "/admin/edit_species?id=" + s.id },
 	                        s.name
 	                    ),
 	                    _react2.default.createElement('br', null),

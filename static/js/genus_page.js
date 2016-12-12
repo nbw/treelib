@@ -138,7 +138,7 @@ webpackJsonp([7],{
 	                        _react2.default.createElement(
 	                            'a',
 	                            { href: '/search' },
-	                            'Search'
+	                            'SEARCH'
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -147,7 +147,7 @@ webpackJsonp([7],{
 	                        _react2.default.createElement(
 	                            'a',
 	                            { href: '/about' },
-	                            'About'
+	                            'ABOUT'
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -156,7 +156,7 @@ webpackJsonp([7],{
 	                        _react2.default.createElement(
 	                            'a',
 	                            { href: '/contact' },
-	                            'Contact'
+	                            'CONTACT'
 	                        )
 	                    )
 	                ),

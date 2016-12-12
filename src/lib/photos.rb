@@ -9,6 +9,19 @@ module Photos
     end
 
     def self.update
+
+        # Simplified Updated: December 11th, 2016
+        # 1. Find out which albums have been modified or deleted or added
+        # 2. Remove the deleted albums and their photos from the db
+        # 3. Remove existing stored photos of modified albums from the db
+        # 4. Get the photos of modified albums from flickr. Store them to replace the ones deleted in #3.
+        # 5. Store new albums and their photos
+
+        # Notes: 
+        # Stepd 3 & 4 will take care of any reordering of photos on flickr, 
+        # new photos to modified albums, and deleted photos from modified albums.
+        # It's much simpler than the way it was before. 
+
         #.............................
         # Photo albums
         flickr_albums = Flickr::get_photosets
@@ -30,47 +43,19 @@ module Photos
         end
 
         #.............................
-        # Images in modified photo albums
-        db_photos = modified_albums_deleted_photos = modified_albums.empty? ? [] : Photos::get_photos(modified_albums.collect{|ma| ma["album_id"]})
-        modified_photos, modified_albums_new_photos = [], []
-        modified_albums.each do |ma|
-            Flickr::get_photos_from_photoset(ma["id"]).each do |fp|
-                # check if a new photo
-                db_photo_index = db_photos.find_index{|mp| mp["flickr_id"] == fp["id"]}
-                if db_photo_index && p = db_photos.delete_at(db_photo_index)
-                    if p["secret"] != fp["secret"]
-                        fp["photo_id"] = p["id"]
-                        fp["photoset_id"] = ma["id"]
-                        modified_photos << fp
-                    end
-                else
-                    # New photos!
-                    fp["photoset_id"] = ma["id"]
-                    modified_albums_new_photos << fp
-                end
-            end
-        end
+        # Photos of Modified Albums 
+        modified_albums_new_photos = modified_albums.collect { |ma|
+            Flickr::get_photos_from_photoset(ma["id"]).collect{ |fp|
+                fp["photoset_id"] = ma["id"]
+                fp
+            }
+        }.flatten
 
         #...............................
         # QUERIES 
         #...............................
         q_new_photo_albums =  []
         q_update_photo_albums = q_update_photos = q_insert_photo_albums = q_insert_photos = q_delete_photo_albums = q_delete_photos = nil
-        
-
-        #.......................
-        # update modified photos
-        if !modified_photos.empty?
-            q_modified_photos = modified_photos.collect do|p| 
-                q_p_id, q_flickr_id, q_photoset_id, q_p_farm, q_p_secret, q_p_server, q_p_name, q_p_description = SQLer.escape(p["photo_id"], p["id"], p["photoset_id"], p['farm'], p['secret'], p['server'], p['title'], p['description']["_content"].gsub("'","''"))
-                "(#{q_p_id}, #{q_flickr_id}, #{q_photoset_id}, #{q_p_farm}, '#{q_p_secret}', #{q_p_server}, '#{q_p_name}', '#{q_p_description}')"
-            end.join(",\n")
-            
-            q_update_photos = "INSERT INTO photos (id, flickr_id, photoset_id, farm, secret, server, name, description) VALUES\n" + 
-                q_modified_photos +
-                "\nON DUPLICATE KEY UPDATE id=VALUES(id),\nflickr_id=VALUES(flickr_id),\nphotoset_id=VALUES(photoset_id),\nfarm=VALUES(farm),\nsecret=VALUES(secret),\nserver=VALUES(server),\nname=VALUES(name),\ndescription=VALUES(description)"
-
-        end
 
         #.......................
         # update modified photo_albums
@@ -85,8 +70,8 @@ module Photos
         #.....................................
         # new photos for existing photo albums
         q_new_photos = modified_albums_new_photos.collect do |p|
-                q_p_id, q_ps_id, q_p_farm, q_p_secret, q_p_server = SQLer.escape(p["id"], p["photoset_id"], p['farm'], p['secret'], p['server'])
-                "(#{q_p_id}, #{q_ps_id},  #{q_p_farm}, '#{q_p_secret}', #{q_p_server})"
+                q_p_id, q_ps_id, q_p_farm, q_p_secret, q_p_server, q_p_name, q_p_description = SQLer.escape(p["id"], p["photoset_id"], p['farm'], p['secret'], p['server'], p['title'], p['description']["_content"].gsub("'","''"))
+                "(#{q_p_id}, #{q_ps_id},  #{q_p_farm}, '#{q_p_secret}', #{q_p_server}, '#{q_p_name}', '#{q_p_description}')"
         end
         #...........................
         # new albums with new photos
@@ -109,30 +94,33 @@ module Photos
 
         #.......................
         # Deleted photo albums
-        q_delete_photos_where = []
-        if !deleted_albums.empty?
+        q_delete_photos_where = ""
+        if !(deleted_albums.empty?)
             delete_album_ids = deleted_albums.collect{|da| da["photoset_id"]}
-            q_delete_photo_albums = "DELETE FROM photo_albums WHERE photoset_id IN ( #{delete_album_ids.join(", ")} )"    
-            q_delete_photos_where <<  "photoset_id IN ( #{delete_album_ids.join(", ")} )"
+            q_delete_photo_albums = "DELETE FROM photo_albums WHERE photoset_id IN ( #{delete_album_ids.join(", ")} )"
+            q_delete_photos_where += " #{delete_album_ids.join(", ")} "
         end
-        #...............................
-        # deleted photos from modified albums
-        delete_photo_ids = modified_albums_deleted_photos.collect{|da| da["flickr_id"]}
-        q_delete_photos_where << "flickr_id IN ( #{delete_photo_ids.join(", ")} )" if !delete_photo_ids.empty?
+
+        #.......................
+        # Old photos from modified albums
+        if !(modified_albums.empty?)
+                modified_album_ids = modified_albums.collect{|ma| ma["id"]}
+                q_delete_photos_where += "#{modified_album_ids.join(", ")}"
+        end
+        
         #...............................
         # deleted photos query
         if !q_delete_photos_where.empty?
-            q_delete_photos = "DELETE FROM photos WHERE " + q_delete_photos_where.join(" OR ") 
+            q_delete_photos = "DELETE FROM photos WHERE photoset_id IN ( " + q_delete_photos_where + " )"
         end
 
         if(q_update_photo_albums||q_delete_photo_albums||q_insert_photo_albums)        
             SQLer.transaction do 
-                SQLer.query(q_update_photos) if q_update_photos
-                SQLer.query(q_update_photo_albums) if q_update_photo_albums
-                SQLer.query(q_insert_photo_albums) if q_insert_photo_albums
-                SQLer.query(q_insert_photos) if q_insert_photos
                 SQLer.query(q_delete_photo_albums) if q_delete_photo_albums
                 SQLer.query(q_delete_photos) if q_delete_photos
+                SQLer.query(q_update_photo_albums) if q_update_photo_albums
+                SQLer.query(q_insert_photo_albums) if q_insert_photo_albums
+                SQLer.query(q_insert_photos) if q_insert_photos 
             end
         end
     end

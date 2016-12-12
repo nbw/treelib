@@ -2706,8 +2706,8 @@ body {
 .content {
   position: fixed;
   z-index: 0;
-  left: 35%;
-  width: 65%;
+  left: 38%;
+  width: 62%;
   height: 100%;
   overflow-y: scroll;
   -webkit-transition: width 0.25s ease-out, left 0.25s ease-out;
@@ -2745,7 +2745,7 @@ body {
   cursor: pointer;
   overflow-y: hidden;
   height: 100%;
-  width: 35%;
+  width: 38%;
   min-width: 300px;
   text-align: center;
   background-color: fafafa;
@@ -2756,7 +2756,6 @@ body {
     cursor: pointer;
     border-bottom: 1px solid #777;
     font-size: 3rem;
-    text-transform: uppercase;
     text-align: center;
     padding: 0.5rem 0 0.5rem 0; }
     .searchBar .title a {
@@ -2771,6 +2770,8 @@ body {
     display: inline-block;
     vertical-align: text-top;
     width: 33%; }
+    .searchBar .familyList ::-webkit-scrollbar, .searchBar .generaList ::-webkit-scrollbar, .searchBar .speciesList ::-webkit-scrollbar {
+      display: none; }
     .searchBar .familyList:not(:last-child), .searchBar .generaList:not(:last-child), .searchBar .speciesList:not(:last-child) {
       border-color: #AAA;
       border-style: solid;
