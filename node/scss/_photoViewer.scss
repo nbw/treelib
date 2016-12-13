@@ -185,10 +185,10 @@
 		   }
 		}
 		.next {
-			padding-left: 10%;
+			padding-left: 2%;
 		}
 		.prev {
-			padding-right: 10%;
+			padding-right: 2%;
 		}
 	}
 	.closeButton {
@@ -199,16 +199,6 @@
 		right: 0.6em;
 		&:hover {
 			opacity: 1;
-		}
-	}
-	@media screen and (max-width: 900px) {
-		.image {
-			.next {
-				padding-left: 2%;
-			}
-			.prev {
-				padding-right: 2%;
-			}
 		}
 	}
 	
