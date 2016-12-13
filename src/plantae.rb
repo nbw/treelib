@@ -63,7 +63,7 @@ module Plantae
     def self.get_species_photos species
         species = species.to_hash
         if album_id = species[:album_id]
-            sizes = ['q','z','o']
+            sizes = ['q','z','h']
             photos = Photos::get_photos_urls(album_id, sizes)
             photos.map do |p|
                 {   
@@ -71,7 +71,8 @@ module Plantae
                     :medium=>p[sizes[1]], 
                     :original=>p[sizes[2]], 
                     :name => p['name'],
-                    :description => p['description']
+                    :description => p['description'],
+                    :flickr_url => p['flickr_url']
                 }
             end
         end
@@ -146,21 +147,20 @@ module Plantae
         genus[:species].each do |s|
             s = s.to_hash
             if album_id = s[:album_id]
-                sizes = ['q','z','o']
+                sizes = ['q','z','h']
                 photos = Photos::get_photos_urls(album_id, sizes)
                 species_photos += photos.map do |p|
                     {   
-                        :thumb=>p[sizes[0]], 
-                        :medium=>p[sizes[1]], 
-                        :original=>p[sizes[2]], 
+                        :thumb =>p[sizes[0]], 
+                        :medium =>p[sizes[1]], 
+                        :original =>p[sizes[2]], 
                         :name => p['name'],
-                        :description => p['description']
+                        :description => p['description'],
+                        :flickr_url => p['flickr_url']
                     }
                 end
             end
         end
-
-        pp species_photos
 
         if species_photos.length > num_photos
             num_photos.times do
@@ -236,15 +236,16 @@ module Plantae
             g[:species].each do |s|
                 s = s.to_hash
                 if album_id = s[:album_id]
-                    sizes = ['q','z','o']
+                    sizes = ['q','z','h']
                     photos = Photos::get_photos_urls(album_id, sizes)
                     species_photos += photos.map do |p|
                         {   
-                            :thumb=>p[sizes[0]], 
-                            :medium=>p[sizes[1]], 
-                            :original=>p[sizes[2]], 
+                            :thumb => p[sizes[0]], 
+                            :medium => p[sizes[1]], 
+                            :original => p[sizes[2]], 
                             :name => p['name'],
-                            :description => p['description']
+                            :description => p['description'],
+                            :flickr_url => p["flickr_url"]
                         }
                     end
                 end

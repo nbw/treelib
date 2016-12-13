@@ -2356,6 +2356,34 @@ a {
   color: #EEE; }
   .photoViewer a {
     color: #EEE; }
+  .photoViewer .fullSizeImage {
+    position: fixed;
+    z-index: 10;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #070707;
+    text-align: center;
+    pointer-events: none;
+    webkit-transition: opacity 0.33s ease-out;
+    /* Safari */
+    transition: opacity 0.33s ease-out; }
+    .photoViewer .fullSizeImage > * {
+      display: inline-block;
+      vertical-align: middle; }
+    .photoViewer .fullSizeImage .helper {
+      height: 100%; }
+    .photoViewer .fullSizeImage .imageWrapper {
+      height: 90%; }
+      .photoViewer .fullSizeImage .imageWrapper img {
+        max-height: 93%; }
+      .photoViewer .fullSizeImage .imageWrapper .info {
+        padding-top: 5px; }
+    .photoViewer .fullSizeImage.show {
+      opacity: 1;
+      pointer-events: auto; }
   .photoViewer .image {
     text-align: center; }
     .photoViewer .image > div {
@@ -2378,15 +2406,107 @@ a {
         display: inline-block; }
       .photoViewer .image .imageWrapper .photoButtons {
         position: absolute;
-        right: 0; }
+        right: 0;
+        font-size: 1.4rem;
+        opacity: 0.75; }
         .photoViewer .image .imageWrapper .photoButtons ul {
-          padding: 0.3em;
+          padding: 0.3em 0 0.3em 0.3em;
           margin: 0;
           float: right; }
           .photoViewer .image .imageWrapper .photoButtons ul li {
             list-style: none;
             display: inline-block;
             padding: 3px 5px 0 5px; }
+
+@keyframes download {
+  0% {
+    content: ' '; }
+  12.5% {
+    content: 'd'; }
+  25% {
+    content: 'do'; }
+  37.5% {
+    content: 'dow'; }
+  50% {
+    content: 'down'; }
+  62.5% {
+    content: 'downl'; }
+  75% {
+    content: 'downlo'; }
+  87.5% {
+    content: 'downloa'; }
+  100% {
+    content: 'download'; } }
+
+@keyframes flickr {
+  0% {
+    content: ' '; }
+  16.6% {
+    content: 'f'; }
+  33.2% {
+    content: 'fl'; }
+  49.8% {
+    content: 'fli'; }
+  66.4% {
+    content: 'flic'; }
+  83% {
+    content: 'flick'; }
+  100% {
+    content: 'flickr'; } }
+
+@keyframes fullscreen {
+  0% {
+    content: ' '; }
+  10% {
+    content: 'f'; }
+  20% {
+    content: 'fu'; }
+  30% {
+    content: 'ful'; }
+  40% {
+    content: 'full'; }
+  50% {
+    content: 'fulls'; }
+  60% {
+    content: 'fullsc'; }
+  70% {
+    content: 'fullscr'; }
+  80% {
+    content: 'fullscre'; }
+  90% {
+    content: 'fullscree'; }
+  100% {
+    content: 'fullscreen'; } }
+        .photoViewer .image .imageWrapper .photoButtons .flickr:after {
+          opacity: 0;
+          -webkit-transition: all 0.18s ease-out;
+          /* Safari */
+          transition: all 0.18s ease-out;
+          content: ""; }
+        .photoViewer .image .imageWrapper .photoButtons .flickr:hover:after {
+          opacity: 1;
+          animation: flickr 0.18s ease-out;
+          animation-fill-mode: forwards; }
+        .photoViewer .image .imageWrapper .photoButtons .downloadLink:after {
+          opacity: 0;
+          -webkit-transition: all 0.15s ease-out;
+          /* Safari */
+          transition: all 0.15s ease-out;
+          content: ""; }
+        .photoViewer .image .imageWrapper .photoButtons .downloadLink:hover:after {
+          opacity: 1;
+          animation: download 0.15s ease-out;
+          animation-fill-mode: forwards; }
+        .photoViewer .image .imageWrapper .photoButtons .fullscreen:after {
+          opacity: 0;
+          -webkit-transition: all 0.15s ease-out;
+          /* Safari */
+          transition: all 0.15s ease-out;
+          content: ""; }
+        .photoViewer .image .imageWrapper .photoButtons .fullscreen:hover:after {
+          opacity: 1;
+          animation: fullscreen 0.15s ease-out;
+          animation-fill-mode: forwards; }
       .photoViewer .image .imageWrapper .info {
         padding-top: 0.5em;
         display: block;
@@ -2404,11 +2524,28 @@ a {
 		     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
 		   */
       -ms-user-select: none;
-      user-select: none; }
+      user-select: none;
+      font-size: 2rem;
+      opacity: 0.45; }
+      .photoViewer .image .next:hover, .photoViewer .image .prev:hover {
+        opacity: 0.8; }
+    .photoViewer .image .next {
+      padding-left: 10%; }
+    .photoViewer .image .prev {
+      padding-right: 10%; }
   .photoViewer .closeButton {
+    opacity: 0.7;
     position: absolute;
+    cursor: pointer;
     top: 0.6em;
     right: 0.6em; }
+    .photoViewer .closeButton:hover {
+      opacity: 1; }
+  @media screen and (max-width: 900px) {
+    .photoViewer .image .next {
+      padding-left: 2%; }
+    .photoViewer .image .prev {
+      padding-right: 2%; } }
   @media screen and (max-width: 640px) {
     .photoViewer {
       padding: 0; }
@@ -2433,8 +2570,7 @@ a {
 
 .species > .title {
   padding: 10px 0 10px 0;
-  margin: 0 10px 0 10px;
-  margin-bottom: 10px;
+  margin: 0 10px 10px 10px;
   border-bottom: 3px black solid; }
   .species > .title .main {
     font-size: 40pt;
@@ -2448,7 +2584,8 @@ a {
     padding-top: 0; }
 
 .species .photos {
-  padding: 10px; }
+  padding: 10px;
+  text-align: center; }
   .species .photos img {
     display: inline-block;
     margin: 5px; }
@@ -2456,7 +2593,7 @@ a {
       box-sizing: border-box;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
-      border: 2px blue solid; }
+      border: 2px #4385ef solid; }
 
 .photoViewer {
   margin: 10px 0 20px 0;
@@ -2467,6 +2604,34 @@ a {
   color: #EEE; }
   .photoViewer a {
     color: #EEE; }
+  .photoViewer .fullSizeImage {
+    position: fixed;
+    z-index: 10;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #070707;
+    text-align: center;
+    pointer-events: none;
+    webkit-transition: opacity 0.33s ease-out;
+    /* Safari */
+    transition: opacity 0.33s ease-out; }
+    .photoViewer .fullSizeImage > * {
+      display: inline-block;
+      vertical-align: middle; }
+    .photoViewer .fullSizeImage .helper {
+      height: 100%; }
+    .photoViewer .fullSizeImage .imageWrapper {
+      height: 90%; }
+      .photoViewer .fullSizeImage .imageWrapper img {
+        max-height: 93%; }
+      .photoViewer .fullSizeImage .imageWrapper .info {
+        padding-top: 5px; }
+    .photoViewer .fullSizeImage.show {
+      opacity: 1;
+      pointer-events: auto; }
   .photoViewer .image {
     text-align: center; }
     .photoViewer .image > div {
@@ -2489,15 +2654,107 @@ a {
         display: inline-block; }
       .photoViewer .image .imageWrapper .photoButtons {
         position: absolute;
-        right: 0; }
+        right: 0;
+        font-size: 1.4rem;
+        opacity: 0.75; }
         .photoViewer .image .imageWrapper .photoButtons ul {
-          padding: 0.3em;
+          padding: 0.3em 0 0.3em 0.3em;
           margin: 0;
           float: right; }
           .photoViewer .image .imageWrapper .photoButtons ul li {
             list-style: none;
             display: inline-block;
             padding: 3px 5px 0 5px; }
+
+@keyframes download {
+  0% {
+    content: ' '; }
+  12.5% {
+    content: 'd'; }
+  25% {
+    content: 'do'; }
+  37.5% {
+    content: 'dow'; }
+  50% {
+    content: 'down'; }
+  62.5% {
+    content: 'downl'; }
+  75% {
+    content: 'downlo'; }
+  87.5% {
+    content: 'downloa'; }
+  100% {
+    content: 'download'; } }
+
+@keyframes flickr {
+  0% {
+    content: ' '; }
+  16.6% {
+    content: 'f'; }
+  33.2% {
+    content: 'fl'; }
+  49.8% {
+    content: 'fli'; }
+  66.4% {
+    content: 'flic'; }
+  83% {
+    content: 'flick'; }
+  100% {
+    content: 'flickr'; } }
+
+@keyframes fullscreen {
+  0% {
+    content: ' '; }
+  10% {
+    content: 'f'; }
+  20% {
+    content: 'fu'; }
+  30% {
+    content: 'ful'; }
+  40% {
+    content: 'full'; }
+  50% {
+    content: 'fulls'; }
+  60% {
+    content: 'fullsc'; }
+  70% {
+    content: 'fullscr'; }
+  80% {
+    content: 'fullscre'; }
+  90% {
+    content: 'fullscree'; }
+  100% {
+    content: 'fullscreen'; } }
+        .photoViewer .image .imageWrapper .photoButtons .flickr:after {
+          opacity: 0;
+          -webkit-transition: all 0.18s ease-out;
+          /* Safari */
+          transition: all 0.18s ease-out;
+          content: ""; }
+        .photoViewer .image .imageWrapper .photoButtons .flickr:hover:after {
+          opacity: 1;
+          animation: flickr 0.18s ease-out;
+          animation-fill-mode: forwards; }
+        .photoViewer .image .imageWrapper .photoButtons .downloadLink:after {
+          opacity: 0;
+          -webkit-transition: all 0.15s ease-out;
+          /* Safari */
+          transition: all 0.15s ease-out;
+          content: ""; }
+        .photoViewer .image .imageWrapper .photoButtons .downloadLink:hover:after {
+          opacity: 1;
+          animation: download 0.15s ease-out;
+          animation-fill-mode: forwards; }
+        .photoViewer .image .imageWrapper .photoButtons .fullscreen:after {
+          opacity: 0;
+          -webkit-transition: all 0.15s ease-out;
+          /* Safari */
+          transition: all 0.15s ease-out;
+          content: ""; }
+        .photoViewer .image .imageWrapper .photoButtons .fullscreen:hover:after {
+          opacity: 1;
+          animation: fullscreen 0.15s ease-out;
+          animation-fill-mode: forwards; }
       .photoViewer .image .imageWrapper .info {
         padding-top: 0.5em;
         display: block;
@@ -2515,11 +2772,28 @@ a {
 		     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
 		   */
       -ms-user-select: none;
-      user-select: none; }
+      user-select: none;
+      font-size: 2rem;
+      opacity: 0.45; }
+      .photoViewer .image .next:hover, .photoViewer .image .prev:hover {
+        opacity: 0.8; }
+    .photoViewer .image .next {
+      padding-left: 10%; }
+    .photoViewer .image .prev {
+      padding-right: 10%; }
   .photoViewer .closeButton {
+    opacity: 0.7;
     position: absolute;
+    cursor: pointer;
     top: 0.6em;
     right: 0.6em; }
+    .photoViewer .closeButton:hover {
+      opacity: 1; }
+  @media screen and (max-width: 900px) {
+    .photoViewer .image .next {
+      padding-left: 2%; }
+    .photoViewer .image .prev {
+      padding-right: 2%; } }
   @media screen and (max-width: 640px) {
     .photoViewer {
       padding: 0; }
@@ -2573,14 +2847,16 @@ a {
       .genus .textContent .species ul li {
         list-style-type: circle; }
 
-.genus .photos img {
-  display: inline-block;
-  margin: 5px; }
-  .genus .photos img.selected {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    border: 2px blue solid; }
+.genus .photos {
+  text-align: center; }
+  .genus .photos img {
+    display: inline-block;
+    margin: 5px; }
+    .genus .photos img.selected {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      border: 2px #4385ef solid; }
 
 .photoViewer {
   margin: 10px 0 20px 0;
@@ -2591,6 +2867,34 @@ a {
   color: #EEE; }
   .photoViewer a {
     color: #EEE; }
+  .photoViewer .fullSizeImage {
+    position: fixed;
+    z-index: 10;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #070707;
+    text-align: center;
+    pointer-events: none;
+    webkit-transition: opacity 0.33s ease-out;
+    /* Safari */
+    transition: opacity 0.33s ease-out; }
+    .photoViewer .fullSizeImage > * {
+      display: inline-block;
+      vertical-align: middle; }
+    .photoViewer .fullSizeImage .helper {
+      height: 100%; }
+    .photoViewer .fullSizeImage .imageWrapper {
+      height: 90%; }
+      .photoViewer .fullSizeImage .imageWrapper img {
+        max-height: 93%; }
+      .photoViewer .fullSizeImage .imageWrapper .info {
+        padding-top: 5px; }
+    .photoViewer .fullSizeImage.show {
+      opacity: 1;
+      pointer-events: auto; }
   .photoViewer .image {
     text-align: center; }
     .photoViewer .image > div {
@@ -2613,15 +2917,107 @@ a {
         display: inline-block; }
       .photoViewer .image .imageWrapper .photoButtons {
         position: absolute;
-        right: 0; }
+        right: 0;
+        font-size: 1.4rem;
+        opacity: 0.75; }
         .photoViewer .image .imageWrapper .photoButtons ul {
-          padding: 0.3em;
+          padding: 0.3em 0 0.3em 0.3em;
           margin: 0;
           float: right; }
           .photoViewer .image .imageWrapper .photoButtons ul li {
             list-style: none;
             display: inline-block;
             padding: 3px 5px 0 5px; }
+
+@keyframes download {
+  0% {
+    content: ' '; }
+  12.5% {
+    content: 'd'; }
+  25% {
+    content: 'do'; }
+  37.5% {
+    content: 'dow'; }
+  50% {
+    content: 'down'; }
+  62.5% {
+    content: 'downl'; }
+  75% {
+    content: 'downlo'; }
+  87.5% {
+    content: 'downloa'; }
+  100% {
+    content: 'download'; } }
+
+@keyframes flickr {
+  0% {
+    content: ' '; }
+  16.6% {
+    content: 'f'; }
+  33.2% {
+    content: 'fl'; }
+  49.8% {
+    content: 'fli'; }
+  66.4% {
+    content: 'flic'; }
+  83% {
+    content: 'flick'; }
+  100% {
+    content: 'flickr'; } }
+
+@keyframes fullscreen {
+  0% {
+    content: ' '; }
+  10% {
+    content: 'f'; }
+  20% {
+    content: 'fu'; }
+  30% {
+    content: 'ful'; }
+  40% {
+    content: 'full'; }
+  50% {
+    content: 'fulls'; }
+  60% {
+    content: 'fullsc'; }
+  70% {
+    content: 'fullscr'; }
+  80% {
+    content: 'fullscre'; }
+  90% {
+    content: 'fullscree'; }
+  100% {
+    content: 'fullscreen'; } }
+        .photoViewer .image .imageWrapper .photoButtons .flickr:after {
+          opacity: 0;
+          -webkit-transition: all 0.18s ease-out;
+          /* Safari */
+          transition: all 0.18s ease-out;
+          content: ""; }
+        .photoViewer .image .imageWrapper .photoButtons .flickr:hover:after {
+          opacity: 1;
+          animation: flickr 0.18s ease-out;
+          animation-fill-mode: forwards; }
+        .photoViewer .image .imageWrapper .photoButtons .downloadLink:after {
+          opacity: 0;
+          -webkit-transition: all 0.15s ease-out;
+          /* Safari */
+          transition: all 0.15s ease-out;
+          content: ""; }
+        .photoViewer .image .imageWrapper .photoButtons .downloadLink:hover:after {
+          opacity: 1;
+          animation: download 0.15s ease-out;
+          animation-fill-mode: forwards; }
+        .photoViewer .image .imageWrapper .photoButtons .fullscreen:after {
+          opacity: 0;
+          -webkit-transition: all 0.15s ease-out;
+          /* Safari */
+          transition: all 0.15s ease-out;
+          content: ""; }
+        .photoViewer .image .imageWrapper .photoButtons .fullscreen:hover:after {
+          opacity: 1;
+          animation: fullscreen 0.15s ease-out;
+          animation-fill-mode: forwards; }
       .photoViewer .image .imageWrapper .info {
         padding-top: 0.5em;
         display: block;
@@ -2639,11 +3035,28 @@ a {
 		     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
 		   */
       -ms-user-select: none;
-      user-select: none; }
+      user-select: none;
+      font-size: 2rem;
+      opacity: 0.45; }
+      .photoViewer .image .next:hover, .photoViewer .image .prev:hover {
+        opacity: 0.8; }
+    .photoViewer .image .next {
+      padding-left: 10%; }
+    .photoViewer .image .prev {
+      padding-right: 10%; }
   .photoViewer .closeButton {
+    opacity: 0.7;
     position: absolute;
+    cursor: pointer;
     top: 0.6em;
     right: 0.6em; }
+    .photoViewer .closeButton:hover {
+      opacity: 1; }
+  @media screen and (max-width: 900px) {
+    .photoViewer .image .next {
+      padding-left: 2%; }
+    .photoViewer .image .prev {
+      padding-right: 2%; } }
   @media screen and (max-width: 640px) {
     .photoViewer {
       padding: 0; }
@@ -2668,7 +3081,7 @@ a {
 
 .family > .title {
   padding: 10px 0 10px 0;
-  margin-bottom: 10px;
+  margin: 0 10px 10px 10px;
   border-bottom: 3px black solid; }
   .family > .title .main {
     font-size: 40pt;
@@ -2680,14 +3093,17 @@ a {
   .family .description p:first-child {
     padding-top: 0; }
 
-.family .photos img {
-  display: inline-block;
-  margin: 5px; }
-  .family .photos img.selected {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    border: 2px blue solid; }
+.family .photos {
+  padding: 10px;
+  text-align: center; }
+  .family .photos img {
+    display: inline-block;
+    margin: 5px; }
+    .family .photos img.selected {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      border: 2px #4385ef solid; }
 
 body {
   box-sizing: border-box;
@@ -2739,7 +3155,6 @@ body {
   border-color: #666;
   border-style: solid;
   border-width: 0px 1px 1px 0;
-  z-index: 1;
   position: fixed;
   cursor: pointer;
   overflow-y: hidden;

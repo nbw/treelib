@@ -195,6 +195,8 @@ webpackJsonp([11],{
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -207,15 +209,87 @@ webpackJsonp([11],{
 	    function PhotoViewer() {
 	        _classCallCheck(this, PhotoViewer);
 
-	        return _possibleConstructorReturn(this, (PhotoViewer.__proto__ || Object.getPrototypeOf(PhotoViewer)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (PhotoViewer.__proto__ || Object.getPrototypeOf(PhotoViewer)).call(this));
+
+	        _this.state = {
+	            showFullSize: false
+	        };
+	        return _this;
 	    }
 
 	    _createClass(PhotoViewer, [{
+	        key: 'update',
+	        value: function update(name, value) {
+	            this.setState(_defineProperty({}, name, value));
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            window.addEventListener("keydown", this.handleKeyPress.bind(this));
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            window.removeEventListener("keydown", this.handleKeyPress.bind(this));
+	        }
+	    }, {
+	        key: 'handleKeyPress',
+	        value: function handleKeyPress(event) {
+	            if (event.key === "ArrowLeft") {
+	                this.props.prevCallback();
+	            }
+	            if (event.key === "ArrowRight") {
+	                this.props.nextCallback();
+	            }
+	        }
+	    }, {
+	        key: 'showFullSizeImage',
+	        value: function showFullSizeImage() {
+	            console.log('here');
+	            this.update('showFullSize', !this.state.showFullSize);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var self = this,
+	                show = this.state.showFullSize ? 'show' : '';
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'photoViewer' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { onClick: function onClick() {
+	                            return self.showFullSizeImage();
+	                        }, className: "fullSizeImage " + show },
+	                    _react2.default.createElement('span', { className: 'helper' }),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'imageWrapper' },
+	                        _react2.default.createElement('img', { src: this.props.original }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'info' },
+	                            _react2.default.createElement(
+	                                'label',
+	                                { className: 'title' },
+	                                this.props.imageName
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                { className: 'description' },
+	                                this.props.imageDescription
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'closeButton', onClick: function onClick() {
+	                                return self.showFullSizeImage();
+	                            } },
+	                        _react2.default.createElement('i', { className: 'fa fa-times fa-lg' }),
+	                        ' Close '
+	                    )
+	                ),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'image' },
@@ -231,7 +305,9 @@ webpackJsonp([11],{
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'imageInnerWrapper' },
-	                            _react2.default.createElement('img', { src: this.props.image }),
+	                            _react2.default.createElement('img', { src: this.props.image, onClick: function onClick() {
+	                                    return self.showFullSizeImage();
+	                                } }),
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'photoButtons' },
@@ -240,18 +316,30 @@ webpackJsonp([11],{
 	                                    null,
 	                                    _react2.default.createElement(
 	                                        'li',
-	                                        { className: 'flickr' },
-	                                        _react2.default.createElement('i', { className: 'fa fa-flickr fa-lg' }),
-	                                        ' flickr'
+	                                        { className: 'fullScreen', onClick: function onClick() {
+	                                                return self.showFullSizeImage();
+	                                            } },
+	                                        _react2.default.createElement('i', { className: 'fa fa-expand fa-lg' }),
+	                                        ' '
 	                                    ),
 	                                    _react2.default.createElement(
 	                                        'li',
 	                                        null,
 	                                        _react2.default.createElement(
 	                                            'a',
-	                                            { className: 'fullimage', href: this.props.original },
+	                                            { target: '_blank', className: 'flickr', href: this.props.flickr_url },
+	                                            _react2.default.createElement('i', { className: 'fa fa-flickr fa-lg' }),
+	                                            ' '
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { className: 'downloadLink', href: this.props.original, download: this.props.imageName },
 	                                            _react2.default.createElement('i', { className: 'fa fa-download fa-lg' }),
-	                                            ' download'
+	                                            ' '
 	                                        )
 	                                    )
 	                                )
@@ -459,7 +547,8 @@ webpackJsonp([11],{
 	                    image: s.photos[selectedPhoto].medium,
 	                    imageName: s.photos[selectedPhoto].name,
 	                    imageDescription: s.photos[selectedPhoto].description,
-	                    original: s.photos[selectedPhoto].original }) : null,
+	                    original: s.photos[selectedPhoto].original,
+	                    flickr_url: s.photos[selectedPhoto].flickr_url }) : null,
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'photos' },

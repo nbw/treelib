@@ -65,7 +65,8 @@ class Family extends React.Component {
                         image={f.photos[selectedPhoto].medium}
                         imageName={f.photos[selectedPhoto].name}
                         imageDescription={f.photos[selectedPhoto].description} 
-                        original = {f.photos[selectedPhoto].original} /> : null }
+                        original = {f.photos[selectedPhoto].original} 
+                        flickr_url = {f.photos[selectedPhoto].flickr_url} /> : null }
                 <div className="photos">
                     {thumbs}
                 </div>

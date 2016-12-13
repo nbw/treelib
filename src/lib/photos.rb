@@ -155,7 +155,8 @@ module Photos
         
         photos = self.get_photos(photoset_id)
         photos.collect do |p|
-            Hash[ _size.zip(Flickr.imageURLBuilder(p,_size)) + [["name",p["name"]]] + [["description", p["description"]]]]
+            flickr_url = "https://www.flickr.com/photos/#{CONFIG["flickr_user_id"]}/#{p["flickr_id"]}"
+            Hash[ _size.zip(Flickr.imageURLBuilder(p,_size)) + [["name",p["name"]]] + [["description", p["description"]]] + [["flickr_url", flickr_url]]]
         end
     end
 

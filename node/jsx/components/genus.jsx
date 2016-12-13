@@ -78,7 +78,8 @@ class Genus extends React.Component {
                         image={g.photos[selectedPhoto].medium}
                         imageName={g.photos[selectedPhoto].name}
                         imageDescription={g.photos[selectedPhoto].description}
-                        original = {g.photos[selectedPhoto].original} /> : null }
+                        original = {g.photos[selectedPhoto].original} 
+                        flickr_url = {g.photos[selectedPhoto].flickr_url} /> : null }
                 <div className="photos">
                     {thumbs}
                 </div>

@@ -74,7 +74,8 @@ class Species extends React.Component {
                         image={s.photos[selectedPhoto].medium} 
                         imageName={s.photos[selectedPhoto].name} 
                         imageDescription={s.photos[selectedPhoto].description} 
-                        original = {s.photos[selectedPhoto].original} /> : null }
+                        original = {s.photos[selectedPhoto].original} 
+                        flickr_url = {s.photos[selectedPhoto].flickr_url} /> : null }
                 <div className="photos">
                     {thumbs}
                 </div>

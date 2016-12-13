@@ -1,6 +1,13 @@
 <html>
 <head>
 	<title>Genus: <%= @page_data[:genus][:name] %></title>
+    <meta property="og:url"           content="/genus/<%= @page_data[:genus][:name].gsub(" ","_") %>" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="TreeLib Genus: <%= @page_data[:genus][:name] %>" />
+    <meta property="og:description"   content="A collection of high-quality tree photographs for educators, students and lay persons." />
+    <% if @page_data[:genus][:photos] %>
+    <meta property="og:image"         content="<%= @page_data[:genus][:photos][rand(@page_data[:genus][:photos].length)][:thumb] %>" />
+    <% end %>
     <link rel='shortcut icon' href='/img/favicon.ico' type='image/x-icon'/ >
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/genus_page.css">

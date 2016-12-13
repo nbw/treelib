@@ -82,12 +82,9 @@ $searchBar-list-font-color-selected: #111;
 	border-color: #666;
 	border-style: solid;
 	border-width: 0px 1px 1px 0;
-	z-index: 1;
-
 	position:fixed;
 	cursor: pointer;
 	overflow-y: hidden;
-
 	height: 100%;
 	width: $sidebar-width;
 	min-width: 300px;

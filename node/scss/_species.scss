@@ -10,8 +10,7 @@
 			}
 		}
 		padding: 10px 0 10px 0;
-		margin: 0 10px 0 10px;
-		margin-bottom: 10px;
+		margin: 0 10px 10px 10px;
 		border-bottom: 3px black solid;
 	}
 	> .description { 
@@ -22,6 +21,7 @@
 	}
 	.photos {
 		padding: 10px;
+		text-align: center;
 		img {
 			display:inline-block;
 			margin:5px;
@@ -29,7 +29,7 @@
 				box-sizing: border-box;
 			    -moz-box-sizing: border-box;
 			    -webkit-box-sizing: border-box;
-				border: 2px blue solid;
+				border: 2px #4385ef solid;
 			}
 		}
 	}
