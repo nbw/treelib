@@ -2381,6 +2381,8 @@ a {
         max-height: 93%; }
       .photoViewer .fullSizeImage .imageWrapper .info {
         padding-top: 5px; }
+        .photoViewer .fullSizeImage .imageWrapper .info .title {
+          font-weight: bold; }
     .photoViewer .fullSizeImage.show {
       opacity: 1;
       pointer-events: auto; }
@@ -2624,6 +2626,8 @@ a {
         max-height: 93%; }
       .photoViewer .fullSizeImage .imageWrapper .info {
         padding-top: 5px; }
+        .photoViewer .fullSizeImage .imageWrapper .info .title {
+          font-weight: bold; }
     .photoViewer .fullSizeImage.show {
       opacity: 1;
       pointer-events: auto; }
@@ -2882,6 +2886,8 @@ a {
         max-height: 93%; }
       .photoViewer .fullSizeImage .imageWrapper .info {
         padding-top: 5px; }
+        .photoViewer .fullSizeImage .imageWrapper .info .title {
+          font-weight: bold; }
     .photoViewer .fullSizeImage.show {
       opacity: 1;
       pointer-events: auto; }
@@ -3105,14 +3111,13 @@ body {
 
 .content {
   position: fixed;
-  z-index: 0;
   left: 38%;
   width: 62%;
   height: 100%;
   overflow-y: scroll;
-  -webkit-transition: width 0.25s ease-out, left 0.25s ease-out;
+  -webkit-transition: width 0.25s ease-out, left 0.33s ease-out;
   /* Safari */
-  transition: width 0.25 ease-out, left 0.25s ease-out; }
+  transition: width 0.25 ease-out, left 0.33s ease-out; }
   .content > *:not(.default) > *:not(.photoViewer) {
     margin-left: 10px;
     margin-right: 10px; }
@@ -3140,7 +3145,7 @@ body {
   border-color: #666;
   border-style: solid;
   border-width: 0px 1px 1px 0;
-  position: fixed;
+  position: relative;
   cursor: pointer;
   overflow-y: hidden;
   height: 100%;
@@ -3152,6 +3157,7 @@ body {
   /* Safari */
   transition: width 0.33s ease-out, height 0.2s ease-out; }
   .searchBar .title {
+    background-color: fafafa;
     cursor: pointer;
     border-bottom: 1px solid #777;
     font-size: 3rem;
@@ -3221,17 +3227,21 @@ body {
     .searchBar .closeButton:after {
       content: " HIDE"; }
 
-.hidden.searchBar {
-  height: 4.5rem; }
-  .hidden.searchBar .closeButton:after {
+.minimized.searchBar {
+  background-color: fafafa;
+  height: 4.5rem;
+  z-index: 1; }
+  .minimized.searchBar .closeButton:hover {
+    color: #4c5b67; }
+  .minimized.searchBar .closeButton:after {
     content: ""; }
-  .hidden.searchBar .closeButton:before {
+  .minimized.searchBar .closeButton:before {
     content: "SHOW "; }
 
-.hidden.content {
+.minimized.content {
   left: 0%;
   width: 100%; }
-  .hidden.content > *:not(.default) {
+  .minimized.content > *:not(.default) {
     padding-top: 4rem; }
 
 @media screen and (max-width: 640px) {
@@ -3249,9 +3259,9 @@ body {
       display: none; }
   .family, .species, .genus {
     padding-bottom: 250px; }
-  .hidden.searchBar {
+  .minimized.searchBar {
     width: 100%; }
-  .hidden.content {
+  .minimized.content {
     top: 3rem; }
-    .hidden.content > *:not(.default) {
+    .minimized.content > *:not(.default) {
       padding-top: 0; } }

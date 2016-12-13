@@ -2381,6 +2381,8 @@ a {
         max-height: 93%; }
       .photoViewer .fullSizeImage .imageWrapper .info {
         padding-top: 5px; }
+        .photoViewer .fullSizeImage .imageWrapper .info .title {
+          font-weight: bold; }
     .photoViewer .fullSizeImage.show {
       opacity: 1;
       pointer-events: auto; }

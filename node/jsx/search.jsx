@@ -13,19 +13,28 @@ class App extends React.Component {
         super();
         this.state = {
         	selectedItem: { item: null, itemType: null },
+            sidebarMinimized: false,
             sidebarHidden: false
         };
+    }
+    componentDidMount() {
+        window.addEventListener("fullScreenPhoto", () => {this.update('sidebarHidden', !this.state.sidebarHidden );});
+    }
+    componentWillUnmount(){
+        window.removeEventListener("fullScreenPhoto", () => {});
     }
     update(name, value) {
         this.setState({
             [name]: value // ES6 computed property
         });
+        console.log(this.state);
     }
     handleInputChange(name, e) {
         this.setState({
             [name]: e.target.value // ES6 computed property
         });
     }
+
     speciesSelectedHandler(s, handler) {
         self = this;
         fetch('/api/get_species_photos?species_id=' + s.id, {
@@ -98,18 +107,21 @@ class App extends React.Component {
     render() {
         var type = this.state.selectedItem.itemType,
             item = this.state.selectedItem.item,
+            minimized = this.state.sidebarMinimized,
             hidden = this.state.sidebarHidden;
         return (
             <div className='mainContainer'>
-                <SearchSidebar 
-                	title = "Family"
-                	tree = {pg.tree}
-                	speciesHandler ={this.speciesSelectedHandler.bind(this)}
-                    genusHandler ={this.genusSelectedHandler.bind(this)}
-                    familyHandler ={this.familySelectedHandler.bind(this)}
-                    handler = {this.update.bind(this)} 
-                    hidden = {this.state.sidebarHidden}/>
-                <div className={hidden ? "content hidden": "content"}>
+                { hidden ? null :
+                    <SearchSidebar 
+                    	title = "Family"
+                    	tree = {pg.tree}
+                    	speciesHandler ={this.speciesSelectedHandler.bind(this)}
+                        genusHandler ={this.genusSelectedHandler.bind(this)}
+                        familyHandler ={this.familySelectedHandler.bind(this)}
+                        handler = {this.update.bind(this)} 
+                        minimized = {this.state.sidebarMinimized}/>
+                }
+                <div className={minimized ? "content minimized": "content"}>
                     { type === null ?
                         <div className="default">
                             <div className="message">

@@ -57,15 +57,31 @@ webpackJsonp([10],{
 
 	        _this.state = {
 	            selectedItem: { item: null, itemType: null },
+	            sidebarMinimized: false,
 	            sidebarHidden: false
 	        };
 	        return _this;
 	    }
 
 	    _createClass(App, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this2 = this;
+
+	            window.addEventListener("fullScreenPhoto", function () {
+	                _this2.update('sidebarHidden', !_this2.state.sidebarHidden);
+	            });
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            window.removeEventListener("fullScreenPhoto", function () {});
+	        }
+	    }, {
 	        key: 'update',
 	        value: function update(name, value) {
 	            this.setState(_defineProperty({}, name, value));
+	            console.log(this.state);
 	        }
 	    }, {
 	        key: 'handleInputChange',
@@ -146,21 +162,22 @@ webpackJsonp([10],{
 	        value: function render() {
 	            var type = this.state.selectedItem.itemType,
 	                item = this.state.selectedItem.item,
+	                minimized = this.state.sidebarMinimized,
 	                hidden = this.state.sidebarHidden;
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'mainContainer' },
-	                _react2.default.createElement(_searchSidebar2.default, {
+	                hidden ? null : _react2.default.createElement(_searchSidebar2.default, {
 	                    title: 'Family',
 	                    tree: pg.tree,
 	                    speciesHandler: this.speciesSelectedHandler.bind(this),
 	                    genusHandler: this.genusSelectedHandler.bind(this),
 	                    familyHandler: this.familySelectedHandler.bind(this),
 	                    handler: this.update.bind(this),
-	                    hidden: this.state.sidebarHidden }),
+	                    minimized: this.state.sidebarMinimized }),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: hidden ? "content hidden" : "content" },
+	                    { className: minimized ? "content minimized" : "content" },
 	                    type === null ? _react2.default.createElement(
 	                        'div',
 	                        { className: 'default' },
@@ -437,8 +454,10 @@ webpackJsonp([10],{
 	    }, {
 	        key: 'showFullSizeImage',
 	        value: function showFullSizeImage() {
-	            console.log('here');
 	            this.update('showFullSize', !this.state.showFullSize);
+	            var event = new Event('fullScreenPhoto');
+	            window.dispatchEvent(event);
+	            console.log("dispatched 'fullScreenPhoto'");
 	        }
 	    }, {
 	        key: 'render',
@@ -1027,8 +1046,8 @@ webpackJsonp([10],{
 	    }, {
 	        key: 'hideSidebar',
 	        value: function hideSidebar(e) {
-	            var hidden = this.props.hidden;
-	            this.props.handler('sidebarHidden', !hidden);
+	            var minimized = this.props.minimized;
+	            this.props.handler('sidebarMinimized', !minimized);
 	        }
 	    }, {
 	        key: 'render',
@@ -1037,7 +1056,7 @@ webpackJsonp([10],{
 	            var selectedFamily = this.state.selectedFamily,
 	                selectedGenus = this.state.selectedGenus,
 	                selectedSpecies = this.state.selectedSpecies,
-	                hidden = this.props.hidden,
+	                minimized = this.props.minimized,
 	                familyRows = self.props.tree.map(function (item) {
 	                var isSelected = selectedFamily && selectedFamily.id == item.id;
 	                return _react2.default.createElement(
@@ -1119,7 +1138,7 @@ webpackJsonp([10],{
 
 	            return _react2.default.createElement(
 	                'div',
-	                { id: this.props.id, className: hidden ? "searchbar hidden" : "searchbar" },
+	                { id: this.props.id, className: minimized ? "searchbar minimized" : "searchbar" },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'title' },
@@ -1139,7 +1158,7 @@ webpackJsonp([10],{
 	                    { className: 'closeButton', onClick: function onClick(event) {
 	                            return self.hideSidebar(event);
 	                        } },
-	                    hidden ? _react2.default.createElement('i', { className: 'fa fa-angle-right' }) : _react2.default.createElement('i', { className: 'fa fa-angle-left' })
+	                    minimized ? _react2.default.createElement('i', { className: 'fa fa-angle-right' }) : _react2.default.createElement('i', { className: 'fa fa-angle-left' })
 	                ),
 	                _react2.default.createElement(
 	                    'div',

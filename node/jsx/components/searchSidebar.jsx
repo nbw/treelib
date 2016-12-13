@@ -46,15 +46,15 @@ class SearchSidebar extends React.Component {
         this.update('selectedSpecies', item);
 	}
     hideSidebar(e){
-        var hidden = this.props.hidden;
-        this.props.handler('sidebarHidden', !hidden);
+        var minimized = this.props.minimized;
+        this.props.handler('sidebarMinimized', !minimized);
     }
     render() {
     	self = this;
     	var selectedFamily = this.state.selectedFamily,
     		selectedGenus = this.state.selectedGenus,
     		selectedSpecies = this.state.selectedSpecies,
-            hidden = this.props.hidden,
+            minimized = this.props.minimized,
     	    familyRows = self.props.tree.map(function(item) {
                 var isSelected = selectedFamily && (selectedFamily.id == item.id);
                 return <SidebarListItem isSelected={isSelected} value={item.id} key={item.id} onClick={(event) => self.familyClicked(item, event)}>{item.name}</SidebarListItem>;
@@ -105,10 +105,10 @@ class SearchSidebar extends React.Component {
         }
 
         return (
-            <div id={this.props.id}　className={ hidden ? "searchbar hidden" : "searchbar"} >
+            <div id={this.props.id}　className={ minimized ? "searchbar minimized" : "searchbar"} >
             	<div className="title"><a href="/"><img src="/img/logo.png"></img><label>TreeLib</label></a></div>
                 <div className="closeButton"onClick={(event) => self.hideSidebar(event)}>
-                    { hidden ? 
+                    { minimized ? 
                         <i className="fa fa-angle-right"></i> : 
                         <i className="fa fa-angle-left"></i>}
                 </div>
