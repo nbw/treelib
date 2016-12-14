@@ -830,7 +830,7 @@ webpackJsonp([10],{
 	                    { key: i },
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: "/search?g_id=" + g.id + "&s_id=" + s.id },
+	                        { href: "/search?f_id=" + g.family_id + "&g_id=" + g.id + "&s_id=" + s.id },
 	                        s.name
 	                    )
 	                );
