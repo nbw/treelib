@@ -2597,6 +2597,7 @@ a {
         list-style-type: circle; }
 
 .genus .photos {
+  padding: 10px;
   text-align: center; }
   .genus .photos img {
     display: inline-block;
@@ -2606,6 +2607,10 @@ a {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       border: 2px #4385ef solid; }
+  .genus .photos .thumbs {
+    padding-bottom: 5px; }
+  .genus .photos .subtitle {
+    font-style: italic; }
 
 .basicNavbar {
   color: #4c5b67;

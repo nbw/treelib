@@ -41,6 +41,7 @@
 		}
 	}
 	.photos {
+		padding: 10px;
 		text-align: center;
 		img {
 			display:inline-block;
@@ -51,6 +52,13 @@
 			    -webkit-box-sizing: border-box;
 				border: 2px #4385ef solid;
 			}
+		}
+		.thumbs {
+			padding-bottom: 5px;
+		}
+		.subtitle {
+			// font-size: 1.5rem;
+			font-style: italic;
 		}
 	}
 }

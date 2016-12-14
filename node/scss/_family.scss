@@ -11,10 +11,33 @@
 		margin: 0 10px 10px 10px;
 		border-bottom: 3px black solid;
 	}
-	.description { 
+	.textContent {
 		padding: 20px;
-		p:first-child {
-			padding-top: 0;
+		> * {
+			display:inline-block;
+			vertical-align: text-top;
+		}
+		.description { 
+			display:inline-block;
+			width:68%;
+			padding-right: 2%;
+			p:first-child {
+				padding-top: 0;
+			}	
+		}
+		.genera {
+			.genusTitle {
+				font-weight: bold;
+			}
+			border-left: 1px solid #AAA;
+			width: 27%;
+			padding-left: 2%;
+			ul {
+				padding-left: 20px;
+				li {
+					list-style-type: circle;
+				}
+			}
 		}
 	}
 	.photos {
@@ -29,6 +52,13 @@
 			    -webkit-box-sizing: border-box;
 				border: 2px #4385ef solid;
 			}
+		}
+		.thumbs {
+			padding-bottom: 5px;
+		}
+		.subtitle {
+			// font-size: 1.5rem;
+			font-style: italic;
 		}
 	}
 }

@@ -1,19 +1,5 @@
 import React, { PropTypes } from 'react'
 
-function SidebarListItem(props) {
-    var classNames;
-
-    if (props.isSelected) {
-        classNames = "selected";
-    }
-
-    return (
-        <li className={classNames} key={props.id} value={props.item} onClick={props.onClick}>
-            {props.children}
-        </li>
-    );
-}
-
 class SearchSidebar extends React.Component {
     constructor() {
         super();
@@ -22,6 +8,13 @@ class SearchSidebar extends React.Component {
             selectedGenus: null,
             selectedSpecies: null
         };
+    }
+    componentDidMount() {
+        console.log('mount');
+        var preSelected = this.props.preSelected;
+        this.setState({selectedFamily: preSelected.family || null});
+        this.setState({selectedGenus: preSelected.genus || null});
+        this.setState({selectedSpecies: preSelected.species || null});
     }
     update(name, value) {
         this.setState({
@@ -51,7 +44,7 @@ class SearchSidebar extends React.Component {
     }
     render() {
     	self = this;
-    	var selectedFamily = this.state.selectedFamily,
+    	var selectedFamily =  this.state.selectedFamily,
     		selectedGenus = this.state.selectedGenus,
     		selectedSpecies = this.state.selectedSpecies,
             minimized = this.props.minimized,
@@ -133,6 +126,20 @@ class SearchSidebar extends React.Component {
             </div>
         );
     };
+}
+
+function SidebarListItem(props) {
+    var classNames;
+
+    if (props.isSelected) {
+        classNames = "selected";
+    }
+
+    return (
+        <li className={classNames} key={props.id} value={props.item} onClick={props.onClick}>
+            {props.children}
+        </li>
+    );
 }
 
 export default SearchSidebar

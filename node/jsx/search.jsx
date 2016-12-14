@@ -7,7 +7,7 @@ import Species from './components/species.jsx';
 import SearchSidebar from './components/searchSidebar.jsx';
 
 var pg = pageData;
-
+var preSelected;
 class App extends React.Component {
     constructor() {
         super();
@@ -18,22 +18,106 @@ class App extends React.Component {
         };
     }
     componentDidMount() {
+        preSelected = this.urlFGS();
+        if (preSelected.family) {
+            if (preSelected.genus) {
+                if(preSelected.species) {
+                    this.speciesSelectedHandler (preSelected.species, this.update.bind(this));
+                } else {
+                    this.genusSelectedHandler (preSelected.genus, this.update.bind(this));
+                }
+            } else {
+                this.familySelectedHandler (preSelected.family, this.update.bind(this));
+            }
+        } else if (preSelected.genus) {
+            if(preSelected.species) {
+                this.speciesSelectedHandler (preSelected.species, this.update.bind(this));
+            } else {
+                this.genusSelectedHandler (preSelected.genus, this.update.bind(this));
+            }
+        } else if(preSelected.species) {
+            this.speciesSelectedHandler (preSelected.species, this.update.bind(this));
+        }
         window.addEventListener("fullScreenPhoto", () => {this.update('sidebarHidden', !this.state.sidebarHidden );});
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         window.removeEventListener("fullScreenPhoto", () => {});
     }
     update(name, value) {
         this.setState({
             [name]: value // ES6 computed property
         });
-        console.log(this.state);
     }
     handleInputChange(name, e) {
         this.setState({
             [name]: e.target.value // ES6 computed property
         });
     }
+    urlFGS() {
+        var urlParams = this.getAllUrlParams(window.location.search),
+            families = pg.tree,
+            genera =  [].concat.apply([],families.map(function(f){return f.genera})),
+            species = [].concat.apply([],genera.map(function(g){return g.species}));
+
+        var obj = {};
+
+        if (urlParams.f_id) {
+            var fam = families.find(function(f){ 
+                return f.id == urlParams.f_id
+            });
+            if( fam ) {
+                genera = fam.genera;
+                obj.family = fam;
+            }
+        }
+        if (urlParams.g_id) {
+            var gen = genera.find(function(g){ 
+                return g.id == urlParams.g_id
+            });
+            if(gen) {
+                species = gen.species;
+                obj.genus = gen;
+            }
+        }
+        if (urlParams.s_id) {
+            obj.species = species.find(function(s){ 
+                return s.id == urlParams.s_id
+            });
+        }
+        
+        return obj;
+    }
+    getAllUrlParams(url) {
+      var queryString = url ? url.split('?')[1] : window.location.search.slice(1),
+          obj = {};
+
+      if (queryString) {
+        queryString = queryString.split('#')[0];
+        var arr = queryString.split('&');
+
+        for (var i=0; i<arr.length; i++) {
+            var a = arr[i].split('='),
+                paramNum = undefined,
+                paramName = a[0].replace(/\[\d*\]/, function(v) {
+                    paramNum = v.slice(1,-1);
+                    return '';
+                }),
+                paramValue = typeof(a[1])==='undefined' ? true : a[1];
+
+            paramName = paramName.toLowerCase();
+            paramValue = paramValue.toLowerCase();
+
+            if (obj[paramName]) { 
+                if (typeof obj[paramName] === 'string') { obj[paramName] = [obj[paramName]]; }
+                if (typeof paramNum === 'undefined') { obj[paramName].push(paramValue); }
+                else { obj[paramName][paramNum] = paramValue; }
+            }
+            else { obj[paramName] = paramValue; }
+        }
+      }
+      return obj;
+    }
+
 
     speciesSelectedHandler(s, handler) {
         self = this;
@@ -119,7 +203,9 @@ class App extends React.Component {
                         genusHandler ={this.genusSelectedHandler.bind(this)}
                         familyHandler ={this.familySelectedHandler.bind(this)}
                         handler = {this.update.bind(this)} 
-                        minimized = {this.state.sidebarMinimized}/>
+                        minimized = {this.state.sidebarMinimized}
+                        preSelected = {this.urlFGS(preSelected)}
+                    />
                 }
                 <div className={minimized ? "content minimized": "content"}>
                     { type === null ?

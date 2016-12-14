@@ -2842,6 +2842,7 @@ a {
         list-style-type: circle; }
 
 .genus .photos {
+  padding: 10px;
   text-align: center; }
   .genus .photos img {
     display: inline-block;
@@ -2851,6 +2852,10 @@ a {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       border: 2px #4385ef solid; }
+  .genus .photos .thumbs {
+    padding-bottom: 5px; }
+  .genus .photos .subtitle {
+    font-style: italic; }
 
 .photoViewer {
   margin: 10px 0 20px 0;
@@ -3079,10 +3084,27 @@ a {
     font-weight: bold;
     padding-right: 5px; }
 
-.family .description {
+.family .textContent {
   padding: 20px; }
-  .family .description p:first-child {
-    padding-top: 0; }
+  .family .textContent > * {
+    display: inline-block;
+    vertical-align: text-top; }
+  .family .textContent .description {
+    display: inline-block;
+    width: 68%;
+    padding-right: 2%; }
+    .family .textContent .description p:first-child {
+      padding-top: 0; }
+  .family .textContent .genera {
+    border-left: 1px solid #AAA;
+    width: 27%;
+    padding-left: 2%; }
+    .family .textContent .genera .genusTitle {
+      font-weight: bold; }
+    .family .textContent .genera ul {
+      padding-left: 20px; }
+      .family .textContent .genera ul li {
+        list-style-type: circle; }
 
 .family .photos {
   padding: 10px;
@@ -3095,6 +3117,10 @@ a {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       border: 2px #4385ef solid; }
+  .family .photos .thumbs {
+    padding-bottom: 5px; }
+  .family .photos .subtitle {
+    font-style: italic; }
 
 body {
   box-sizing: border-box;
@@ -3111,6 +3137,7 @@ body {
 
 .content {
   position: fixed;
+  z-index: 0;
   left: 38%;
   width: 62%;
   height: 100%;
@@ -3147,6 +3174,7 @@ body {
   border-width: 0px 1px 1px 0;
   position: relative;
   cursor: pointer;
+  z-index: 1;
   overflow-y: hidden;
   height: 100%;
   width: 38%;

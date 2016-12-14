@@ -2574,10 +2574,27 @@ a {
     font-weight: bold;
     padding-right: 5px; }
 
-.family .description {
+.family .textContent {
   padding: 20px; }
-  .family .description p:first-child {
-    padding-top: 0; }
+  .family .textContent > * {
+    display: inline-block;
+    vertical-align: text-top; }
+  .family .textContent .description {
+    display: inline-block;
+    width: 68%;
+    padding-right: 2%; }
+    .family .textContent .description p:first-child {
+      padding-top: 0; }
+  .family .textContent .genera {
+    border-left: 1px solid #AAA;
+    width: 27%;
+    padding-left: 2%; }
+    .family .textContent .genera .genusTitle {
+      font-weight: bold; }
+    .family .textContent .genera ul {
+      padding-left: 20px; }
+      .family .textContent .genera ul li {
+        list-style-type: circle; }
 
 .family .photos {
   padding: 10px;
@@ -2590,6 +2607,10 @@ a {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       border: 2px #4385ef solid; }
+  .family .photos .thumbs {
+    padding-bottom: 5px; }
+  .family .photos .subtitle {
+    font-style: italic; }
 
 .basicNavbar {
   color: #4c5b67;

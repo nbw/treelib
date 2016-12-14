@@ -46,6 +46,7 @@ webpackJsonp([10],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var pg = pageData;
+	var preSelected;
 
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
@@ -68,6 +69,26 @@ webpackJsonp([10],{
 	        value: function componentDidMount() {
 	            var _this2 = this;
 
+	            preSelected = this.urlFGS();
+	            if (preSelected.family) {
+	                if (preSelected.genus) {
+	                    if (preSelected.species) {
+	                        this.speciesSelectedHandler(preSelected.species, this.update.bind(this));
+	                    } else {
+	                        this.genusSelectedHandler(preSelected.genus, this.update.bind(this));
+	                    }
+	                } else {
+	                    this.familySelectedHandler(preSelected.family, this.update.bind(this));
+	                }
+	            } else if (preSelected.genus) {
+	                if (preSelected.species) {
+	                    this.speciesSelectedHandler(preSelected.species, this.update.bind(this));
+	                } else {
+	                    this.genusSelectedHandler(preSelected.genus, this.update.bind(this));
+	                }
+	            } else if (preSelected.species) {
+	                this.speciesSelectedHandler(preSelected.species, this.update.bind(this));
+	            }
 	            window.addEventListener("fullScreenPhoto", function () {
 	                _this2.update('sidebarHidden', !_this2.state.sidebarHidden);
 	            });
@@ -81,12 +102,89 @@ webpackJsonp([10],{
 	        key: 'update',
 	        value: function update(name, value) {
 	            this.setState(_defineProperty({}, name, value));
-	            console.log(this.state);
 	        }
 	    }, {
 	        key: 'handleInputChange',
 	        value: function handleInputChange(name, e) {
 	            this.setState(_defineProperty({}, name, e.target.value));
+	        }
+	    }, {
+	        key: 'urlFGS',
+	        value: function urlFGS() {
+	            var urlParams = this.getAllUrlParams(window.location.search),
+	                families = pg.tree,
+	                genera = [].concat.apply([], families.map(function (f) {
+	                return f.genera;
+	            })),
+	                species = [].concat.apply([], genera.map(function (g) {
+	                return g.species;
+	            }));
+
+	            var obj = {};
+
+	            if (urlParams.f_id) {
+	                var fam = families.find(function (f) {
+	                    return f.id == urlParams.f_id;
+	                });
+	                if (fam) {
+	                    genera = fam.genera;
+	                    obj.family = fam;
+	                }
+	            }
+	            if (urlParams.g_id) {
+	                var gen = genera.find(function (g) {
+	                    return g.id == urlParams.g_id;
+	                });
+	                if (gen) {
+	                    species = gen.species;
+	                    obj.genus = gen;
+	                }
+	            }
+	            if (urlParams.s_id) {
+	                obj.species = species.find(function (s) {
+	                    return s.id == urlParams.s_id;
+	                });
+	            }
+
+	            return obj;
+	        }
+	    }, {
+	        key: 'getAllUrlParams',
+	        value: function getAllUrlParams(url) {
+	            var queryString = url ? url.split('?')[1] : window.location.search.slice(1),
+	                obj = {};
+
+	            if (queryString) {
+	                queryString = queryString.split('#')[0];
+	                var arr = queryString.split('&');
+
+	                for (var i = 0; i < arr.length; i++) {
+	                    var a = arr[i].split('='),
+	                        paramNum = undefined,
+	                        paramName = a[0].replace(/\[\d*\]/, function (v) {
+	                        paramNum = v.slice(1, -1);
+	                        return '';
+	                    }),
+	                        paramValue = typeof a[1] === 'undefined' ? true : a[1];
+
+	                    paramName = paramName.toLowerCase();
+	                    paramValue = paramValue.toLowerCase();
+
+	                    if (obj[paramName]) {
+	                        if (typeof obj[paramName] === 'string') {
+	                            obj[paramName] = [obj[paramName]];
+	                        }
+	                        if (typeof paramNum === 'undefined') {
+	                            obj[paramName].push(paramValue);
+	                        } else {
+	                            obj[paramName][paramNum] = paramValue;
+	                        }
+	                    } else {
+	                        obj[paramName] = paramValue;
+	                    }
+	                }
+	            }
+	            return obj;
 	        }
 	    }, {
 	        key: 'speciesSelectedHandler',
@@ -174,7 +272,9 @@ webpackJsonp([10],{
 	                    genusHandler: this.genusSelectedHandler.bind(this),
 	                    familyHandler: this.familySelectedHandler.bind(this),
 	                    handler: this.update.bind(this),
-	                    minimized: this.state.sidebarMinimized }),
+	                    minimized: this.state.sidebarMinimized,
+	                    preSelected: this.urlFGS(preSelected)
+	                }),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: minimized ? "content minimized" : "content" },
@@ -315,6 +415,19 @@ webpackJsonp([10],{
 	                f = this.props.family,
 	                selectedPhoto = this.state.selectedPhotoIndex,
 	                thumbs = [];
+
+	            var genera = f.genera.map(function (g, i) {
+	                return _react2.default.createElement(
+	                    'li',
+	                    { key: i },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: "/search?f_id=" + f.id + "&g_id=" + g.id },
+	                        g.name
+	                    )
+	                );
+	            });
+
 	            if (f.photos && f.photos.length > 0) {
 	                f.photos.forEach(function (link, index) {
 	                    if (index == selectedPhoto) {
@@ -349,8 +462,26 @@ webpackJsonp([10],{
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'description' },
-	                    _react2.default.createElement('div', { dangerouslySetInnerHTML: this.createMarkup(f.descrip) })
+	                    { className: 'textContent' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'description' },
+	                        _react2.default.createElement('div', { dangerouslySetInnerHTML: this.createMarkup(f.descrip) })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'genera' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { className: 'genusTitle' },
+	                            'Genera'
+	                        ),
+	                        _react2.default.createElement(
+	                            'ul',
+	                            null,
+	                            genera
+	                        )
+	                    )
 	                ),
 	                selectedPhoto != null ? _react2.default.createElement(_photoViewer2.default, {
 	                    nextCallback: function nextCallback() {
@@ -367,11 +498,21 @@ webpackJsonp([10],{
 	                    imageDescription: f.photos[selectedPhoto].description,
 	                    original: f.photos[selectedPhoto].original,
 	                    flickr_url: f.photos[selectedPhoto].flickr_url }) : null,
-	                _react2.default.createElement(
+	                thumbs.length > 0 ? _react2.default.createElement(
 	                    'div',
 	                    { className: 'photos' },
-	                    thumbs
-	                )
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'thumbs' },
+	                        thumbs
+	                    ),
+	                    _react2.default.createElement(
+	                        'label',
+	                        { className: 'subtitle' },
+	                        'The above photos have been randomly selected from species in ',
+	                        f.name
+	                    )
+	                ) : null
 	            );
 	        }
 	    }]);
@@ -689,7 +830,7 @@ webpackJsonp([10],{
 	                    { key: i },
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: "/species/" + s.name },
+	                        { href: "/search?g_id=" + g.id + "&s_id=" + s.id },
 	                        s.name
 	                    )
 	                );
@@ -764,11 +905,21 @@ webpackJsonp([10],{
 	                    imageDescription: g.photos[selectedPhoto].description,
 	                    original: g.photos[selectedPhoto].original,
 	                    flickr_url: g.photos[selectedPhoto].flickr_url }) : null,
-	                _react2.default.createElement(
+	                thumbs.length > 0 ? _react2.default.createElement(
 	                    'div',
 	                    { className: 'photos' },
-	                    thumbs
-	                )
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'thumbs' },
+	                        thumbs
+	                    ),
+	                    _react2.default.createElement(
+	                        'label',
+	                        { className: 'subtitle' },
+	                        'The above photos have been randomly selected from species in ',
+	                        g.name
+	                    )
+	                ) : null
 	            );
 	        }
 	    }]);
@@ -987,20 +1138,6 @@ webpackJsonp([10],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	function SidebarListItem(props) {
-	    var classNames;
-
-	    if (props.isSelected) {
-	        classNames = "selected";
-	    }
-
-	    return _react2.default.createElement(
-	        'li',
-	        { className: classNames, key: props.id, value: props.item, onClick: props.onClick },
-	        props.children
-	    );
-	}
-
 	var SearchSidebar = function (_React$Component) {
 	    _inherits(SearchSidebar, _React$Component);
 
@@ -1018,6 +1155,15 @@ webpackJsonp([10],{
 	    }
 
 	    _createClass(SearchSidebar, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log('mount');
+	            var preSelected = this.props.preSelected;
+	            this.setState({ selectedFamily: preSelected.family || null });
+	            this.setState({ selectedGenus: preSelected.genus || null });
+	            this.setState({ selectedSpecies: preSelected.species || null });
+	        }
+	    }, {
 	        key: 'update',
 	        value: function update(name, value) {
 	            this.setState(_defineProperty({}, name, value));
@@ -1220,6 +1366,20 @@ webpackJsonp([10],{
 
 	    return SearchSidebar;
 	}(_react2.default.Component);
+
+	function SidebarListItem(props) {
+	    var classNames;
+
+	    if (props.isSelected) {
+	        classNames = "selected";
+	    }
+
+	    return _react2.default.createElement(
+	        'li',
+	        { className: classNames, key: props.id, value: props.item, onClick: props.onClick },
+	        props.children
+	    );
+	}
 
 	exports.default = SearchSidebar;
 

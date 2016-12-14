@@ -24,7 +24,7 @@ body{
 
 .content {
 	position:fixed;
-	// z-index: 0;
+	z-index: 0;
 	left: $sidebar-width;
 	width: 100% - $sidebar-width;
 	height: 100%;
@@ -84,7 +84,7 @@ $searchBar-list-font-color-selected: #111;
 	border-width: 0px 1px 1px 0;
 	position:relative;
 	cursor: pointer;
-	// z-index: 1;
+	z-index: 1;
 	overflow-y: hidden;
 	height: 100%;
 	width: $sidebar-width;

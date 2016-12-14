@@ -10,7 +10,7 @@ class Home extends React.Component {
 	                	<div className="wrapper">
 		                	A collection of high-quality tree photographs for educators, students and lay persons.
 		                	<div className="searchButton">
-			                	<a  href='/search'>Start searching</a>
+			                	<a  href='/search'>start searching</a>
 		                	</div>
 		                </div>
 	                </div>

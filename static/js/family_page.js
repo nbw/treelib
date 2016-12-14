@@ -134,6 +134,15 @@ webpackJsonp([6],{
 	                    ),
 	                    _react2.default.createElement(
 	                        'li',
+	                        { className: 'home' },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '/' },
+	                            'HOME'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
 	                        { className: 'search' },
 	                        _react2.default.createElement(
 	                            'a',
@@ -262,6 +271,19 @@ webpackJsonp([6],{
 	                f = this.props.family,
 	                selectedPhoto = this.state.selectedPhotoIndex,
 	                thumbs = [];
+
+	            var genera = f.genera.map(function (g, i) {
+	                return _react2.default.createElement(
+	                    'li',
+	                    { key: i },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: "/search?f_id=" + f.id + "&g_id=" + g.id },
+	                        g.name
+	                    )
+	                );
+	            });
+
 	            if (f.photos && f.photos.length > 0) {
 	                f.photos.forEach(function (link, index) {
 	                    if (index == selectedPhoto) {
@@ -296,8 +318,26 @@ webpackJsonp([6],{
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'description' },
-	                    _react2.default.createElement('div', { dangerouslySetInnerHTML: this.createMarkup(f.descrip) })
+	                    { className: 'textContent' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'description' },
+	                        _react2.default.createElement('div', { dangerouslySetInnerHTML: this.createMarkup(f.descrip) })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'genera' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { className: 'genusTitle' },
+	                            'Genera'
+	                        ),
+	                        _react2.default.createElement(
+	                            'ul',
+	                            null,
+	                            genera
+	                        )
+	                    )
 	                ),
 	                selectedPhoto != null ? _react2.default.createElement(_photoViewer2.default, {
 	                    nextCallback: function nextCallback() {
@@ -314,11 +354,21 @@ webpackJsonp([6],{
 	                    imageDescription: f.photos[selectedPhoto].description,
 	                    original: f.photos[selectedPhoto].original,
 	                    flickr_url: f.photos[selectedPhoto].flickr_url }) : null,
-	                _react2.default.createElement(
+	                thumbs.length > 0 ? _react2.default.createElement(
 	                    'div',
 	                    { className: 'photos' },
-	                    thumbs
-	                )
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'thumbs' },
+	                        thumbs
+	                    ),
+	                    _react2.default.createElement(
+	                        'label',
+	                        { className: 'subtitle' },
+	                        'The above photos have been randomly selected from species in ',
+	                        f.name
+	                    )
+	                ) : null
 	            );
 	        }
 	    }]);

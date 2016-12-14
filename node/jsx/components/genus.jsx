@@ -42,7 +42,7 @@ class Genus extends React.Component {
             thumbs = [];
 
         var species = g.species.map(function(s,i){
-            return <li key={i} ><a href={"/species/" + s.name}>{s.name}</a></li>
+            return <li key={i} ><a href={"/search?g_id="+ g.id + "&s_id="+ s.id}>{s.name}</a></li>
         });
         if( g.photos && g.photos.length > 0 ) {
             g.photos.forEach(function(link,index) {
@@ -80,9 +80,12 @@ class Genus extends React.Component {
                         imageDescription={g.photos[selectedPhoto].description}
                         original = {g.photos[selectedPhoto].original} 
                         flickr_url = {g.photos[selectedPhoto].flickr_url} /> : null }
+                { thumbs.length > 0 ? 
                 <div className="photos">
-                    {thumbs}
+                    <div className="thumbs">{thumbs}</div>
+                    <label className="subtitle">The above photos have been randomly selected from species in {g.name}</label>
                 </div>
+                : null}
             </div>
         );
     }

@@ -134,6 +134,15 @@ webpackJsonp([7],{
 	                    ),
 	                    _react2.default.createElement(
 	                        'li',
+	                        { className: 'home' },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '/' },
+	                            'HOME'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
 	                        { className: 'search' },
 	                        _react2.default.createElement(
 	                            'a',
@@ -480,7 +489,7 @@ webpackJsonp([7],{
 	                    { key: i },
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: "/species/" + s.name },
+	                        { href: "/search?g_id=" + g.id + "&s_id=" + s.id },
 	                        s.name
 	                    )
 	                );
@@ -555,11 +564,21 @@ webpackJsonp([7],{
 	                    imageDescription: g.photos[selectedPhoto].description,
 	                    original: g.photos[selectedPhoto].original,
 	                    flickr_url: g.photos[selectedPhoto].flickr_url }) : null,
-	                _react2.default.createElement(
+	                thumbs.length > 0 ? _react2.default.createElement(
 	                    'div',
 	                    { className: 'photos' },
-	                    thumbs
-	                )
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'thumbs' },
+	                        thumbs
+	                    ),
+	                    _react2.default.createElement(
+	                        'label',
+	                        { className: 'subtitle' },
+	                        'The above photos have been randomly selected from species in ',
+	                        g.name
+	                    )
+	                ) : null
 	            );
 	        }
 	    }]);

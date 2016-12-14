@@ -12,7 +12,9 @@ class About extends React.Component {
             		<p>
             			Photos were taken with a Canon 70D camera, using 40mm, 17mm x 85mm and 18mm x 55mm lenses. The 70D is equipped with Canon’s new high resolution CMOS 70D sensor which allows raising film speed to up to 2000 or more without noticeable graininess.  
             		</p>
-
+                    <p>
+                        The photos are hosted on <a href="https://flickr.com">Flickr</a>.
+                    </p>
             	</div>
             	<div className="banner"></div>
             	<div className="section">
@@ -38,7 +40,7 @@ class About extends React.Component {
 			            	</td>
 			            	<td>
 			            		<ul className="description">
-		            				<li className="title"><label className="name">Blake</label><i> - R.P.F. - Botanist and Photographer</i></li>
+		            				<li className="title"><label className="name">Blake Willson</label><i> - R.P.F. - Botanist and Photographer</i></li>
 		            				<li className="content">
 		            					<p>
                                         Blake is an industry manager, botonist and photographer with over 25 years in the forestry industry, specifically with government and industry between Canada and Japan.  
@@ -56,7 +58,7 @@ class About extends React.Component {
 			            	</td>
 			            	<td>
 			            		<ul className="description">
-		            				<li className="title"><label className="name">Nathan</label><i> - WEB Development</i></li>
+		            				<li className="title"><label className="name">Nathan Willson</label><i> - WEB Development</i></li>
 		            				<li className="content">
 		            					<a href="http://nathanwillson.com/">Nathan</a> is a web developer based out of Victoria, Canada.
 		        					</li>

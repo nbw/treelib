@@ -160,6 +160,15 @@ webpackJsonp([8],{
 	                    ),
 	                    _react2.default.createElement(
 	                        'li',
+	                        { className: 'home' },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '/' },
+	                            'HOME'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
 	                        { className: 'search' },
 	                        _react2.default.createElement(
 	                            'a',
@@ -255,7 +264,7 @@ webpackJsonp([8],{
 	                                _react2.default.createElement(
 	                                    'a',
 	                                    { href: '/search' },
-	                                    'Start searching'
+	                                    'start searching'
 	                                )
 	                            )
 	                        )
@@ -404,6 +413,17 @@ webpackJsonp([8],{
 	                        'p',
 	                        null,
 	                        'Photos were taken with a Canon 70D camera, using 40mm, 17mm x 85mm and 18mm x 55mm lenses. The 70D is equipped with Canon’s new high resolution CMOS 70D sensor which allows raising film speed to up to 2000 or more without noticeable graininess.'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'The photos are hosted on ',
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: 'https://flickr.com' },
+	                            'Flickr'
+	                        ),
+	                        '.'
 	                    )
 	                ),
 	                _react2.default.createElement('div', { className: 'banner' }),
@@ -466,7 +486,7 @@ webpackJsonp([8],{
 	                                            _react2.default.createElement(
 	                                                'label',
 	                                                { className: 'name' },
-	                                                'Blake'
+	                                                'Blake Willson'
 	                                            ),
 	                                            _react2.default.createElement(
 	                                                'i',
@@ -511,7 +531,7 @@ webpackJsonp([8],{
 	                                            _react2.default.createElement(
 	                                                'label',
 	                                                { className: 'name' },
-	                                                'Nathan'
+	                                                'Nathan Willson'
 	                                            ),
 	                                            _react2.default.createElement(
 	                                                'i',

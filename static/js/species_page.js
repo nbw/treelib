@@ -134,6 +134,15 @@ webpackJsonp([11],{
 	                    ),
 	                    _react2.default.createElement(
 	                        'li',
+	                        { className: 'home' },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: '/' },
+	                            'HOME'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
 	                        { className: 'search' },
 	                        _react2.default.createElement(
 	                            'a',
