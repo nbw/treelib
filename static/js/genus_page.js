@@ -111,7 +111,6 @@ webpackJsonp([7],{
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            self = this;
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'basicNavbar' },
@@ -474,6 +473,30 @@ webpackJsonp([7],{
 	            return { __html: s };
 	        }
 	    }, {
+	        key: 'grabMorePhotos',
+	        value: function grabMorePhotos(event) {
+	            var self = this,
+	                g = this.props.genus;
+	            fetch('/api/get_genus_photos?genus_id=' + g.id, {
+	                method: 'GET',
+	                headers: {
+	                    'Accept': 'application/json',
+	                    'Content-Type': 'application/json'
+	                }
+	            }).then(function (response) {
+	                if (response.ok) {
+	                    response.json().then(function (photos) {
+	                        g.photos = photos;
+	                        self.update("selectedPhotoIndex", null);
+	                    });
+	                } else {
+	                    console.log('Network response was not ok.');
+	                }
+	            }).catch(function (error) {
+	                console.log('There has been a problem with your fetch operation: ' + error.message);
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
@@ -522,13 +545,13 @@ webpackJsonp([7],{
 	                    ),
 	                    _react2.default.createElement(
 	                        'label',
-	                        { className: 'secondary' },
-	                        'genus'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
 	                        { className: 'commonName' },
 	                        g.common_name
+	                    ),
+	                    _react2.default.createElement(
+	                        'label',
+	                        { className: 'secondary' },
+	                        'genus'
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -573,15 +596,20 @@ webpackJsonp([7],{
 	                    'div',
 	                    { className: 'photos' },
 	                    _react2.default.createElement(
+	                        'label',
+	                        { className: 'subtitle' },
+	                        'The photos below have been randomly selected from species in ',
+	                        g.name
+	                    ),
+	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'thumbs' },
 	                        thumbs
 	                    ),
 	                    _react2.default.createElement(
-	                        'label',
-	                        { className: 'subtitle' },
-	                        'The above photos have been randomly selected from species in ',
-	                        g.name
+	                        'div',
+	                        { onClick: this.grabMorePhotos.bind(this), className: 'newPhotoSelectionButton' },
+	                        'new random photo selection'
 	                    )
 	                ) : null
 	            );

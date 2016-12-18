@@ -5,14 +5,18 @@
 		.main{ 
 			font-size:40pt;
 			font-weight: bold;
-			padding-right: 5px;
+			font-style: italic;
+		}
+		.commonName {
+			font-size: 3rem;
+			padding: 0 1.5rem 0 1.5rem;
 		}
 		padding: 10px 0 10px 0;
 		margin-bottom: 10px;
 		border-bottom: 3px black solid;
 	}
 	.textContent {
-		padding: 20px;
+		padding: 10px 20px 20px 20px;
 		> * {
 			display:inline-block;
 			vertical-align: text-top;
@@ -23,6 +27,7 @@
 			padding-right: 2%;
 			p:first-child {
 				padding-top: 0;
+				margin-top: 0;
 			}	
 		}
 		.species {
@@ -59,6 +64,33 @@
 		.subtitle {
 			// font-size: 1.5rem;
 			font-style: italic;
+		}
+		.newPhotoSelectionButton {
+			-webkit-user-select: none; /* Chrome/Safari */        
+			-moz-user-select: none; /* Firefox */
+			-ms-user-select: none; /* IE10+ */
+			/* Rules below not implemented in browsers yet */
+			-o-user-select: none;
+			user-select: none;
+
+			cursor: pointer;
+			display: block;
+			text-align: middle;
+			margin: auto;
+			width: 23rem;
+			padding: 1rem;
+			border: 1pt solid #777;
+			border-radius: 4px;
+			&:hover {
+				background-color: #777;
+				color: white;
+				font-weight: bold;
+				font-style: underline;
+			}
+			&:active {
+				background-color: #555;
+				border-color: #555;
+			}
 		}
 	}
 }

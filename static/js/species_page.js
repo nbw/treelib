@@ -111,7 +111,6 @@ webpackJsonp([11],{
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            self = this;
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'basicNavbar' },

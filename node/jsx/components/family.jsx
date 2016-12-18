@@ -34,6 +34,29 @@ class Family extends React.Component {
     createMarkup(s) {
         return {__html: s};
     }
+    grabMorePhotos(event) {
+        var self = this,
+        f = this.props.family;
+        fetch('/api/get_family_photos?family_id=' + f.id, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then(function(response) {
+            if(response.ok) {
+                response.json().then(function(photos) {
+                    f.photos = photos;
+                    self.update("selectedPhotoIndex", null);
+                });
+            } else {
+                console.log('Network response was not ok.');
+            }
+        })
+        .catch(function(error) {
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+        });
+    }
     render() {
         var self = this,
             f = this.props.family,
@@ -57,8 +80,8 @@ class Family extends React.Component {
             <div className="family">
                 <div className="title">
                     <a href={'/family/' + f.name.replace(/ /g,'_')}><label className="main">{f.name}</label></a>
+                    <label className="commonName">{f.common_name}</label>
                     <label className="secondary">family</label>
-                    <div className="commonName">{f.common_name}</div>
                 </div>
                 <div className="textContent">
                     <div className="description">
@@ -83,8 +106,11 @@ class Family extends React.Component {
                         flickr_url = {f.photos[selectedPhoto].flickr_url} /> : null }
                 { thumbs.length > 0 ? 
                 <div className="photos">
+                    <label className="subtitle">The photos below have been randomly selected from species in {f.name}.</label>
                     <div className="thumbs">{thumbs}</div>
-                    <label className="subtitle">The above photos have been randomly selected from species in {f.name}</label>
+                    <div onClick={ this.grabMorePhotos.bind(this) } className="newPhotoSelectionButton">
+                        new random photo selection
+                    </div>
                 </div> 
                 : null }
             </div>

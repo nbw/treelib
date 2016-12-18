@@ -112,8 +112,7 @@ class SearchSidebar extends React.Component {
 	    	speciesRows = selectedGenus.species.map(function(item) {
                 var isSelected = selectedSpecies && (selectedSpecies.id == item.id),
                     latinName = self.state.showLatinNames ? item.name : "",
-                    commonName = self.state.showCommonNames ? item.common_name : "";
-
+                    commonName = self.state.showCommonNames ? item.genus_common_name + item.common_name : "";
                 return <SidebarListItem 
                             isSelected={isSelected} 
                             value={item.id} key={item.id} 
@@ -128,7 +127,7 @@ class SearchSidebar extends React.Component {
                     genus.species.forEach(function(item) {
                         var isSelected = selectedSpecies && (selectedSpecies.id == item.id),
                             latinName = self.state.showLatinNames ? item.name : "",
-                            commonName = self.state.showCommonNames ? item.common_name : "";
+                            commonName = self.state.showCommonNames ? item.genus_common_name + item.common_name : "";
 
                         speciesRows.push(
                                 <SidebarListItem 
@@ -153,7 +152,7 @@ class SearchSidebar extends React.Component {
         return (
             <div id={this.props.id}　className={ minimized ? "searchbar minimized" : "searchbar"} >
             	<div className="title"><a href="/"><img src="/img/logo.png"></img><label>TreeLib</label></a></div>
-                <div className="closeButton"onClick={(event) => self.hideSidebar(event)}>
+                <div className="closeButton" onClick={(event) => self.hideSidebar(event)}>
                     { minimized ? 
                         <i className="fa fa-angle-right"></i> : 
                         <i className="fa fa-angle-left"></i>}

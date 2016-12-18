@@ -2593,10 +2593,13 @@ input[type=radio]:not(old):checked + label {
   .family > .title .main {
     font-size: 40pt;
     font-weight: bold;
-    padding-right: 5px; }
+    font-style: italic; }
+  .family > .title .commonName {
+    font-size: 3rem;
+    padding: 0 1.5rem 0 1.5rem; }
 
 .family .textContent {
-  padding: 20px; }
+  padding: 10px 20px 20px 20px; }
   .family .textContent > * {
     display: inline-block;
     vertical-align: text-top; }
@@ -2605,7 +2608,8 @@ input[type=radio]:not(old):checked + label {
     width: 68%;
     padding-right: 2%; }
     .family .textContent .description p:first-child {
-      padding-top: 0; }
+      padding-top: 0;
+      margin-top: 0; }
   .family .textContent .genera {
     border-left: 1px solid #AAA;
     width: 27%;
@@ -2632,6 +2636,32 @@ input[type=radio]:not(old):checked + label {
     padding-bottom: 5px; }
   .family .photos .subtitle {
     font-style: italic; }
+  .family .photos .newPhotoSelectionButton {
+    -webkit-user-select: none;
+    /* Chrome/Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+ */
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    display: block;
+    text-align: middle;
+    margin: auto;
+    width: 23rem;
+    padding: 1rem;
+    border: 1pt solid #777;
+    border-radius: 4px; }
+    .family .photos .newPhotoSelectionButton:hover {
+      background-color: #777;
+      color: white;
+      font-weight: bold;
+      font-style: underline; }
+    .family .photos .newPhotoSelectionButton:active {
+      background-color: #555;
+      border-color: #555; }
 
 .basicNavbar {
   color: #4c5b67;

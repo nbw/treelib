@@ -6,11 +6,17 @@ module Plantae
                     FROM species_links AS sl 
                     JOIN species AS s ON s.id = sl.species_id
                     WHERE s.enabled").to_a.group_by{|l| l["species_id"]}
-        SQLer.query('SELECT id, name, common_name, description, genus_id, album_id FROM species WHERE enabled').each do |row|
+        SQLer.query('SELECT s.id, s.name, s.common_name, s.description, s.genus_id, s.album_id, 
+                            g.name AS genus_name, g.common_name AS genus_common_name
+            FROM species AS s
+            JOIN genera as g ON s.genus_id = g.id 
+            WHERE s.enabled').each do |row|
             # build species
             @@species <<  Species.new({
                 :id => row["id"],
                 :g_id => row["genus_id"],
+                :genus_name => row["genus_name"],
+                :genus_common_name => row["genus_common_name"],
                 :name => row["name"],
                 :common_name => row["common_name"],
                 :descrip => row["description"],
@@ -51,15 +57,11 @@ module Plantae
 
     def self.get_species id
         species = @@species.find{ |s| s.id == id }
-        g_name =  @@genera.find{ |g| g.id == species.genus_id }.name
-        species.genus_name = g_name
         return species
     end
 
     def self.get_species_by_name name
         species = @@species.find{ |s| s.name.downcase == name.downcase }
-        g_name =  @@genera.find{ |g| g.id == species.genus_id }.name
-        species.genus_name = g_name
         return species
     end
 
@@ -146,7 +148,7 @@ module Plantae
     end
 
     def self.get_genus_photos genus
-        num_photos = 10 # genus image cap
+        num_photos = 15 # genus image cap
         genus = genus.to_hash        
         species_photos, genus_photos = [], []
         genus[:species].each do |s|
@@ -236,7 +238,7 @@ module Plantae
     end
 
     def self.get_family_photos family
-        num_photos = 25 # genus image cap
+        num_photos = 15 # genus image cap
         family = family.to_hash        
         species_photos, family_photos = [], []
         family[:genera].each do |g|

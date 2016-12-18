@@ -5,7 +5,6 @@ class BasicNavbar extends React.Component {
          this.props.handler('search');
     }
     render() {
-        self = this;
         return (
             <div className="basicNavbar">
                 <ul>

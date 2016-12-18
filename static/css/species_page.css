@@ -2593,9 +2593,9 @@ input[type=radio]:not(old):checked + label {
   .species > .title .main {
     font-size: 40pt; }
     .species > .title .main .speciesTitle {
-      font-weight: bold; }
+      font-weight: bold;
+      font-style: italic; }
   .species > .title .commonName {
-    font-style: italic;
     font-size: 3rem;
     padding: 0 1.5rem 0 1.5rem; }
 
