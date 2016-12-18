@@ -314,6 +314,11 @@ webpackJsonp([6],{
 	                        'label',
 	                        { className: 'secondary' },
 	                        'family'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'commonName' },
+	                        f.common_name
 	                    )
 	                ),
 	                _react2.default.createElement(

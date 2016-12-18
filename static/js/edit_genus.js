@@ -65,6 +65,7 @@ webpackJsonp([4],{
 
 	        _this.state = {
 	            title: pg.genus.name || "",
+	            common_name: pg.genus.common_name || "",
 	            description: pg.genus.descrip || "",
 	            family_id: pg.genus.family_id || pg.families[0].id || 0
 	        };
@@ -84,6 +85,13 @@ webpackJsonp([4],{
 	    }, {
 	        key: 'updateTheMotherShip',
 	        value: function updateTheMotherShip() {
+	            if (this.state.title === "") {
+	                alert('Please enter a species name, then try again.');return;
+	            }
+	            if (this.state.common_name === "") {
+	                alert('Please enter a common name, then try again.');return;
+	            }
+
 	            fetch('/api/edit_genus', {
 	                method: 'POST',
 	                credentials: 'same-origin',
@@ -94,6 +102,7 @@ webpackJsonp([4],{
 	                body: JSON.stringify({
 	                    id: pg.genus.id || null,
 	                    name: this.state.title.trim(),
+	                    common_name: this.state.common_name.trim(),
 	                    descrip: this.state.description,
 	                    f_id: this.state.family_id
 	                })
@@ -173,6 +182,13 @@ webpackJsonp([4],{
 	                    'default': this.state.family_id,
 	                    list: pg.families,
 	                    handler: this.handleInputChange.bind(this, 'family_id') }),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(_inputer2.default, {
+	                    id: 'common_name',
+	                    title: 'Common Name',
+	                    placeholder: 'common name',
+	                    text: this.state.common_name,
+	                    handler: this.handleInputChange.bind(this, "common_name") }),
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(_texter2.default, {
 	                    id: 'description',

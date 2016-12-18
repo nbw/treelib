@@ -58,6 +58,7 @@ class Genus extends React.Component {
                 <div className="title">
                     <a href={'/genus/' + g.name.replace(/ /g,'_')} ><label className="main">{g.name}</label></a>
                     <label className="secondary">genus</label>
+                    <div className="commonName">{g.common_name}</div>
                 </div>
                 <div className="textContent">
                     <div className="description">

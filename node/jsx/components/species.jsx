@@ -49,13 +49,15 @@ class Species extends React.Component {
                     }
                 });
             }
-        var links = s.links.map(function(link, index){
+
+        var links = links ? s.links.map(function(link, index){
                 return <li key={index} ><a target="_blank" href={link.url}>{link.name}</a></li>
-        });
+        }): [];
         return (
             <div className="species">
                 <div className="title">
                     <a href={'/species/' + s.name.replace(/ /g,'_')}><label className="main">{s.genus_name} <span className="speciesTitle">{s.name}</span></label></a>
+                    <label className="commonName">{s.common_name}</label>
                     <label className="secondary">species</label>
                 </div>
                 <div className="description">

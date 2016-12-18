@@ -14,6 +14,7 @@ class App extends React.Component {
         super();
         this.state = {
             title: pg.family.name || "",
+            common_name: pg.family.common_name || "",
             description: pg.family.descrip || "",
         };
     }
@@ -28,6 +29,9 @@ class App extends React.Component {
         });
     }
     updateTheMotherShip(){
+        if ( this.state.title === "") {alert('Please enter a species name, then try again.');return;}
+        if ( this.state.common_name === "") {alert('Please enter a common name, then try again.');return;}
+        
         fetch('/api/edit_family', {
             method: 'POST',
             credentials: 'same-origin',
@@ -38,6 +42,7 @@ class App extends React.Component {
             body: JSON.stringify({
                 id: pg.family.id || null,
                 name: this.state.title.trim(),
+                common_name: this.state.common_name.trim(),
                 descrip: this.state.description
             })
         }).then(function(response) {
@@ -105,6 +110,13 @@ class App extends React.Component {
                     placeholder = "family"
                     text = {this.state.title}
                     handler = {this.handleInputChange.bind(this, 'title')} />
+                <hr />
+                <Inputer
+                    id = "common_name"
+                    title = "Common Name"
+                    placeholder = "common name"
+                    text = {this.state.common_name}
+                    handler = {this.handleInputChange.bind(this, "common_name")} />
                 <hr />
                 <Texter
                     id = "description" 

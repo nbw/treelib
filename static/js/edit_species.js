@@ -65,6 +65,7 @@ webpackJsonp([5],{
 
 	        _this.state = {
 	            title: pg.species.name || "",
+	            common_name: pg.species.common_name || "",
 	            description: pg.species.descrip || "",
 	            genus_id: pg.species.genus_id || pg.genera[0].id || 0,
 	            album_id: pg.species.album_id || 0,
@@ -89,6 +90,9 @@ webpackJsonp([5],{
 	            if (this.state.title === "") {
 	                alert('Please enter a species name, then try again.');return;
 	            }
+	            if (this.state.common_name === "") {
+	                alert('Please enter a common name, then try again.');return;
+	            }
 	            if (!this.state.album_id) {
 	                alert('Please choose a photo album, then try again.');return;
 	            }
@@ -103,6 +107,7 @@ webpackJsonp([5],{
 	                body: JSON.stringify({
 	                    id: pg.species.id || null,
 	                    name: this.state.title.trim(),
+	                    common_name: this.state.common_name.trim(),
 	                    descrip: this.state.description,
 	                    g_id: this.state.genus_id,
 	                    album_id: this.state.album_id || null,
@@ -180,6 +185,13 @@ webpackJsonp([5],{
 	                    'default': this.state.genus_id,
 	                    list: pg.genera,
 	                    handler: this.handleInputChange.bind(this, "genus_id") }),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(_inputer2.default, {
+	                    id: 'common_name',
+	                    title: 'Common Name',
+	                    placeholder: 'common name',
+	                    text: this.state.common_name,
+	                    handler: this.handleInputChange.bind(this, "common_name") }),
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(_texter2.default, {
 	                    id: 'description',

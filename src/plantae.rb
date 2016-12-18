@@ -2,40 +2,43 @@ module Plantae
     @@species, @@genera, @@families = [], [], []
     def self.init
         @@species, @@genera, @@families = [], [], []
-        links = SQLer.query("SELECT sl.species_id, sl.name, sl.url 
+        links = SQLer.query("SELECT sl.species_id, sl.name, sl.url
                     FROM species_links AS sl 
                     JOIN species AS s ON s.id = sl.species_id
                     WHERE s.enabled").to_a.group_by{|l| l["species_id"]}
-        SQLer.query('SELECT id, name, description, genus_id, album_id FROM species WHERE enabled').each do |row|
+        SQLer.query('SELECT id, name, common_name, description, genus_id, album_id FROM species WHERE enabled').each do |row|
             # build species
             @@species <<  Species.new({
                 :id => row["id"],
                 :g_id => row["genus_id"],
-                :name => row["name"], 
+                :name => row["name"],
+                :common_name => row["common_name"],
                 :descrip => row["description"],
                 :album_id => row["album_id"],
                 :links => links[row["id"]]
             })  
         end
 
-        q_genera = 'SELECT id, name, description, fam_id FROM genera WHERE enabled'
+        q_genera = 'SELECT id, name, common_name, description, fam_id FROM genera WHERE enabled'
         SQLer.query(q_genera).each do |row|
             # build genera
             @@genera <<  Genus.new({
                 :id => row["id"],
                 :name => row["name"],
+                :common_name => row["common_name"],
                 :descrip => row["description"],
                 :f_id => row["fam_id"],
                 :species => @@species.select{ |s| s.genus_id == row["id"] }
             })
         end
 
-        q_families = 'SELECT id, name, description FROM families WHERE enabled'
+        q_families = 'SELECT id, name, common_name, description FROM families WHERE enabled'
         SQLer.query(q_families).each do |row|
             # build families
             @@families <<  Family.new({
                 :id => row["id"],
                 :name => row["name"],
+                :common_name => row["common_name"],
                 :descrip => row["description"],
                 :genera => @@genera.select{ |g| g.family_id == row["id"] }
             })
@@ -88,9 +91,10 @@ module Plantae
 
     def self.update_species p
         SQLer.transaction do
-            q_id, q_name, q_descrip, q_g_id, q_album_id = SQLer.escape(p[:id], p[:name], p[:descrip], p[:g_id], p[:album_id])
+        q_id, q_name, q_common_name, q_descrip, q_g_id, q_album_id = SQLer.escape(p[:id], p[:name], p[:common_name], p[:descrip], p[:g_id], p[:album_id])
             SQLer::query("UPDATE species
             SET name = '#{q_name}',
+                common_name = '#{q_common_name}',
                 description = '#{q_descrip}',
                 genus_id = #{q_g_id},
                 album_id = #{q_album_id}
@@ -108,6 +112,7 @@ module Plantae
         SQLer::transaction do 
             SQLer::query("INSERT INTO species
                 SET name = '#{SQLer.escape(p[:name])}',
+                    common_name = '#{SQLer.escape(p[:common_name])}',
                     description = '#{SQLer.escape(p[:descrip])}',
                     genus_id = #{SQLer.escape(p[:g_id])},
                     album_id = #{SQLer.escape(p[:album_id])}")
@@ -183,6 +188,7 @@ module Plantae
     def self.update_genus p
         SQLer::query("UPDATE genera
         SET name = '#{SQLer.escape(p[:name])}',
+            common_name = '#{SQLer.escape(p[:common_name])}',
             description = '#{SQLer.escape(p[:descrip])}',
             fam_id = #{SQLer.escape(p[:f_id])}
             WHERE id = #{SQLer.escape(p[:id])};")
@@ -198,6 +204,7 @@ module Plantae
         SQLer::transaction do 
             SQLer::query("INSERT INTO genera
                 SET name = '#{SQLer.escape(p[:name])}',
+                    common_name = '#{SQLer.escape(p[:common_name])}',
                     description = '#{SQLer.escape(p[:descrip])}',
                     fam_id = #{SQLer.escape(p[:f_id])};")
             p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
@@ -273,6 +280,7 @@ module Plantae
     def self.update_family p
         SQLer::query("UPDATE families
         SET name = '#{SQLer.escape(p[:name])}',
+            common_name = '#{SQLer.escape(p[:common_name])}',
             description = '#{SQLer.escape(p[:descrip])}'
             WHERE id = #{SQLer.escape(p[:id])};")
         f_i = @@families.find_index{ |f| f.id == p[:id] }
@@ -283,6 +291,7 @@ module Plantae
         SQLer::transaction do
             SQLer::query("INSERT INTO families
             SET name = '#{SQLer.escape(p[:name])}',
+                common_name = '#{SQLer.escape(p[:common_name])}',
                 description = '#{SQLer.escape(p[:descrip])}';")
             p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
         end
@@ -310,6 +319,7 @@ module Plantae
 
 
     def self.to_hash
+        pp @@families.collect{ |f| f.to_hash }.sort_by!{ |f| f[:name].downcase}
         @@families.collect{ |f| f.to_hash }.sort_by!{ |f| f[:name].downcase}
     end
 

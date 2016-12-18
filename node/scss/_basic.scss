@@ -62,3 +62,44 @@ a {
 		color: $base-font-color-hover;
 	}
 }
+
+// input[type="checkbox"] {
+//     display:none;
+// }
+// input[type="checkbox"] + label {
+//     display:inline-block;
+//     // width:28px;
+//     height:28px;
+//     line-height  : 24px;
+//     margin-left  : -28px;
+//   	padding-left : 28px;
+//     vertical-align:middle;
+//     background: url("/img/checks.png") no-repeat 0 0;
+//     cursor:pointer;
+// }
+// input[type="checkbox"]:checked + label {
+//     background-position : 0 -24px;
+// }
+
+input[type=checkbox]:not(old),
+input[type=radio   ]:not(old){
+  width   : 28px;
+  margin  : 0;
+  padding : 0;
+  opacity : 0;
+}
+input[type=checkbox]:not(old) + label,
+input[type=radio   ]:not(old) + label{
+  display      : inline-block;
+  margin-left  : -28px;
+  padding-left : 28px;
+  background   : url('/img/checks.png') no-repeat 0 0;
+  line-height  : 24px;
+}
+input[type=checkbox]:not(old):checked + label{
+  background-position : 0 -24px;
+}
+
+input[type=radio]:not(old):checked + label{
+  background-position : 0 -48px;
+}

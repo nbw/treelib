@@ -2347,6 +2347,27 @@ a {
   a:hover {
     color: #161a1d; }
 
+input[type=checkbox]:not(old),
+input[type=radio]:not(old) {
+  width: 28px;
+  margin: 0;
+  padding: 0;
+  opacity: 0; }
+
+input[type=checkbox]:not(old) + label,
+input[type=radio]:not(old) + label {
+  display: inline-block;
+  margin-left: -28px;
+  padding-left: 28px;
+  background: url("/img/checks.png") no-repeat 0 0;
+  line-height: 24px; }
+
+input[type=checkbox]:not(old):checked + label {
+  background-position: 0 -24px; }
+
+input[type=radio]:not(old):checked + label {
+  background-position: 0 -48px; }
+
 .photoViewer {
   margin: 10px 0 20px 0;
   padding: 110px 0 110px 0;
@@ -2570,10 +2591,13 @@ a {
   margin: 0 10px 10px 10px;
   border-bottom: 3px black solid; }
   .species > .title .main {
-    font-size: 40pt;
-    padding-right: 5px; }
+    font-size: 40pt; }
     .species > .title .main .speciesTitle {
       font-weight: bold; }
+  .species > .title .commonName {
+    font-style: italic;
+    font-size: 3rem;
+    padding: 0 1.5rem 0 1.5rem; }
 
 .species > .description {
   padding: 20px; }
@@ -3181,14 +3205,21 @@ body {
   min-width: 300px;
   text-align: center;
   background-color: fafafa;
-  -webkit-transition: width 0.33s ease-out, height 0.2s ease-out;
+  -webkit-transition: width 0.5s cubic-bezier(0.87, -0.21, 0.19, 1.24), height 0.2s ease-out;
   /* Safari */
-  transition: width 0.33s ease-out, height 0.2s ease-out; }
+  transition: width 0.5s cubic-bezier(0.87, -0.21, 0.19, 1.24), height 0.2s ease-out; }
   .searchBar .title {
     background-color: fafafa;
     cursor: pointer;
-    border-bottom: 1px solid #777;
+    border-bottom: 1px solid #cacaca;
     font-size: 3rem;
+    border-color: #cacaca;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    -webkit-border-image: -webkit-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+    -moz-border-image: -moz-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+    -o-border-image: -o-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+    border-image: linear-gradient(to left, transparent, #cacaca, transparent) 1 5% 100%;
     text-align: center;
     padding: 0.5rem 0 0.5rem 0; }
     .searchBar .title a {
@@ -3199,6 +3230,11 @@ body {
         vertical-align: middle; }
       .searchBar .title a img {
         height: 3rem; }
+  .searchBar .nameSelector > div {
+    display: inline-block;
+    padding: 2%;
+    text-align: center;
+    width: 45%; }
   .searchBar .familyList, .searchBar .generaList, .searchBar .speciesList {
     display: inline-block;
     vertical-align: text-top;
@@ -3208,15 +3244,16 @@ body {
       border-style: solid;
       border-width: 0 1px 0 0; }
     .searchBar .familyList .subtitle, .searchBar .generaList .subtitle, .searchBar .speciesList .subtitle {
+      border-top: 1px solid #777;
       text-align: center;
       background-color: white;
       width: 100%; }
-  .searchBar ul {
+  .searchBar ul.searchSidebar-list {
     padding: 0;
     margin: 0;
     height: 100%;
     overflow-y: scroll; }
-    .searchBar ul li {
+    .searchBar ul.searchSidebar-list li.sidebarListItem {
       word-wrap: break-word;
       -webkit-hyphens: auto;
       -moz-hyphens: auto;
@@ -3224,18 +3261,30 @@ body {
       hyphens: auto;
       list-style-type: none;
       color: #555;
-      padding: 5px 5px 5px 5px; }
-      .searchBar ul li:hover {
+      padding: 5px 5px 5px 5px;
+      border-bottom-width: 1px;
+      border-color: #cacaca;
+      border-style: solid;
+      border-width: 0px 0px 1px 0px;
+      -webkit-border-image: -webkit-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+      -moz-border-image: -moz-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+      -o-border-image: -o-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+      border-image: linear-gradient(to left, transparent, #cacaca, transparent) 1 5% 100%; }
+      .searchBar ul.searchSidebar-list li.sidebarListItem:hover {
         color: #111; }
-      .searchBar ul li.selected {
+      .searchBar ul.searchSidebar-list li.sidebarListItem.selected {
         color: #111;
         background-color: white;
-        font-weight: bold;
-        border-color: #AAA;
-        border-style: solid;
-        border-width: 1px 0px 1px 0px; }
-        .searchBar ul li.selected:first-child {
+        font-weight: bold; }
+        .searchBar ul.searchSidebar-list li.sidebarListItem.selected:first-child {
           border-width: 0px 0px 1px 0px; }
+      .searchBar ul.searchSidebar-list li.sidebarListItem ul.sidebarListItem-names {
+        padding: 0;
+        margin: 0; }
+        .searchBar ul.searchSidebar-list li.sidebarListItem ul.sidebarListItem-names li {
+          list-style-type: none; }
+          .searchBar ul.searchSidebar-list li.sidebarListItem ul.sidebarListItem-names li .commonName {
+            font-style: italic; }
   .searchBar .familyList .subtitle {
     border-bottom: 3px solid #FF846B; }
   .searchBar .generaList .subtitle {
@@ -3258,6 +3307,7 @@ body {
 .minimized.searchBar {
   background-color: fafafa;
   height: 4.5rem;
+  width: 28%;
   z-index: 1; }
   .minimized.searchBar .closeButton:hover {
     color: #4c5b67; }

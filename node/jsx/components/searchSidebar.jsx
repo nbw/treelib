@@ -1,16 +1,19 @@
 import React, { PropTypes } from 'react'
 
+import CheckBoxer from './checkBoxer.jsx';
+
 class SearchSidebar extends React.Component {
     constructor() {
         super();
         this.state = {
             selectedFamily: null,
             selectedGenus: null,
-            selectedSpecies: null
+            selectedSpecies: null,
+            showLatinNames: true,
+            showCommonNames: false,
         };
     }
     componentDidMount() {
-        console.log('mount');
         var preSelected = this.props.preSelected;
         this.setState({selectedFamily: preSelected.family || null});
         this.setState({selectedGenus: preSelected.genus || null});
@@ -21,12 +24,16 @@ class SearchSidebar extends React.Component {
             [name]: value // ES6 computed property
         });
     }
+    handleInputChange(name, e) {
+        this.setState({
+            [name]: e.target.value
+        });
+    }
 	familyClicked(item,e){
         this.update('selectedGenus', null);
         this.update('selectedSpecies', null);
         this.props.familyHandler(item, this.props.handler);
         this.update('selectedFamily', item);
-         
 	}
 	genusClicked(item,e){
         this.update('selectedSpecies', null); 
@@ -49,27 +56,53 @@ class SearchSidebar extends React.Component {
     		selectedSpecies = this.state.selectedSpecies,
             minimized = this.props.minimized,
     	    familyRows = self.props.tree.map(function(item) {
-                var isSelected = selectedFamily && (selectedFamily.id == item.id);
-                return <SidebarListItem isSelected={isSelected} value={item.id} key={item.id} onClick={(event) => self.familyClicked(item, event)}>{item.name}</SidebarListItem>;
+                var isSelected = selectedFamily && (selectedFamily.id == item.id),
+                    latinName = self.state.showLatinNames ? item.name : "",
+                    commonName = self.state.showCommonNames ? item.common_name : "";
+                return <SidebarListItem 
+                            isSelected={isSelected} 
+                            value={item.id} key={item.id} 
+                            onClick={(event) => self.familyClicked(item, event)}
+                            latinName={latinName}
+                            commonName={commonName}
+                        />;
 	        });
 
 	    var generaRows = [];
 	    if(selectedFamily) {
 	    	generaRows = selectedFamily.genera.map(function(item) {
-                var isSelected = selectedGenus && (selectedGenus.id == item.id)
-	    		return <SidebarListItem isSelected={isSelected} value={item.id} key={item.id} onClick={(event) => self.genusClicked(item, event)}>{item.name}</SidebarListItem>;
+                var isSelected = selectedGenus && (selectedGenus.id == item.id),
+                    latinName = self.state.showLatinNames ? item.name : "",
+                    commonName = self.state.showCommonNames ? item.common_name : "";
+	    		return <SidebarListItem 
+                            isSelected={isSelected} 
+                            value={item.id} key={item.id} 
+                            onClick={(event) => self.genusClicked(item, event)}
+                            latinName={latinName}
+                            commonName={commonName}
+                        />;
 	    	});
 	    } else if (!(selectedFamily || selectedSpecies) || !(selectedFamily || selectedGenus) || selectedGenus){
             self.props.tree.forEach(function(family) {
                 family.genera.forEach(function(item) {
-                    var isSelected = selectedGenus && (selectedGenus.id == item.id)
-                    generaRows.push(<SidebarListItem isSelected={isSelected} value={item.id} key={item.id} onClick={(event) => self.genusClicked(item, event)}>{item.name}</SidebarListItem>);
+                    var isSelected = selectedGenus && (selectedGenus.id == item.id),
+                    latinName = self.state.showLatinNames ? item.name : "",
+                    commonName = self.state.showCommonNames ? item.common_name : "";
+                    generaRows.push(
+                        <SidebarListItem 
+                            isSelected={isSelected} 
+                            value={item.id} key={item.id} 
+                            onClick={(event) => self.genusClicked(item, event)}
+                            latinName={latinName}
+                            commonName={commonName}
+                        />
+                    );
                 });
             });
             // sort alphabetically
             generaRows.sort(function(a, b){
-                if(a.props.children < b.props.children) return -1;
-                if(a.props.children > b.props.children) return 1;
+                if(a.props.latinName < b.props.latinName) return -1;
+                if(a.props.latinName > b.props.latinName) return 1;
                 return 0;
             })
         }
@@ -77,22 +110,42 @@ class SearchSidebar extends React.Component {
 	    var speciesRows = [];
 	    if(selectedGenus) {
 	    	speciesRows = selectedGenus.species.map(function(item) {
-                var isSelected = selectedSpecies && (selectedSpecies.id == item.id)
-                return <SidebarListItem isSelected={isSelected} value={item.id} key={item.id} onClick={(event) => self.speciesClicked(item, event)}>{item.name}</SidebarListItem>;
+                var isSelected = selectedSpecies && (selectedSpecies.id == item.id),
+                    latinName = self.state.showLatinNames ? item.name : "",
+                    commonName = self.state.showCommonNames ? item.common_name : "";
+
+                return <SidebarListItem 
+                            isSelected={isSelected} 
+                            value={item.id} key={item.id} 
+                            onClick={(event) => self.speciesClicked(item, event)}
+                            latinName={latinName}
+                            commonName={commonName}
+                        />;
 	    	});
 	    } else if (!(selectedGenus || selectedFamily)) {
             self.props.tree.forEach(function(family) {
                 family.genera.forEach(function(genus) {
                     genus.species.forEach(function(item) {
-                        var isSelected = selectedSpecies && (selectedSpecies.id == item.id)
-                        speciesRows.push(<SidebarListItem isSelected={isSelected} value={item.id} key={item.id} onClick={(event) => self.speciesClicked(item, event)}>{item.name}</SidebarListItem>);
+                        var isSelected = selectedSpecies && (selectedSpecies.id == item.id),
+                            latinName = self.state.showLatinNames ? item.name : "",
+                            commonName = self.state.showCommonNames ? item.common_name : "";
+
+                        speciesRows.push(
+                                <SidebarListItem 
+                                isSelected={isSelected} 
+                                value={item.id} key={item.id} 
+                                onClick={(event) => self.speciesClicked(item, event)}
+                                latinName={latinName}
+                                commonName={commonName}
+                            />
+                        );
                     });
                 });
             });
             // sort alphabetically
             speciesRows.sort(function(a, b){
-                if(a.props.children < b.props.children) return -1;
-                if(a.props.children > b.props.children) return 1;
+                if(a.props.latinName < b.props.latinName) return -1;
+                if(a.props.latinName > b.props.latinName) return 1;
                 return 0;
             });
         }
@@ -105,21 +158,33 @@ class SearchSidebar extends React.Component {
                         <i className="fa fa-angle-right"></i> : 
                         <i className="fa fa-angle-left"></i>}
                 </div>
+                <div className="nameSelector">
+                    <CheckBoxer
+                        isChecked={this.state.showLatinNames}
+                        title=" latin names"
+                        handler={this.update.bind(this,'showLatinNames')}
+                    />
+                    <CheckBoxer
+                        isChecked={this.state.showCommonNames}
+                        title=" common names"
+                        handler={this.update.bind(this,'showCommonNames')}
+                    />
+                </div>
                 <div className="familyList">
                     <div className="subtitle"><label >Family</label></div>
-                	<ul>
+                	<ul className="searchSidebar-list">
                         {familyRows}
                 	</ul>
                 </div>
                 <div className="generaList">
                     <div className="subtitle"><label>Genus</label></div>
-                    <ul>
+                    <ul className="searchSidebar-list">
             		    {generaRows}
             	    </ul>
                 </div>
                 <div className="speciesList">
                     <div className="subtitle"><label>Species</label></div>
-                    <ul>
+                    <ul className="searchSidebar-list">
             		    {speciesRows}
             	    </ul>
                 </div>
@@ -136,8 +201,11 @@ function SidebarListItem(props) {
     }
 
     return (
-        <li className={classNames} key={props.id} value={props.item} onClick={props.onClick}>
-            {props.children}
+        <li className={"sidebarListItem " + classNames} key={props.id} value={props.item} onClick={props.onClick}>
+            <ul className="sidebarListItem-names">
+                <li><label className="latinName">{props.latinName}</label></li><li>
+                <label className="commonName">{props.commonName}</label></li>
+            </ul>
         </li>
     );
 }

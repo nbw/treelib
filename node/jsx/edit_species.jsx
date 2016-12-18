@@ -15,6 +15,7 @@ class App extends React.Component {
         super();
         this.state = {
             title: pg.species.name || "",
+            common_name: pg.species.common_name || "",
             description: pg.species.descrip || "",
             genus_id: pg.species.genus_id || pg.genera[0].id || 0,
             album_id: pg.species.album_id || 0,
@@ -33,6 +34,7 @@ class App extends React.Component {
     }
     updateTheMotherShip() {
         if ( this.state.title === "") {alert('Please enter a species name, then try again.');return;}
+        if ( this.state.common_name === "") {alert('Please enter a common name, then try again.');return;}
         if( !this.state.album_id ) {alert('Please choose a photo album, then try again.');return;}
 
         fetch('/api/edit_species', {
@@ -45,6 +47,7 @@ class App extends React.Component {
             body: JSON.stringify({
                 id: pg.species.id || null,
                 name: this.state.title.trim(),
+                common_name: this.state.common_name.trim(),
                 descrip: this.state.description,
                 g_id: this.state.genus_id,
                 album_id: this.state.album_id || null,
@@ -118,6 +121,13 @@ class App extends React.Component {
                     default = {this.state.genus_id}
                     list = {pg.genera}
                     handler = {this.handleInputChange.bind(this, "genus_id")} />
+                <hr />
+                <Inputer
+                    id = "common_name"
+                    title = "Common Name"
+                    placeholder = "common name"
+                    text = {this.state.common_name}
+                    handler = {this.handleInputChange.bind(this, "common_name")} />
                 <hr />
                 <Texter
                     id = "description" 

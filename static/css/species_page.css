@@ -2347,6 +2347,27 @@ a {
   a:hover {
     color: #161a1d; }
 
+input[type=checkbox]:not(old),
+input[type=radio]:not(old) {
+  width: 28px;
+  margin: 0;
+  padding: 0;
+  opacity: 0; }
+
+input[type=checkbox]:not(old) + label,
+input[type=radio]:not(old) + label {
+  display: inline-block;
+  margin-left: -28px;
+  padding-left: 28px;
+  background: url("/img/checks.png") no-repeat 0 0;
+  line-height: 24px; }
+
+input[type=checkbox]:not(old):checked + label {
+  background-position: 0 -24px; }
+
+input[type=radio]:not(old):checked + label {
+  background-position: 0 -48px; }
+
 .photoViewer {
   margin: 10px 0 20px 0;
   padding: 110px 0 110px 0;
@@ -2570,10 +2591,13 @@ a {
   margin: 0 10px 10px 10px;
   border-bottom: 3px black solid; }
   .species > .title .main {
-    font-size: 40pt;
-    padding-right: 5px; }
+    font-size: 40pt; }
     .species > .title .main .speciesTitle {
       font-weight: bold; }
+  .species > .title .commonName {
+    font-style: italic;
+    font-size: 3rem;
+    padding: 0 1.5rem 0 1.5rem; }
 
 .species > .description {
   padding: 20px; }

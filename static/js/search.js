@@ -458,6 +458,11 @@ webpackJsonp([10],{
 	                        'label',
 	                        { className: 'secondary' },
 	                        'family'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'commonName' },
+	                        f.common_name
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -865,6 +870,11 @@ webpackJsonp([10],{
 	                        'label',
 	                        { className: 'secondary' },
 	                        'genus'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'commonName' },
+	                        g.common_name
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -1030,7 +1040,8 @@ webpackJsonp([10],{
 	                    }
 	                });
 	            }
-	            var links = s.links.map(function (link, index) {
+
+	            var links = links ? s.links.map(function (link, index) {
 	                return _react2.default.createElement(
 	                    'li',
 	                    { key: index },
@@ -1040,7 +1051,7 @@ webpackJsonp([10],{
 	                        link.name
 	                    )
 	                );
-	            });
+	            }) : [];
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'species' },
@@ -1061,6 +1072,11 @@ webpackJsonp([10],{
 	                                s.name
 	                            )
 	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'label',
+	                        { className: 'commonName' },
+	                        s.common_name
 	                    ),
 	                    _react2.default.createElement(
 	                        'label',
@@ -1128,6 +1144,10 @@ webpackJsonp([10],{
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _checkBoxer = __webpack_require__(188);
+
+	var _checkBoxer2 = _interopRequireDefault(_checkBoxer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1149,7 +1169,9 @@ webpackJsonp([10],{
 	        _this.state = {
 	            selectedFamily: null,
 	            selectedGenus: null,
-	            selectedSpecies: null
+	            selectedSpecies: null,
+	            showLatinNames: true,
+	            showCommonNames: false
 	        };
 	        return _this;
 	    }
@@ -1157,7 +1179,6 @@ webpackJsonp([10],{
 	    _createClass(SearchSidebar, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            console.log('mount');
 	            var preSelected = this.props.preSelected;
 	            this.setState({ selectedFamily: preSelected.family || null });
 	            this.setState({ selectedGenus: preSelected.genus || null });
@@ -1167,6 +1188,11 @@ webpackJsonp([10],{
 	        key: 'update',
 	        value: function update(name, value) {
 	            this.setState(_defineProperty({}, name, value));
+	        }
+	    }, {
+	        key: 'handleInputChange',
+	        value: function handleInputChange(name, e) {
+	            this.setState(_defineProperty({}, name, e.target.value));
 	        }
 	    }, {
 	        key: 'familyClicked',
@@ -1204,45 +1230,57 @@ webpackJsonp([10],{
 	                selectedSpecies = this.state.selectedSpecies,
 	                minimized = this.props.minimized,
 	                familyRows = self.props.tree.map(function (item) {
-	                var isSelected = selectedFamily && selectedFamily.id == item.id;
-	                return _react2.default.createElement(
-	                    SidebarListItem,
-	                    { isSelected: isSelected, value: item.id, key: item.id, onClick: function onClick(event) {
-	                            return self.familyClicked(item, event);
-	                        } },
-	                    item.name
-	                );
+	                var isSelected = selectedFamily && selectedFamily.id == item.id,
+	                    latinName = self.state.showLatinNames ? item.name : "",
+	                    commonName = self.state.showCommonNames ? item.common_name : "";
+	                return _react2.default.createElement(SidebarListItem, {
+	                    isSelected: isSelected,
+	                    value: item.id, key: item.id,
+	                    onClick: function onClick(event) {
+	                        return self.familyClicked(item, event);
+	                    },
+	                    latinName: latinName,
+	                    commonName: commonName
+	                });
 	            });
 
 	            var generaRows = [];
 	            if (selectedFamily) {
 	                generaRows = selectedFamily.genera.map(function (item) {
-	                    var isSelected = selectedGenus && selectedGenus.id == item.id;
-	                    return _react2.default.createElement(
-	                        SidebarListItem,
-	                        { isSelected: isSelected, value: item.id, key: item.id, onClick: function onClick(event) {
-	                                return self.genusClicked(item, event);
-	                            } },
-	                        item.name
-	                    );
+	                    var isSelected = selectedGenus && selectedGenus.id == item.id,
+	                        latinName = self.state.showLatinNames ? item.name : "",
+	                        commonName = self.state.showCommonNames ? item.common_name : "";
+	                    return _react2.default.createElement(SidebarListItem, {
+	                        isSelected: isSelected,
+	                        value: item.id, key: item.id,
+	                        onClick: function onClick(event) {
+	                            return self.genusClicked(item, event);
+	                        },
+	                        latinName: latinName,
+	                        commonName: commonName
+	                    });
 	                });
 	            } else if (!(selectedFamily || selectedSpecies) || !(selectedFamily || selectedGenus) || selectedGenus) {
 	                self.props.tree.forEach(function (family) {
 	                    family.genera.forEach(function (item) {
-	                        var isSelected = selectedGenus && selectedGenus.id == item.id;
-	                        generaRows.push(_react2.default.createElement(
-	                            SidebarListItem,
-	                            { isSelected: isSelected, value: item.id, key: item.id, onClick: function onClick(event) {
-	                                    return self.genusClicked(item, event);
-	                                } },
-	                            item.name
-	                        ));
+	                        var isSelected = selectedGenus && selectedGenus.id == item.id,
+	                            latinName = self.state.showLatinNames ? item.name : "",
+	                            commonName = self.state.showCommonNames ? item.common_name : "";
+	                        generaRows.push(_react2.default.createElement(SidebarListItem, {
+	                            isSelected: isSelected,
+	                            value: item.id, key: item.id,
+	                            onClick: function onClick(event) {
+	                                return self.genusClicked(item, event);
+	                            },
+	                            latinName: latinName,
+	                            commonName: commonName
+	                        }));
 	                    });
 	                });
 	                // sort alphabetically
 	                generaRows.sort(function (a, b) {
-	                    if (a.props.children < b.props.children) return -1;
-	                    if (a.props.children > b.props.children) return 1;
+	                    if (a.props.latinName < b.props.latinName) return -1;
+	                    if (a.props.latinName > b.props.latinName) return 1;
 	                    return 0;
 	                });
 	            }
@@ -1250,34 +1288,44 @@ webpackJsonp([10],{
 	            var speciesRows = [];
 	            if (selectedGenus) {
 	                speciesRows = selectedGenus.species.map(function (item) {
-	                    var isSelected = selectedSpecies && selectedSpecies.id == item.id;
-	                    return _react2.default.createElement(
-	                        SidebarListItem,
-	                        { isSelected: isSelected, value: item.id, key: item.id, onClick: function onClick(event) {
-	                                return self.speciesClicked(item, event);
-	                            } },
-	                        item.name
-	                    );
+	                    var isSelected = selectedSpecies && selectedSpecies.id == item.id,
+	                        latinName = self.state.showLatinNames ? item.name : "",
+	                        commonName = self.state.showCommonNames ? item.common_name : "";
+
+	                    return _react2.default.createElement(SidebarListItem, {
+	                        isSelected: isSelected,
+	                        value: item.id, key: item.id,
+	                        onClick: function onClick(event) {
+	                            return self.speciesClicked(item, event);
+	                        },
+	                        latinName: latinName,
+	                        commonName: commonName
+	                    });
 	                });
 	            } else if (!(selectedGenus || selectedFamily)) {
 	                self.props.tree.forEach(function (family) {
 	                    family.genera.forEach(function (genus) {
 	                        genus.species.forEach(function (item) {
-	                            var isSelected = selectedSpecies && selectedSpecies.id == item.id;
-	                            speciesRows.push(_react2.default.createElement(
-	                                SidebarListItem,
-	                                { isSelected: isSelected, value: item.id, key: item.id, onClick: function onClick(event) {
-	                                        return self.speciesClicked(item, event);
-	                                    } },
-	                                item.name
-	                            ));
+	                            var isSelected = selectedSpecies && selectedSpecies.id == item.id,
+	                                latinName = self.state.showLatinNames ? item.name : "",
+	                                commonName = self.state.showCommonNames ? item.common_name : "";
+
+	                            speciesRows.push(_react2.default.createElement(SidebarListItem, {
+	                                isSelected: isSelected,
+	                                value: item.id, key: item.id,
+	                                onClick: function onClick(event) {
+	                                    return self.speciesClicked(item, event);
+	                                },
+	                                latinName: latinName,
+	                                commonName: commonName
+	                            }));
 	                        });
 	                    });
 	                });
 	                // sort alphabetically
 	                speciesRows.sort(function (a, b) {
-	                    if (a.props.children < b.props.children) return -1;
-	                    if (a.props.children > b.props.children) return 1;
+	                    if (a.props.latinName < b.props.latinName) return -1;
+	                    if (a.props.latinName > b.props.latinName) return 1;
 	                    return 0;
 	                });
 	            }
@@ -1308,6 +1356,20 @@ webpackJsonp([10],{
 	                ),
 	                _react2.default.createElement(
 	                    'div',
+	                    { className: 'nameSelector' },
+	                    _react2.default.createElement(_checkBoxer2.default, {
+	                        isChecked: this.state.showLatinNames,
+	                        title: ' latin names',
+	                        handler: this.update.bind(this, 'showLatinNames')
+	                    }),
+	                    _react2.default.createElement(_checkBoxer2.default, {
+	                        isChecked: this.state.showCommonNames,
+	                        title: ' common names',
+	                        handler: this.update.bind(this, 'showCommonNames')
+	                    })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
 	                    { className: 'familyList' },
 	                    _react2.default.createElement(
 	                        'div',
@@ -1320,7 +1382,7 @@ webpackJsonp([10],{
 	                    ),
 	                    _react2.default.createElement(
 	                        'ul',
-	                        null,
+	                        { className: 'searchSidebar-list' },
 	                        familyRows
 	                    )
 	                ),
@@ -1338,7 +1400,7 @@ webpackJsonp([10],{
 	                    ),
 	                    _react2.default.createElement(
 	                        'ul',
-	                        null,
+	                        { className: 'searchSidebar-list' },
 	                        generaRows
 	                    )
 	                ),
@@ -1356,7 +1418,7 @@ webpackJsonp([10],{
 	                    ),
 	                    _react2.default.createElement(
 	                        'ul',
-	                        null,
+	                        { className: 'searchSidebar-list' },
 	                        speciesRows
 	                    )
 	                )
@@ -1376,12 +1438,103 @@ webpackJsonp([10],{
 
 	    return _react2.default.createElement(
 	        'li',
-	        { className: classNames, key: props.id, value: props.item, onClick: props.onClick },
-	        props.children
+	        { className: "sidebarListItem " + classNames, key: props.id, value: props.item, onClick: props.onClick },
+	        _react2.default.createElement(
+	            'ul',
+	            { className: 'sidebarListItem-names' },
+	            _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                    'label',
+	                    { className: 'latinName' },
+	                    props.latinName
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                    'label',
+	                    { className: 'commonName' },
+	                    props.commonName
+	                )
+	            )
+	        )
 	    );
 	}
 
 	exports.default = SearchSidebar;
+
+/***/ },
+
+/***/ 188:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CheckBoxer = function (_React$Component) {
+	    _inherits(CheckBoxer, _React$Component);
+
+	    function CheckBoxer() {
+	        _classCallCheck(this, CheckBoxer);
+
+	        return _possibleConstructorReturn(this, (CheckBoxer.__proto__ || Object.getPrototypeOf(CheckBoxer)).apply(this, arguments));
+	    }
+
+	    _createClass(CheckBoxer, [{
+	        key: 'toggleCheckbox',
+	        value: function toggleCheckbox(e) {
+	            var curr = this.props.isChecked;
+	            this.props.handler(!curr);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            return _react2.default.createElement(
+	                'div',
+	                { id: this.props.id, className: 'checkBox' },
+	                _react2.default.createElement('input', { type: 'checkbox',
+	                    key: this.props.key,
+	                    value: this.props.value,
+	                    onChange: function onChange() {
+	                        return _this2.toggleCheckbox();
+	                    },
+	                    checked: this.props.isChecked
+	                }),
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    this.props.title
+	                )
+	            );
+	        }
+	    }]);
+
+	    return CheckBoxer;
+	}(_react2.default.Component);
+
+	exports.default = CheckBoxer;
 
 /***/ }
 

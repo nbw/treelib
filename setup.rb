@@ -52,6 +52,7 @@ begin
     client.query('CREATE TABLE families (
         id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name TEXT NOT NULL,
+        common_name TEXT DEFAULT NULL,
         description TEXT NOT NULL,
         enabled tinyint(1) DEFAULT 1
     );')
@@ -66,6 +67,7 @@ begin
     client.query('CREATE TABLE genera (
         id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name TEXT NOT NULL,
+        common_name TEXT DEFAULT NULL,
         description TEXT NOT NULL,
         fam_id INTEGER UNSIGNED NOT NULL,
         enabled tinyint(1) DEFAULT 1
@@ -81,6 +83,7 @@ begin
     client.query('CREATE TABLE species (
         id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name TEXT NOT NULL,
+        common_name TEXT DEFAULT NULL,
         description TEXT NOT NULL,
         genus_id INTEGER UNSIGNED NOT NULL,
         album_id INTEGER UNSIGNED DEFAULT NULL,

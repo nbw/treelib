@@ -74,7 +74,7 @@ body{
 	}
 }
 
-
+$searchBar-listItem-border-color: #cacaca;
 $searchBar-background: fafafa;
 $searchBar-list-font-color: #555;
 $searchBar-list-font-color-selected: #111;
@@ -96,9 +96,25 @@ $searchBar-list-font-color-selected: #111;
 	.title {
 		background-color: $searchBar-background;
 		cursor: pointer; 
-		border-bottom: 1px solid #777;
+		// default
+		border-bottom: 1px solid $searchBar-listItem-border-color;
 		font-size: $sidebar-title-height;
-		// text-transform: uppercase;
+
+		border-color: $searchBar-listItem-border-color;
+		border-style: solid;
+	    border-width: 0px 0px 1px 0px;
+	    -webkit-border-image: 
+	      -webkit-linear-gradient(left, rgba(0, 0, 0, 0), $searchBar-listItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
+	    -moz-border-image:
+	      -moz-linear-gradient(left, rgba(0, 0, 0, 0), $searchBar-listItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
+	    -o-border-image:
+	      -o-linear-gradient(left, rgba(0, 0, 0, 0), $searchBar-listItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
+	    border-image:
+	      linear-gradient(to left, rgba(0, 0, 0, 0), $searchBar-listItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
+
+
+
+
 		text-align: center;
 		padding: 0.5rem 0 0.5rem 0;
 		a { 
@@ -115,19 +131,16 @@ $searchBar-list-font-color-selected: #111;
   		
 
 	}
+	.nameSelector {
+		> div {
+			display: inline-block;
+			padding: 2%;
+			text-align: center;
+			width: 45%;
+		}
+	}
 	.familyList, .generaList, .speciesList {
-		// ::-webkit-scrollbar { 
-		//    width: 10px;
-		//  } 
-		//  ::-webkit-scrollbar-button {
-		//     // background: #aaa;
-		// }
-		// ::-webkit-scrollbar-track-piece {
-		//     background: $searchBar-background;
-		// }
-		// ::-webkit-scrollbar-thumb {
-  //   		background: #dadada;
-		// }
+
 		display: inline-block;
 		vertical-align: text-top;
 		width: 33%;
@@ -137,17 +150,18 @@ $searchBar-list-font-color-selected: #111;
 			border-width: 0 1px 0 0;
 		}
 		.subtitle {
+			border-top: 1px solid #777;
 			text-align: center;
 			background-color: white;
 			width: 100%;
 		}
 	}
-	ul {
+	ul.searchSidebar-list {
 		padding: 0;
 		margin: 0;
 		height: 100%;
 		overflow-y: scroll;
-		li {
+		li.sidebarListItem {
 			word-wrap: break-word;
 			-webkit-hyphens: auto;
 		   -moz-hyphens: auto;
@@ -157,6 +171,22 @@ $searchBar-list-font-color-selected: #111;
 			color: $searchBar-list-font-color;
 			padding: 5px 5px 5px 5px;
 
+			// defaults
+			border-bottom-width: 1px;
+			border-color: $searchBar-listItem-border-color;
+			border-style: solid;
+
+		    border-width: 0px 0px 1px 0px;
+		    -webkit-border-image: 
+		      -webkit-linear-gradient(left, rgba(0, 0, 0, 0), $searchBar-listItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
+		    -moz-border-image:
+		      -moz-linear-gradient(left, rgba(0, 0, 0, 0), $searchBar-listItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
+		    -o-border-image:
+		      -o-linear-gradient(left, rgba(0, 0, 0, 0), $searchBar-listItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
+		    border-image:
+		      linear-gradient(to left, rgba(0, 0, 0, 0), $searchBar-listItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
+
+
 			&:hover {
 				color: $searchBar-list-font-color-selected;
 			}
@@ -164,14 +194,22 @@ $searchBar-list-font-color-selected: #111;
 				color: $searchBar-list-font-color-selected;
 				background-color: white;
 				font-weight: bold;
-				border-color: #AAA;
-				border-style: solid;
-				border-width: 1px 0px 1px 0px;
 				&:first-child{
 					border-width: 0px 0px 1px 0px;
 				}
 			}
+			ul.sidebarListItem-names {
+				padding: 0;
+				margin: 0;
+				li {
+					list-style-type: none;
+					.commonName {
+						font-style: italic;
+					}
+				}
+			}
 		}
+
 	}
 	.familyList {
 		.subtitle{
@@ -204,14 +242,15 @@ $searchBar-list-font-color-selected: #111;
 			content: " HIDE";
 		}
 	}
-	-webkit-transition: width 0.33s ease-out, height 0.2s ease-out; /* Safari */
-    transition:  width 0.33s ease-out, height 0.2s ease-out;
+	-webkit-transition: width 0.5s cubic-bezier(.87,-.21,.19,1.24), height 0.2s ease-out; /* Safari */
+    transition:  width 0.5s cubic-bezier(.87,-.21,.19,1.24), height 0.2s ease-out;
 }
 
 .minimized {
 	&.searchBar {
 		background-color: $searchBar-background;
 		height: $sidebar-title-height + 1.5rem;
+		width: $sidebar-width - 10%;
 		z-index: 1;
 		.closeButton {
 			&:hover{

@@ -4,10 +4,14 @@
 	> .title {
 		.main { 
 			font-size:40pt;
-			padding-right: 5px;
 			.speciesTitle {
 				font-weight: bold;
 			}
+		}
+		.commonName {
+			font-style: italic;
+			font-size: 3rem;
+			padding: 0 1.5rem 0 1.5rem;
 		}
 		padding: 10px 0 10px 0;
 		margin: 0 10px 10px 10px;

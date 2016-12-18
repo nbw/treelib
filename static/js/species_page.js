@@ -493,7 +493,8 @@ webpackJsonp([11],{
 	                    }
 	                });
 	            }
-	            var links = s.links.map(function (link, index) {
+
+	            var links = links ? s.links.map(function (link, index) {
 	                return _react2.default.createElement(
 	                    'li',
 	                    { key: index },
@@ -503,7 +504,7 @@ webpackJsonp([11],{
 	                        link.name
 	                    )
 	                );
-	            });
+	            }) : [];
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'species' },
@@ -524,6 +525,11 @@ webpackJsonp([11],{
 	                                s.name
 	                            )
 	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'label',
+	                        { className: 'commonName' },
+	                        s.common_name
 	                    ),
 	                    _react2.default.createElement(
 	                        'label',

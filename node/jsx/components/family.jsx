@@ -58,6 +58,7 @@ class Family extends React.Component {
                 <div className="title">
                     <a href={'/family/' + f.name.replace(/ /g,'_')}><label className="main">{f.name}</label></a>
                     <label className="secondary">family</label>
+                    <div className="commonName">{f.common_name}</div>
                 </div>
                 <div className="textContent">
                     <div className="description">
