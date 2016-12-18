@@ -2881,7 +2881,7 @@ input[type=radio]:not(old):checked + label {
       -webkit-box-sizing: border-box;
       border: 2px #4385ef solid; }
   .genus .photos .thumbs {
-    padding-bottom: 5px; }
+    padding: 5px 0 5px 0; }
   .genus .photos .subtitle {
     font-style: italic; }
   .genus .photos .newPhotoSelectionButton {
@@ -3176,7 +3176,7 @@ input[type=radio]:not(old):checked + label {
       -webkit-box-sizing: border-box;
       border: 2px #4385ef solid; }
   .family .photos .thumbs {
-    padding-bottom: 5px; }
+    padding: 5px 0 5px 0; }
   .family .photos .subtitle {
     font-style: italic; }
   .family .photos .newPhotoSelectionButton {

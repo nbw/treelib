@@ -148,6 +148,10 @@ class SearchSidebar extends React.Component {
                 return 0;
             });
         }
+        // default if both checkboxes are unselected
+        if(!(this.state.showLatinNames || this.state.showCommonNames)) {
+            this.update('showLatinNames', true);
+        }
 
         return (
             <div id={this.props.id}　className={ minimized ? "searchbar minimized" : "searchbar"} >

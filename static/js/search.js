@@ -976,7 +976,8 @@ webpackJsonp([10],{
 	                        'label',
 	                        { className: 'subtitle' },
 	                        'The photos below have been randomly selected from species in ',
-	                        g.name
+	                        g.name,
+	                        '.'
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
@@ -1386,6 +1387,10 @@ webpackJsonp([10],{
 	                    if (a.props.latinName > b.props.latinName) return 1;
 	                    return 0;
 	                });
+	            }
+	            // default if both checkboxes are unselected
+	            if (!(this.state.showLatinNames || this.state.showCommonNames)) {
+	                this.update('showLatinNames', true);
 	            }
 
 	            return _react2.default.createElement(

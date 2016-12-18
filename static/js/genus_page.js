@@ -599,7 +599,8 @@ webpackJsonp([7],{
 	                        'label',
 	                        { className: 'subtitle' },
 	                        'The photos below have been randomly selected from species in ',
-	                        g.name
+	                        g.name,
+	                        '.'
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',

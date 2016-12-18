@@ -106,7 +106,7 @@ class Genus extends React.Component {
                         flickr_url = {g.photos[selectedPhoto].flickr_url} /> : null }
                 { thumbs.length > 0 ? 
                 <div className="photos">
-                    <label className="subtitle">The photos below have been randomly selected from species in {g.name}</label>
+                    <label className="subtitle">The photos below have been randomly selected from species in {g.name}.</label>
                     <div className="thumbs">{thumbs}</div>
                     <div onClick={ this.grabMorePhotos.bind(this) } className="newPhotoSelectionButton">
                         new random photo selection
