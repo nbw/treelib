@@ -112,7 +112,7 @@ class SearchSidebar extends React.Component {
 	    	speciesRows = selectedGenus.species.map(function(item) {
                 var isSelected = selectedSpecies && (selectedSpecies.id == item.id),
                     latinName = self.state.showLatinNames ? item.name : "",
-                    commonName = self.state.showCommonNames ? item.genus_common_name + " " + item.common_name : "";
+                    commonName = self.state.showCommonNames ? item.common_name + " " + item.genus_common_name : "";
                 return <SidebarListItem 
                             isSelected={isSelected} 
                             value={item.id} key={item.id} 
@@ -127,7 +127,7 @@ class SearchSidebar extends React.Component {
                     genus.species.forEach(function(item) {
                         var isSelected = selectedSpecies && (selectedSpecies.id == item.id),
                             latinName = self.state.showLatinNames ? item.name : "",
-                            commonName = self.state.showCommonNames ? item.genus_common_name + " " + item.common_name : "";
+                            commonName = self.state.showCommonNames ? item.common_name + " " + item.genus_common_name : "";
 
                         speciesRows.push(
                                 <SidebarListItem 

@@ -528,7 +528,9 @@ webpackJsonp([11],{
 	                    _react2.default.createElement(
 	                        'label',
 	                        { className: 'commonName' },
-	                        s.common_name
+	                        s.common_name,
+	                        ' ',
+	                        s.genus_common_name
 	                    ),
 	                    _react2.default.createElement(
 	                        'label',
