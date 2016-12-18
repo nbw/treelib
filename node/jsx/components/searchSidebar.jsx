@@ -67,6 +67,12 @@ class SearchSidebar extends React.Component {
                             commonName={commonName}
                         />;
 	        });
+            // sort alphabetically
+            familyRows.sort(function(a, b){
+                if(a.props.latinName.toLowerCase() < b.props.latinName.toLowerCase()) return -1;
+                if(a.props.latinName.toLowerCase() > b.props.latinName.toLowerCase()) return 1;
+                return 0;
+            })
 
 	    var generaRows = [];
 	    if(selectedFamily) {
@@ -99,13 +105,14 @@ class SearchSidebar extends React.Component {
                     );
                 });
             });
-            // sort alphabetically
-            generaRows.sort(function(a, b){
-                if(a.props.latinName < b.props.latinName) return -1;
-                if(a.props.latinName > b.props.latinName) return 1;
-                return 0;
-            })
+            
         }
+        // sort alphabetically
+        generaRows.sort(function(a, b){
+            if(a.props.latinName.toLowerCase() < b.props.latinName.toLowerCase()) return -1;
+            if(a.props.latinName.toLowerCase() > b.props.latinName.toLowerCase()) return 1;
+            return 0;
+        });
 
 	    var speciesRows = [];
 	    if(selectedGenus) {
@@ -140,14 +147,14 @@ class SearchSidebar extends React.Component {
                         );
                     });
                 });
-            });
-            // sort alphabetically
-            speciesRows.sort(function(a, b){
-                if(a.props.latinName < b.props.latinName) return -1;
-                if(a.props.latinName > b.props.latinName) return 1;
-                return 0;
-            });
+            });     
         }
+        // sort alphabetically
+        speciesRows.sort(function(a, b){
+            if(a.props.latinName.toLowerCase() < b.props.latinName.toLowerCase()) return -1;
+            if(a.props.latinName.toLowerCase() > b.props.latinName.toLowerCase()) return 1;
+            return 0;
+        });
         // default if both checkboxes are unselected
         if(!(this.state.showLatinNames || this.state.showCommonNames)) {
             this.update('showLatinNames', true);
