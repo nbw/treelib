@@ -1349,7 +1349,7 @@ webpackJsonp([10],{
 	                speciesRows = selectedGenus.species.map(function (item) {
 	                    var isSelected = selectedSpecies && selectedSpecies.id == item.id,
 	                        latinName = self.state.showLatinNames ? item.name : "",
-	                        commonName = self.state.showCommonNames ? item.genus_common_name + item.common_name : "";
+	                        commonName = self.state.showCommonNames ? item.genus_common_name + " " + item.common_name : "";
 	                    return _react2.default.createElement(SidebarListItem, {
 	                        isSelected: isSelected,
 	                        value: item.id, key: item.id,
@@ -1366,7 +1366,7 @@ webpackJsonp([10],{
 	                        genus.species.forEach(function (item) {
 	                            var isSelected = selectedSpecies && selectedSpecies.id == item.id,
 	                                latinName = self.state.showLatinNames ? item.name : "",
-	                                commonName = self.state.showCommonNames ? item.genus_common_name + item.common_name : "";
+	                                commonName = self.state.showCommonNames ? item.genus_common_name + " " + item.common_name : "";
 
 	                            speciesRows.push(_react2.default.createElement(SidebarListItem, {
 	                                isSelected: isSelected,
