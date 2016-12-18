@@ -3251,6 +3251,7 @@ body {
   .searchBar ul.searchSidebar-list {
     padding: 0;
     margin: 0;
+    position: relative;
     height: 100%;
     overflow-y: scroll; }
     .searchBar ul.searchSidebar-list li.sidebarListItem {
@@ -3291,8 +3292,6 @@ body {
     border-bottom: 3px solid #57D084; }
   .searchBar .speciesList .subtitle {
     border-bottom: 3px solid #54A1BF; }
-  .searchBar .fake {
-    color: #CCC; }
   .searchBar .closeButton {
     font-size: 1.5rem;
     position: absolute;

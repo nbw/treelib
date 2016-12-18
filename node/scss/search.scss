@@ -159,6 +159,7 @@ $searchBar-list-font-color-selected: #111;
 	ul.searchSidebar-list {
 		padding: 0;
 		margin: 0;
+		position:relative;
 		height: 100%;
 		overflow-y: scroll;
 		li.sidebarListItem {
@@ -225,9 +226,6 @@ $searchBar-list-font-color-selected: #111;
 		.subtitle{
 			border-bottom: 3px solid $species-color;
 		}
-	}
-	.fake {
-		color: #CCC;
 	}
 	.closeButton {
 		font-size: 1.5rem;

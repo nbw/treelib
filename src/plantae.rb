@@ -319,7 +319,6 @@ module Plantae
 
 
     def self.to_hash
-        pp @@families.collect{ |f| f.to_hash }.sort_by!{ |f| f[:name].downcase}
         @@families.collect{ |f| f.to_hash }.sort_by!{ |f| f[:name].downcase}
     end
 
