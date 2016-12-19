@@ -29,7 +29,11 @@ p = []
 set :public_folder, File.dirname(__FILE__) + '/static'
 set :views, File.dirname(__FILE__) + '/templates'
 set :port, CONFIG["port"]
-set :environment, :development
+if CONFIG["production"] 
+    set :environment, :production 
+else
+    set :environment, :development
+end
 use Rack::Session::Cookie, { 
    :key => 'rack.session',
    :domain => CONFIG["domain"],
