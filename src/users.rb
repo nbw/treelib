@@ -6,6 +6,7 @@ module Users
         user = SQLer.query("SELECT * FROM users WHERE name='#{SQLer.escape(name)}'").first
 
         if user && BCrypt::Password.new(user["pw_hash"]) == (CONFIG["salt"] + pwd)
+            puts "\n #{name} LOGIN SUCCESSFUL \n"
             return user
         else 
             return false
