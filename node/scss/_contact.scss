@@ -1,0 +1,19 @@
+.contactPage {
+	background-image: url("/img/thuja.jpg");
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 100%;
+	.section {
+		background-color: white;
+		padding: 20px 5% 20px 5%;
+	}
+	img {
+		display:block;
+    	margin:auto;
+		max-width: 750px;
+		width: 100%;
+		text-align: center;
+	}
+}

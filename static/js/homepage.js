@@ -397,167 +397,260 @@ webpackJsonp([8],{
 	                { className: 'aboutPage' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'section' },
-	                    _react2.default.createElement(
-	                        'label',
-	                        { className: 'title' },
-	                        'About the photos'
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        'All but a handful of the photos have been taken by the author in botanical gardens, larger private collections, university arboretums, private  gardens, natural forests across Western North America and in Japan.'
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        'Photos were taken with a Canon 70D camera, using 40mm, 17mm x 85mm and 18mm x 55mm lenses. The 70D is equipped with Canon’s new high resolution CMOS 70D sensor which allows raising film speed to up to 2000 or more without noticeable graininess.'
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        'The photos are hosted on ',
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: 'https://flickr.com' },
-	                            'Flickr'
-	                        ),
-	                        '.'
-	                    )
-	                ),
-	                _react2.default.createElement('div', { className: 'banner' }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'section' },
-	                    _react2.default.createElement(
-	                        'label',
-	                        { className: 'title' },
-	                        'Species confirmation'
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        'The purpose of this site is more to give a flavour of the varieties of each species than to provide an authoritative catalogue of them.  For detailed lists of most of the varieties of each species, I have found that searching species names on Wikipedia provides the best information.'
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        'Preference has been, in most cases, to support confirmation of many species and varieties at major sites like Vandusen Garden, Washington University Arboretum and other botanical gardens all over the Western North America, as far back as Manitoba and North Dakota, supplementing with pictures from many other locations.'
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        'Cross-referencing of Latin names and usages has also been done from many of these sites, from web sites and from numerous good tree apps and books on tree identification; there are some differences in nomenclature between the U.S., Canada, Japan and Europe.  Regarding common English names, they are often quite varied and are best outlined on sites such as Wikipedia and other plant sites.'
-	                    )
-	                ),
-	                _react2.default.createElement('div', { className: 'banner' }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'bio' },
+	                    { className: 'tableOfContents' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'title' },
-	                        'Who we are'
-	                    ),
-	                    _react2.default.createElement(
-	                        'table',
-	                        null,
+	                        { className: 'tocTitle' },
 	                        _react2.default.createElement(
-	                            'tbody',
+	                            'label',
 	                            null,
 	                            _react2.default.createElement(
-	                                'tr',
+	                                'u',
 	                                null,
+	                                'Contents'
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'ul',
+	                        null,
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#aboutPhotos' },
+	                                'About the Photos'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#speciesConfirm' },
+	                                'Species Confirmation'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '#bio' },
+	                                'Who we are'
+	                            )
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'content' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { id: 'aboutPhotos' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { className: 'sectionTitle' },
+	                            'About the photos'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'label',
+	                                { className: 'subsectionTitle' },
+	                                'Where the photos are hosted'
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'The photos are hosted on ',
 	                                _react2.default.createElement(
-	                                    'td',
-	                                    null,
-	                                    _react2.default.createElement('img', { className: 'photo', src: 'img/blake.jpg' })
-	                                ),
-	                                _react2.default.createElement(
-	                                    'td',
+	                                    'b',
 	                                    null,
 	                                    _react2.default.createElement(
-	                                        'ul',
-	                                        { className: 'description' },
-	                                        _react2.default.createElement(
-	                                            'li',
-	                                            { className: 'title' },
-	                                            _react2.default.createElement(
-	                                                'label',
-	                                                { className: 'name' },
-	                                                'Blake Willson'
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                'i',
-	                                                null,
-	                                                ' - R.P.F. - Botanist and Photographer'
-	                                            )
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            'li',
-	                                            { className: 'content' },
-	                                            _react2.default.createElement(
-	                                                'p',
-	                                                null,
-	                                                'Blake is an industry manager, botonist and photographer with over 25 years in the forestry industry, specifically with government and industry between Canada and Japan.'
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                'p',
-	                                                null,
-	                                                'He is a member of the International Dendrology Society (a UK-based global group of professors and scientists dedicated to the study and teaching about woody plants) and the American Conifer Society.'
-	                                            )
-	                                        )
+	                                        'a',
+	                                        { href: 'https://www.flickr.com/photos/145057586@N05' },
+	                                        'Flickr'
 	                                    )
+	                                ),
+	                                '. You can view the full collection (arranged starting by family) here:'
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'centered' },
+	                                _react2.default.createElement(
+	                                    'a',
+	                                    { className: 'flickrLink', href: 'https://www.flickr.com/photos/145057586@N05/collections' },
+	                                    'Click for TreeLib Flickr Collection'
 	                                )
 	                            ),
 	                            _react2.default.createElement(
-	                                'tr',
+	                                'p',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'td',
+	                                    'u',
 	                                    null,
-	                                    _react2.default.createElement('img', { className: 'photo', src: 'img/nathan.jpg' })
+	                                    'Each "album" on TreeLib\'s Flickr is a contained species'
 	                                ),
+	                                '. We encourage you to use this site, but if you\'re looking for the original high-quality photos or want to download an entire species (an album) in one go then head over to Flickr.'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'label',
+	                                { className: 'subsectionTitle' },
+	                                'How the photos were taken'
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'All but a handful of the photos have been taken by the author in botanical gardens, larger private collections, university arboretums, private  gardens, natural forests across Western North America and in Japan.'
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Photos were taken with a Canon 70D camera [INSERT LINK HERE], using 40mm, 17mm x 85mm and 18mm x 55mm lenses. The 70D is equipped with Canon’s new high resolution CMOS 70D sensor which allows raising film speed to up to 2000 or more without noticeable graininess.'
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { id: 'speciesConfirm' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { className: 'sectionTitle' },
+	                            'Species confirmation'
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'The purpose of this site is more to give a flavour of the varieties of each species than to provide an authoritative catalogue of them.  For detailed lists of most of the varieties of each species, I have found that searching species names on Wikipedia provides the best information.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'Preference has been, in most cases, to support confirmation of many species and varieties at major sites like Vandusen Garden, Washington University Arboretum and other botanical gardens all over the Western North America, as far back as Manitoba and North Dakota, supplementing with pictures from many other locations.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'Cross-referencing of Latin names and usages has also been done from many of these sites, from web sites and from numerous good tree apps and books on tree identification; there are some differences in nomenclature between the U.S., Canada, Japan and Europe.  Regarding common English names, they are often quite varied and are best outlined on sites such as Wikipedia and other plant sites.'
+	                        )
+	                    ),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { id: 'bio' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { className: 'sectionTitle' },
+	                            'Who we are'
+	                        ),
+	                        _react2.default.createElement(
+	                            'table',
+	                            null,
+	                            _react2.default.createElement(
+	                                'tbody',
+	                                null,
 	                                _react2.default.createElement(
-	                                    'td',
+	                                    'tr',
 	                                    null,
 	                                    _react2.default.createElement(
-	                                        'ul',
-	                                        { className: 'description' },
+	                                        'td',
+	                                        null,
+	                                        _react2.default.createElement('img', { className: 'photo', src: 'img/blake.jpg' })
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'td',
+	                                        null,
 	                                        _react2.default.createElement(
-	                                            'li',
-	                                            { className: 'title' },
+	                                            'ul',
+	                                            { className: 'description' },
 	                                            _react2.default.createElement(
-	                                                'label',
-	                                                { className: 'name' },
-	                                                'Nathan Willson'
+	                                                'li',
+	                                                { className: 'title' },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { className: 'name' },
+	                                                    'Blake Willson'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'i',
+	                                                    null,
+	                                                    ' - R.P.F. - Botanist and Photographer'
+	                                                )
 	                                            ),
 	                                            _react2.default.createElement(
-	                                                'i',
-	                                                null,
-	                                                ' - WEB Development'
+	                                                'li',
+	                                                { className: 'content' },
+	                                                _react2.default.createElement(
+	                                                    'p',
+	                                                    null,
+	                                                    'Blake is an industry manager, botonist and photographer with over 25 years in the forestry industry, specifically with government and industry between Canada and Japan.'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'p',
+	                                                    null,
+	                                                    'He is a member of the International Dendrology Society (a UK-based global group of professors and scientists dedicated to the study and teaching about woody plants) and the American Conifer Society.'
+	                                                )
 	                                            )
-	                                        ),
+	                                        )
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'tr',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'td',
+	                                        null,
+	                                        _react2.default.createElement('img', { className: 'photo', src: 'img/nathan.jpg' })
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'td',
+	                                        null,
 	                                        _react2.default.createElement(
-	                                            'li',
-	                                            { className: 'content' },
+	                                            'ul',
+	                                            { className: 'description' },
 	                                            _react2.default.createElement(
-	                                                'a',
-	                                                { href: 'http://nathanwillson.com/' },
-	                                                'Nathan'
+	                                                'li',
+	                                                { className: 'title' },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { className: 'name' },
+	                                                    'Nathan Willson'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'i',
+	                                                    null,
+	                                                    ' - WEB Development'
+	                                                )
 	                                            ),
-	                                            ' is a web developer based out of Victoria, Canada.'
+	                                            _react2.default.createElement(
+	                                                'li',
+	                                                { className: 'content' },
+	                                                _react2.default.createElement(
+	                                                    'a',
+	                                                    { href: 'http://nathanwillson.com/' },
+	                                                    'Nathan'
+	                                                ),
+	                                                ' is a web developer based out of Victoria, Canada.'
+	                                            )
 	                                        )
 	                                    )
 	                                )
 	                            )
 	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'footer' },
-	                        'This site was a collaboration between Blake and his son Nathan.'
 	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'footer' },
+	                    'This site was a collaboration between Blake and his son Nathan.'
 	                )
 	            );
 	        }
@@ -616,7 +709,7 @@ webpackJsonp([8],{
 	                        null,
 	                        'Life is about connecting to other people and finding ways to serve them.  If you have some knowledge of and enjoy photographing trees, connect with us and contribute photographs of new species, improve our shots with your own, introduce great parks you have hiked around.  Become a part of a network of friends who love trees and the outdoors, building the site together.  It is as simple as sending us an email.'
 	                    ),
-	                    _react2.default.createElement('img', { src: 'img/email.jpg' })
+	                    _react2.default.createElement('img', { src: 'img/email.png' })
 	                ),
 	                _react2.default.createElement('div', { className: 'banner' })
 	            );

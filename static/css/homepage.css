@@ -2420,11 +2420,6 @@ input[type=radio]:not(old):checked + label {
       .basicNavbar ul li:not(:last-child) {
         border-bottom: 1px solid #AAA; } }
 
-.section {
-  border: 1px solid #AAA;
-  padding: 10px;
-  font-size: 2.0rem; }
-
 .homePage .section {
   padding: 20px 8% 20px 8%; }
 
@@ -2477,64 +2472,107 @@ input[type=radio]:not(old):checked + label {
     margin: 10px;
     border: 1px solid #BBB; }
 
-.aboutPage {
-  background-image: url("/img/pseudotsuga.jpg");
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 100%; }
-  .aboutPage .section {
-    background-color: white;
-    padding: 20px 5% 20px 5%; }
-    .aboutPage .section .title {
-      font-size: 4rem; }
-  .aboutPage .bio {
-    background-color: white;
-    padding: 20px 5% 40px 5%; }
-    .aboutPage .bio .title {
-      font-size: 4rem; }
-    .aboutPage .bio .footer {
-      font-size: 2.8rem;
-      padding: 10px;
-      text-align: center; }
-    .aboutPage .bio table {
-      border-collapse: collapse; }
-      .aboutPage .bio table tr:first-child td {
-        border-bottom: 1px solid #AAA; }
-      .aboutPage .bio table td {
-        vertical-align: middle;
-        padding: 20px 0 20px 0; }
-    .aboutPage .bio img.photo {
-      border: 1px solid #AAA;
-      width: 125px;
-      border-radius: 125px;
-      overflow: hidden; }
-    .aboutPage .bio ul.description {
-      padding: 0 0 0 20px;
-      margin: 0; }
-      .aboutPage .bio ul.description li {
-        list-style: none; }
-      .aboutPage .bio ul.description .title {
-        font-size: 1.6rem;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-        padding-bottom: 5px; }
-        .aboutPage .bio ul.description .title .name {
-          font-size: 2rem;
-          font-weight: bold; }
-  .aboutPage .banner {
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    background-attachment: fixed;
-    background-size: cover;
-    min-height: 250px;
-    background-image: url("/img/catalpa-2.jpg"); }
-    .aboutPage .banner:first-child {
-      height: 1000px;
-      background-image: url("/img/cogyria-1.jpg"); }
-    .aboutPage .banner:nth-child(2) {
-      background-image: url("/img/cogyria-2.jpg"); }
+.aboutPage > div {
+  display: inline-block;
+  vertical-align: text-top; }
+
+.aboutPage .sectionTitle {
+  font-size: 4rem; }
+
+.aboutPage .subsectionTitle {
+  font-size: 2.2rem; }
+
+.aboutPage .tableOfContents {
+  background-color: fafafa;
+  height: 100%;
+  width: 25%;
+  border-right: 1px #777 solid;
+  border-bottom: 1px #777 solid;
+  font-size: 1.8rem; }
+  .aboutPage .tableOfContents .tocTitle {
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    color: #999;
+    padding: 20px 0 5px 40px; }
+  .aboutPage .tableOfContents ul {
+    margin: 0;
+    padding: 0; }
+    .aboutPage .tableOfContents ul li {
+      padding: 20px 10px 20px 40px;
+      list-style: none;
+      border-bottom: 1px solid #cacaca;
+      border-color: #cacaca;
+      border-style: solid;
+      border-width: 0px 0px 1px 0px;
+      -webkit-border-image: -webkit-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+      -moz-border-image: -moz-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+      -o-border-image: -o-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+      border-image: linear-gradient(to left, transparent, #cacaca, transparent) 1 5% 100%; }
+      .aboutPage .tableOfContents ul li:hover {
+        font-weight: bold; }
+
+.aboutPage .content {
+  width: 68%;
+  padding: 10px 3% 10px 3%; }
+  .aboutPage .content > div {
+    margin: 30px 0 30px 0; }
+    .aboutPage .content > div:first-child {
+      margin-top: 10px; }
+
+.aboutPage hr {
+  border-bottom: 1px solid #cacaca;
+  border-color: #cacaca;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  -webkit-border-image: -webkit-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+  -moz-border-image: -moz-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+  -o-border-image: -o-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
+  border-image: linear-gradient(to left, transparent, #cacaca, transparent) 1 5% 100%; }
+
+.aboutPage #aboutPhotos > div {
+  padding: 25px 0 0 0; }
+
+.aboutPage #bio {
+  background-color: white;
+  padding: 20px 0 40px 0; }
+  .aboutPage #bio table {
+    border-collapse: collapse; }
+    .aboutPage #bio table td {
+      vertical-align: middle;
+      padding: 20px 0 20px 0; }
+  .aboutPage #bio img.photo {
+    border: 1px solid #AAA;
+    width: 125px;
+    border-radius: 125px;
+    overflow: hidden; }
+  .aboutPage #bio ul.description {
+    padding: 0 0 0 20px;
+    margin: 0; }
+    .aboutPage #bio ul.description li {
+      list-style: none; }
+    .aboutPage #bio ul.description .title {
+      vertical-align: middle;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      padding-bottom: 5px; }
+      .aboutPage #bio ul.description .title .name {
+        font-size: 2rem;
+        font-weight: bold; }
+
+.aboutPage .footer {
+  width: 100%;
+  font-size: 2.8rem;
+  padding: 10px 0 150px 0;
+  text-align: center; }
+
+.aboutPage .centered {
+  text-align: center; }
+
+.aboutPage .flickrLink {
+  font-size: 1.8rem;
+  font-weight: bold; }
+  .aboutPage .flickrLink:hover {
+    text-decoration: underline; }
 
 .contactPage {
   background-image: url("/img/thuja.jpg");
@@ -2552,6 +2590,11 @@ input[type=radio]:not(old):checked + label {
     max-width: 750px;
     width: 100%;
     text-align: center; }
+
+.section {
+  border: 1px solid #AAA;
+  padding: 10px;
+  font-size: 2.0rem; }
 
 @media screen and (max-width: 640px) {
   .homePage .banner {
