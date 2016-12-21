@@ -1307,8 +1307,16 @@ webpackJsonp([10],{
 	            });
 	            // sort alphabetically
 	            familyRows.sort(function (a, b) {
-	                if (a.props.latinName.toLowerCase() < b.props.latinName.toLowerCase()) return -1;
-	                if (a.props.latinName.toLowerCase() > b.props.latinName.toLowerCase()) return 1;
+	                var name_a = a.props.latinName,
+	                    name_b = b.props.latinName;
+
+	                if (!self.state.showLatinNames && self.state.showCommonNames) {
+	                    name_a = a.props.commonName;
+	                    name_b = b.props.commonName;
+	                }
+
+	                if (name_a.toLowerCase() < name_b.toLowerCase()) return -1;
+	                if (name_a.toLowerCase() > name_b.toLowerCase()) return 1;
 	                return 0;
 	            });
 
@@ -1348,8 +1356,16 @@ webpackJsonp([10],{
 	            }
 	            // sort alphabetically
 	            generaRows.sort(function (a, b) {
-	                if (a.props.latinName.toLowerCase() < b.props.latinName.toLowerCase()) return -1;
-	                if (a.props.latinName.toLowerCase() > b.props.latinName.toLowerCase()) return 1;
+	                var name_a = a.props.latinName,
+	                    name_b = b.props.latinName;
+
+	                if (!self.state.showLatinNames && self.state.showCommonNames) {
+	                    name_a = a.props.commonName;
+	                    name_b = b.props.commonName;
+	                }
+
+	                if (name_a.toLowerCase() < name_b.toLowerCase()) return -1;
+	                if (name_a.toLowerCase() > name_b.toLowerCase()) return 1;
 	                return 0;
 	            });
 
@@ -1392,8 +1408,16 @@ webpackJsonp([10],{
 	            }
 	            // sort alphabetically
 	            speciesRows.sort(function (a, b) {
-	                if (a.props.latinName.toLowerCase() < b.props.latinName.toLowerCase()) return -1;
-	                if (a.props.latinName.toLowerCase() > b.props.latinName.toLowerCase()) return 1;
+	                var name_a = a.props.latinName,
+	                    name_b = b.props.latinName;
+
+	                if (!self.state.showLatinNames && self.state.showCommonNames) {
+	                    name_a = a.props.commonName;
+	                    name_b = b.props.commonName;
+	                }
+
+	                if (name_a.toLowerCase() < name_b.toLowerCase()) return -1;
+	                if (name_a.toLowerCase() > name_b.toLowerCase()) return 1;
 	                return 0;
 	            });
 	            // default if both checkboxes are unselected
