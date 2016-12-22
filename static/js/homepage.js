@@ -320,7 +320,7 @@ webpackJsonp([8],{
 	                    _react2.default.createElement(
 	                        'p',
 	                        null,
-	                        'Help yourself to the site, downloading  to enhance your learning and understanding of the trees around you.  It is not the final resource for every aspect of identification, but rather a tool to be used to visually complement many other good sources of information.  Visitors are encouraged to connect to other excellent sources of technical information such as the Northern Ontario Plant Database, Wikipedia and so on.'
+	                        'Help yourself to the site, at home or in the field, to enhance your learning and understanding of the trees around you. It is not the final resource for every aspect of identification, but rather a tool to be used to visually complement many other good sources of information.  Visitors are encouraged to connect to other excellent sources of technical information such as the Northern Ontario Plant Database, Wikipedia and so on.'
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
@@ -742,13 +742,82 @@ webpackJsonp([8],{
 	                    'div',
 	                    { className: 'section' },
 	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        'Life is about connecting to other people and finding ways to serve them.  If you have some knowledge of and enjoy photographing trees, connect with us and contribute photographs of new species, improve our shots with your own, introduce great parks you have hiked around.  Become a part of a network of friends who love trees and the outdoors, building the site together.  It is as simple as sending us an email.'
-	                    ),
-	                    _react2.default.createElement('img', { src: 'img/email.png' })
-	                ),
-	                _react2.default.createElement('div', { className: 'banner' })
+	                        'table',
+	                        { className: 'content' },
+	                        _react2.default.createElement(
+	                            'tbody',
+	                            null,
+	                            _react2.default.createElement(
+	                                'tr',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'label',
+	                                        null,
+	                                        'How you can connect'
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'p',
+	                                        null,
+	                                        'Life is about connecting to other people and finding ways to serve them.'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'p',
+	                                        null,
+	                                        'If you have some knowledge of and enjoy photographing trees, connect with us and contribute photographs of new species, improve our shots with your own, introduce great parks you have hiked around.'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'p',
+	                                        null,
+	                                        'Become a part of a network of friends who love trees and the outdoors, building the site together.  It is as simple as sending us an email.'
+	                                    )
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'tr',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'label',
+	                                        null,
+	                                        'Who to contact'
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
+	                                    'Blake'
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'tr',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'label',
+	                                        null,
+	                                        'Reach us at'
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'td',
+	                                    null,
+	                                    _react2.default.createElement('img', { src: 'img/email.png' })
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
 	            );
 	        }
 	    }]);

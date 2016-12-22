@@ -2584,7 +2584,18 @@ input[type=radio]:not(old):checked + label {
   height: 100%; }
   .contactPage .section {
     background-color: white;
-    padding: 20px 5% 20px 5%; }
+    padding: 50px 5% 20px 5%; }
+    .contactPage .section table {
+      border-collapse: collapse; }
+      .contactPage .section table tr td {
+        font-size: 2rem;
+        border-bottom: 50px solid white;
+        padding: 0 20px 0 20px;
+        vertical-align: top; }
+        .contactPage .section table tr td:first-child {
+          text-align: right;
+          min-width: 200px;
+          color: #777; }
   .contactPage img {
     display: block;
     margin: auto;

@@ -7,7 +7,30 @@
 	height: 100%;
 	.section {
 		background-color: white;
-		padding: 20px 5% 20px 5%;
+		padding: 50px 5% 20px 5%;
+		
+		table{
+			border-collapse: collapse;
+			tr {
+				td {
+					font-size: 2rem;
+					border-bottom: 50px solid white;
+					&:first-child {
+						text-align: right;
+						min-width: 200px;
+						color: #777;
+						// border-right: 1pt solid #AAA;
+					}
+					&:nth-child(2) {
+						
+					}
+					padding: 0 20px 0 20px;
+					vertical-align: top;
+				}
+			}
+		}
+				
+
 	}
 	img {
 		display:block;
