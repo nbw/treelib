@@ -131,6 +131,7 @@ class App extends React.Component {
             if(response.ok) {
                 response.json().then(function(photos) {
                     s.photos = photos;
+                    window.pho = photos;
                     handler('selectedItem', {itemType: 'species', item: s});
                 });
             } else {

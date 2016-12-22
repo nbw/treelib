@@ -17,7 +17,7 @@ class Species extends React.Component {
     }
     nextPhoto(){
         var selectedPhoto = this.state.selectedPhotoIndex;
-        if (selectedPhoto < this.props.species.photos.length) {
+        if (selectedPhoto < this.props.species.photos.length - 1) {
             this.update("selectedPhotoIndex", selectedPhoto + 1);
         }
         return;

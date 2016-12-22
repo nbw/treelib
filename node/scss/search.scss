@@ -4,7 +4,7 @@
 @import "_family";
 
 $sidebar-width: 38%;
-$sidebar-title-height: 3rem;
+$sidebar-title-height: 5%;
 
 body{
 	box-sizing: border-box;
@@ -98,7 +98,9 @@ $searchBar-list-font-color-selected: #111;
 		cursor: pointer; 
 		// default
 		border-bottom: 1px solid $searchBar-listItem-border-color;
-		font-size: $sidebar-title-height;
+		font-size: 3rem;
+		height: $sidebar-title-height;
+		min-height: 3.1rem;
 
 		border-color: $searchBar-listItem-border-color;
 		border-style: solid;
@@ -112,9 +114,6 @@ $searchBar-list-font-color-selected: #111;
 	    border-image:
 	      linear-gradient(to left, rgba(0, 0, 0, 0), $searchBar-listItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
 
-
-
-
 		text-align: center;
 		padding: 0.5rem 0 0.5rem 0;
 		a { 
@@ -124,20 +123,27 @@ $searchBar-list-font-color-selected: #111;
 			}
 			* { vertical-align: middle; }
 			img {
-				height: $sidebar-title-height;
-			}
-			
+				height: 3rem;
+			}	
 		}
-  		
-
 	}
 	.nameSelector {
-		> div {
+		height: $sidebar-title-height;
+		min-height: 3.1rem;
+		> * {
+			vertical-align: middle;
 			display: inline-block;
-			padding: 2%;
 			text-align: center;
 			width: 45%;
 		}
+		.helper {
+			height: 100%;
+			width: 0;
+		}
+	}
+	.lists {
+		height: 100% - 2*$sidebar-title-height;
+		overflow-y: hidden;
 	}
 	.familyList, .generaList, .speciesList {
 
@@ -163,6 +169,9 @@ $searchBar-list-font-color-selected: #111;
 		height: 100%;
 		overflow-y: scroll;
 		li.sidebarListItem {
+			&:last-child {
+				margin: 0 0 100% 0;
+			}
 			word-wrap: break-word;
 			-webkit-hyphens: auto;
 		   -moz-hyphens: auto;
@@ -247,7 +256,7 @@ $searchBar-list-font-color-selected: #111;
 .minimized {
 	&.searchBar {
 		background-color: $searchBar-background;
-		height: $sidebar-title-height + 1.5rem;
+		height: 4.5rem;
 		width: $sidebar-width - 10%;
 		z-index: 1;
 		.closeButton {

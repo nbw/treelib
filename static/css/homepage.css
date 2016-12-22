@@ -2461,6 +2461,7 @@ input[type=radio]:not(old):checked + label {
     border: 2px solid white;
     padding: 5px; }
     .homePage .searchButton a:hover {
+      border-width: 3px;
       text-decoration: underline; }
 
 .homePage .photoBanner {

@@ -256,7 +256,6 @@ webpackJsonp([11],{
 	            this.update('showFullSize', !this.state.showFullSize);
 	            var event = new Event('fullScreenPhoto');
 	            window.dispatchEvent(event);
-	            console.log("dispatched 'fullScreenPhoto'");
 	        }
 	    }, {
 	        key: 'render',
@@ -449,7 +448,7 @@ webpackJsonp([11],{
 	        key: 'nextPhoto',
 	        value: function nextPhoto() {
 	            var selectedPhoto = this.state.selectedPhotoIndex;
-	            if (selectedPhoto < this.props.species.photos.length) {
+	            if (selectedPhoto < this.props.species.photos.length - 1) {
 	                this.update("selectedPhotoIndex", selectedPhoto + 1);
 	            }
 	            return;

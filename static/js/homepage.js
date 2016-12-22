@@ -343,7 +343,7 @@ webpackJsonp([8],{
 	                            ),
 	                            ' is for educational purposes'
 	                        ),
-	                        ' to complement many excellent sources of technical information on trees, providing over 7,000 high quality pictures of many aspects of species.  Photos available through the site are to be used for study and educational purposes only.  Copying them and using them for commercial purposes is not permitted without specific written permission from the author.'
+	                        ' to complement many excellent sources of technical information on trees. Copying them and using them for commercial purposes is not permitted without specific written permission from the author.'
 	                    )
 	                )
 	            );
@@ -448,6 +448,43 @@ webpackJsonp([8],{
 	                    { className: 'content' },
 	                    _react2.default.createElement(
 	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'label',
+	                            { className: 'sectionTitle' },
+	                            'About the site'
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'With a library of over 260 tree species, ',
+	                            _react2.default.createElement(
+	                                'b',
+	                                null,
+	                                'TreeLib'
+	                            ),
+	                            ' is a new digital resource for studying trees in the Northern Hemisphere. The collection is organized at a Family, Genus or Species level with quickly access to jump back a forth to get a sense of the bigger picture.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'Please don\'t hesitate to ',
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '/contact' },
+	                                'contact'
+	                            ),
+	                            ' us with any questions and head over to the ',
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '/search' },
+	                                'search'
+	                            ),
+	                            ' page to get started!'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
 	                        { id: 'aboutPhotos' },
 	                        _react2.default.createElement(
 	                            'label',
@@ -475,7 +512,7 @@ webpackJsonp([8],{
 	                                        'Flickr'
 	                                    )
 	                                ),
-	                                '. You can view the full collection (arranged starting by family) here:'
+	                                '. If you\'d prefer, you can view the full collection on Flickr (arranged starting by family) here:'
 	                            ),
 	                            _react2.default.createElement(
 	                                'div',
@@ -492,7 +529,7 @@ webpackJsonp([8],{
 	                                _react2.default.createElement(
 	                                    'u',
 	                                    null,
-	                                    'Each "album" on TreeLib\'s Flickr is a contained species'
+	                                    'Each "album" on TreeLib\'s Flickr page is a contained species'
 	                                ),
 	                                '. We encourage you to use this site, but if you\'re looking for the original high-quality photos or want to download an entire species (an album) in one go then head over to Flickr.'
 	                            )
@@ -534,7 +571,7 @@ webpackJsonp([8],{
 	                        _react2.default.createElement(
 	                            'p',
 	                            null,
-	                            'Preference has been, in most cases, to support confirmation of many species and varieties at major sites like Vandusen Garden, Washington University Arboretum and other botanical gardens all over the Western North America, as far back as Manitoba and North Dakota, supplementing with pictures from many other locations.'
+	                            'Preference has been, in most cases, to support confirmation of many species and varieties at major sites like Riverview Hospital Lands, Vandusen Botanical Garden, Washington University Arboretum and other botanical gardens all over the Western North America, as far back as Manitoba and North Dakota, supplementing with pictures from many other locations.'
 	                        ),
 	                        _react2.default.createElement(
 	                            'p',

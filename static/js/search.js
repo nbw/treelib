@@ -200,6 +200,7 @@ webpackJsonp([10],{
 	                if (response.ok) {
 	                    response.json().then(function (photos) {
 	                        s.photos = photos;
+	                        window.pho = photos;
 	                        handler('selectedItem', { itemType: 'species', item: s });
 	                    });
 	                } else {
@@ -633,7 +634,6 @@ webpackJsonp([10],{
 	            this.update('showFullSize', !this.state.showFullSize);
 	            var event = new Event('fullScreenPhoto');
 	            window.dispatchEvent(event);
-	            console.log("dispatched 'fullScreenPhoto'");
 	        }
 	    }, {
 	        key: 'render',
@@ -1057,7 +1057,7 @@ webpackJsonp([10],{
 	        key: 'nextPhoto',
 	        value: function nextPhoto() {
 	            var selectedPhoto = this.state.selectedPhotoIndex;
-	            if (selectedPhoto < this.props.species.photos.length) {
+	            if (selectedPhoto < this.props.species.photos.length - 1) {
 	                this.update("selectedPhotoIndex", selectedPhoto + 1);
 	            }
 	            return;
@@ -1452,6 +1452,7 @@ webpackJsonp([10],{
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'nameSelector' },
+	                    _react2.default.createElement('span', { className: 'helper' }),
 	                    _react2.default.createElement(_checkBoxer2.default, {
 	                        isChecked: this.state.showLatinNames,
 	                        title: ' latin names',
@@ -1465,56 +1466,60 @@ webpackJsonp([10],{
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'familyList' },
+	                    { className: 'lists' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'subtitle' },
+	                        { className: 'familyList' },
 	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'Family'
+	                            'div',
+	                            { className: 'subtitle' },
+	                            _react2.default.createElement(
+	                                'label',
+	                                null,
+	                                'Family'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'ul',
+	                            { className: 'searchSidebar-list' },
+	                            familyRows
 	                        )
 	                    ),
 	                    _react2.default.createElement(
-	                        'ul',
-	                        { className: 'searchSidebar-list' },
-	                        familyRows
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'generaList' },
-	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'subtitle' },
+	                        { className: 'generaList' },
 	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'Genus'
+	                            'div',
+	                            { className: 'subtitle' },
+	                            _react2.default.createElement(
+	                                'label',
+	                                null,
+	                                'Genus'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'ul',
+	                            { className: 'searchSidebar-list' },
+	                            generaRows
 	                        )
 	                    ),
 	                    _react2.default.createElement(
-	                        'ul',
-	                        { className: 'searchSidebar-list' },
-	                        generaRows
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'speciesList' },
-	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'subtitle' },
+	                        { className: 'speciesList' },
 	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'Species'
+	                            'div',
+	                            { className: 'subtitle' },
+	                            _react2.default.createElement(
+	                                'label',
+	                                null,
+	                                'Species'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'ul',
+	                            { className: 'searchSidebar-list' },
+	                            speciesRows
 	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'ul',
-	                        { className: 'searchSidebar-list' },
-	                        speciesRows
 	                    )
 	                )
 	            );

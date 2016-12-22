@@ -32,7 +32,6 @@ class PhotoViewer extends React.Component {
         this.update('showFullSize', !this.state.showFullSize);
         var event = new Event('fullScreenPhoto');
         window.dispatchEvent(event);
-        console.log("dispatched 'fullScreenPhoto'")
     }
 
     render() {

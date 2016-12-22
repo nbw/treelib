@@ -13,18 +13,27 @@ class About extends React.Component {
                     </ul>
 
                 </div><div className="content">
+                    <div>
+                        <label className="sectionTitle">About the site</label> 
+                        <p>
+                            With a library of over 260 tree species, <b>TreeLib</b> is a new digital resource for studying trees in the Northern Hemisphere. The collection is organized at a Family, Genus or Species level with quickly access to jump back a forth to get a sense of the bigger picture. 
+                        </p>
+                        <p>
+                            Please don't hesitate to <a href="/contact">contact</a> us with any questions and head over to the <a href="/search">search</a> page to get started!
+                        </p>
+                    </div>
                     <div id="aboutPhotos"> 
                         <label className="sectionTitle">About the photos</label>
                         <div>
                             <label className="subsectionTitle">Where the photos are hosted</label>
                             <p>
-                                The photos are hosted on <b><a href="https://www.flickr.com/photos/145057586@N05">Flickr</a></b>. You can view the full collection (arranged starting by family) here:
+                                The photos are hosted on <b><a href="https://www.flickr.com/photos/145057586@N05">Flickr</a></b>. If you'd prefer, you can view the full collection on Flickr (arranged starting by family) here:
                             </p>
                             <div className="centered">
                                 <a className='flickrLink' href='https://www.flickr.com/photos/145057586@N05/collections'>Click for TreeLib Flickr Collection</a>
                             </div>
                             <p>
-                                <u>Each "album" on TreeLib's Flickr is a contained species</u>. We encourage you to use this site, but if you're looking for the original high-quality photos or want to download an entire species (an album) in one go then head over to Flickr.
+                                <u>Each "album" on TreeLib's Flickr page is a contained species</u>. We encourage you to use this site, but if you're looking for the original high-quality photos or want to download an entire species (an album) in one go then head over to Flickr.
                             </p>
                         </div>
                         <div>
@@ -44,7 +53,7 @@ class About extends React.Component {
                             The purpose of this site is more to give a flavour of the varieties of each species than to provide an authoritative catalogue of them.  For detailed lists of most of the varieties of each species, I have found that searching species names on Wikipedia provides the best information.
                         </p>
                         <p>
-                            Preference has been, in most cases, to support confirmation of many species and varieties at major sites like Vandusen Garden, Washington University Arboretum and other botanical gardens all over the Western North America, as far back as Manitoba and North Dakota, supplementing with pictures from many other locations. 
+                            Preference has been, in most cases, to support confirmation of many species and varieties at major sites like Riverview Hospital Lands, Vandusen Botanical Garden, Washington University Arboretum and other botanical gardens all over the Western North America, as far back as Manitoba and North Dakota, supplementing with pictures from many other locations. 
                         </p>
                         <p>
                             Cross-referencing of Latin names and usages has also been done from many of these sites, from web sites and from numerous good tree apps and books on tree identification; there are some differences in nomenclature between the U.S., Canada, Japan and Europe.  Regarding common English names, they are often quite varied and are best outlined on sites such as Wikipedia and other plant sites.   

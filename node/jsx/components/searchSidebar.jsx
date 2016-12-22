@@ -195,6 +195,7 @@ class SearchSidebar extends React.Component {
                         <i className="fa fa-angle-left"></i>}
                 </div>
                 <div className="nameSelector">
+                    <span className="helper"></span>
                     <CheckBoxer
                         isChecked={this.state.showLatinNames}
                         title=" latin names"
@@ -206,23 +207,25 @@ class SearchSidebar extends React.Component {
                         handler={this.update.bind(this,'showCommonNames')}
                     />
                 </div>
-                <div className="familyList">
-                    <div className="subtitle"><label >Family</label></div>
-                	<ul className="searchSidebar-list">
-                        {familyRows}
-                	</ul>
-                </div>
-                <div className="generaList">
-                    <div className="subtitle"><label>Genus</label></div>
-                    <ul className="searchSidebar-list">
-            		    {generaRows}
-            	    </ul>
-                </div>
-                <div className="speciesList">
-                    <div className="subtitle"><label>Species</label></div>
-                    <ul className="searchSidebar-list">
-            		    {speciesRows}
-            	    </ul>
+                <div className="lists">
+                    <div className="familyList">
+                        <div className="subtitle"><label >Family</label></div>
+                    	<ul className="searchSidebar-list">
+                            {familyRows}
+                    	</ul>
+                    </div>
+                    <div className="generaList">
+                        <div className="subtitle"><label>Genus</label></div>
+                        <ul className="searchSidebar-list">
+                		    {generaRows}
+                	    </ul>
+                    </div>
+                    <div className="speciesList">
+                        <div className="subtitle"><label>Species</label></div>
+                        <ul className="searchSidebar-list">
+                		    {speciesRows}
+                	    </ul>
+                    </div>
                 </div>
             </div>
         );

@@ -48,7 +48,7 @@ class Home extends React.Component {
                         <img src="img/homepage-banner/2.jpg" />
                     </div>
                    <p>
-                        <u><b>TreeLib</b> is for educational purposes</u> to complement many excellent sources of technical information on trees, providing over 7,000 high quality pictures of many aspects of species.  Photos available through the site are to be used for study and educational purposes only.  Copying them and using them for commercial purposes is not permitted without specific written permission from the author.
+                        <u><b>TreeLib</b> is for educational purposes</u> to complement many excellent sources of technical information on trees. Copying them and using them for commercial purposes is not permitted without specific written permission from the author.
                     </p>
                 </div>
             </div>
