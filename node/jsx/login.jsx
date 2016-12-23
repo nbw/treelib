@@ -23,6 +23,17 @@ class App extends React.Component {
             [name]: e.target.value
         });
     }
+    componentDidMount() {
+        window.addEventListener("keydown", this.handleKeyPress.bind(this));
+    }
+    componentWillUnmount(){
+        window.removeEventListener("keydown", this.handleKeyPress.bind(this));
+    }
+    handleKeyPress(event) {
+        if(event.key === "Enter") {
+            this.updateTheMotherShip();
+        }
+    }
     updateTheMotherShip(){
         self = this; 
         if( self.state.username.length === 0 || self.state.password.length === 0){

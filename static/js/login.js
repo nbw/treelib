@@ -64,6 +64,23 @@ webpackJsonp([9],{
 	            this.setState(_defineProperty({}, name, e.target.value));
 	        }
 	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            window.addEventListener("keydown", this.handleKeyPress.bind(this));
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            window.removeEventListener("keydown", this.handleKeyPress.bind(this));
+	        }
+	    }, {
+	        key: 'handleKeyPress',
+	        value: function handleKeyPress(event) {
+	            if (event.key === "Enter") {
+	                this.updateTheMotherShip();
+	            }
+	        }
+	    }, {
 	        key: 'updateTheMotherShip',
 	        value: function updateTheMotherShip() {
 	            self = this;
