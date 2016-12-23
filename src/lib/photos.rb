@@ -105,6 +105,7 @@ module Photos
         # Old photos from modified albums
         if !(modified_albums.empty?)
                 modified_album_ids = modified_albums.collect{|ma| ma["id"]}
+                q_delete_photos_where += "," if !q_delete_photos_where.empty?
                 q_delete_photos_where += "#{modified_album_ids.join(", ")}"
         end
         
