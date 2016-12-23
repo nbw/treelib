@@ -526,12 +526,13 @@ webpackJsonp([8],{
 	                            _react2.default.createElement(
 	                                'p',
 	                                null,
+	                                'We encourage you to use this site, but if you\'re looking for the original high-quality photos or want to download an entire species in one go then head over to Flickr. ',
 	                                _react2.default.createElement(
 	                                    'u',
 	                                    null,
-	                                    'Each "album" on TreeLib\'s Flickr page is a contained species'
+	                                    'Each photo "album" on TreeLib\'s Flickr page is a contained species'
 	                                ),
-	                                '. We encourage you to use this site, but if you\'re looking for the original high-quality photos or want to download an entire species (an album) in one go then head over to Flickr.'
+	                                '.'
 	                            )
 	                        ),
 	                        _react2.default.createElement(

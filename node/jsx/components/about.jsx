@@ -33,7 +33,7 @@ class About extends React.Component {
                                 <a className='flickrLink' href='https://www.flickr.com/photos/145057586@N05/collections'>Click for TreeLib Flickr Collection</a>
                             </div>
                             <p>
-                                <u>Each "album" on TreeLib's Flickr page is a contained species</u>. We encourage you to use this site, but if you're looking for the original high-quality photos or want to download an entire species (an album) in one go then head over to Flickr.
+                                We encourage you to use this site, but if you're looking for the original high-quality photos or want to download an entire species in one go then head over to Flickr. <u>Each photo "album" on TreeLib's Flickr page is a contained species</u>.
                             </p>
                         </div>
                         <div>
