@@ -4,7 +4,7 @@
     <meta property="og:url"           content="http://treelib.ca/species/genus/<%= @page_data[:genus][:name].gsub(" ","_") %>" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="TreeLib Genus: <%= @page_data[:genus][:name] %>" />
-    <meta property="og:description"   content="A collection of high-quality tree photographs for educators, students and lay persons." />
+    <meta property="og:description"   content="" />
     <% if @page_data[:genus][:photos] && @page_data[:genus][:photos].length > 0 %>
     <meta property="og:image"         content="<%= @page_data[:genus][:photos][rand(@page_data[:genus][:photos].length)][:thumb] %>" />
     <% end %>

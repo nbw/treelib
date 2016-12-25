@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 import PhotoViewer from './photoViewer.jsx';
+import ShareLinker from './shareLinker.jsx';
 
 class Genus extends React.Component {
     constructor() {
@@ -83,6 +84,9 @@ class Genus extends React.Component {
                     <label className="commonName">{g.common_name}</label>
                     <label className="secondary">genus</label>
                 </div>
+                <ShareLinker
+                    path={'/genus/' + g.name.replace(/ /g,'_')} 
+                />
                 <div className="textContent">
                     <div className="description">
                         <div dangerouslySetInnerHTML={this.createMarkup(g.descrip)}></div>

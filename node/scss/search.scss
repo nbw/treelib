@@ -4,7 +4,7 @@
 @import "_family";
 
 $sidebar-width: 38%;
-$sidebar-title-height: 5%;
+$sidebar-title-height: 7%;
 
 body{
 	box-sizing: border-box;
@@ -99,7 +99,8 @@ $searchBar-list-font-color-selected: #111;
 		// default
 		border-bottom: 1px solid $searchBar-listItem-border-color;
 		font-size: 3rem;
-		height: $sidebar-title-height;
+		height: $sidebar-title-height - 2%;
+		padding: 1% 0 1% 0;
 		min-height: 3.1rem;
 
 		border-color: $searchBar-listItem-border-color;
@@ -115,7 +116,7 @@ $searchBar-list-font-color-selected: #111;
 	      linear-gradient(to left, rgba(0, 0, 0, 0), $searchBar-listItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
 
 		text-align: center;
-		padding: 0.5rem 0 0.5rem 0;
+		
 		a { 
 			color: $logo-color;
 			&:hover {
@@ -256,9 +257,17 @@ $searchBar-list-font-color-selected: #111;
 .minimized {
 	&.searchBar {
 		background-color: $searchBar-background;
-		height: 4.5rem;
+		height: $sidebar-title-height;
+		min-height: 3.1rem;
 		width: $sidebar-width - 10%;
 		z-index: 1;
+		.title {
+			border-color: $searchBar-background;
+			-webkit-border-image: none;
+		    -moz-border-image: none;
+		    -o-border-image: none;
+		    border-image: none;
+		}
 		.closeButton {
 			&:hover{
 				color: $base-font-color-lighter;

@@ -2586,6 +2586,44 @@ input[type=radio]:not(old):checked + label {
       .photoViewer .closeButton {
         font-size: 2.5rem; } }
 
+.linkSharer {
+  border-width: 0 1px 1px 1px;
+  border-color: transparent;
+  border-style: dotted;
+  border-radius: 0 0 2px 2px;
+  -webkit-transition: all 0.33s ease-out;
+  /* Safari */
+  transition: all 0.33s ease-out;
+  position: absolute;
+  z-index: 100;
+  background-color: white;
+  top: 0;
+  right: 0;
+  width: 7rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 5px; }
+  .linkSharer .title {
+    cursor: pointer; }
+    .linkSharer .title:hover {
+      color: #111; }
+  .linkSharer.show {
+    border-color: #AAA;
+    background-color: #F5F5F5;
+    width: 55rem; }
+    .linkSharer.show .title:after {
+      content: ":"; }
+  .linkSharer .links {
+    width: 62rem; }
+    .linkSharer .links > * {
+      margin: 0 0 0 1.2rem; }
+    .linkSharer .links input {
+      text-align: center;
+      padding: 0.5rem;
+      width: 40rem; }
+
 .family > .title {
   padding: 10px 0 10px 0;
   margin: 0 10px 10px 10px;
