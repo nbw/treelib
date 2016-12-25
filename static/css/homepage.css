@@ -2617,14 +2617,15 @@ input[type=radio]:not(old):checked + label {
   @media screen and (max-width: 640px) {
     .contactPage .section {
       padding: 10px 2.5% 0 2.5%; }
+      .contactPage .section table tr:nth-child(2) {
+        display: none; }
       .contactPage .section table tr td {
         border: none;
         display: block;
         padding: 0;
         width: 95%; }
         .contactPage .section table tr td:first-child {
-          text-align: left;
-          padding: 40px 0 10px 0; } }
+          display: none; } }
 
 .section {
   border: 1px solid #AAA;
