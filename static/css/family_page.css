@@ -2624,82 +2624,82 @@ input[type=radio]:not(old):checked + label {
       padding: 0.5rem;
       width: 40rem; }
 
-.family > .title {
-  padding: 10px 0 10px 0;
-  margin: 0 10px 10px 10px;
-  border-bottom: 3px black solid; }
-  .family > .title .main {
-    font-size: 40pt;
-    font-weight: bold;
-    font-style: italic; }
-  .family > .title .commonName {
-    font-size: 3rem;
-    padding: 0 1.5rem 0 1.5rem; }
-
-.family .textContent {
-  padding: 10px 20px 20px 20px; }
-  .family .textContent > * {
-    display: inline-block;
-    vertical-align: text-top; }
-  .family .textContent .description {
-    display: inline-block;
-    width: 68%;
-    padding-right: 2%; }
-    .family .textContent .description p:first-child {
-      padding-top: 0;
-      margin-top: 0; }
-  .family .textContent .genera {
-    border-left: 1px solid #AAA;
-    width: 27%;
-    padding-left: 2%; }
-    .family .textContent .genera .genusTitle {
-      font-weight: bold; }
-    .family .textContent .genera ul {
-      padding-left: 20px; }
-      .family .textContent .genera ul li {
-        list-style-type: circle; }
-
-.family .photos {
-  padding: 10px;
-  text-align: center; }
-  .family .photos img {
-    display: inline-block;
-    margin: 5px; }
-    .family .photos img.selected {
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      border: 2px #4385ef solid; }
-  .family .photos .thumbs {
-    padding: 5px 0 5px 0; }
-  .family .photos .subtitle {
-    font-style: italic; }
-  .family .photos .newPhotoSelectionButton {
-    -webkit-user-select: none;
-    /* Chrome/Safari */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* IE10+ */
-    /* Rules below not implemented in browsers yet */
-    -o-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    display: block;
-    text-align: middle;
-    margin: auto;
-    width: 23rem;
-    padding: 1rem;
-    border: 1pt solid #777;
-    border-radius: 4px; }
-    .family .photos .newPhotoSelectionButton:hover {
-      background-color: #777;
-      color: white;
+.family {
+  position: relative; }
+  .family > .title {
+    padding: 10px 0 10px 0;
+    margin: 0 10px 10px 10px;
+    border-bottom: 3px black solid; }
+    .family > .title .main {
+      font-size: 40pt;
       font-weight: bold;
-      font-style: underline; }
-    .family .photos .newPhotoSelectionButton:active {
-      background-color: #555;
-      border-color: #555; }
+      font-style: italic; }
+    .family > .title .commonName {
+      font-size: 3rem;
+      padding: 0 1.5rem 0 1.5rem; }
+  .family .textContent {
+    padding: 10px 20px 20px 20px; }
+    .family .textContent > * {
+      display: inline-block;
+      vertical-align: text-top; }
+    .family .textContent .description {
+      display: inline-block;
+      width: 68%;
+      padding-right: 2%; }
+      .family .textContent .description p:first-child {
+        padding-top: 0;
+        margin-top: 0; }
+    .family .textContent .genera {
+      border-left: 1px solid #AAA;
+      width: 27%;
+      padding-left: 2%; }
+      .family .textContent .genera .genusTitle {
+        font-weight: bold; }
+      .family .textContent .genera ul {
+        padding-left: 20px; }
+        .family .textContent .genera ul li {
+          list-style-type: circle; }
+  .family .photos {
+    padding: 10px;
+    text-align: center; }
+    .family .photos img {
+      display: inline-block;
+      margin: 5px; }
+      .family .photos img.selected {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 2px #4385ef solid; }
+    .family .photos .thumbs {
+      padding: 5px 0 5px 0; }
+    .family .photos .subtitle {
+      font-style: italic; }
+    .family .photos .newPhotoSelectionButton {
+      -webkit-user-select: none;
+      /* Chrome/Safari */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* IE10+ */
+      /* Rules below not implemented in browsers yet */
+      -o-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      display: block;
+      text-align: middle;
+      margin: auto;
+      width: 23rem;
+      padding: 1rem;
+      border: 1pt solid #777;
+      border-radius: 4px; }
+      .family .photos .newPhotoSelectionButton:hover {
+        background-color: #777;
+        color: white;
+        font-weight: bold;
+        font-style: underline; }
+      .family .photos .newPhotoSelectionButton:active {
+        background-color: #555;
+        border-color: #555; }
 
 .basicNavbar {
   color: #4c5b67;

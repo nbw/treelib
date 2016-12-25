@@ -2624,82 +2624,82 @@ input[type=radio]:not(old):checked + label {
       padding: 0.5rem;
       width: 40rem; }
 
-.genus > .title {
-  padding: 10px 0 10px 0;
-  margin-bottom: 10px;
-  border-bottom: 3px black solid; }
-  .genus > .title .main {
-    font-size: 40pt;
-    font-weight: bold;
-    font-style: italic; }
-  .genus > .title .commonName {
-    font-size: 3rem;
-    padding: 0 1.5rem 0 1.5rem; }
-
-.genus .textContent {
-  padding: 10px 20px 20px 20px; }
-  .genus .textContent > * {
-    display: inline-block;
-    vertical-align: text-top; }
-  .genus .textContent .description {
-    display: inline-block;
-    width: 68%;
-    padding-right: 2%; }
-    .genus .textContent .description p:first-child {
-      padding-top: 0;
-      margin-top: 0; }
-  .genus .textContent .species {
-    border-left: 1px solid #AAA;
-    width: 27%;
-    padding-left: 2%; }
-    .genus .textContent .species .speciesTitle {
-      font-weight: bold; }
-    .genus .textContent .species ul {
-      padding-left: 20px; }
-      .genus .textContent .species ul li {
-        list-style-type: circle; }
-
-.genus .photos {
-  padding: 10px;
-  text-align: center; }
-  .genus .photos img {
-    display: inline-block;
-    margin: 5px; }
-    .genus .photos img.selected {
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      border: 2px #4385ef solid; }
-  .genus .photos .thumbs {
-    padding: 5px 0 5px 0; }
-  .genus .photos .subtitle {
-    font-style: italic; }
-  .genus .photos .newPhotoSelectionButton {
-    -webkit-user-select: none;
-    /* Chrome/Safari */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* IE10+ */
-    /* Rules below not implemented in browsers yet */
-    -o-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    display: block;
-    text-align: middle;
-    margin: auto;
-    width: 23rem;
-    padding: 1rem;
-    border: 1pt solid #777;
-    border-radius: 4px; }
-    .genus .photos .newPhotoSelectionButton:hover {
-      background-color: #777;
-      color: white;
+.genus {
+  position: relative; }
+  .genus > .title {
+    padding: 10px 0 10px 0;
+    margin-bottom: 10px;
+    border-bottom: 3px black solid; }
+    .genus > .title .main {
+      font-size: 40pt;
       font-weight: bold;
-      font-style: underline; }
-    .genus .photos .newPhotoSelectionButton:active {
-      background-color: #555;
-      border-color: #555; }
+      font-style: italic; }
+    .genus > .title .commonName {
+      font-size: 3rem;
+      padding: 0 1.5rem 0 1.5rem; }
+  .genus .textContent {
+    padding: 10px 20px 20px 20px; }
+    .genus .textContent > * {
+      display: inline-block;
+      vertical-align: text-top; }
+    .genus .textContent .description {
+      display: inline-block;
+      width: 68%;
+      padding-right: 2%; }
+      .genus .textContent .description p:first-child {
+        padding-top: 0;
+        margin-top: 0; }
+    .genus .textContent .species {
+      border-left: 1px solid #AAA;
+      width: 27%;
+      padding-left: 2%; }
+      .genus .textContent .species .speciesTitle {
+        font-weight: bold; }
+      .genus .textContent .species ul {
+        padding-left: 20px; }
+        .genus .textContent .species ul li {
+          list-style-type: circle; }
+  .genus .photos {
+    padding: 10px;
+    text-align: center; }
+    .genus .photos img {
+      display: inline-block;
+      margin: 5px; }
+      .genus .photos img.selected {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 2px #4385ef solid; }
+    .genus .photos .thumbs {
+      padding: 5px 0 5px 0; }
+    .genus .photos .subtitle {
+      font-style: italic; }
+    .genus .photos .newPhotoSelectionButton {
+      -webkit-user-select: none;
+      /* Chrome/Safari */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* IE10+ */
+      /* Rules below not implemented in browsers yet */
+      -o-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      display: block;
+      text-align: middle;
+      margin: auto;
+      width: 23rem;
+      padding: 1rem;
+      border: 1pt solid #777;
+      border-radius: 4px; }
+      .genus .photos .newPhotoSelectionButton:hover {
+        background-color: #777;
+        color: white;
+        font-weight: bold;
+        font-style: underline; }
+      .genus .photos .newPhotoSelectionButton:active {
+        background-color: #555;
+        border-color: #555; }
 
 .basicNavbar {
   color: #4c5b67;

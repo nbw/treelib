@@ -2,6 +2,7 @@
 @import "_linkSharer";
 
 .family {
+	position: relative;
 	> .title {
 		.main{ 
 			font-size:40pt;

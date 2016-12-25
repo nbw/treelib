@@ -1162,11 +1162,11 @@ webpackJsonp([10],{
 	                        'label',
 	                        { className: 'secondary' },
 	                        'species'
-	                    )
+	                    ),
+	                    _react2.default.createElement(_shareLinker2.default, {
+	                        path: '/species/' + s.name.replace(/ /g, '_')
+	                    })
 	                ),
-	                _react2.default.createElement(_shareLinker2.default, {
-	                    path: '/species/' + s.name.replace(/ /g, '_')
-	                }),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'description' },

@@ -60,10 +60,11 @@ class Species extends React.Component {
                     <a href={'/species/' + s.name.replace(/ /g,'_')}><label className="main">{s.genus_name} <span className="speciesTitle">{s.name}</span></label></a>
                     <label className="commonName">{s.common_name} {s.genus_common_name}</label>
                     <label className="secondary">species</label>
-                </div>
-                <ShareLinker
+                    <ShareLinker
                     path={'/species/' + s.name.replace(/ /g,'_')} 
-                />
+                    />
+                </div>
+                
                 <div className="description">
                     <div dangerouslySetInnerHTML={this.createMarkup(s.descrip)}></div>
                 </div>

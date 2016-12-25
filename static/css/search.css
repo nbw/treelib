@@ -2587,10 +2587,10 @@ input[type=radio]:not(old):checked + label {
         font-size: 2.5rem; } }
 
 .linkSharer {
-  border-width: 0 1px 1px 1px;
+  border-width: 0 0px 1px 1px;
   border-color: transparent;
   border-style: dotted;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 0px 2px;
   -webkit-transition: all 0.33s ease-out;
   /* Safari */
   transition: all 0.33s ease-out;
@@ -2599,7 +2599,7 @@ input[type=radio]:not(old):checked + label {
   background-color: white;
   top: 0;
   right: 0;
-  width: 7rem;
+  width: 7.5rem;
   overflow-x: hidden;
   overflow-y: hidden;
   display: inline-block;
@@ -2612,7 +2612,7 @@ input[type=radio]:not(old):checked + label {
   .linkSharer.show {
     border-color: #AAA;
     background-color: #F5F5F5;
-    width: 55rem; }
+    width: 54.5rem; }
     .linkSharer.show .title:after {
       content: ":"; }
   .linkSharer .links {
@@ -2624,39 +2624,38 @@ input[type=radio]:not(old):checked + label {
       padding: 0.5rem;
       width: 40rem; }
 
-.species > .title {
-  padding: 10px 0 10px 0;
-  margin: 0 10px 10px 10px;
-  border-bottom: 3px black solid; }
-  .species > .title .main {
-    font-size: 3.9rem;
-    font-style: italic; }
-    .species > .title .main .speciesTitle {
-      font-weight: bold; }
-  .species > .title .commonName {
-    font-size: 3rem;
-    padding: 0 1.5rem 0 1.5rem; }
-
-.species > .description {
-  padding: 10px 20px 10px 20px; }
-  .species > .description p:first-child {
-    padding-top: 0;
+.species {
+  position: relative; }
+  .species > .title {
+    padding: 10px 0 10px 0;
+    margin: 0 10px 10px 10px;
+    border-bottom: 3px black solid; }
+    .species > .title .main {
+      font-size: 3.9rem;
+      font-style: italic; }
+      .species > .title .main .speciesTitle {
+        font-weight: bold; }
+    .species > .title .commonName {
+      font-size: 3rem;
+      padding: 0 1.5rem 0 1.5rem; }
+  .species > .description {
+    padding: 10px 20px 10px 20px; }
+    .species > .description p:first-child {
+      padding-top: 0;
+      margin: 0; }
+  .species .links ul {
     margin: 0; }
-
-.species .links ul {
-  margin: 0; }
-
-.species .photos {
-  padding: 0 10px 10px 10px;
-  text-align: center; }
-  .species .photos img {
-    display: inline-block;
-    margin: 5px; }
-    .species .photos img.selected {
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      border: 2px #4385ef solid; }
+  .species .photos {
+    padding: 0 10px 10px 10px;
+    text-align: center; }
+    .species .photos img {
+      display: inline-block;
+      margin: 5px; }
+      .species .photos img.selected {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 2px #4385ef solid; }
 
 .photoViewer {
   margin: 10px 0 20px 0;
@@ -2877,10 +2876,10 @@ input[type=radio]:not(old):checked + label {
         font-size: 2.5rem; } }
 
 .linkSharer {
-  border-width: 0 1px 1px 1px;
+  border-width: 0 0px 1px 1px;
   border-color: transparent;
   border-style: dotted;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 0px 2px;
   -webkit-transition: all 0.33s ease-out;
   /* Safari */
   transition: all 0.33s ease-out;
@@ -2889,7 +2888,7 @@ input[type=radio]:not(old):checked + label {
   background-color: white;
   top: 0;
   right: 0;
-  width: 7rem;
+  width: 7.5rem;
   overflow-x: hidden;
   overflow-y: hidden;
   display: inline-block;
@@ -2902,7 +2901,7 @@ input[type=radio]:not(old):checked + label {
   .linkSharer.show {
     border-color: #AAA;
     background-color: #F5F5F5;
-    width: 55rem; }
+    width: 54.5rem; }
     .linkSharer.show .title:after {
       content: ":"; }
   .linkSharer .links {
@@ -2914,82 +2913,82 @@ input[type=radio]:not(old):checked + label {
       padding: 0.5rem;
       width: 40rem; }
 
-.genus > .title {
-  padding: 10px 0 10px 0;
-  margin-bottom: 10px;
-  border-bottom: 3px black solid; }
-  .genus > .title .main {
-    font-size: 40pt;
-    font-weight: bold;
-    font-style: italic; }
-  .genus > .title .commonName {
-    font-size: 3rem;
-    padding: 0 1.5rem 0 1.5rem; }
-
-.genus .textContent {
-  padding: 10px 20px 20px 20px; }
-  .genus .textContent > * {
-    display: inline-block;
-    vertical-align: text-top; }
-  .genus .textContent .description {
-    display: inline-block;
-    width: 68%;
-    padding-right: 2%; }
-    .genus .textContent .description p:first-child {
-      padding-top: 0;
-      margin-top: 0; }
-  .genus .textContent .species {
-    border-left: 1px solid #AAA;
-    width: 27%;
-    padding-left: 2%; }
-    .genus .textContent .species .speciesTitle {
-      font-weight: bold; }
-    .genus .textContent .species ul {
-      padding-left: 20px; }
-      .genus .textContent .species ul li {
-        list-style-type: circle; }
-
-.genus .photos {
-  padding: 10px;
-  text-align: center; }
-  .genus .photos img {
-    display: inline-block;
-    margin: 5px; }
-    .genus .photos img.selected {
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      border: 2px #4385ef solid; }
-  .genus .photos .thumbs {
-    padding: 5px 0 5px 0; }
-  .genus .photos .subtitle {
-    font-style: italic; }
-  .genus .photos .newPhotoSelectionButton {
-    -webkit-user-select: none;
-    /* Chrome/Safari */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* IE10+ */
-    /* Rules below not implemented in browsers yet */
-    -o-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    display: block;
-    text-align: middle;
-    margin: auto;
-    width: 23rem;
-    padding: 1rem;
-    border: 1pt solid #777;
-    border-radius: 4px; }
-    .genus .photos .newPhotoSelectionButton:hover {
-      background-color: #777;
-      color: white;
+.genus {
+  position: relative; }
+  .genus > .title {
+    padding: 10px 0 10px 0;
+    margin-bottom: 10px;
+    border-bottom: 3px black solid; }
+    .genus > .title .main {
+      font-size: 40pt;
       font-weight: bold;
-      font-style: underline; }
-    .genus .photos .newPhotoSelectionButton:active {
-      background-color: #555;
-      border-color: #555; }
+      font-style: italic; }
+    .genus > .title .commonName {
+      font-size: 3rem;
+      padding: 0 1.5rem 0 1.5rem; }
+  .genus .textContent {
+    padding: 10px 20px 20px 20px; }
+    .genus .textContent > * {
+      display: inline-block;
+      vertical-align: text-top; }
+    .genus .textContent .description {
+      display: inline-block;
+      width: 68%;
+      padding-right: 2%; }
+      .genus .textContent .description p:first-child {
+        padding-top: 0;
+        margin-top: 0; }
+    .genus .textContent .species {
+      border-left: 1px solid #AAA;
+      width: 27%;
+      padding-left: 2%; }
+      .genus .textContent .species .speciesTitle {
+        font-weight: bold; }
+      .genus .textContent .species ul {
+        padding-left: 20px; }
+        .genus .textContent .species ul li {
+          list-style-type: circle; }
+  .genus .photos {
+    padding: 10px;
+    text-align: center; }
+    .genus .photos img {
+      display: inline-block;
+      margin: 5px; }
+      .genus .photos img.selected {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 2px #4385ef solid; }
+    .genus .photos .thumbs {
+      padding: 5px 0 5px 0; }
+    .genus .photos .subtitle {
+      font-style: italic; }
+    .genus .photos .newPhotoSelectionButton {
+      -webkit-user-select: none;
+      /* Chrome/Safari */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* IE10+ */
+      /* Rules below not implemented in browsers yet */
+      -o-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      display: block;
+      text-align: middle;
+      margin: auto;
+      width: 23rem;
+      padding: 1rem;
+      border: 1pt solid #777;
+      border-radius: 4px; }
+      .genus .photos .newPhotoSelectionButton:hover {
+        background-color: #777;
+        color: white;
+        font-weight: bold;
+        font-style: underline; }
+      .genus .photos .newPhotoSelectionButton:active {
+        background-color: #555;
+        border-color: #555; }
 
 .photoViewer {
   margin: 10px 0 20px 0;
@@ -3210,10 +3209,10 @@ input[type=radio]:not(old):checked + label {
         font-size: 2.5rem; } }
 
 .linkSharer {
-  border-width: 0 1px 1px 1px;
+  border-width: 0 0px 1px 1px;
   border-color: transparent;
   border-style: dotted;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 0px 2px;
   -webkit-transition: all 0.33s ease-out;
   /* Safari */
   transition: all 0.33s ease-out;
@@ -3222,7 +3221,7 @@ input[type=radio]:not(old):checked + label {
   background-color: white;
   top: 0;
   right: 0;
-  width: 7rem;
+  width: 7.5rem;
   overflow-x: hidden;
   overflow-y: hidden;
   display: inline-block;
@@ -3235,7 +3234,7 @@ input[type=radio]:not(old):checked + label {
   .linkSharer.show {
     border-color: #AAA;
     background-color: #F5F5F5;
-    width: 55rem; }
+    width: 54.5rem; }
     .linkSharer.show .title:after {
       content: ":"; }
   .linkSharer .links {
@@ -3247,82 +3246,82 @@ input[type=radio]:not(old):checked + label {
       padding: 0.5rem;
       width: 40rem; }
 
-.family > .title {
-  padding: 10px 0 10px 0;
-  margin: 0 10px 10px 10px;
-  border-bottom: 3px black solid; }
-  .family > .title .main {
-    font-size: 40pt;
-    font-weight: bold;
-    font-style: italic; }
-  .family > .title .commonName {
-    font-size: 3rem;
-    padding: 0 1.5rem 0 1.5rem; }
-
-.family .textContent {
-  padding: 10px 20px 20px 20px; }
-  .family .textContent > * {
-    display: inline-block;
-    vertical-align: text-top; }
-  .family .textContent .description {
-    display: inline-block;
-    width: 68%;
-    padding-right: 2%; }
-    .family .textContent .description p:first-child {
-      padding-top: 0;
-      margin-top: 0; }
-  .family .textContent .genera {
-    border-left: 1px solid #AAA;
-    width: 27%;
-    padding-left: 2%; }
-    .family .textContent .genera .genusTitle {
-      font-weight: bold; }
-    .family .textContent .genera ul {
-      padding-left: 20px; }
-      .family .textContent .genera ul li {
-        list-style-type: circle; }
-
-.family .photos {
-  padding: 10px;
-  text-align: center; }
-  .family .photos img {
-    display: inline-block;
-    margin: 5px; }
-    .family .photos img.selected {
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      border: 2px #4385ef solid; }
-  .family .photos .thumbs {
-    padding: 5px 0 5px 0; }
-  .family .photos .subtitle {
-    font-style: italic; }
-  .family .photos .newPhotoSelectionButton {
-    -webkit-user-select: none;
-    /* Chrome/Safari */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* IE10+ */
-    /* Rules below not implemented in browsers yet */
-    -o-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    display: block;
-    text-align: middle;
-    margin: auto;
-    width: 23rem;
-    padding: 1rem;
-    border: 1pt solid #777;
-    border-radius: 4px; }
-    .family .photos .newPhotoSelectionButton:hover {
-      background-color: #777;
-      color: white;
+.family {
+  position: relative; }
+  .family > .title {
+    padding: 10px 0 10px 0;
+    margin: 0 10px 10px 10px;
+    border-bottom: 3px black solid; }
+    .family > .title .main {
+      font-size: 40pt;
       font-weight: bold;
-      font-style: underline; }
-    .family .photos .newPhotoSelectionButton:active {
-      background-color: #555;
-      border-color: #555; }
+      font-style: italic; }
+    .family > .title .commonName {
+      font-size: 3rem;
+      padding: 0 1.5rem 0 1.5rem; }
+  .family .textContent {
+    padding: 10px 20px 20px 20px; }
+    .family .textContent > * {
+      display: inline-block;
+      vertical-align: text-top; }
+    .family .textContent .description {
+      display: inline-block;
+      width: 68%;
+      padding-right: 2%; }
+      .family .textContent .description p:first-child {
+        padding-top: 0;
+        margin-top: 0; }
+    .family .textContent .genera {
+      border-left: 1px solid #AAA;
+      width: 27%;
+      padding-left: 2%; }
+      .family .textContent .genera .genusTitle {
+        font-weight: bold; }
+      .family .textContent .genera ul {
+        padding-left: 20px; }
+        .family .textContent .genera ul li {
+          list-style-type: circle; }
+  .family .photos {
+    padding: 10px;
+    text-align: center; }
+    .family .photos img {
+      display: inline-block;
+      margin: 5px; }
+      .family .photos img.selected {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 2px #4385ef solid; }
+    .family .photos .thumbs {
+      padding: 5px 0 5px 0; }
+    .family .photos .subtitle {
+      font-style: italic; }
+    .family .photos .newPhotoSelectionButton {
+      -webkit-user-select: none;
+      /* Chrome/Safari */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* IE10+ */
+      /* Rules below not implemented in browsers yet */
+      -o-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      display: block;
+      text-align: middle;
+      margin: auto;
+      width: 23rem;
+      padding: 1rem;
+      border: 1pt solid #777;
+      border-radius: 4px; }
+      .family .photos .newPhotoSelectionButton:hover {
+        background-color: #777;
+        color: white;
+        font-weight: bold;
+        font-style: underline; }
+      .family .photos .newPhotoSelectionButton:active {
+        background-color: #555;
+        border-color: #555; }
 
 body {
   box-sizing: border-box;

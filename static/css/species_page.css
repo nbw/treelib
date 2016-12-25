@@ -2587,10 +2587,10 @@ input[type=radio]:not(old):checked + label {
         font-size: 2.5rem; } }
 
 .linkSharer {
-  border-width: 0 1px 1px 1px;
+  border-width: 0 0px 1px 1px;
   border-color: transparent;
   border-style: dotted;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 0px 2px;
   -webkit-transition: all 0.33s ease-out;
   /* Safari */
   transition: all 0.33s ease-out;
@@ -2599,7 +2599,7 @@ input[type=radio]:not(old):checked + label {
   background-color: white;
   top: 0;
   right: 0;
-  width: 7rem;
+  width: 7.5rem;
   overflow-x: hidden;
   overflow-y: hidden;
   display: inline-block;
@@ -2612,7 +2612,7 @@ input[type=radio]:not(old):checked + label {
   .linkSharer.show {
     border-color: #AAA;
     background-color: #F5F5F5;
-    width: 55rem; }
+    width: 54.5rem; }
     .linkSharer.show .title:after {
       content: ":"; }
   .linkSharer .links {
@@ -2624,39 +2624,38 @@ input[type=radio]:not(old):checked + label {
       padding: 0.5rem;
       width: 40rem; }
 
-.species > .title {
-  padding: 10px 0 10px 0;
-  margin: 0 10px 10px 10px;
-  border-bottom: 3px black solid; }
-  .species > .title .main {
-    font-size: 3.9rem;
-    font-style: italic; }
-    .species > .title .main .speciesTitle {
-      font-weight: bold; }
-  .species > .title .commonName {
-    font-size: 3rem;
-    padding: 0 1.5rem 0 1.5rem; }
-
-.species > .description {
-  padding: 10px 20px 10px 20px; }
-  .species > .description p:first-child {
-    padding-top: 0;
+.species {
+  position: relative; }
+  .species > .title {
+    padding: 10px 0 10px 0;
+    margin: 0 10px 10px 10px;
+    border-bottom: 3px black solid; }
+    .species > .title .main {
+      font-size: 3.9rem;
+      font-style: italic; }
+      .species > .title .main .speciesTitle {
+        font-weight: bold; }
+    .species > .title .commonName {
+      font-size: 3rem;
+      padding: 0 1.5rem 0 1.5rem; }
+  .species > .description {
+    padding: 10px 20px 10px 20px; }
+    .species > .description p:first-child {
+      padding-top: 0;
+      margin: 0; }
+  .species .links ul {
     margin: 0; }
-
-.species .links ul {
-  margin: 0; }
-
-.species .photos {
-  padding: 0 10px 10px 10px;
-  text-align: center; }
-  .species .photos img {
-    display: inline-block;
-    margin: 5px; }
-    .species .photos img.selected {
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      border: 2px #4385ef solid; }
+  .species .photos {
+    padding: 0 10px 10px 10px;
+    text-align: center; }
+    .species .photos img {
+      display: inline-block;
+      margin: 5px; }
+      .species .photos img.selected {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 2px #4385ef solid; }
 
 .basicNavbar {
   color: #4c5b67;
