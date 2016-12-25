@@ -44,3 +44,30 @@
 		}
 	}
 }
+@media screen and (max-width: $break-medium) {
+	.species {
+		padding-bottom: 200px;
+		> .title {
+			text-align: center;
+			.main, .commmonName, .secondary {
+				display: block;
+			}
+			.main {
+				font-size: 2.0rem;
+			} 
+			.commonName {
+				font-size: 1.8rem;
+			}
+			.secondary {
+				font-size: 1.4rem;
+			}
+		}
+		> .description {
+			font-size: 1.4rem;
+		}
+		.photos {
+			margin-bottom: 150px;
+		}
+		
+	}
+}

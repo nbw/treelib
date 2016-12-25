@@ -291,34 +291,40 @@ $searchBar-list-font-color-selected: #111;
 	}
 }
 
-@media screen and (max-width: $break-medium) {
-	.species, .genus, .family {
-		> .title {
-			text-align: center;
+@media screen and (max-width: $break-med-medium) {
+	.searchBar {
+		width: 50%;
+		.nameSelector {
+			font-size: 1.4rem;
 		}
 	}
+	.content {
+		width: 50%;
+		left: 50%;
+	}
+}
+
+@media screen and (max-width: $break-medium) {
 	.searchBar {
+		font-size: 1.4rem;
 		width: 100%;
-		height: 30%;
+		height: 50%;
 		display: none;
 	}
 	.content {
 		width: 100%;
 		left: 0;
-		top: 30%;
+		top: 50%;
 		.default .message{
 			display: none;
 		}
-	}
-	.family, .species, .genus { 
-			padding-bottom: 250px;
 	}
 	.minimized {
 		&.searchBar {
 			width: 100%;
 		}
 		&.content {
-			top: 3rem;
+			top: $sidebar-title-height;
 			> *:not( .default) { padding-top: 0;}
 		}
 		

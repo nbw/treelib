@@ -19,7 +19,6 @@
 						text-align: right;
 						min-width: 200px;
 						color: #777;
-						// border-right: 1pt solid #AAA;
 					}
 					&:nth-child(2) {
 						
@@ -38,5 +37,26 @@
 		max-width: 750px;
 		width: 100%;
 		text-align: center;
+	}
+	@media screen and (max-width: $break-medium) {
+		.section {
+			table {
+				tr {
+					td {
+						border: none;
+						// border-bottom: 25px solid white;
+						&:first-child {
+							text-align: left;
+							padding: 40px 0 10px 0;	
+						}
+						display: block;
+						padding: 0;
+						width: 95%;
+					}
+				}
+			}
+		
+			padding: 10px 2.5% 0 2.5%;
+		}
 	}
 }

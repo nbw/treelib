@@ -22,6 +22,7 @@ class About extends React.Component {
                             Please don't hesitate to <a href="/contact">contact</a> us with any questions and head over to the <a href="/search">search</a> page to get started!
                         </p>
                     </div>
+                    <hr/>
                     <div id="aboutPhotos"> 
                         <label className="sectionTitle">About the photos</label>
                         <div>

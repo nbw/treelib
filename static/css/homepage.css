@@ -2412,11 +2412,12 @@ input[type=radio]:not(old):checked + label {
       background-color: #54A1BF; }
   @media screen and (max-width: 640px) {
     .basicNavbar ul li {
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding: 5px 0px 5px 0px;
       display: inline-block;
       width: 100%;
-      font-size: 2rem; }
+      height: auto;
+      font-size: 1.9rem;
+      vertical-align: middle; }
       .basicNavbar ul li:not(:last-child) {
         border-bottom: 1px solid #AAA; } }
 
@@ -2575,6 +2576,17 @@ input[type=radio]:not(old):checked + label {
   .aboutPage .flickrLink:hover {
     text-decoration: underline; }
 
+@media screen and (max-width: 640px) {
+  .aboutPage .tableOfContents {
+    display: none; }
+  .aboutPage .content {
+    width: 95%;
+    padding: 0 2.5% 0 2.5%; }
+  .aboutPage .sectionTitle {
+    font-size: 3.5rem; }
+  .aboutPage .subsectionTitle {
+    font-size: 2.0rem; } }
+
 .contactPage {
   background-image: url("/img/thuja.jpg");
   background-repeat: no-repeat;
@@ -2602,6 +2614,17 @@ input[type=radio]:not(old):checked + label {
     max-width: 750px;
     width: 100%;
     text-align: center; }
+  @media screen and (max-width: 640px) {
+    .contactPage .section {
+      padding: 10px 2.5% 0 2.5%; }
+      .contactPage .section table tr td {
+        border: none;
+        display: block;
+        padding: 0;
+        width: 95%; }
+        .contactPage .section table tr td:first-child {
+          text-align: left;
+          padding: 40px 0 10px 0; } }
 
 .section {
   border: 1px solid #AAA;

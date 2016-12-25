@@ -56,11 +56,12 @@ $border-color: #AAA;
 	@media screen and (max-width: $break-medium) {
 	 	ul {
 	 		li {
-	 			padding-top: 5px;
-	 			padding-bottom: 5px;
+	 			padding: 5px 0px 5px 0px;
 	 			display:inline-block;
 	 			width: 100%;
-	 			font-size: 2rem;
+	 			height: auto;
+	 			font-size: 1.9rem;
+	 			vertical-align: middle;
 	 			&:not(:last-child){
 	 				border-bottom: 1px solid #AAA;
 	 			}

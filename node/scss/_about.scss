@@ -140,19 +140,19 @@ $tableOfContentsListItem-border-color: #cacaca;
 			text-decoration: underline;
 		}
 	}
-	// .banner {
-	// 	background-repeat: no-repeat;
-	// 	background-position: left bottom;
-	// 	background-attachment: fixed;
-	// 	background-size: cover;
-	// 	min-height: 250px;
-	// 	background-image: url("/img/catalpa-2.jpg");
-	// 	&:first-child {
-	// 		height: 1000px;
-	// 		background-image: url("/img/cogyria-1.jpg");
-	// 	}
-	// 	&:nth-child(2){
-	// 		background-image: url("/img/cogyria-2.jpg");
-	// 	}
-	// }
+	@media screen and (max-width: $break-medium) {
+		.tableOfContents {
+			display: none;
+		}
+		.content {
+			width: 95%;
+			padding: 0 2.5% 0 2.5%;
+		}
+		.sectionTitle {
+			font-size: 3.5rem;
+		}
+		.subsectionTitle {
+			font-size: 2.0rem;
+		}
+	}
 }

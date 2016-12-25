@@ -23,7 +23,7 @@ webpackJsonp([7],{
 
 	var _BasicNavbar2 = _interopRequireDefault(_BasicNavbar);
 
-	var _genus = __webpack_require__(182);
+	var _genus = __webpack_require__(183);
 
 	var _genus2 = _interopRequireDefault(_genus);
 
@@ -407,6 +407,103 @@ webpackJsonp([7],{
 
 	var _react2 = _interopRequireDefault(_react);
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ShareLinker = function (_React$Component) {
+	    _inherits(ShareLinker, _React$Component);
+
+	    function ShareLinker() {
+	        _classCallCheck(this, ShareLinker);
+
+	        var _this = _possibleConstructorReturn(this, (ShareLinker.__proto__ || Object.getPrototypeOf(ShareLinker)).call(this));
+
+	        _this.state = {
+	            show: false
+	        };
+	        return _this;
+	    }
+
+	    _createClass(ShareLinker, [{
+	        key: 'update',
+	        value: function update(name, value) {
+	            this.setState(_defineProperty({}, name, value));
+	        }
+	    }, {
+	        key: 'toggleHidden',
+	        value: function toggleHidden() {
+	            this.update('show', !this.state.show);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            var link = window.location.origin + this.props.path,
+	                show = this.state.show ? 'show' : '';
+	            return _react2.default.createElement(
+	                'div',
+	                { id: this.props.id, className: 'linkSharer ' + show, onBlur: function onBlur() {
+	                        return _this2.toggleHidden();
+	                    } },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'links' },
+	                    _react2.default.createElement(
+	                        'label',
+	                        { onClick: function onClick() {
+	                                return _this2.toggleHidden();
+	                            } },
+	                        _react2.default.createElement('i', { className: 'fa fa-share' }),
+	                        ' Share'
+	                    ),
+	                    _react2.default.createElement('input', { value: link, onChange: function onChange() {
+	                            return;
+	                        } }),
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(link), target: '_blank' },
+	                        _react2.default.createElement('i', { className: 'fa fa-facebook' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: "https://twitter.com/home?status=" + encodeURIComponent(link), target: '_blank' },
+	                        _react2.default.createElement('i', { className: 'fa fa-twitter' })
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ShareLinker;
+	}(_react2.default.Component);
+
+	exports.default = ShareLinker;
+
+/***/ },
+
+/***/ 183:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _reactDom = __webpack_require__(34);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -415,7 +512,7 @@ webpackJsonp([7],{
 
 	var _photoViewer2 = _interopRequireDefault(_photoViewer);
 
-	var _shareLinker = __webpack_require__(187);
+	var _shareLinker = __webpack_require__(182);
 
 	var _shareLinker2 = _interopRequireDefault(_shareLinker);
 
@@ -627,103 +724,6 @@ webpackJsonp([7],{
 	}(_react2.default.Component);
 
 	exports.default = Genus;
-
-/***/ },
-
-/***/ 187:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ShareLinker = function (_React$Component) {
-	    _inherits(ShareLinker, _React$Component);
-
-	    function ShareLinker() {
-	        _classCallCheck(this, ShareLinker);
-
-	        var _this = _possibleConstructorReturn(this, (ShareLinker.__proto__ || Object.getPrototypeOf(ShareLinker)).call(this));
-
-	        _this.state = {
-	            show: false
-	        };
-	        return _this;
-	    }
-
-	    _createClass(ShareLinker, [{
-	        key: 'update',
-	        value: function update(name, value) {
-	            this.setState(_defineProperty({}, name, value));
-	        }
-	    }, {
-	        key: 'toggleHidden',
-	        value: function toggleHidden() {
-	            this.update('show', !this.state.show);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this2 = this;
-
-	            var link = window.location.origin + this.props.path,
-	                show = this.state.show ? 'show' : '';
-	            return _react2.default.createElement(
-	                'div',
-	                { id: this.props.id, className: 'linkSharer ' + show, onBlur: function onBlur() {
-	                        return _this2.toggleHidden();
-	                    } },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'links' },
-	                    _react2.default.createElement(
-	                        'label',
-	                        { onClick: function onClick() {
-	                                return _this2.toggleHidden();
-	                            } },
-	                        _react2.default.createElement('i', { className: 'fa fa-share' }),
-	                        ' Share'
-	                    ),
-	                    _react2.default.createElement('input', { value: link, onChange: function onChange() {
-	                            return;
-	                        } }),
-	                    _react2.default.createElement(
-	                        'a',
-	                        { href: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(link), target: '_blank' },
-	                        _react2.default.createElement('i', { className: 'fa fa-facebook' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'a',
-	                        { href: "https://twitter.com/home?status=" + encodeURIComponent(link), target: '_blank' },
-	                        _react2.default.createElement('i', { className: 'fa fa-twitter' })
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return ShareLinker;
-	}(_react2.default.Component);
-
-	exports.default = ShareLinker;
 
 /***/ }
 

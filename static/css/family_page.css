@@ -2587,19 +2587,19 @@ input[type=radio]:not(old):checked + label {
         font-size: 2.5rem; } }
 
 .linkSharer {
-  border-width: 0 1px 1px 1px;
+  border-width: 0 0px 1px 1px;
   border-color: transparent;
   border-style: dotted;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 0px 2px;
   -webkit-transition: all 0.33s ease-out;
   /* Safari */
   transition: all 0.33s ease-out;
   position: absolute;
   z-index: 100;
-  background-color: white;
+  background-color: transparent;
   top: 0;
   right: 0;
-  width: 7rem;
+  width: 7.5rem;
   overflow-x: hidden;
   overflow-y: hidden;
   display: inline-block;
@@ -2607,12 +2607,14 @@ input[type=radio]:not(old):checked + label {
   padding: 5px; }
   .linkSharer .title {
     cursor: pointer; }
+    .linkSharer .title i::before {
+      background: transparent; }
     .linkSharer .title:hover {
       color: #111; }
   .linkSharer.show {
     border-color: #AAA;
     background-color: #F5F5F5;
-    width: 55rem; }
+    width: 54.5rem; }
     .linkSharer.show .title:after {
       content: ":"; }
   .linkSharer .links {
@@ -2701,6 +2703,24 @@ input[type=radio]:not(old):checked + label {
         background-color: #555;
         border-color: #555; }
 
+@media screen and (max-width: 640px) {
+  .family {
+    padding-bottom: 300px; }
+    .family > .title {
+      text-align: center; }
+      .family > .title .main, .family > .title .commmonName, .family > .title .secondary {
+        display: block; }
+      .family > .title .main {
+        font-size: 2.5rem; }
+      .family > .title .commonName {
+        font-size: 2.0rem; }
+      .family > .title .secondary {
+        font-size: 1.6rem; }
+    .family > .textContent {
+      font-size: 1.4rem; }
+    .family .photos {
+      margin-bottom: 150px; } }
+
 .basicNavbar {
   color: #4c5b67;
   background-color: #EDEDED; }
@@ -2745,10 +2765,11 @@ input[type=radio]:not(old):checked + label {
       background-color: #54A1BF; }
   @media screen and (max-width: 640px) {
     .basicNavbar ul li {
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding: 5px 0px 5px 0px;
       display: inline-block;
       width: 100%;
-      font-size: 2rem; }
+      height: auto;
+      font-size: 1.9rem;
+      vertical-align: middle; }
       .basicNavbar ul li:not(:last-child) {
         border-bottom: 1px solid #AAA; } }

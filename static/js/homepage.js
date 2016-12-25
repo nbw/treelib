@@ -23,15 +23,15 @@ webpackJsonp([8],{
 
 	var _BasicNavbar2 = _interopRequireDefault(_BasicNavbar);
 
-	var _home = __webpack_require__(183);
+	var _home = __webpack_require__(184);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _about = __webpack_require__(184);
+	var _about = __webpack_require__(185);
 
 	var _about2 = _interopRequireDefault(_about);
 
-	var _contact = __webpack_require__(185);
+	var _contact = __webpack_require__(186);
 
 	var _contact2 = _interopRequireDefault(_contact);
 
@@ -208,7 +208,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 183:
+/***/ 184:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -357,7 +357,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 184:
+/***/ 185:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -483,6 +483,7 @@ webpackJsonp([8],{
 	                            ' page to get started!'
 	                        )
 	                    ),
+	                    _react2.default.createElement('hr', null),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { id: 'aboutPhotos' },
@@ -701,7 +702,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 185:
+/***/ 186:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

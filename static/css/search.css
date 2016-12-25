@@ -2659,6 +2659,24 @@ input[type=radio]:not(old):checked + label {
         -webkit-box-sizing: border-box;
         border: 2px #4385ef solid; }
 
+@media screen and (max-width: 640px) {
+  .species {
+    padding-bottom: 200px; }
+    .species > .title {
+      text-align: center; }
+      .species > .title .main, .species > .title .commmonName, .species > .title .secondary {
+        display: block; }
+      .species > .title .main {
+        font-size: 2.0rem; }
+      .species > .title .commonName {
+        font-size: 1.8rem; }
+      .species > .title .secondary {
+        font-size: 1.4rem; }
+    .species > .description {
+      font-size: 1.4rem; }
+    .species .photos {
+      margin-bottom: 150px; } }
+
 .photoViewer {
   margin: 10px 0 20px 0;
   padding: 110px 0 110px 0;
@@ -2993,6 +3011,24 @@ input[type=radio]:not(old):checked + label {
       .genus .photos .newPhotoSelectionButton:active {
         background-color: #555;
         border-color: #555; }
+
+@media screen and (max-width: 640px) {
+  .genus {
+    padding-bottom: 300px; }
+    .genus > .title {
+      text-align: center; }
+      .genus > .title .main, .genus > .title .commmonName, .genus > .title .secondary {
+        display: block; }
+      .genus > .title .main {
+        font-size: 2.5rem; }
+      .genus > .title .commonName {
+        font-size: 2.0rem; }
+      .genus > .title .secondary {
+        font-size: 1.6rem; }
+    .genus > .textContent {
+      font-size: 1.4rem; }
+    .genus .photos {
+      margin-bottom: 150px; } }
 
 .photoViewer {
   margin: 10px 0 20px 0;
@@ -3329,6 +3365,24 @@ input[type=radio]:not(old):checked + label {
         background-color: #555;
         border-color: #555; }
 
+@media screen and (max-width: 640px) {
+  .family {
+    padding-bottom: 300px; }
+    .family > .title {
+      text-align: center; }
+      .family > .title .main, .family > .title .commmonName, .family > .title .secondary {
+        display: block; }
+      .family > .title .main {
+        font-size: 2.5rem; }
+      .family > .title .commonName {
+        font-size: 2.0rem; }
+      .family > .title .secondary {
+        font-size: 1.6rem; }
+    .family > .textContent {
+      font-size: 1.4rem; }
+    .family .photos {
+      margin-bottom: 150px; } }
+
 body {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -3527,24 +3581,30 @@ body {
   .minimized.content > *:not(.default) {
     padding-top: 4rem; }
 
-@media screen and (max-width: 640px) {
-  .species > .title, .genus > .title, .family > .title {
-    text-align: center; }
+@media screen and (max-width: 850px) {
   .searchBar {
+    width: 50%; }
+    .searchBar .nameSelector {
+      font-size: 1.4rem; }
+  .content {
+    width: 50%;
+    left: 50%; } }
+
+@media screen and (max-width: 640px) {
+  .searchBar {
+    font-size: 1.4rem;
     width: 100%;
-    height: 30%;
+    height: 50%;
     display: none; }
   .content {
     width: 100%;
     left: 0;
-    top: 30%; }
+    top: 50%; }
     .content .default .message {
       display: none; }
-  .family, .species, .genus {
-    padding-bottom: 250px; }
   .minimized.searchBar {
     width: 100%; }
   .minimized.content {
-    top: 3rem; }
+    top: 7%; }
     .minimized.content > *:not(.default) {
       padding-top: 0; } }

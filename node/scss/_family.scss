@@ -96,3 +96,32 @@
 		}
 	}
 }
+
+
+@media screen and (max-width: $break-medium) {
+	.family {
+		padding-bottom: 300px;
+		> .title {
+			text-align: center;
+			.main, .commmonName, .secondary {
+				display: block;
+			}
+			.main {
+				font-size: 2.5rem;
+			} 
+			.commonName {
+				font-size: 2.0rem;
+			}
+			.secondary {
+				font-size: 1.6rem;
+			}
+		}
+		> .textContent {
+			font-size: 1.4rem;
+		}
+		.photos {
+			margin-bottom: 150px;
+		}
+		
+	}
+}
