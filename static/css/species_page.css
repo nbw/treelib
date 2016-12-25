@@ -2596,7 +2596,7 @@ input[type=radio]:not(old):checked + label {
   transition: all 0.33s ease-out;
   position: absolute;
   z-index: 100;
-  background-color: white;
+  background-color: transparent;
   top: 0;
   right: 0;
   width: 7.5rem;
@@ -2607,6 +2607,8 @@ input[type=radio]:not(old):checked + label {
   padding: 5px; }
   .linkSharer .title {
     cursor: pointer; }
+    .linkSharer .title i::before {
+      background: transparent; }
     .linkSharer .title:hover {
       color: #111; }
   .linkSharer.show {

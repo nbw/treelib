@@ -61,7 +61,7 @@ class Species extends React.Component {
                     <label className="commonName">{s.common_name} {s.genus_common_name}</label>
                     <label className="secondary">species</label>
                     <ShareLinker
-                    path={'/species/' + s.name.replace(/ /g,'_')} 
+                        path={'/species/' + s.name.replace(/ /g,'_')} 
                     />
                 </div>
                 

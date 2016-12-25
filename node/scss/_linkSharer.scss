@@ -11,7 +11,7 @@ $share-width: 7.5rem;
 
 	position: absolute;
 	z-index: 100;
-	background-color:white;
+	background-color:rgba(0,0,0,0);
 	top: 0;
 	right: 0;
 	width: $share-width;
@@ -24,6 +24,9 @@ $share-width: 7.5rem;
 
 
 	.title{ 
+		i::before{
+		    background:transparent;
+		}
 		cursor: pointer;
 		&:hover {
 			//from #364149

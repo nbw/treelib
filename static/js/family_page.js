@@ -689,19 +689,23 @@ webpackJsonp([6],{
 	                show = this.state.show ? 'show' : '';
 	            return _react2.default.createElement(
 	                'div',
-	                { id: this.props.id, className: 'linkSharer ' + show },
+	                { id: this.props.id, className: 'linkSharer ' + show, onBlur: function onBlur() {
+	                        return _this2.toggleHidden();
+	                    } },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'links' },
 	                    _react2.default.createElement(
 	                        'label',
-	                        { className: 'title', onClick: function onClick() {
+	                        { onClick: function onClick() {
 	                                return _this2.toggleHidden();
 	                            } },
 	                        _react2.default.createElement('i', { className: 'fa fa-share' }),
 	                        ' Share'
 	                    ),
-	                    _react2.default.createElement('input', { defaultValue: link }),
+	                    _react2.default.createElement('input', { value: link, onChange: function onChange() {
+	                            return;
+	                        } }),
 	                    _react2.default.createElement(
 	                        'a',
 	                        { href: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(link), target: '_blank' },
