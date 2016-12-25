@@ -3410,7 +3410,8 @@ body {
       .searchBar .title a img {
         height: 3rem; }
   .searchBar .nameSelector {
-    height: 7%;
+    height: 5%;
+    padding: 1% 0 1% 0;
     min-height: 3.1rem; }
     .searchBar .nameSelector > * {
       vertical-align: middle;
@@ -3505,6 +3506,8 @@ body {
     -moz-border-image: none;
     -o-border-image: none;
     border-image: none; }
+  .minimized.searchBar .nameSelector {
+    opacity: 0; }
   .minimized.searchBar .closeButton:hover {
     color: #4c5b67; }
   .minimized.searchBar .closeButton:after {

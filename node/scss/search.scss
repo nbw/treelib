@@ -129,7 +129,8 @@ $searchBar-list-font-color-selected: #111;
 		}
 	}
 	.nameSelector {
-		height: $sidebar-title-height;
+		height: $sidebar-title-height - 2%;
+		padding: 1% 0 1% 0;
 		min-height: 3.1rem;
 		> * {
 			vertical-align: middle;
@@ -267,6 +268,9 @@ $searchBar-list-font-color-selected: #111;
 		    -moz-border-image: none;
 		    -o-border-image: none;
 		    border-image: none;
+		}
+		.nameSelector {
+			opacity: 0;
 		}
 		.closeButton {
 			&:hover{
