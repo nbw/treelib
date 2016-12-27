@@ -2379,7 +2379,7 @@ input[type=radio]:not(old):checked + label {
     color: #EEE; }
   .photoViewer .fullSizeImage {
     position: fixed;
-    z-index: 10;
+    z-index: 999;
     opacity: 0;
     top: 0;
     left: 0;
@@ -2574,7 +2574,7 @@ input[type=radio]:not(old):checked + label {
         .photoViewer .image .imageWrapper .imageInnerWrapper .photoButtons {
           display: none; }
         .photoViewer .image .imageWrapper img {
-          width: 100%; }
+          width: 98%; }
       .photoViewer .image .next, .photoViewer .image .prev {
         position: absolute;
         bottom: 1em;
@@ -2583,6 +2583,10 @@ input[type=radio]:not(old):checked + label {
         left: 75%; }
       .photoViewer .image .prev {
         left: 25%; }
+      .photoViewer .fullSizeImage {
+        padding-top: 3rem; }
+        .photoViewer .fullSizeImage img {
+          width: 100%; }
       .photoViewer .closeButton {
         font-size: 2.5rem; } }
 
@@ -2610,7 +2614,7 @@ input[type=radio]:not(old):checked + label {
     .linkSharer .title i::before {
       background: transparent; }
     .linkSharer .title:hover {
-      color: #111; }
+      color: #21272c; }
   .linkSharer.show {
     border-color: #AAA;
     background-color: #F5F5F5;
@@ -2719,7 +2723,11 @@ input[type=radio]:not(old):checked + label {
     .family > .textContent {
       font-size: 1.4rem; }
     .family .photos {
-      margin-bottom: 150px; } }
+      margin-bottom: 150px;
+      padding: 0; }
+      .family .photos img {
+        margin: 1.5%;
+        width: 47%; } }
 
 .basicNavbar {
   color: #4c5b67;

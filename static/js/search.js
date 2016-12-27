@@ -1402,8 +1402,17 @@ webpackJsonp([10],{
 	            this.props.handler('sidebarMinimized', !minimized);
 	        }
 	    }, {
+	        key: 'resetTree',
+	        value: function resetTree() {
+	            this.update('selectedGenus', null);
+	            this.update('selectedSpecies', null);
+	            this.update('selectedFamily', null);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            self = this;
 	            var selectedFamily = this.state.selectedFamily,
 	                selectedGenus = this.state.selectedGenus,
@@ -1590,7 +1599,9 @@ webpackJsonp([10],{
 	                        { className: 'familyList' },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'subtitle' },
+	                            { className: 'subtitle', onClick: function onClick(event) {
+	                                    return _this2.resetTree(event);
+	                                } },
 	                            _react2.default.createElement(
 	                                'label',
 	                                null,
@@ -1608,7 +1619,9 @@ webpackJsonp([10],{
 	                        { className: 'generaList' },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'subtitle' },
+	                            { className: 'subtitle', onClick: function onClick(event) {
+	                                    return _this2.resetTree(event);
+	                                } },
 	                            _react2.default.createElement(
 	                                'label',
 	                                null,
@@ -1626,7 +1639,9 @@ webpackJsonp([10],{
 	                        { className: 'speciesList' },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'subtitle' },
+	                            { className: 'subtitle', onClick: function onClick(event) {
+	                                    return _this2.resetTree(event);
+	                                } },
 	                            _react2.default.createElement(
 	                                'label',
 	                                null,

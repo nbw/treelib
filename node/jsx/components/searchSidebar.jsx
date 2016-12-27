@@ -29,25 +29,30 @@ class SearchSidebar extends React.Component {
             [name]: e.target.value
         });
     }
-	familyClicked(item,e){
+	familyClicked(item,e) {
         this.update('selectedGenus', null);
         this.update('selectedSpecies', null);
         this.props.familyHandler(item, this.props.handler);
         this.update('selectedFamily', item);
 	}
-	genusClicked(item,e){
+	genusClicked(item,e) {
         this.update('selectedSpecies', null); 
         this.update('selectedGenus', item);
         this.props.genusHandler(item, this.props.handler);
              
 	}
-	speciesClicked(item,e){
+	speciesClicked(item,e) {
         this.props.speciesHandler(item, this.props.handler);
         this.update('selectedSpecies', item);
 	}
-    hideSidebar(e){
+    hideSidebar(e) {
         var minimized = this.props.minimized;
         this.props.handler('sidebarMinimized', !minimized);
+    }
+    resetTree() {
+        this.update('selectedGenus', null);
+        this.update('selectedSpecies', null);
+        this.update('selectedFamily', null);
     }
     render() {
     	self = this;
@@ -209,19 +214,19 @@ class SearchSidebar extends React.Component {
                 </div>
                 <div className="lists">
                     <div className="familyList">
-                        <div className="subtitle"><label >Family</label></div>
+                        <div className="subtitle" onClick={ (event) => this.resetTree(event) } ><label >Family</label></div>
                     	<ul className="searchSidebar-list">
                             {familyRows}
                     	</ul>
                     </div>
                     <div className="generaList">
-                        <div className="subtitle"><label>Genus</label></div>
+                        <div className="subtitle" onClick={ (event) => this.resetTree(event) } ><label>Genus</label></div>
                         <ul className="searchSidebar-list">
                 		    {generaRows}
                 	    </ul>
                     </div>
                     <div className="speciesList">
-                        <div className="subtitle"><label>Species</label></div>
+                        <div className="subtitle" onClick={ (event) => this.resetTree(event) } ><label>Species</label></div>
                         <ul className="searchSidebar-list">
                 		    {speciesRows}
                 	    </ul>

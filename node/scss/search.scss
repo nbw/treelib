@@ -162,6 +162,9 @@ $searchBar-list-font-color-selected: #111;
 			text-align: center;
 			background-color: white;
 			width: 100%;
+			&:hover {
+				color: #21272c;
+			}
 		}
 	}
 	ul.searchSidebar-list {
