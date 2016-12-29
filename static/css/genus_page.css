@@ -2675,7 +2675,14 @@ input[type=radio]:not(old):checked + label {
         box-sizing: border-box;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
-        border: 2px #4385ef solid; }
+        border: 2px #4385ef solid;
+        margin: 3px; }
+      .genus .photos img:hover {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 2px #1467eb solid;
+        margin: 3px; }
     .genus .photos .thumbs {
       padding: 5px 0 5px 0; }
     .genus .photos .subtitle {
