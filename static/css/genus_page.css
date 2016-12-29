@@ -2655,6 +2655,8 @@ input[type=radio]:not(old):checked + label {
       .genus .textContent .description p:first-child {
         padding-top: 0;
         margin-top: 0; }
+      .genus .textContent .description ul li {
+        padding: 5px 0 5px 0; }
     .genus .textContent .species {
       border-left: 1px solid #AAA;
       width: 27%;

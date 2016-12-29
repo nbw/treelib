@@ -30,6 +30,11 @@
 			p:first-child {
 				padding-top: 0;
 				margin-top: 0;
+			}
+			ul {
+				li {
+					padding: 5px 0 5px 0;
+				}
 			}	
 		}
 		.species {
