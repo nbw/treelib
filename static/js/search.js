@@ -1350,8 +1350,8 @@ webpackJsonp([10],{
 	            selectedFamily: null,
 	            selectedGenus: null,
 	            selectedSpecies: null,
-	            showLatinNames: true,
-	            showCommonNames: false
+	            showLatinNames: false,
+	            showCommonNames: true
 	        };
 	        return _this;
 	    }
