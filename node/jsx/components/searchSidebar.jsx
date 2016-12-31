@@ -9,8 +9,8 @@ class SearchSidebar extends React.Component {
             selectedFamily: null,
             selectedGenus: null,
             selectedSpecies: null,
-            showLatinNames: true,
-            showCommonNames: false,
+            showLatinNames: false,
+            showCommonNames: true,
         };
     }
     componentDidMount() {
