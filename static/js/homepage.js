@@ -289,14 +289,30 @@ webpackJsonp([8],{
 	                        _react2.default.createElement(
 	                            'div',
 	                            null,
-	                            _react2.default.createElement('img', { src: 'img/homepage-banner/5.jpg' }),
-	                            _react2.default.createElement('img', { src: 'img/homepage-banner/6.jpg' })
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '/search?f_id=12&g_id=24&s_id=47' },
+	                                _react2.default.createElement('img', { src: 'img/homepage-banner/1.jpg' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '/search?f_id=1&g_id=1&s_id=2' },
+	                                _react2.default.createElement('img', { src: 'img/homepage-banner/9.jpg' })
+	                            )
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
 	                            null,
-	                            _react2.default.createElement('img', { src: 'img/homepage-banner/7.jpg' }),
-	                            _react2.default.createElement('img', { src: 'img/homepage-banner/8.jpg' })
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '/search?f_id=8&g_id=14&s_id=31' },
+	                                _react2.default.createElement('img', { src: 'img/homepage-banner/6.jpg' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '/search?f_id=25&g_id=56&s_id=101' },
+	                                _react2.default.createElement('img', { src: 'img/homepage-banner/5.jpg' })
+	                            )
 	                        )
 	                    )
 	                ),
@@ -325,10 +341,34 @@ webpackJsonp([8],{
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'photoBanner' },
-	                        _react2.default.createElement('img', { src: 'img/homepage-banner/1.jpg' }),
-	                        _react2.default.createElement('img', { src: 'img/homepage-banner/4.jpg' }),
-	                        _react2.default.createElement('img', { src: 'img/homepage-banner/3.jpg' }),
-	                        _react2.default.createElement('img', { src: 'img/homepage-banner/2.jpg' })
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '/search?f_id=23&g_id=46&s_id=79' },
+	                                _react2.default.createElement('img', { src: 'img/homepage-banner/4.jpg' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '/search?f_id=12&g_id=21&s_id=42' },
+	                                _react2.default.createElement('img', { src: 'img/homepage-banner/2.jpg' })
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '/search?f_id=28&g_id=64&s_id=146' },
+	                                _react2.default.createElement('img', { src: 'img/homepage-banner/7.jpg' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'a',
+	                                { href: '/search?f_id=12&g_id=20&s_id=41' },
+	                                _react2.default.createElement('img', { src: 'img/homepage-banner/8.jpg' })
+	                            )
+	                        )
 	                    ),
 	                    _react2.default.createElement(
 	                        'p',
