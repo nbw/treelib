@@ -63,6 +63,10 @@
 			display: inline-block;
 			margin: 10px;
 			border: 1px solid #BBB;
+			&:hover { 
+				border: 2px #1467eb solid;
+				margin: 9px;
+			}
 		}
 	}
 }

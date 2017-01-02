@@ -2473,6 +2473,9 @@ input[type=radio]:not(old):checked + label {
     display: inline-block;
     margin: 10px;
     border: 1px solid #BBB; }
+    .homePage .photoBanner img:hover {
+      border: 2px #1467eb solid;
+      margin: 9px; }
 
 .aboutPage > div {
   display: inline-block;
