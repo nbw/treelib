@@ -503,7 +503,7 @@ webpackJsonp([8],{
 	                                null,
 	                                'TreeLib'
 	                            ),
-	                            ' is a new digital resource for studying trees in the Northern Hemisphere. The collection is organized at a Family, Genus or Species level with quickly access to jump back a forth to get a sense of the bigger picture.'
+	                            ' is a new digital resource for studying trees in the Northern Hemisphere. The collection is organized at a Family, Genus or Species level with quick access to jump back a forth to get a sense of the bigger picture.'
 	                        ),
 	                        _react2.default.createElement(
 	                            'p',
@@ -670,7 +670,7 @@ webpackJsonp([8],{
 	                                                _react2.default.createElement(
 	                                                    'p',
 	                                                    null,
-	                                                    'Blake is an industry manager, botonist and photographer with over 25 years in the forestry industry, specifically with government and industry between Canada and Japan.'
+	                                                    'Blake is an industry manager, botanist and photographer with over 25 years in the forestry industry, specifically with government and industry between Canada and Japan.'
 	                                                ),
 	                                                _react2.default.createElement(
 	                                                    'p',

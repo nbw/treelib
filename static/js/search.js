@@ -1582,7 +1582,7 @@ webpackJsonp([10],{
 	                    _react2.default.createElement('span', { className: 'helper' }),
 	                    _react2.default.createElement(_checkBoxer2.default, {
 	                        isChecked: this.state.showLatinNames,
-	                        title: ' latin names',
+	                        title: ' Latin names',
 	                        handler: this.update.bind(this, 'showLatinNames')
 	                    }),
 	                    _react2.default.createElement(_checkBoxer2.default, {

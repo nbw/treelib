@@ -16,7 +16,7 @@ class About extends React.Component {
                     <div>
                         <label className="sectionTitle">About the site</label> 
                         <p>
-                            With a library of over 260 tree species, <b>TreeLib</b> is a new digital resource for studying trees in the Northern Hemisphere. The collection is organized at a Family, Genus or Species level with quickly access to jump back a forth to get a sense of the bigger picture. 
+                            With a library of over 260 tree species, <b>TreeLib</b> is a new digital resource for studying trees in the Northern Hemisphere. The collection is organized at a Family, Genus or Species level with quick access to jump back a forth to get a sense of the bigger picture. 
                         </p>
                         <p>
                             Please don't hesitate to <a href="/contact">contact</a> us with any questions and head over to the <a href="/search">search</a> page to get started!
@@ -74,7 +74,7 @@ class About extends React.Component {
                                         <li className="title"><label className="name">Blake Willson</label><i> - R.P.F. - Botanist and Photographer</i></li>
                                         <li className="content">
                                             <p>
-                                            Blake is an industry manager, botonist and photographer with over 25 years in the forestry industry, specifically with government and industry between Canada and Japan.  
+                                            Blake is an industry manager, botanist and photographer with over 25 years in the forestry industry, specifically with government and industry between Canada and Japan.  
                                             </p>
                                             <p>
                                             He is a member of the International Dendrology Society (a UK-based global group of professors and scientists dedicated to the study and teaching about woody plants) and the American Conifer Society.

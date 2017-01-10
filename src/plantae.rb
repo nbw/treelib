@@ -106,8 +106,10 @@ module Plantae
                 SQLer::query(Plantae::add_links_query(p[:id], p[:links]))
             end
         end
-        s_i = @@species.find_index{ |s| s.id == p[:id] }
-        @@species[s_i] = Species.new(p)
+        self.init # update the tree
+        return Species.new(p)
+        # s_i = @@species.find_index{ |s| s.id == p[:id] }
+        # @@species[s_i] = Species.new(p)
     end
 
     def self.add_species p
@@ -122,8 +124,9 @@ module Plantae
             SQLer::query(Plantae::add_links_query(p[:id], p[:links])) if !p[:links].empty?
         end
         s = Species.new(p)
-        @@species << s
-        @@genera.find{ |g| g.id == p[:g_id].to_i }.species << s
+        self.init # update the tree
+        # @@species << s
+        # @@genera.find{ |g| g.id == p[:g_id].to_i }.species << s
         return s
     end
 
@@ -194,12 +197,15 @@ module Plantae
             description = '#{SQLer.escape(p[:descrip])}',
             fam_id = #{SQLer.escape(p[:f_id])}
             WHERE id = #{SQLer.escape(p[:id])};")
-        g_i = @@genera.find_index{ |g| g.id == p[:id] }
-        # save species reference for new updated copy
-        g_new = Genus.new(p)
-        g_new.species = @@genera[g_i].species
+        
+        self.init # update the tree
+        return Genus.new(p)
 
-        @@genera[g_i] = g_new
+        # g_i = @@genera.find_index{ |g| g.id == p[:id] }
+        # save species reference for new updated copy
+        # g_new = Genus.new(p)
+        # g_new.species = @@genera[g_i].species
+        # @@genera[g_i] = g_new
     end
 
     def self.add_genus p
@@ -212,8 +218,9 @@ module Plantae
             p[:id] = SQLer::query("SELECT LAST_INSERT_ID() AS id;").first["id"]
         end
         g = Genus.new(p)
-        @@genera << g
-        @@families.find{ |f| f.id == p[:f_id].to_i }.genera << g
+        self.init # update the tree
+        # @@genera << g
+        # @@families.find{ |f| f.id == p[:f_id].to_i }.genera << g
         return g
     end
 

@@ -203,7 +203,7 @@ class SearchSidebar extends React.Component {
                     <span className="helper"></span>
                     <CheckBoxer
                         isChecked={this.state.showLatinNames}
-                        title=" latin names"
+                        title=" Latin names"
                         handler={this.update.bind(this,'showLatinNames')}
                     />
                     <CheckBoxer
