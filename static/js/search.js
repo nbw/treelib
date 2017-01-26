@@ -1501,7 +1501,7 @@ webpackJsonp([10],{
 	                speciesRows = selectedGenus.species.map(function (item) {
 	                    var isSelected = selectedSpecies && selectedSpecies.id == item.id,
 	                        latinName = self.state.showLatinNames ? item.name : "",
-	                        commonName = self.state.showCommonNames ? item.common_name + " " + item.genus_common_name : "";
+	                        commonName = self.state.showCommonNames ? item.common_name + " " + item.common_name + " " + item.genus_common_name : "";
 	                    return _react2.default.createElement(SidebarListItem, {
 	                        isSelected: isSelected,
 	                        value: item.id, key: item.id,
