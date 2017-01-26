@@ -9,7 +9,7 @@ class SearchSidebar extends React.Component {
             selectedFamily: null,
             selectedGenus: null,
             selectedSpecies: null,
-            showLatinNames: false,
+            showLatinNames: true,
             showCommonNames: true,
         };
     }
@@ -76,8 +76,6 @@ class SearchSidebar extends React.Component {
             familyRows.sort(function(a, b){
                 var name_a = a.props.latinName,
                     name_b = b.props.latinName;
-
-
 
                 if( !self.state.showLatinNames && self.state.showCommonNames ) {
                     name_a = a.props.commonName;
@@ -152,25 +150,26 @@ class SearchSidebar extends React.Component {
                         />;
 	    	});
 	    } else if (!(selectedGenus || selectedFamily)) {
-            self.props.tree.forEach(function(family) {
-                family.genera.forEach(function(genus) {
-                    genus.species.forEach(function(item) {
-                        var isSelected = selectedSpecies && (selectedSpecies.id == item.id),
-                            latinName = self.state.showLatinNames ? item.name : "",
-                            commonName = self.state.showCommonNames ? item.common_name + " " + item.genus_common_name : "";
+            speciesRows = [];
+            // self.props.tree.forEach(function(family) {
+            //     family.genera.forEach(function(genus) {
+            //         genus.species.forEach(function(item) {
+            //             var isSelected = selectedSpecies && (selectedSpecies.id == item.id),
+            //                 latinName = self.state.showLatinNames ? item.genus_name + " " + item.name : "",
+            //                 commonName = self.state.showCommonNames ? item.common_name + " " + item.genus_common_name : "";
 
-                        speciesRows.push(
-                                <SidebarListItem 
-                                isSelected={isSelected} 
-                                value={item.id} key={item.id} 
-                                onClick={(event) => self.speciesClicked(item, event)}
-                                latinName={latinName}
-                                commonName={commonName}
-                            />
-                        );
-                    });
-                });
-            });     
+            //             speciesRows.push(
+            //                     <SidebarListItem 
+            //                     isSelected={isSelected} 
+            //                     value={item.id} key={item.id} 
+            //                     onClick={(event) => self.speciesClicked(item, event)}
+            //                     latinName={latinName}
+            //                     commonName={commonName}
+            //                 />
+            //             );
+            //         });
+            //     });
+            // });     
         }
         // sort alphabetically
         speciesRows.sort(function(a, b){

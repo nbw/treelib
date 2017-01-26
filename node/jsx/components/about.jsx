@@ -48,6 +48,27 @@ class About extends React.Component {
                         </div>
                     </div>
                     <hr/>
+                    <div id="speciesHier">
+                        <label className="sectionTitle">Species Hierarchy</label>
+                        <p>
+                            All species are arranged by Taxonomic Hierarchy, beginning with Family, which is further divided into Genus and finally into Species. 
+                        </p>
+                        <div className="taxonomy">
+                            <ul>
+                                <li><b>Family</b> → ex.: Pinaceae (Pine)
+                                    <ul>
+                                        <li><b>Genus</b> → ex.: Picea (spruce)
+                                            <ul><li><b>Species</b> → ex.: Picea sitchensis (Sitka spruce)</li></ul>
+                                    </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <p>
+                            Search names are presented in Latin and English, and either can be turned on or off in the menu to improve usability
+                        </p>
+                    </div>
+                    <hr/>
                     <div id="speciesConfirm">
                         <label className="sectionTitle">Species confirmation</label>
                         <p>

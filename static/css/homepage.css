@@ -2534,6 +2534,9 @@ input[type=radio]:not(old):checked + label {
   -o-border-image: -o-linear-gradient(left, transparent, #cacaca, transparent) 1 5% 100%;
   border-image: linear-gradient(to left, transparent, #cacaca, transparent) 1 5% 100%; }
 
+.aboutPage #speciesHier .taxonomy {
+  padding: 5px 0 5px 25%; }
+
 .aboutPage #aboutPhotos > div {
   padding: 25px 0 0 0; }
 

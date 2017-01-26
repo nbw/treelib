@@ -80,6 +80,11 @@ $tableOfContentsListItem-border-color: #cacaca;
 	    border-image:
 	      linear-gradient(to left, rgba(0, 0, 0, 0), $tableOfContentsListItem-border-color, rgba(0, 0, 0, 0)) 1 5% 100%;
 	}
+	#speciesHier {
+		.taxonomy {
+			padding: 5px 0 5px 25%;
+		}
+	}
 
 	#aboutPhotos {
 		> div {

@@ -599,6 +599,72 @@ webpackJsonp([8],{
 	                    _react2.default.createElement('hr', null),
 	                    _react2.default.createElement(
 	                        'div',
+	                        { id: 'speciesHier' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { className: 'sectionTitle' },
+	                            'Species Hierarchy'
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'All species are arranged by Taxonomic Hierarchy, beginning with Family, which is further divided into Genus and finally into Species.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'taxonomy' },
+	                            _react2.default.createElement(
+	                                'ul',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'li',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'b',
+	                                        null,
+	                                        'Family'
+	                                    ),
+	                                    ' → ex.: Pinaceae (Pine)',
+	                                    _react2.default.createElement(
+	                                        'ul',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'li',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'b',
+	                                                null,
+	                                                'Genus'
+	                                            ),
+	                                            ' → ex.: Picea (spruce)',
+	                                            _react2.default.createElement(
+	                                                'ul',
+	                                                null,
+	                                                _react2.default.createElement(
+	                                                    'li',
+	                                                    null,
+	                                                    _react2.default.createElement(
+	                                                        'b',
+	                                                        null,
+	                                                        'Species'
+	                                                    ),
+	                                                    ' → ex.: Picea sitchensis (Sitka spruce)'
+	                                                )
+	                                            )
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'Search names are presented in Latin and English, and either can be turned on or off in the menu to improve usability'
+	                        )
+	                    ),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement(
+	                        'div',
 	                        { id: 'speciesConfirm' },
 	                        _react2.default.createElement(
 	                            'label',
