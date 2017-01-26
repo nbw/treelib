@@ -150,7 +150,7 @@ class SearchSidebar extends React.Component {
                         />;
 	    	});
 	    } else if (!(selectedGenus || selectedFamily)) {
-            speciesRows = [];
+            speciesRows.push(<li className="emptySpeciesItem">← select a genus first</li>);
             // self.props.tree.forEach(function(family) {
             //     family.genera.forEach(function(genus) {
             //         genus.species.forEach(function(item) {

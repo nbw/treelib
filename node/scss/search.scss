@@ -173,6 +173,10 @@ $searchBar-list-font-color-selected: #111;
 		position:relative;
 		height: 100%;
 		overflow-y: scroll;
+		li.emptySpeciesItem {
+			padding: 10px 0 10px 0;
+			color: #999;
+		}
 		li.sidebarListItem {
 			&:last-child {
 				margin: 0 0 100% 0;

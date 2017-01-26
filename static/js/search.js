@@ -1513,7 +1513,11 @@ webpackJsonp([10],{
 	                    });
 	                });
 	            } else if (!(selectedGenus || selectedFamily)) {
-	                speciesRows = [];
+	                speciesRows.push(_react2.default.createElement(
+	                    'li',
+	                    { className: 'emptySpeciesItem' },
+	                    '← select a genus first'
+	                ));
 	                // self.props.tree.forEach(function(family) {
 	                //     family.genera.forEach(function(genus) {
 	                //         genus.species.forEach(function(item) {
