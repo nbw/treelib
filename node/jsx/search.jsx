@@ -212,7 +212,7 @@ class App extends React.Component {
                     { type === null ?
                         <div className="default">
                             <div className="message">
-                                <i className="fa fa-caret-left"></i> Click on a <b>family</b>, <b>genus</b>, or <b>species</b> to get started!
+                                <i className="fa fa-caret-left"></i> Click on a <b>family</b> or <b>genus</b> to get started!
                             </div>
                         </div>
                     : null}

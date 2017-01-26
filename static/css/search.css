@@ -3559,7 +3559,7 @@ body {
     overflow-y: scroll; }
     .searchBar ul.searchSidebar-list li.emptySpeciesItem {
       padding: 10px 0 10px 0;
-      color: #999; }
+      color: #AAA; }
     .searchBar ul.searchSidebar-list li.sidebarListItem {
       word-wrap: break-word;
       -webkit-hyphens: auto;

@@ -292,17 +292,11 @@ webpackJsonp([10],{
 	                                null,
 	                                'family'
 	                            ),
-	                            ', ',
+	                            ' or ',
 	                            _react2.default.createElement(
 	                                'b',
 	                                null,
 	                                'genus'
-	                            ),
-	                            ', or ',
-	                            _react2.default.createElement(
-	                                'b',
-	                                null,
-	                                'species'
 	                            ),
 	                            ' to get started!'
 	                        )
