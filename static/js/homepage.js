@@ -275,7 +275,7 @@ webpackJsonp([8],{
 	                    _react2.default.createElement(
 	                        'p',
 	                        null,
-	                        'This site is for students, professors, laymen, artists, naturalists – anyone studying trees or who just appreciates their beauty.  Need more pictures for a dendrology class, or to make your own collection, or to add background to a new website? ',
+	                        'A tree library for students, professors, laymen, artists, naturalists – anyone studying trees or who just appreciates their beauty.  Need more pictures for a dendrology class, or to make your own collection, or to add background to a new website? ',
 	                        _react2.default.createElement(
 	                            'b',
 	                            null,

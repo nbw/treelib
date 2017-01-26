@@ -17,7 +17,7 @@ class Home extends React.Component {
                 </div>
                 <div className="section">
                 	<p>
-                		This site is for students, professors, laymen, artists, naturalists – anyone studying trees or who just appreciates their beauty.  Need more pictures for a dendrology class, or to make your own collection, or to add background to a new website? <b>TreeLib</b> is yours all in one spot.
+                		A tree library for students, professors, laymen, artists, naturalists – anyone studying trees or who just appreciates their beauty.  Need more pictures for a dendrology class, or to make your own collection, or to add background to a new website? <b>TreeLib</b> is yours all in one spot.
                 	</p>
                     <div className="photoBanner">
                         <div>
