@@ -532,6 +532,72 @@ webpackJsonp([8],{
 	                    _react2.default.createElement('hr', null),
 	                    _react2.default.createElement(
 	                        'div',
+	                        { id: 'speciesHier' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { className: 'sectionTitle' },
+	                            'Species Hierarchy'
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'All species are arranged by Taxonomic Hierarchy, beginning with Family, which is further divided into Genus and finally into Species.'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'taxonomy' },
+	                            _react2.default.createElement(
+	                                'ul',
+	                                null,
+	                                _react2.default.createElement(
+	                                    'li',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'b',
+	                                        null,
+	                                        'Family'
+	                                    ),
+	                                    ' → ex.: Pinaceae (Pine)',
+	                                    _react2.default.createElement(
+	                                        'ul',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'li',
+	                                            null,
+	                                            _react2.default.createElement(
+	                                                'b',
+	                                                null,
+	                                                'Genus'
+	                                            ),
+	                                            ' → ex.: Picea (spruce)',
+	                                            _react2.default.createElement(
+	                                                'ul',
+	                                                null,
+	                                                _react2.default.createElement(
+	                                                    'li',
+	                                                    null,
+	                                                    _react2.default.createElement(
+	                                                        'b',
+	                                                        null,
+	                                                        'Species'
+	                                                    ),
+	                                                    ' → ex.: Picea sitchensis (Sitka spruce)'
+	                                                )
+	                                            )
+	                                        )
+	                                    )
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'Search names are presented in Latin and English, and either can be turned on or off in the menu to improve usability.'
+	                        )
+	                    ),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement(
+	                        'div',
 	                        { id: 'aboutPhotos' },
 	                        _react2.default.createElement(
 	                            'label',
@@ -600,72 +666,6 @@ webpackJsonp([8],{
 	                                null,
 	                                'Photos were taken with a Canon 70D camera [INSERT LINK HERE], using 40mm, 17mm x 85mm and 18mm x 55mm lenses. The 70D is equipped with Canon’s new high resolution CMOS 70D sensor which allows raising film speed to up to 2000 or more without noticeable graininess.'
 	                            )
-	                        )
-	                    ),
-	                    _react2.default.createElement('hr', null),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: 'speciesHier' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'sectionTitle' },
-	                            'Species Hierarchy'
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'All species are arranged by Taxonomic Hierarchy, beginning with Family, which is further divided into Genus and finally into Species.'
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'taxonomy' },
-	                            _react2.default.createElement(
-	                                'ul',
-	                                null,
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        'b',
-	                                        null,
-	                                        'Family'
-	                                    ),
-	                                    ' → ex.: Pinaceae (Pine)',
-	                                    _react2.default.createElement(
-	                                        'ul',
-	                                        null,
-	                                        _react2.default.createElement(
-	                                            'li',
-	                                            null,
-	                                            _react2.default.createElement(
-	                                                'b',
-	                                                null,
-	                                                'Genus'
-	                                            ),
-	                                            ' → ex.: Picea (spruce)',
-	                                            _react2.default.createElement(
-	                                                'ul',
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    'li',
-	                                                    null,
-	                                                    _react2.default.createElement(
-	                                                        'b',
-	                                                        null,
-	                                                        'Species'
-	                                                    ),
-	                                                    ' → ex.: Picea sitchensis (Sitka spruce)'
-	                                                )
-	                                            )
-	                                        )
-	                                    )
-	                                )
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Search names are presented in Latin and English, and either can be turned on or off in the menu to improve usability'
 	                        )
 	                    ),
 	                    _react2.default.createElement('hr', null),

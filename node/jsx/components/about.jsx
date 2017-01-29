@@ -23,6 +23,27 @@ class About extends React.Component {
                         </p>
                     </div>
                     <hr/>
+                    <div id="speciesHier">
+                        <label className="sectionTitle">Species Hierarchy</label>
+                        <p>
+                            All species are arranged by Taxonomic Hierarchy, beginning with Family, which is further divided into Genus and finally into Species. 
+                        </p>
+                        <div className="taxonomy">
+                            <ul>
+                                <li><b>Family</b> → ex.: Pinaceae (Pine)
+                                    <ul>
+                                        <li><b>Genus</b> → ex.: Picea (spruce)
+                                            <ul><li><b>Species</b> → ex.: Picea sitchensis (Sitka spruce)</li></ul>
+                                    </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <p>
+                            Search names are presented in Latin and English, and either can be turned on or off in the menu to improve usability.
+                        </p>
+                    </div>
+                    <hr/>
                     <div id="aboutPhotos"> 
                         <label className="sectionTitle">About the photos</label>
                         <div>
@@ -46,27 +67,6 @@ class About extends React.Component {
                                 Photos were taken with a Canon 70D camera [INSERT LINK HERE], using 40mm, 17mm x 85mm and 18mm x 55mm lenses. The 70D is equipped with Canon’s new high resolution CMOS 70D sensor which allows raising film speed to up to 2000 or more without noticeable graininess.  
                             </p>
                         </div>
-                    </div>
-                    <hr/>
-                    <div id="speciesHier">
-                        <label className="sectionTitle">Species Hierarchy</label>
-                        <p>
-                            All species are arranged by Taxonomic Hierarchy, beginning with Family, which is further divided into Genus and finally into Species. 
-                        </p>
-                        <div className="taxonomy">
-                            <ul>
-                                <li><b>Family</b> → ex.: Pinaceae (Pine)
-                                    <ul>
-                                        <li><b>Genus</b> → ex.: Picea (spruce)
-                                            <ul><li><b>Species</b> → ex.: Picea sitchensis (Sitka spruce)</li></ul>
-                                    </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <p>
-                            Search names are presented in Latin and English, and either can be turned on or off in the menu to improve usability
-                        </p>
                     </div>
                     <hr/>
                     <div id="speciesConfirm">
