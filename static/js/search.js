@@ -15,23 +15,23 @@ webpackJsonp([10],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(34);
+	var _reactDom = __webpack_require__(32);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _family = __webpack_require__(180);
+	var _family = __webpack_require__(186);
 
 	var _family2 = _interopRequireDefault(_family);
 
-	var _genus = __webpack_require__(183);
+	var _genus = __webpack_require__(189);
 
 	var _genus2 = _interopRequireDefault(_genus);
 
-	var _species = __webpack_require__(187);
+	var _species = __webpack_require__(193);
 
 	var _species2 = _interopRequireDefault(_species);
 
-	var _searchSidebar = __webpack_require__(188);
+	var _searchSidebar = __webpack_require__(194);
 
 	var _searchSidebar2 = _interopRequireDefault(_searchSidebar);
 
@@ -46,7 +46,6 @@ webpackJsonp([10],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var pg = pageData;
-	var preSelected;
 
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
@@ -59,7 +58,8 @@ webpackJsonp([10],{
 	        _this.state = {
 	            selectedItem: { item: null, itemType: null },
 	            sidebarMinimized: false,
-	            sidebarHidden: false
+	            sidebarHidden: false,
+	            preSelected: pg.pre_selected || null
 	        };
 	        return _this;
 	    }
@@ -69,25 +69,15 @@ webpackJsonp([10],{
 	        value: function componentDidMount() {
 	            var _this2 = this;
 
-	            preSelected = this.urlFGS();
-	            if (preSelected.family) {
-	                if (preSelected.genus) {
-	                    if (preSelected.species) {
-	                        this.speciesSelectedHandler(preSelected.species, this.update.bind(this));
-	                    } else {
-	                        this.genusSelectedHandler(preSelected.genus, this.update.bind(this));
-	                    }
-	                } else {
-	                    this.familySelectedHandler(preSelected.family, this.update.bind(this));
+	            if (pg.pre_selected) {
+	                var pre = pg.pre_selected;
+	                if (pre.type == "species") {
+	                    this.speciesSelectedHandler(pre.item, this.update.bind(this));
+	                } else if (pre.type == "genus") {
+	                    this.genusSelectedHandler(pre.item, this.update.bind(this));
+	                } else if (pre.type == "family") {
+	                    this.familySelectedHandler(pre.item, this.update.bind(this));
 	                }
-	            } else if (preSelected.genus) {
-	                if (preSelected.species) {
-	                    this.speciesSelectedHandler(preSelected.species, this.update.bind(this));
-	                } else {
-	                    this.genusSelectedHandler(preSelected.genus, this.update.bind(this));
-	                }
-	            } else if (preSelected.species) {
-	                this.speciesSelectedHandler(preSelected.species, this.update.bind(this));
 	            }
 	            window.addEventListener("fullScreenPhoto", function () {
 	                _this2.update('sidebarHidden', !_this2.state.sidebarHidden);
@@ -109,43 +99,35 @@ webpackJsonp([10],{
 	            this.setState(_defineProperty({}, name, e.target.value));
 	        }
 	    }, {
-	        key: 'urlFGS',
-	        value: function urlFGS() {
-	            var urlParams = this.getAllUrlParams(window.location.search),
-	                families = pg.tree,
-	                genera = [].concat.apply([], families.map(function (f) {
-	                return f.genera;
-	            })),
-	                species = [].concat.apply([], genera.map(function (g) {
-	                return g.species;
-	            }));
-
+	        key: 'searchPreSelect',
+	        value: function searchPreSelect() {
 	            var obj = {};
-
-	            if (urlParams.f_id) {
-	                var fam = families.find(function (f) {
-	                    return f.id == urlParams.f_id;
-	                });
-	                if (fam) {
-	                    genera = fam.genera;
-	                    obj.family = fam;
+	            if (pg.pre_selected) {
+	                var pre = pg.pre_selected,
+	                    families = pg.tree,
+	                    genera = [].concat.apply([], families.map(function (f) {
+	                    return f.genera;
+	                })),
+	                    species = [].concat.apply([], genera.map(function (g) {
+	                    return g.species;
+	                }));
+	                if (pre.type == "species") {
+	                    obj.species = pre.item;
+	                    obj.genus = genera.find(function (g) {
+	                        return g.id == obj.species.genus_id;
+	                    });
+	                    obj.family = families.find(function (f) {
+	                        return f.id == obj.genus.family_id;
+	                    });
+	                } else if (pre.type == "genus") {
+	                    obj.genus = pre.item;
+	                    obj.family = families.find(function (f) {
+	                        return f.id == obj.genus.family_id;
+	                    });
+	                } else if (pre.type == "family") {
+	                    obj.family = pre.item;
 	                }
 	            }
-	            if (urlParams.g_id) {
-	                var gen = genera.find(function (g) {
-	                    return g.id == urlParams.g_id;
-	                });
-	                if (gen) {
-	                    species = gen.species;
-	                    obj.genus = gen;
-	                }
-	            }
-	            if (urlParams.s_id) {
-	                obj.species = species.find(function (s) {
-	                    return s.id == urlParams.s_id;
-	                });
-	            }
-
 	            return obj;
 	        }
 	    }, {
@@ -200,7 +182,6 @@ webpackJsonp([10],{
 	                if (response.ok) {
 	                    response.json().then(function (photos) {
 	                        s.photos = photos;
-	                        window.pho = photos;
 	                        handler('selectedItem', { itemType: 'species', item: s });
 	                    });
 	                } else {
@@ -274,7 +255,7 @@ webpackJsonp([10],{
 	                    familyHandler: this.familySelectedHandler.bind(this),
 	                    handler: this.update.bind(this),
 	                    minimized: this.state.sidebarMinimized,
-	                    preSelected: this.urlFGS(preSelected)
+	                    preSelected: this.searchPreSelect()
 	                }),
 	                _react2.default.createElement(
 	                    'div',
@@ -312,17 +293,13 @@ webpackJsonp([10],{
 	    return App;
 	}(_react2.default.Component);
 
-	if (self.fetch) {} else {
-	    console.log('Unsupported browser. Please use Firefox or Google Chrome');
-	}
-
 	exports.default = App;
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
 /***/ },
 
-/***/ 180:
+/***/ 186:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -337,15 +314,15 @@ webpackJsonp([10],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(34);
+	var _reactDom = __webpack_require__(32);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _photoViewer = __webpack_require__(181);
+	var _photoViewer = __webpack_require__(187);
 
 	var _photoViewer2 = _interopRequireDefault(_photoViewer);
 
-	var _shareLinker = __webpack_require__(182);
+	var _shareLinker = __webpack_require__(188);
 
 	var _shareLinker2 = _interopRequireDefault(_shareLinker);
 
@@ -561,7 +538,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 181:
+/***/ 187:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -576,7 +553,7 @@ webpackJsonp([10],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(34);
+	var _reactDom = __webpack_require__(32);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -771,7 +748,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 182:
+/***/ 188:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -868,7 +845,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 183:
+/***/ 189:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -883,15 +860,15 @@ webpackJsonp([10],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(34);
+	var _reactDom = __webpack_require__(32);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _photoViewer = __webpack_require__(181);
+	var _photoViewer = __webpack_require__(187);
 
 	var _photoViewer2 = _interopRequireDefault(_photoViewer);
 
-	var _shareLinker = __webpack_require__(182);
+	var _shareLinker = __webpack_require__(188);
 
 	var _shareLinker2 = _interopRequireDefault(_shareLinker);
 
@@ -1106,7 +1083,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 187:
+/***/ 193:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1121,15 +1098,15 @@ webpackJsonp([10],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(34);
+	var _reactDom = __webpack_require__(32);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _photoViewer = __webpack_require__(181);
+	var _photoViewer = __webpack_require__(187);
 
 	var _photoViewer2 = _interopRequireDefault(_photoViewer);
 
-	var _shareLinker = __webpack_require__(182);
+	var _shareLinker = __webpack_require__(188);
 
 	var _shareLinker2 = _interopRequireDefault(_shareLinker);
 
@@ -1303,7 +1280,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 188:
+/***/ 194:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1318,7 +1295,7 @@ webpackJsonp([10],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _checkBoxer = __webpack_require__(189);
+	var _checkBoxer = __webpack_require__(195);
 
 	var _checkBoxer2 = _interopRequireDefault(_checkBoxer);
 
@@ -1375,6 +1352,7 @@ webpackJsonp([10],{
 	            this.update('selectedSpecies', null);
 	            this.props.familyHandler(item, this.props.handler);
 	            this.update('selectedFamily', item);
+	            window.history.pushState({}, "title", "?family=" + item.name.toLowerCase());
 	        }
 	    }, {
 	        key: 'genusClicked',
@@ -1382,12 +1360,16 @@ webpackJsonp([10],{
 	            this.update('selectedSpecies', null);
 	            this.update('selectedGenus', item);
 	            this.props.genusHandler(item, this.props.handler);
+	            window.history.pushState({}, "title", "?genus=" + item.name.toLowerCase());
 	        }
 	    }, {
 	        key: 'speciesClicked',
 	        value: function speciesClicked(item, e) {
 	            this.props.speciesHandler(item, this.props.handler);
 	            this.update('selectedSpecies', item);
+	            var genus_name = item.genus_name.toLowerCase(),
+	                name = item.name.toLowerCase();
+	            window.history.pushState({}, "title", "?species=" + genus_name + "_" + name);
 	        }
 	    }, {
 	        key: 'hideSidebar',
@@ -1510,7 +1492,7 @@ webpackJsonp([10],{
 	                speciesRows.push(_react2.default.createElement(
 	                    'li',
 	                    { className: 'emptySpeciesItem' },
-	                    '← select a genus first'
+	                    '\u2190 select a genus first'
 	                ));
 	                // self.props.tree.forEach(function(family) {
 	                //     family.genera.forEach(function(genus) {
@@ -1700,7 +1682,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 189:
+/***/ 195:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

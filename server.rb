@@ -10,6 +10,7 @@ require 'bcrypt'
 require 'pp'
 require 'open-uri'
 require 'rufus-scheduler'
+require 'pry'
 
 #local files
 require_relative 'src/family'
@@ -87,15 +88,30 @@ get '/contact' do
 end
 
 get '/search' do
-
-    @page_data = {
-        :tree => Plantae.to_hash
-    }
-    erb :"search"
+  if params[:species] && item = Plantae::get_species_by_name(params[:species].split('_').last, params[:species].split('_').first)
+    item = item.to_hash
+    item[:photos] = Plantae::get_species_photos(item)
+    type = "species"
+  elsif params[:genus] && item = Plantae::get_genus_by_name(params[:genus].gsub("_"," "))
+    item = item.to_hash
+    item[:photos] = Plantae::get_genus_photos(item)
+    type = "genus"
+  elsif params[:family] && item = Plantae::get_family_by_name(params[:family].gsub("_"," "))
+    item = item.to_hash
+    item[:photos] = Plantae::get_family_photos(item)
+    type = "family"
+  else
+    type = nil
+  end 
+  @page_data = {
+    :tree => Plantae.to_hash,
+    :pre_selected => (type && item) ? { :type => type, :item => item } : nil
+  }
+  erb :"search"
 end
 
 get '/species/:name' do
-    name = params['name'].gsub('_',' ')
+  name = params['name'].gsub('_',' ')
     
     if species = Plantae::get_species_by_name(name).to_hash
         species[:photos] = Plantae::get_species_photos(species)

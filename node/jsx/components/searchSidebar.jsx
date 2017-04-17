@@ -30,20 +30,24 @@ class SearchSidebar extends React.Component {
         });
     }
 	familyClicked(item,e) {
-        this.update('selectedGenus', null);
-        this.update('selectedSpecies', null);
-        this.props.familyHandler(item, this.props.handler);
-        this.update('selectedFamily', item);
-	}
+    this.update('selectedGenus', null);
+    this.update('selectedSpecies', null);
+    this.props.familyHandler(item, this.props.handler);
+    this.update('selectedFamily', item);
+    window.history.pushState({},"title","?family="+item.name.toLowerCase());
+  }
 	genusClicked(item,e) {
-        this.update('selectedSpecies', null); 
-        this.update('selectedGenus', item);
-        this.props.genusHandler(item, this.props.handler);
-             
-	}
+    this.update('selectedSpecies', null); 
+    this.update('selectedGenus', item);
+    this.props.genusHandler(item, this.props.handler);
+    window.history.pushState({},"title","?genus="+item.name.toLowerCase());
+  }
 	speciesClicked(item,e) {
-        this.props.speciesHandler(item, this.props.handler);
-        this.update('selectedSpecies', item);
+    this.props.speciesHandler(item, this.props.handler);
+    this.update('selectedSpecies', item);
+    var genus_name = item.genus_name.toLowerCase(),
+      name = item.name.toLowerCase();
+    window.history.pushState({},"title","?species="+genus_name+"_"+name);
 	}
     hideSidebar(e) {
         var minimized = this.props.minimized;

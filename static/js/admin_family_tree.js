@@ -15,11 +15,11 @@ webpackJsonp([0],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(34);
+	var _reactDom = __webpack_require__(32);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _adminNavbar = __webpack_require__(172);
+	var _adminNavbar = __webpack_require__(178);
 
 	var _adminNavbar2 = _interopRequireDefault(_adminNavbar);
 
@@ -217,7 +217,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 172:
+/***/ 178:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

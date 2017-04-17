@@ -92,7 +92,7 @@ class About extends React.Component {
                                 </td>
                                 <td>
                                     <ul className="description">
-                                        <li className="title"><label className="name">Blake Willson</label><i> - R.P.F. - Botanist and Photographer</i></li>
+                                        <li className="title"><label className="name">Blake Willson</label><i> - R.P.F. - Dendrologist and Photographer</i></li>
                                         <li className="content">
                                             <p>
                                             Blake is an industry manager, botanist and photographer with over 25 years in the forestry industry, specifically with government and industry between Canada and Japan.  

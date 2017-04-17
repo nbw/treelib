@@ -15,23 +15,23 @@ webpackJsonp([8],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(34);
+	var _reactDom = __webpack_require__(32);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _BasicNavbar = __webpack_require__(179);
+	var _BasicNavbar = __webpack_require__(185);
 
 	var _BasicNavbar2 = _interopRequireDefault(_BasicNavbar);
 
-	var _home = __webpack_require__(184);
+	var _home = __webpack_require__(190);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _about = __webpack_require__(185);
+	var _about = __webpack_require__(191);
 
 	var _about2 = _interopRequireDefault(_about);
 
-	var _contact = __webpack_require__(186);
+	var _contact = __webpack_require__(192);
 
 	var _contact2 = _interopRequireDefault(_contact);
 
@@ -97,7 +97,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 179:
+/***/ 185:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -208,7 +208,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 184:
+/***/ 190:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -281,7 +281,7 @@ webpackJsonp([8],{
 	                            null,
 	                            'tree library'
 	                        ),
-	                        ' for students, professors, laymen, artists, naturalists – anyone studying trees or who just appreciates their beauty.  Need more pictures for a dendrology class, or to make your own collection, or to add background to a new website? ',
+	                        ' for students, professors, laymen, artists, naturalists \u2013 anyone studying trees or who just appreciates their beauty.  Need more pictures for a dendrology class, or to make your own collection, or to add background to a new website? ',
 	                        _react2.default.createElement(
 	                            'b',
 	                            null,
@@ -297,12 +297,12 @@ webpackJsonp([8],{
 	                            null,
 	                            _react2.default.createElement(
 	                                'a',
-	                                { href: '/search?f_id=12&g_id=24&s_id=47' },
+	                                { href: '/search?species=gymnocladus_dioicus' },
 	                                _react2.default.createElement('img', { src: 'img/homepage-banner/1.jpg' })
 	                            ),
 	                            _react2.default.createElement(
 	                                'a',
-	                                { href: '/search?f_id=1&g_id=1&s_id=2' },
+	                                { href: '/search?species=liquidambar_formosana' },
 	                                _react2.default.createElement('img', { src: 'img/homepage-banner/9.jpg' })
 	                            )
 	                        ),
@@ -311,12 +311,12 @@ webpackJsonp([8],{
 	                            null,
 	                            _react2.default.createElement(
 	                                'a',
-	                                { href: '/search?f_id=8&g_id=14&s_id=31' },
+	                                { href: '/search?species=nyssa_sylvatica' },
 	                                _react2.default.createElement('img', { src: 'img/homepage-banner/6.jpg' })
 	                            ),
 	                            _react2.default.createElement(
 	                                'a',
-	                                { href: '/search?f_id=25&g_id=56&s_id=101' },
+	                                { href: '/search?species=populus_tremuloides' },
 	                                _react2.default.createElement('img', { src: 'img/homepage-banner/5.jpg' })
 	                            )
 	                        )
@@ -352,12 +352,12 @@ webpackJsonp([8],{
 	                            null,
 	                            _react2.default.createElement(
 	                                'a',
-	                                { href: '/search?f_id=23&g_id=46&s_id=79' },
+	                                { href: '/search?species=tsuga_heterophylla' },
 	                                _react2.default.createElement('img', { src: 'img/homepage-banner/4.jpg' })
 	                            ),
 	                            _react2.default.createElement(
 	                                'a',
-	                                { href: '/search?f_id=12&g_id=21&s_id=42' },
+	                                { href: '/search?species=cercis_canadensis' },
 	                                _react2.default.createElement('img', { src: 'img/homepage-banner/2.jpg' })
 	                            )
 	                        ),
@@ -366,12 +366,12 @@ webpackJsonp([8],{
 	                            null,
 	                            _react2.default.createElement(
 	                                'a',
-	                                { href: '/search?f_id=28&g_id=64&s_id=146' },
+	                                { href: '/search?species=acer_platanoides' },
 	                                _react2.default.createElement('img', { src: 'img/homepage-banner/7.jpg' })
 	                            ),
 	                            _react2.default.createElement(
 	                                'a',
-	                                { href: '/search?f_id=12&g_id=20&s_id=41' },
+	                                { href: '/search?species=albizia_julibrissin' },
 	                                _react2.default.createElement('img', { src: 'img/homepage-banner/8.jpg' })
 	                            )
 	                        )
@@ -403,7 +403,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 185:
+/***/ 191:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -557,7 +557,7 @@ webpackJsonp([8],{
 	                                        null,
 	                                        'Family'
 	                                    ),
-	                                    ' → ex.: Pinaceae (Pine)',
+	                                    ' \u2192 ex.: Pinaceae (Pine)',
 	                                    _react2.default.createElement(
 	                                        'ul',
 	                                        null,
@@ -569,7 +569,7 @@ webpackJsonp([8],{
 	                                                null,
 	                                                'Genus'
 	                                            ),
-	                                            ' → ex.: Picea (spruce)',
+	                                            ' \u2192 ex.: Picea (spruce)',
 	                                            _react2.default.createElement(
 	                                                'ul',
 	                                                null,
@@ -581,7 +581,7 @@ webpackJsonp([8],{
 	                                                        null,
 	                                                        'Species'
 	                                                    ),
-	                                                    ' → ex.: Picea sitchensis (Sitka spruce)'
+	                                                    ' \u2192 ex.: Picea sitchensis (Sitka spruce)'
 	                                                )
 	                                            )
 	                                        )
@@ -664,7 +664,7 @@ webpackJsonp([8],{
 	                            _react2.default.createElement(
 	                                'p',
 	                                null,
-	                                'Photos were taken with a Canon 70D camera [INSERT LINK HERE], using 40mm, 17mm x 85mm and 18mm x 55mm lenses. The 70D is equipped with Canon’s new high resolution CMOS 70D sensor which allows raising film speed to up to 2000 or more without noticeable graininess.'
+	                                'Photos were taken with a Canon 70D camera [INSERT LINK HERE], using 40mm, 17mm x 85mm and 18mm x 55mm lenses. The 70D is equipped with Canon\u2019s new high resolution CMOS 70D sensor which allows raising film speed to up to 2000 or more without noticeable graininess.'
 	                            )
 	                        )
 	                    ),
@@ -733,7 +733,7 @@ webpackJsonp([8],{
 	                                                _react2.default.createElement(
 	                                                    'i',
 	                                                    null,
-	                                                    ' - R.P.F. - Botanist and Photographer'
+	                                                    ' - R.P.F. - Dendrologist and Photographer'
 	                                                )
 	                                            ),
 	                                            _react2.default.createElement(
@@ -814,7 +814,7 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 186:
+/***/ 192:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

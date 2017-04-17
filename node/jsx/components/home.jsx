@@ -21,11 +21,11 @@ class Home extends React.Component {
                 	</p>
                     <div className="photoBanner">
                         <div>
-                            <a href="/search?f_id=12&g_id=24&s_id=47"><img src="img/homepage-banner/1.jpg"/></a>
-                            <a href="/search?f_id=1&g_id=1&s_id=2"><img src="img/homepage-banner/9.jpg"/></a>
+                            <a href="/search?species=gymnocladus_dioicus"><img src="img/homepage-banner/1.jpg"/></a>
+                            <a href="/search?species=liquidambar_formosana"><img src="img/homepage-banner/9.jpg"/></a>
                         </div><div>
-                            <a href="/search?f_id=8&g_id=14&s_id=31"><img src="img/homepage-banner/6.jpg"/></a>
-                            <a href="/search?f_id=25&g_id=56&s_id=101"><img src="img/homepage-banner/5.jpg"/></a>
+                            <a href="/search?species=nyssa_sylvatica"><img src="img/homepage-banner/6.jpg"/></a>
+                            <a href="/search?species=populus_tremuloides"><img src="img/homepage-banner/5.jpg"/></a>
                             
                         </div>
                     </div>
@@ -44,11 +44,11 @@ class Home extends React.Component {
                     </p>
                     <div className="photoBanner">
                         <div>
-                            <a href="/search?f_id=23&g_id=46&s_id=79"><img src="img/homepage-banner/4.jpg"/></a>
-                            <a href="/search?f_id=12&g_id=21&s_id=42"><img src="img/homepage-banner/2.jpg"/></a>
+                            <a href="/search?species=tsuga_heterophylla"><img src="img/homepage-banner/4.jpg"/></a>
+                            <a href="/search?species=cercis_canadensis"><img src="img/homepage-banner/2.jpg"/></a>
                         </div><div>
-                            <a href="/search?f_id=28&g_id=64&s_id=146"><img src="img/homepage-banner/7.jpg"/></a>
-                            <a href="/search?f_id=12&g_id=20&s_id=41"><img src="img/homepage-banner/8.jpg"/></a>
+                            <a href="/search?species=acer_platanoides"><img src="img/homepage-banner/7.jpg"/></a>
+                            <a href="/search?species=albizia_julibrissin"><img src="img/homepage-banner/8.jpg"/></a>
                         </div>
                     </div>
                    <p>

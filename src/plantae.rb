@@ -56,12 +56,18 @@ module Plantae
     end
 
     def self.get_species id
-        species = @@species.find{ |s| s.id == id }
-        return species
+      return nil if id.nil?
+      @@species.find{ |s| s.id == id }
     end
 
-    def self.get_species_by_name name
-        species = @@species.find{ |s| s.name.downcase == name.downcase }
+    def self.get_species_by_name name, genus_name=nil
+        return name if name.nil?
+        if genus_name
+          genus = get_genus_by_name(genus_name)
+          species = genus ? genus.species.find{ |s| s.name.downcase == name.downcase } : nil
+        else
+          species = @@species.find{ |s| s.name.downcase == name.downcase }
+        end
         return species
     end
 
@@ -143,10 +149,12 @@ module Plantae
     end
 
     def self.get_genus id
-        @@genera.find{ |g| g.id == id }
+      return nil if id.nil?
+      @@genera.find{ |g| g.id == id }
     end
 
     def self.get_genus_by_name name
+        return name if name.nil?
         @@genera.find{ |g| g.name.downcase == name.downcase }
     end
 
@@ -237,10 +245,12 @@ module Plantae
     end
 
     def self.get_family id
-        @@families.find{ |f| f.id == id }
+      return nil if id.nil?
+      @@families.find{ |f| f.id == id }
     end
 
     def self.get_family_by_name name
+        return name if name.nil?
         @@families.find{ |f| f.name.downcase == name.downcase }
     end
 
