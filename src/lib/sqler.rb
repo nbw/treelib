@@ -11,16 +11,29 @@ module SQLer
         @username = CONFIG['username'] || "root"
         @pw = CONFIG['password'] || ""
         begin
+          puts "::SQLer:: starting or updating client connection"
             @client = Mysql2::Client.new(:host => "localhost", :username => @username, :password=>@pw, :database => @db)
         rescue Mysql2::Error => e
-            error = e
             puts e.message
         end
     end
 
     def self.query(query)
+      tries = 3 
+      begin
         puts "::SQLer:: Running:<\n\n #{query} \n\n"
         @client.query(query)
+      rescue Mysql2::Error => e
+        # Reset the client
+        SQLer.init
+        unless (tries -= 1).zero?
+          retry
+        else
+          puts "::SQLer:: Connection Error: #{e}"
+          # Add code here to send out an email notif
+          raise "Connection issue. We'll be taking a closer look."
+        end
+      end
     end
 
     def self.transaction(&block)
