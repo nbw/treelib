@@ -612,7 +612,7 @@ webpackJsonp([11],{
 	                    { className: 'title' },
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '/species/' + s.genus_name.toLowerCase() + "_" + s.named },
+	                        { href: '/species/' + s.genus_name.toLowerCase() + "_" + s.name },
 	                        _react2.default.createElement(
 	                            'label',
 	                            { className: 'main' },
