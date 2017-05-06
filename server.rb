@@ -111,19 +111,18 @@ get '/search' do
 end
 
 get '/species/:name' do
-  name = params['name'].gsub('_',' ')
-    
-    if species = Plantae::get_species_by_name(name).to_hash
-        species[:photos] = Plantae::get_species_photos(species)
-    else 
+  if species = Plantae::get_species_by_name(params['name'].split('_').last, params['name'].split('_').first)
+    species = species.to_hash
+    species[:photos] = Plantae::get_species_photos(species)
+  else 
         species = []
-    end
+  end
 
-    @page_data = {
-        :species => species
-    }
+  @page_data = {
+    :species => species
+  }
 
-    erb :"species"
+  erb :"species"
 end
 
 get '/genus/:name' do

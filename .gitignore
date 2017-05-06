@@ -1,4 +1,6 @@
 config.json
+changelog.txt
+dev_testing.rb
 
 # OS generated files #
 ######################
@@ -9,3 +11,4 @@ config.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+.swp
