@@ -57,11 +57,11 @@ class Species extends React.Component {
         return (
             <div className="species">
                 <div className="title">
-                    <a href={'/species/' + s.genus_name.toLowerCase() + "_" + s.name}><label className="main">{s.genus_name} <span className="speciesTitle">{s.name}</span></label></a>
+                    <a href={'/species/' + encodeURI((s.genus_name + "_" + s.name).toLowerCase())}><label className="main">{s.genus_name} <span className="speciesTitle">{s.name}</span></label></a>
                     <label className="commonName">{s.common_name} {s.genus_common_name}</label>
                     <label className="secondary">species</label>
                     <ShareLinker
-                        path={'/species/' + s.genus_name.toLowerCase() + "_" + s.name} 
+                        path={'/species/' +  encodeURI((s.genus_name + "_" + s.name).toLowerCase())} 
                     />
                 </div>
                 

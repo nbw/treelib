@@ -612,7 +612,7 @@ webpackJsonp([11],{
 	                    { className: 'title' },
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '/species/' + s.genus_name.toLowerCase() + "_" + s.name },
+	                        { href: '/species/' + encodeURI((s.genus_name + "_" + s.name).toLowerCase()) },
 	                        _react2.default.createElement(
 	                            'label',
 	                            { className: 'main' },
@@ -638,7 +638,7 @@ webpackJsonp([11],{
 	                        'species'
 	                    ),
 	                    _react2.default.createElement(_shareLinker2.default, {
-	                        path: '/species/' + s.genus_name.toLowerCase() + "_" + s.name
+	                        path: '/species/' + encodeURI((s.genus_name + "_" + s.name).toLowerCase())
 	                    })
 	                ),
 	                _react2.default.createElement(
