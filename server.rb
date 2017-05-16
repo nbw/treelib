@@ -183,6 +183,9 @@ get '/api/get_family_photos' do
     return photos.to_json
 end
 
+get '/google4b21e8a8f1fbb0c6.html' do
+  send_file File.join(settings.public_folder, '../static/google4b21e8a8f1fbb0c6.html')
+end
 ######################################
 # ADMIN PAGES
 ######################################
