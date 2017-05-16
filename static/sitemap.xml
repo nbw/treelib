@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+  <url>
+    <loc>http://treelib.ca</loc> 
+    <image: image>
+      <image:loc>http://treelib.ca/img/logo.png</image:loc>
+      <image:caption>TreeLib Logo</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://treelib.ca/contact</loc> 
+  </url>
+  <url>
+    <loc>http://treelib.ca/search</loc> 
+  </url>
+  <url>
+    <loc>http://treelib.ca/about</loc> 
+  </url>
+</urlset>
