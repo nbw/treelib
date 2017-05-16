@@ -184,8 +184,13 @@ get '/api/get_family_photos' do
 end
 
 get '/google4b21e8a8f1fbb0c6.html' do
-  send_file File.join(settings.public_folder, '../static/google4b21e8a8f1fbb0c6.html')
+  send_file File.join(settings.public_folder, 'google4b21e8a8f1fbb0c6.html')
 end
+
+get '/sitemap.xml' do
+  send_file File.join(settings.public_folder, 'sitemap.xml')
+end
+
 ######################################
 # ADMIN PAGES
 ######################################
