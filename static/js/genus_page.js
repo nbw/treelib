@@ -606,14 +606,24 @@ webpackJsonp([7],{
 	                selectedPhoto = this.state.selectedPhotoIndex,
 	                thumbs = [];
 
-	            var species = g.species.map(function (s, i) {
+	            var species_link = g.species.map(function (s, i) {
 	                return _react2.default.createElement(
 	                    'li',
 	                    { key: i },
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: "/search?f_id=" + g.family_id + "&g_id=" + g.id + "&s_id=" + s.id },
-	                        s.name
+	                        { href: '/search?species=' + encodeURI((s.genus_name + "_" + s.name).toLowerCase()) },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { className: 'main' },
+	                            s.genus_name,
+	                            ' ',
+	                            _react2.default.createElement(
+	                                'span',
+	                                { className: 'speciesTitle' },
+	                                s.name
+	                            )
+	                        )
 	                    )
 	                );
 	            });
@@ -676,7 +686,7 @@ webpackJsonp([7],{
 	                        _react2.default.createElement(
 	                            'ul',
 	                            null,
-	                            species
+	                            species_link
 	                        )
 	                    )
 	                ),
