@@ -27,17 +27,17 @@ SQLer.init
 ####################################
 
 begin 
-    puts 'Connecting to client: #{DB}..'
+    puts "Connecting to client: #{CONFIG["database"]}.."
     username = CONFIG['username'] || "root"
     pw = CONFIG['password'] || ""
     client = Mysql2::Client.new(:host => "localhost", :username => username, :password => pw, :database => CONFIG["database"])
-    puts 'Connected to client: #{DB}!'
+    puts "Connected to client: #{CONFIG["database"]}!"
 rescue Mysql2::Error => e
     error = e
     puts e.message
     if e.errno == 1049
         Mysql2::Client.new(:host => "localhost", :username => "root", :password => pw).query("CREATE database #{CONFIG["database"]}")
-        puts 'Created database: #{DB}'
+        puts 'Created database: #{CONFIG["database"]}'
         retry
     end  
 end
