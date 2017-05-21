@@ -422,7 +422,7 @@ webpackJsonp([10],{
 	                    { key: i },
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: "/search?f_id=" + f.id + "&g_id=" + g.id },
+	                        { href: '/search?genus=' + encodeURI(g.name.toLowerCase()) },
 	                        g.name
 	                    )
 	                );
@@ -969,17 +969,7 @@ webpackJsonp([10],{
 	                    _react2.default.createElement(
 	                        'a',
 	                        { href: '/search?species=' + encodeURI((s.genus_name + "_" + s.name).toLowerCase()) },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { className: 'main' },
-	                            s.genus_name,
-	                            ' ',
-	                            _react2.default.createElement(
-	                                'span',
-	                                { className: 'speciesTitle' },
-	                                s.name
-	                            )
-	                        )
+	                        s.name
 	                    )
 	                );
 	            });
