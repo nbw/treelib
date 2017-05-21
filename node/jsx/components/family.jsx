@@ -11,6 +11,9 @@ class Family extends React.Component {
             selectedPhotoIndex: null
         };
     }
+    componentWillReceiveProps(){
+      this.update("selectedPhotoIndex", null);
+    }
     update(name, value) {
         this.setState({
             [name]: value // ES6 computed property

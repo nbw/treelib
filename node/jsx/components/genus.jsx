@@ -11,6 +11,9 @@ class Genus extends React.Component {
             selectedPhotoIndex: null
         };
     }
+    componentWillReceiveProps(){
+      this.update("selectedPhotoIndex", null);
+    }
     update(name, value) {
         this.setState({
             [name]: value // ES6 computed property
@@ -30,7 +33,7 @@ class Genus extends React.Component {
         }
     }
     closePhotoviewer(){
-            this.update("selectedPhotoIndex", null);
+      this.update("selectedPhotoIndex", null);
     }
     createMarkup(s) {
         return {__html: s};

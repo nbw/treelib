@@ -541,6 +541,11 @@ webpackJsonp([11],{
 	    }
 
 	    _createClass(Species, [{
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps() {
+	            this.update("selectedPhotoIndex", null);
+	        }
+	    }, {
 	        key: 'update',
 	        value: function update(name, value) {
 	            this.setState(_defineProperty({}, name, value));
