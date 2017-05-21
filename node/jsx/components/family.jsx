@@ -65,7 +65,7 @@ class Family extends React.Component {
             thumbs = [];
 
         var genera = f.genera.map(function(g,i){
-            return <li key={i} ><a href={'/search?genus=' + encodeURI((g.name).toLowerCase())}>{g.name}</a></li>
+            return <li key={i} ><a className="underlineable" href={'/search?genus=' + encodeURI((g.name).toLowerCase())}>{g.name}</a></li>
         });
 
         if( f.photos && f.photos.length > 0 ) {

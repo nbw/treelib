@@ -305,7 +305,7 @@ webpackJsonp([6],{
 	                    { key: i },
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '/search?genus=' + encodeURI(g.name.toLowerCase()) },
+	                        { className: 'underlineable', href: '/search?genus=' + encodeURI(g.name.toLowerCase()) },
 	                        g.name
 	                    )
 	                );

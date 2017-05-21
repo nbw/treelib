@@ -2346,6 +2346,8 @@ a {
   color: #364149; }
   a:hover {
     color: #161a1d; }
+  a.underlineable:hover {
+    text-decoration: underline; }
 
 input[type=checkbox]:not(old),
 input[type=radio]:not(old) {

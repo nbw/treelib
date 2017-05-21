@@ -62,6 +62,11 @@ a {
 	&:hover { 
 		color: $base-font-color-hover;
 	}
+  &.underlineable {
+    &:hover{
+      text-decoration: underline;
+    }
+  }
 }
 
 // input[type="checkbox"] {
