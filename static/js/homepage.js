@@ -747,7 +747,7 @@ webpackJsonp([8],{
 	                                                _react2.default.createElement(
 	                                                    'p',
 	                                                    null,
-	                                                    'He is a member of the International Dendrology Society (a UK-based global group of professors and scientists dedicated to the study and teaching about woody plants) and the American Conifer Society.'
+	                                                    'He is a member of the International Dendrology Society (a UK-based global group of professors and scientists dedicated to the study and teaching about woody plants).'
 	                                                )
 	                                            )
 	                                        )
