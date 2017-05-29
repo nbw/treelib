@@ -28,27 +28,39 @@ class PhotoViewer extends React.Component {
             this.props.nextCallback();   
         }
     }
-    showFullSizeImage() {
-        this.update('showFullSize', !this.state.showFullSize);
-        var event = new Event('fullScreenPhoto');
-        window.dispatchEvent(event);
+  showFullSizeImage() {
+    // if defined, let the parents know what's up.
+    if(this.props.hideSidebarCallback) {
+      this.props.hideSidebarCallback(); 
     }
+
+    this.update('showFullSize', true);
+  }
+
+  closeFullSizeImage() {
+    // if defined, let the parents know what's up.
+    if(this.props.showSidebarCallback) {
+      this.props.showSidebarCallback(); 
+    }
+
+    this.update('showFullSize', false);
+  }
 
     render() {
         var self = this,
             show = this.state.showFullSize ? 'show' : '' ;
         return (
             <div className="photoViewer">
-                <div onClick={() => self.showFullSizeImage()} className={"fullSizeImage " + show }>
+                <div onClick={() => self.closeFullSizeImage()} className={"fullSizeImage " + show }>
                     <span className="helper"></span>
                     <div className="imageWrapper">
-                        <img src={this.props.original} />
+                      <img src={this.props.original} />
                         <div className="info">
                             <label className="title">{this.props.imageName}</label>
                             <p className="description">{this.props.imageDescription}</p>
                         </div>
                     </div>
-                    <div className="closeButton" onClick={() => self.showFullSizeImage()} ><i className="fa fa-times fa-lg"></i> Close </div>
+                    <div className="closeButton" onClick={() => self.closeFullSizeImage()} ><i className="fa fa-times fa-lg"></i> Close </div>
                 </div>
                 <div className="image">
                     <div className="prev" onClick={this.props.prevCallback}><i className="fa fa-angle-double-left fa-2x"></i></div>

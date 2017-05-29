@@ -14,6 +14,13 @@ class Species extends React.Component {
     componentWillReceiveProps(){
       this.update("selectedPhotoIndex", null);
     }
+    componentWillReceiveProps(nextProps){
+      var curr_species = this.props.species,
+        next_species = nextProps.species;
+      if(curr_species != next_species){
+        this.update("selectedPhotoIndex", null);
+      }
+    }
     update(name, value) {
         this.setState({
             [name]: value // ES6 computed property
@@ -81,6 +88,8 @@ class Species extends React.Component {
                         nextCallback={() => this.nextPhoto()} 
                         prevCallback={() => this.prevPhoto()} 
                         closeCallback={() => this.closePhotoviewer()}
+                        hideSidebarCallback={() => this.props.handler('sidebarHidden',true)}
+                        showSidebarCallback={() => this.props.handler('sidebarHidden',false)}
                         image={s.photos[selectedPhoto].medium} 
                         imageName={s.photos[selectedPhoto].name} 
                         imageDescription={s.photos[selectedPhoto].description} 

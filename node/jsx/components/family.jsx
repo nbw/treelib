@@ -14,6 +14,13 @@ class Family extends React.Component {
     componentWillReceiveProps(){
       this.update("selectedPhotoIndex", null);
     }
+    componentWillReceiveProps(nextProps){
+      var curr_family = this.props.family,
+        next_family = nextProps.family;
+      if(curr_family != next_family){
+        this.update("selectedPhotoIndex", null);
+      }
+    }
     update(name, value) {
         this.setState({
             [name]: value // ES6 computed property
@@ -106,6 +113,8 @@ class Family extends React.Component {
                         nextCallback={() => this.nextPhoto()} 
                         prevCallback={() => this.prevPhoto()} 
                         closeCallback={() => this.closePhotoviewer()}
+                        hideSidebarCallback={() => this.props.handler('sidebarHidden',true)}
+                        showSidebarCallback={() => this.props.handler('sidebarHidden',false)}
                         image={f.photos[selectedPhoto].medium}
                         imageName={f.photos[selectedPhoto].name}
                         imageDescription={f.photos[selectedPhoto].description} 

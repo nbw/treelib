@@ -8,11 +8,15 @@ class Genus extends React.Component {
     constructor() {
         super();
         this.state = {
-            selectedPhotoIndex: null
+            selectedPhotoIndex: null,
         };
     }
-    componentWillReceiveProps(){
-      this.update("selectedPhotoIndex", null);
+    componentWillReceiveProps(nextProps){
+      var curr_genus = this.props.genus,
+        next_genus = nextProps.genus;
+      if(curr_genus != next_genus){
+        this.update("selectedPhotoIndex", null);
+      }
     }
     update(name, value) {
         this.setState({
@@ -106,6 +110,8 @@ class Genus extends React.Component {
                         nextCallback={() => this.nextPhoto()}
                         prevCallback={() => this.prevPhoto()}
                         closeCallback={() => this.closePhotoviewer()}
+                        hideSidebarCallback={() => this.props.handler('sidebarHidden',true)}
+                        showSidebarCallback={() => this.props.handler('sidebarHidden',false)}
                         image={g.photos[selectedPhoto].medium}
                         imageName={g.photos[selectedPhoto].name}
                         imageDescription={g.photos[selectedPhoto].description}

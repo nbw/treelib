@@ -59,7 +59,8 @@ webpackJsonp([10],{
 	            selectedItem: { item: null, itemType: null },
 	            sidebarMinimized: false,
 	            sidebarHidden: false,
-	            preSelected: pg.pre_selected || null
+	            preSelected: pg.pre_selected || null,
+	            isFullScreenImageMode: null
 	        };
 	        return _this;
 	    }
@@ -282,9 +283,18 @@ webpackJsonp([10],{
 	                            ' to get started!'
 	                        )
 	                    ) : null,
-	                    type === "family" ? _react2.default.createElement(_family2.default, { family: item }) : null,
-	                    type === "genus" ? _react2.default.createElement(_genus2.default, { genus: item }) : null,
-	                    type === "species" ? _react2.default.createElement(_species2.default, { species: item }) : null
+	                    type === "family" ? _react2.default.createElement(_family2.default, { family: item,
+	                        handler: this.update.bind(this),
+	                        isFullScreen: this.props.isFullScreenImageMode
+	                    }) : null,
+	                    type === "genus" ? _react2.default.createElement(_genus2.default, { genus: item,
+	                        handler: this.update.bind(this),
+	                        isFullScreen: this.props.isFullScreenImageMode
+	                    }) : null,
+	                    type === "species" ? _react2.default.createElement(_species2.default, { species: item,
+	                        handler: this.update.bind(this),
+	                        isFullScreen: this.props.isFullScreenImageMode
+	                    }) : null
 	                )
 	            );
 	        }
@@ -354,6 +364,15 @@ webpackJsonp([10],{
 	        key: 'componentWillReceiveProps',
 	        value: function componentWillReceiveProps() {
 	            this.update("selectedPhotoIndex", null);
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            var curr_family = this.props.family,
+	                next_family = nextProps.family;
+	            if (curr_family != next_family) {
+	                this.update("selectedPhotoIndex", null);
+	            }
 	        }
 	    }, {
 	        key: 'update',
@@ -506,6 +525,12 @@ webpackJsonp([10],{
 	                    closeCallback: function closeCallback() {
 	                        return _this2.closePhotoviewer();
 	                    },
+	                    hideSidebarCallback: function hideSidebarCallback() {
+	                        return _this2.props.handler('sidebarHidden', true);
+	                    },
+	                    showSidebarCallback: function showSidebarCallback() {
+	                        return _this2.props.handler('sidebarHidden', false);
+	                    },
 	                    image: f.photos[selectedPhoto].medium,
 	                    imageName: f.photos[selectedPhoto].name,
 	                    imageDescription: f.photos[selectedPhoto].description,
@@ -614,9 +639,22 @@ webpackJsonp([10],{
 	    }, {
 	        key: 'showFullSizeImage',
 	        value: function showFullSizeImage() {
-	            this.update('showFullSize', !this.state.showFullSize);
-	            var event = new Event('fullScreenPhoto');
-	            window.dispatchEvent(event);
+	            // if defined, let the parents know what's up.
+	            if (this.props.hideSidebarCallback) {
+	                this.props.hideSidebarCallback();
+	            }
+
+	            this.update('showFullSize', true);
+	        }
+	    }, {
+	        key: 'closeFullSizeImage',
+	        value: function closeFullSizeImage() {
+	            // if defined, let the parents know what's up.
+	            if (this.props.showSidebarCallback) {
+	                this.props.showSidebarCallback();
+	            }
+
+	            this.update('showFullSize', false);
 	        }
 	    }, {
 	        key: 'render',
@@ -629,7 +667,7 @@ webpackJsonp([10],{
 	                _react2.default.createElement(
 	                    'div',
 	                    { onClick: function onClick() {
-	                            return self.showFullSizeImage();
+	                            return self.closeFullSizeImage();
 	                        }, className: "fullSizeImage " + show },
 	                    _react2.default.createElement('span', { className: 'helper' }),
 	                    _react2.default.createElement(
@@ -654,7 +692,7 @@ webpackJsonp([10],{
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'closeButton', onClick: function onClick() {
-	                                return self.showFullSizeImage();
+	                                return self.closeFullSizeImage();
 	                            } },
 	                        _react2.default.createElement('i', { className: 'fa fa-times fa-lg' }),
 	                        ' Close '
@@ -903,8 +941,12 @@ webpackJsonp([10],{
 
 	    _createClass(Genus, [{
 	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps() {
-	            this.update("selectedPhotoIndex", null);
+	        value: function componentWillReceiveProps(nextProps) {
+	            var curr_genus = this.props.genus,
+	                next_genus = nextProps.genus;
+	            if (curr_genus != next_genus) {
+	                this.update("selectedPhotoIndex", null);
+	            }
 	        }
 	    }, {
 	        key: 'update',
@@ -1056,6 +1098,12 @@ webpackJsonp([10],{
 	                    closeCallback: function closeCallback() {
 	                        return _this2.closePhotoviewer();
 	                    },
+	                    hideSidebarCallback: function hideSidebarCallback() {
+	                        return _this2.props.handler('sidebarHidden', true);
+	                    },
+	                    showSidebarCallback: function showSidebarCallback() {
+	                        return _this2.props.handler('sidebarHidden', false);
+	                    },
 	                    image: g.photos[selectedPhoto].medium,
 	                    imageName: g.photos[selectedPhoto].name,
 	                    imageDescription: g.photos[selectedPhoto].description,
@@ -1148,6 +1196,15 @@ webpackJsonp([10],{
 	        key: 'componentWillReceiveProps',
 	        value: function componentWillReceiveProps() {
 	            this.update("selectedPhotoIndex", null);
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            var curr_species = this.props.species,
+	                next_species = nextProps.species;
+	            if (curr_species != next_species) {
+	                this.update("selectedPhotoIndex", null);
+	            }
 	        }
 	    }, {
 	        key: 'update',
@@ -1273,6 +1330,12 @@ webpackJsonp([10],{
 	                    },
 	                    closeCallback: function closeCallback() {
 	                        return _this2.closePhotoviewer();
+	                    },
+	                    hideSidebarCallback: function hideSidebarCallback() {
+	                        return _this2.props.handler('sidebarHidden', true);
+	                    },
+	                    showSidebarCallback: function showSidebarCallback() {
+	                        return _this2.props.handler('sidebarHidden', false);
 	                    },
 	                    image: s.photos[selectedPhoto].medium,
 	                    imageName: s.photos[selectedPhoto].name,

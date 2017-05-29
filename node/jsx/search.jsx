@@ -13,7 +13,8 @@ class App extends React.Component {
         selectedItem: { item: null, itemType: null },
         sidebarMinimized: false,
         sidebarHidden: false,
-        preSelected: pg.pre_selected || null
+        preSelected: pg.pre_selected || null,
+        isFullScreenImageMode: null
       };
     }
     componentDidMount() {
@@ -194,9 +195,21 @@ class App extends React.Component {
                             </div>
                         </div>
                     : null}
-                    { type === "family" ? <Family family={item}/> : null }
-                    { type === "genus" ? <Genus genus={item}/> : null }
-                    { type === "species" ? <Species species={item}/> : null }
+                    { type === "family" ? 
+                        <Family family={item}
+                          handler={this.update.bind(this)} 
+                          isFullScreen={this.props.isFullScreenImageMode}
+                        /> : null }
+                    { type === "genus" ? 
+                        <Genus genus={item}
+                          handler={this.update.bind(this)} 
+                          isFullScreen={this.props.isFullScreenImageMode}
+                            /> : null }
+                    { type === "species" ? 
+                         <Species species={item}
+                          handler={this.update.bind(this)} 
+                          isFullScreen={this.props.isFullScreenImageMode}
+                            /> : null }
                 </div>
             </div>
         );

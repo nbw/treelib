@@ -239,6 +239,15 @@ webpackJsonp([6],{
 	            this.update("selectedPhotoIndex", null);
 	        }
 	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            var curr_family = this.props.family,
+	                next_family = nextProps.family;
+	            if (curr_family != next_family) {
+	                this.update("selectedPhotoIndex", null);
+	            }
+	        }
+	    }, {
 	        key: 'update',
 	        value: function update(name, value) {
 	            this.setState(_defineProperty({}, name, value));
@@ -389,6 +398,12 @@ webpackJsonp([6],{
 	                    closeCallback: function closeCallback() {
 	                        return _this2.closePhotoviewer();
 	                    },
+	                    hideSidebarCallback: function hideSidebarCallback() {
+	                        return _this2.props.handler('sidebarHidden', true);
+	                    },
+	                    showSidebarCallback: function showSidebarCallback() {
+	                        return _this2.props.handler('sidebarHidden', false);
+	                    },
 	                    image: f.photos[selectedPhoto].medium,
 	                    imageName: f.photos[selectedPhoto].name,
 	                    imageDescription: f.photos[selectedPhoto].description,
@@ -497,9 +512,22 @@ webpackJsonp([6],{
 	    }, {
 	        key: 'showFullSizeImage',
 	        value: function showFullSizeImage() {
-	            this.update('showFullSize', !this.state.showFullSize);
-	            var event = new Event('fullScreenPhoto');
-	            window.dispatchEvent(event);
+	            // if defined, let the parents know what's up.
+	            if (this.props.hideSidebarCallback) {
+	                this.props.hideSidebarCallback();
+	            }
+
+	            this.update('showFullSize', true);
+	        }
+	    }, {
+	        key: 'closeFullSizeImage',
+	        value: function closeFullSizeImage() {
+	            // if defined, let the parents know what's up.
+	            if (this.props.showSidebarCallback) {
+	                this.props.showSidebarCallback();
+	            }
+
+	            this.update('showFullSize', false);
 	        }
 	    }, {
 	        key: 'render',
@@ -512,7 +540,7 @@ webpackJsonp([6],{
 	                _react2.default.createElement(
 	                    'div',
 	                    { onClick: function onClick() {
-	                            return self.showFullSizeImage();
+	                            return self.closeFullSizeImage();
 	                        }, className: "fullSizeImage " + show },
 	                    _react2.default.createElement('span', { className: 'helper' }),
 	                    _react2.default.createElement(
@@ -537,7 +565,7 @@ webpackJsonp([6],{
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'closeButton', onClick: function onClick() {
-	                                return self.showFullSizeImage();
+	                                return self.closeFullSizeImage();
 	                            } },
 	                        _react2.default.createElement('i', { className: 'fa fa-times fa-lg' }),
 	                        ' Close '
