@@ -191,6 +191,10 @@ get '/sitemap.xml' do
   send_file File.join(settings.public_folder, 'sitemap.xml')
 end
 
+get 'loaderio-2b04a6e06c2f38ff54ead1a171318b35.txt' do
+  send file File.join(settings.public_folder, 'loaderio-2b04a6e06c2f38ff54ead1a171318b35.txt')
+end
+
 ######################################
 # ADMIN PAGES
 ######################################
