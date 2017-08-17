@@ -22,8 +22,8 @@
 <li>Homepage</li>
 <li>Contact, Feedback, etc.</li>
 </ul>
-![front_1](treelib/screenshots/ss2.png)
-![front_2](/screenshots/ss3.png?raw=true)
+![front_1](https://github.com/nbw/treelib/blob/master/screenshots/ss2.png?raw=true)
+![front_2](https://github.com/nbw/treelib/blob/master/screenshots/ss3.png?raw=true)
 
 </hr>
 
@@ -33,8 +33,8 @@
 <li>Create/Edit Genera</li>
 <li>Create/Edit Families</li>
 </ul>
-![admin_1](/screenshots/ss1.png?raw=true)
-![admin_2](/screenshots/ss4.png?raw=true)
+![admin_1](https://github.com/nbw/treelib/blob/master/screenshots/ss1.png?raw=true)
+![admin_2](https://github.com/nbw/treelib/blob/master/screenshots/ss4.png?raw=true)
 
 
 <h2>Changes I'd like to make:</h2>
