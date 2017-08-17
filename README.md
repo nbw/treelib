@@ -22,7 +22,7 @@
 <li>Homepage</li>
 <li>Contact, Feedback, etc.</li>
 </ul>
-![front_1](/screenshots/ss2.png?raw=true)
+![front_1](treelib/screenshots/ss2.png)
 ![front_2](/screenshots/ss3.png?raw=true)
 
 </hr>
