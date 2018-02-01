@@ -1,4 +1,7 @@
 <h1>Treelib</h1>
+
+<h2>Deprecated: This repository is no longer active and has since been converted into an Elixir Phoenix application</h2>
+
 <p>A collection of high-quality tree photographs for educators, students and lay persons.</p>
 <p style="text-align=center;">
 <a href="http://treelib.nathanwillson.com">Click here for a live demo!</a>
